@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config 
+PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+                            "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+<faces-config>
+
+	<!-- Gestión automática de transacciones por Seam -->
+	<lifecycle>
+		<phase-listener>
+			org.jboss.seam.jsf.TransactionalSeamPhaseListener
+		</phase-listener>
+	</lifecycle>
+	
+    
+    <!-- Oracle ADF -->
+    
+    <application>	
+    	<default-render-kit-id>oracle.adf.core</default-render-kit-id>
+	</application>
+ 
+ </faces-config>
