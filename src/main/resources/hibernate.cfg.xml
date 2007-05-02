@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	
+	<session-factory name="java:/mfisSessionFactory">
+		<property name="show_sql">true</property>
+		<property name="connection.datasource">java:/hibernateDataSource</property>
+		<property name="cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
+		<property name="transaction.flush_before_completion">true</property>
+		<property name="connection.release_mode">after_statement</property>
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+		
+		
+		<mapping resource="mapping/Articulo.hbm.xml" />	
+		<mapping resource="mapping/Tipo.hbm.xml" />
+		
+	</session-factory>
+
+	
+</hibernate-configuration>
