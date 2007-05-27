@@ -14,8 +14,7 @@
 		<property name="transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
 		
 		
-		<mapping resource="mapping/Articulo.hbm.xml" />	
-		<mapping resource="mapping/Tipo.hbm.xml" />
+		<mapping resource="mapping/Producto.hbm.xml" />	
 		
 	</session-factory>
 
