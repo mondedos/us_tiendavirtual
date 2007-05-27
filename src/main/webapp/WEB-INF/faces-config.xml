@@ -17,5 +17,6 @@ PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
     <application>	
     	<default-render-kit-id>oracle.adf.core</default-render-kit-id>
 	</application>
+	
  
  </faces-config>

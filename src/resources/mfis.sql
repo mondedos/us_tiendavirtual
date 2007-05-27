@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     13/05/2007 21:05:27                          */
+/* Created on:     27/05/2007 6:06:47                           */
 /*==============================================================*/
 
 
@@ -13,6 +13,9 @@ create table PRODUCTO
 (
    ID                   INTEGER not null,
    VERSION              INTEGER,
+   NOMBRE               VARCHAR(256),
+   DESCRIPCION          VARCHAR(256),
+   FOTO                 VARCHAR(50),
    primary key (ID)
 );
 
