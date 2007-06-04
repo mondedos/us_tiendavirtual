@@ -15,7 +15,6 @@
 		
 		
 		<mapping resource="mapping/Producto.hbm.xml" />	
-		
 	</session-factory>
 
 	
