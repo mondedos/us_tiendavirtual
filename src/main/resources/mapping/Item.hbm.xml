@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="modelo.Item" table="Item">
+		<id name="id" type="long" column="id_item">
+			<generator class="increment" />
+		</id>
+		<property name="referencia" column="vc_referencia" type="string" />
+
+		<!-- Subclase Producto -->
+		<joined-subclass name="modelo.Producto" table="producto">
+			<key column="id_item_3" />
+
+			<property name="modelo" column="vc_modelo" type="string" />
+			<property name="marca" column="vc_marca" type="string" />
+			<property name="dimensiones" column="vc_dimensiones" type="string" />
+			<property name="precio" column="mo_precio" type="float" />
+			<property name="ganancia" type="int" />
+			<property name="descripcion" column="vc_descripcion" type="string" />
+			<property name="foto" column="vc_foto" type="string" />
+			
+			<!-- Subclase Frigorifico -->
+			<joined-subclass name="modelo.Frigorifico" table="frigorifico">
+			<key column="id_item_3" />
+			<property name="clasificacionEnergetica" column="combi" type="boolean" />
+		</joined-subclass>
+		
+			<!-- Subclase Lavadora -->
+		<joined-subclass name="modelo.Lavadora" table="lavadora">
+			<key column="id_item_3" />
+			<property name="clasificacionEnergetica" type="string" />
+			<property name="secadora" column="bo_secadora" type="boolean" />
+		</joined-subclass>
+		<!-- Subclase Televisor -->
+		<joined-subclass name="modelo.Televisor" table="televisor">
+			<key column="id_item_3" />
+			<property name="tamano" column="vc_tamano" type="string" />
+			<property name="TDT" type="boolean" />
+			<property name="peana" type="string" />
+		</joined-subclass>
+		<!-- Subclase PequenioElectrodomestico -->
+		<joined-subclass name="modelo.PequenoElectrodomestico" table="pequeno_electrodomestico">
+			<key column="id_item_3" />
+			<property name="caracteristicas" type="vc_caracteristicas" />
+		</joined-subclass>
+		<!-- Subclase Dvd -->
+		<joined-subclass name="modelo.Dvd" table="dvd">
+			<key  column="id_item_3"  />
+			<property  name="conectores" column="vc_conectores" type="string" />
+			<property name="formato" column="vc_formato" type="string" />
+		</joined-subclass>
+		
+		</joined-subclass>
+		<!-- Subclase Oferta -->
+		<joined-subclass name="modelo.Oferta" table="oferta">
+			<key column="id_item_2" />
+			<many-to-one name="principal" column="prod_id_item_3"
+				class="modelo.Producto" lazy="false" cascade="all" />
+			<many-to-one name="secundario" column="id_item_3"
+				class="modelo.Producto" lazy="false" cascade="all" />
+		</joined-subclass>
+	</class>
+</hibernate-mapping>
