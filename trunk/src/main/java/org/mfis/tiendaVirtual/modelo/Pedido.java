@@ -66,5 +66,21 @@ public void setId(long id) {
 	this.id = id;
 }
 
+public Date getFechaTransient() {
+	return fechaTransient;
+}
+
+public void setFechaTransient(Date fechaTransient) {
+	this.fechaTransient = fechaTransient;
+}
+
+public Float getPrecioTotal() {
+	return precioTotal;
+}
+
+public void setPrecioTotal(Float precioTotal) {
+	this.precioTotal = precioTotal;
+}
+
 
 }

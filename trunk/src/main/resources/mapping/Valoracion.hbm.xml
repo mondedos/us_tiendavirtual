@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--model.person.Persona root -->
+	<class name="model.parte.Valoracion" table="valoracion">
+		 <id name="id" type="long" column="id">
+			<generator class="increment"/>
+		</id>
+	     <set name="materiales" lazy="false" cascade="all">
+    	          <key column="material_id"/>			
+		  <one-to-many class="model.ArticuloUsado"/>
+	    </set>
+	    <many-to-one name="parte" column="parte" class="model.parte.Parte" lazy="false" />
+		<many-to-one name="componentes" column="componentes" class="model.parte.Componente" lazy="false" cascade="all"/>
+		<many-to-one name="trabajos" column="trabajos" class="model.parte.TrabajoRealizado" lazy="false" cascade="all"/>
+		<many-to-one name="tiempos" column="tiempos" class="model.parte.Tiempo" lazy="false" cascade="all"/>
+	</class>
+</hibernate-mapping>

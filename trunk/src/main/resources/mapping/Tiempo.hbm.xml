@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--model.person.Persona root -->
+	<class name="model.parte.Tiempo" table="tiempo">
+		 <id name="id" type="long" column="id">
+			<generator class="increment"/>
+		</id>
+	    <property name="horas" column="horas" type="int" />
+	    <property name="kms" column="kms" type="int" />
+	    <property name="dietas"   precision="2" column="dietas"  type="java.math.BigDecimal" />
+	</class>
+</hibernate-mapping>

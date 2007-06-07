@@ -1,6 +1,6 @@
 package modelo;
 
-import java.math.BigDecimal;
+
 
 public class Producto extends Item{
 long id;	
@@ -8,7 +8,7 @@ String marca;
 String modelo;
 Float precio;
 String dimensiones;
-Integer ganancia;
+Float ganancia;
 String foto;
 String descripcion;
 public String getDescripcion() {
@@ -29,10 +29,13 @@ public String getFoto() {
 public void setFoto(String foto) {
 	this.foto = foto;
 }
-public Integer getGanancia() {
+
+
+
+public Float getGanancia() {
 	return ganancia;
 }
-public void setGanancia(Integer ganancia) {
+public void setGanancia(Float ganancia) {
 	this.ganancia = ganancia;
 }
 public long getId() {
