@@ -16,20 +16,18 @@
 			<property name="marca" column="vc_marca" type="string" />
 			<property name="dimensiones" column="vc_dimensiones" type="string" />
 			<property name="precio" column="mo_precio" type="float" />
-			<property name="ganancia" type="int" />
+			<property name="ganancia" column="mo_ganancia" type="float" />
 			<property name="descripcion" column="vc_descripcion" type="string" />
 			<property name="foto" column="vc_foto" type="string" />
 			
 			<!-- Subclase Frigorifico -->
 			<joined-subclass name="modelo.Frigorifico" table="frigorifico">
 			<key column="id_item_3" />
-			<property name="clasificacionEnergetica" column="combi" type="boolean" />
 		</joined-subclass>
 		
 			<!-- Subclase Lavadora -->
 		<joined-subclass name="modelo.Lavadora" table="lavadora">
 			<key column="id_item_3" />
-			<property name="clasificacionEnergetica" type="string" />
 			<property name="secadora" column="bo_secadora" type="boolean" />
 		</joined-subclass>
 		<!-- Subclase Televisor -->
@@ -42,12 +40,12 @@
 		<!-- Subclase PequenioElectrodomestico -->
 		<joined-subclass name="modelo.PequenoElectrodomestico" table="pequeno_electrodomestico">
 			<key column="id_item_3" />
-			<property name="caracteristicas" type="vc_caracteristicas" />
+			<property name="caracteristicas" column="vc_caracteristicas" type="string"/>
 		</joined-subclass>
 		<!-- Subclase Dvd -->
 		<joined-subclass name="modelo.Dvd" table="dvd">
 			<key  column="id_item_3"  />
-			<property  name="conectores" column="vc_conectores" type="string" />
+			<property  name="conectores" column="vc_conectores_io" type="string" />
 			<property name="formato" column="vc_formato" type="string" />
 		</joined-subclass>
 		
@@ -55,7 +53,7 @@
 		<!-- Subclase Oferta -->
 		<joined-subclass name="modelo.Oferta" table="oferta">
 			<key column="id_item_2" />
-			<many-to-one name="principal" column="prod_id_item_3"
+			<many-to-one name="principal" column="pro_id_item_3"
 				class="modelo.Producto" lazy="false" cascade="all" />
 			<many-to-one name="secundario" column="id_item_3"
 				class="modelo.Producto" lazy="false" cascade="all" />

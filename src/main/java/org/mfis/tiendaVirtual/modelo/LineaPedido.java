@@ -7,7 +7,15 @@ public class LineaPedido {
  Item compra;
  Float precioUnidad;
   int unidades;
+  Pedido pedido;
   
+  
+public Pedido getPedido() {
+	return pedido;
+}
+public void setPedido(Pedido pedido) {
+	this.pedido = pedido;
+}
 public Item getCompra() {
 	return compra;
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.person.AccesoUsuario" table="accesousuario">
+		 <id name="id" type="long" column="id">
+			<generator class="increment"/>
+		</id>
+	    <property name="cantLogin" column="cantLogin" type="int"/>
+	    <property name="ultimoLogin" column="ultimoLogin" type="date"/>
+	    <property name="anteriorLogin" column="anteriorLogin" type="date"/>
+	    <property name="diaInscripcion" column="diaInscripcion" type="date"/>
+	</class>
+</hibernate-mapping>

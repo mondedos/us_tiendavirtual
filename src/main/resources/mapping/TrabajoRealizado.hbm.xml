@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--model.person.Persona root -->
+	<class name="model.parte.TrabajoRealizado" table="trabajoRealizado">
+		 <id name="id" type="long" column="id">
+			<generator class="increment"/>
+		</id>
+	    <property name="trabajo" column="trabajo" type="string" />
+	    <property name="observaciones" column="observaciones" type="string" />
+	    <property name="fecha" column="fecha" type="date" />
+	    <property name="hora" column="hora" type="date" />
+	</class>
+</hibernate-mapping>

@@ -3,12 +3,14 @@ package modelo;
 public class PequenoElectrodomestico extends Producto{
 String caracteristicas;
 
-public String getDescripcion() {
+public String getCaracteristicas() {
 	return caracteristicas;
 }
 
-public void setDescripcion(String descripcion) {
-	this.caracteristicas = descripcion;
+public void setCaracteristicas(String caracteristicas) {
+	this.caracteristicas = caracteristicas;
 }
+
+
 
 }

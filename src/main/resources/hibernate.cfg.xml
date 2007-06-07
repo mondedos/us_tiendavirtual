@@ -28,8 +28,8 @@
 
 		
 		<mapping resource="hibernateXml/Item.hbm.xml"/>
-		<mapping resource="hibernateXml/LineaPedido.hbm.xml"/>
-		<mapping resource="hibernateXml/OrdenPedido.hbm.xml"/>
+		<mapping resource="hibernateXml/Linea_pedido.hbm.xml"/>
+		<mapping resource="hibernateXml/Pedido.hbm.xml"/>
 		<mapping resource="hibernateXml/Operador.hbm.xml"/>
     </session-factory>
    

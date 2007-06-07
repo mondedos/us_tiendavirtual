@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--model.person.Persona root -->
+	<class name="model.parte.Parte" table="parte">
+		 <id name="id" type="long" column="id">
+			<generator class="increment"/>
+		</id>
+		<set name="valoraciones" lazy="false" cascade="all">
+    	          <key column="valoracion_id"/>			
+		  <one-to-many class="model.parte.Valoracion"/>
+	    </set>
+	    <set name="tecnicos" lazy="false" cascade="all">
+    	          <key column="tecnico_id"/>			
+		  <many-to-many class="model.person.Empleado"/>
+	    </set>
+	    <many-to-one name="estacion" class="model.person.Estacion"  lazy="false"/>
+	    <property name="fecha" column="fecha" type="date" />
+	    <property name="hora" column="hora" type="date" />
+	    <property name="numeroParte" column="numeroParte" type="string" />
+	    <property name="numeroParteCliente" column="numeroParteCliente" type="string" />
+	    <property name="medio" column="medio" type="string" />
+	    <property name="averia" column="averia" type="string" />
+	    <property name="tipoAveria" column="tipoAveria" type="string" />
+	    <property name="estado" column="estado" type="string" />
+		<set name="surtidores" lazy="false" cascade="all">
+    	          <key column="elemntSurtidor_id"/>			
+		  <many-to-many class="model.person.ElementoSurtidor"/>
+	    </set>
+	    <set name="historico" lazy="false" cascade="all">
+    	          <key column="historico_id"/>			
+		  <one-to-many class="model.parte.Historico"/>
+	    </set>
+	    <property name="garantia" column="garantia" type="boolean" />
+	    <property name="precintado" column="precintado" type="boolean" />
+	    <property name="mantenimiento" column="mantenimiento" type="boolean" />
+	     <property name="revisado" column="revisado" type="boolean" />
+	    <property name="facturar" column="facturar" type="boolean" />
+	    <property name="fechaProgramada" column="fechaProgramada" type="date" />
+	    <property name="tipo" column="tipo" type="string" />
+	</class>
+</hibernate-mapping>
+

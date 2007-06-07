@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="proyecto.CacheEspecificidad" table="CacheEspecificidad">
+	<composite-id >
+		<key-property name="id1" column="id1" type="long"/>
+		 <key-property name="id2" column="id2" type="long"/>
+	 </composite-id>
+		 
+	    <property name="especificidad" column="especificidad" type="long"/>
+	     <property name="fecha_vigente" column="fecha_vigente" type="date"/>
+	   
+		 <many-to-one name="primero" column="primero" class="proyecto.Term" lazy="false" cascade="all"/>
+		 <many-to-one name="segundo" column="segundo" class="proyecto.Term" lazy="false" cascade="all"/>
+	</class>
+
+</hibernate-mapping>
