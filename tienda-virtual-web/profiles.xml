@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<profiles>
+		<profile>
+			<id>mycustomer-name</id>
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>production</value>
+				</property>
+			</activation>
+			<properties>
+				<jdbc.driver>DRIVER_mycustomer</jdbc.driver>
+				<jdbc.url>URL_mycustomer</jdbc.url>
+				<jdbc.username>USERNAME_mycustomer</jdbc.username>
+				<jdbc.password>PASSWORD_mycustomer</jdbc.password>
+				<hibernate.dialect>
+					DIALECT_mycustomer
+				</hibernate.dialect>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>mycompany-name</id>
+			<activation>
+				<property>
+					<name>environment</name>
+					<value>development</value>
+				</property>
+			</activation>
+			<properties>
+				<jdbc.driver>DRIVER_mycompany</jdbc.driver>
+				<jdbc.url>URL_mycompany</jdbc.url>
+				<jdbc.username>USERNAME_mycompany</jdbc.username>
+				<jdbc.password>PASSWORD_mycompany</jdbc.password>
+				<hibernate.dialect>DIALECT_mycompany</hibernate.dialect>
+			</properties>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>mycustomer-name</activeProfile>
+	</activeProfiles>
+</settings>

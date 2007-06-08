@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <definition name=".mainLayout" path="/gui/layouts/mainLayout.jsp">
+        <put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="left" value="/gui/common/left.jsp"/>
+        <put name="right" value="/gui/common/right.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+    </definition>
+
+    <definition name=".loginLayout" path="/gui/layouts/loginLayout.jsp">
+        <put name="top" value="/gui/common/top.jsp"/>
+        <put name="workarea" value="/gui/common/login.jsp"/>
+    </definition>
+
+
+</tiles-definitions>

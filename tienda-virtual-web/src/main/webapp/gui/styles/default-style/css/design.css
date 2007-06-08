@@ -1,0 +1,51 @@
+body {
+	font-family: Arial, Verdana, Sans serif;
+	font-size: 1em;
+}
+
+h1 { font-size: 1.5em;	padding: 10px 15px 0px 15px; }
+h2 { font-size: 1.1em; 	padding: 0px 15px 10px 15px; }
+h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
+
+#breadcrumbs {
+	font-size: 0.9em;
+	padding: 3px 15px;
+	border-bottom: 1px solid #c00;
+	background-color: #fee;
+}
+#header {
+	background-color: #c00;
+	color: #fee;
+}
+#container {
+	background-color: #fff;
+}
+#foot{
+	margin-top: 10px;
+	background-color: #fee;
+	border-top: 1px solid #c00;
+	border-bottom: 1px solid #c00;
+}
+.wrap50 {
+	height: 50px;
+}
+.wrap120 {
+	height: 120px;
+}
+#top-ventas, #otras-ofertas {
+	margin-top: 10px;
+}
+.mini-container {
+	padding: 5px 10px;
+	border: 1px solid #c00;
+	background-color: #fee;
+}
+.mini-container ul li{
+	float: left;
+	display: block;
+
+}
+
+.mini-container ul li a {
+
+}
