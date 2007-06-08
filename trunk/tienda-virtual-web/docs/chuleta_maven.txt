@@ -1,0 +1,17 @@
+// Creación de un proyecto Maven
+mvn archetype:create -DgroupId=<group-id> -DartifactId=<artifact-id>
+
+// Creación de la variable M2_REPO para que Eclipse IDE encuentre las librerías usadas por los proyectos
+mvn eclipse:add-maven-repo -Declipse.workspace=c:\workspace
+
+// Creación de un proyecto Eclipse IDE a partir de un proyecto Maven
+mvn eclipse:eclipse
+
+// Instalación de JARs en repositorios locales
+mvn install:install-file -Dfile=<path-to-file> -DgroupId=<group-id> -DartifactId=<artifact-id> -Dversion=<version> -Dpackaging=<packaging>
+
+// Definición de secciones dentro del archivo P.O.M.
+http://maven.apache.org/ref/current/maven-model/maven.html
+
+// Definición de la estructura de directorios estandar
+http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
