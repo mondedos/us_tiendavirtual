@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+<archive destination="" exploded="false" name="NegocioEJB.jar" used="true">
+<folder excludes="" includes="mfis/tiendavirtual/ejb/*.class,mfis/tiendavirtual/interfaces/*.class,mfis/tiendavirtual/mocks/persistence/*.class,mfis/tiendavirtual/mocks/dao/*.class" location="bin" name="bin" prefix="" project="" projectLocation="bin" used="true"/>
+<file location="src/META-INF/ejb-jar.xml" name="ejb-jar.xml" prefix="META-INF" project="" projectLocation="src/META-INF/ejb-jar.xml" used="true"/>
+<file location="src/META-INF/jboss.xml" name="jboss.xml" prefix="META-INF" project="" projectLocation="src/META-INF/jboss.xml" used="true"/>
+</archive>
+</configurations>
