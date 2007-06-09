@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
+
+    <class name="LineaPedido" table="linea_Pedido">
+        <id name="id" column="id_linea">
+            <generator class="increment"/>
+        </id>
+        
+        <property name="unidades" column="in_unidades" type="int"/>
+        <property name="precioUnidad" column="mo_precio_unidad" type="float"/>
+        <many-to-one 
+        	name="compra" column="id_item" 
+        	class="Item" lazy="false" cascade="all"/>
+       	<many-to-one 
+       		name="pedido" column="id_pedido" 
+       		class="Pedido" lazy="false" cascade="all"/>
+    </class>
+    
+
+</hibernate-mapping>

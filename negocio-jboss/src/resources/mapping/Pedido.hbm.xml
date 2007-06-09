@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
+	<class name="Pedido" table="Pedido">
+		 <id name="id" type="long" column="id_pedido">
+			<generator class="increment"/>
+		</id>
+		<property name="precioTotal" column="mo_precio_Total" type="float"/>
+		<property name="direccion" column="vc_direccion" type="string"/>
+	    <property name="fechaPedido" column="fecha_placed" type="date"/>
+	    <property name="fechaCancelacion" column="fecha_cancelled" type="date"/>
+	   	<property name="fechaDeServicio" column="fecha_served" type="date"/>
+	    <property name="fechaTransient" column="fecha_transient" type="date"/>
+	    
+    	<many-to-one 
+    		name="operador" column="id_operador" 
+    		class="Operador" lazy="false" cascade="all"/>
+	   
+	</class>
+
+</hibernate-mapping>
