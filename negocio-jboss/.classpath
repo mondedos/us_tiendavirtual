@@ -3,6 +3,23 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.jboss.ide.eclipse.jdt.core.classpath.j2ee-1.4"/>
 	<classpathentry exported="true" kind="con" path="org.jboss.ide.eclipse.jdt.core.classpath.wsi-1.0"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="resources/mapping/|resources/" kind="src" path="src"/>
+	<classpathentry kind="src" path="mapping"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="src/resources/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/asm-2.2.2.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/commons-pool.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/jta.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/mysql-connector-java-5.0.4-bin.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/spring.jar"/>
+	<classpathentry kind="lib" path="src/resources/lib/testng-5.5-jdk15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
