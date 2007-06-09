@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
+	<class name="Operador" table="operador">
+		 <id name="id" type="long" column="id_operador">
+			<generator class="increment"/>
+		</id>
+		<property name="login" column="vc_login" type="string"/>
+	</class>
+</hibernate-mapping>

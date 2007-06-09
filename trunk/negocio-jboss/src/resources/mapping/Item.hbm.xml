@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
+	<class name="Item" table="Item">
+		<id name="id" type="long" column="id_item">
+			<generator class="increment" />
+		</id>
+		<property name="referencia" column="vc_referencia" type="string" />
+
+		<!-- Subclase Producto -->
+		<joined-subclass name="Producto" table="producto">
+			<key column="id_item_3" />
+
+			<property name="modelo" column="vc_modelo" type="string" />
+			<property name="marca" column="vc_marca" type="string" />
+			<property name="dimensiones" column="vc_dimensiones" type="string" />
+			<property name="precio" column="mo_precio" type="float" />
+			<property name="ganancia" column="mo_ganancia" type="float" />
+			<property name="descripcion" column="vc_descripcion" type="string" />
+			<property name="foto" column="vc_foto" type="string" />
+			
+				<!-- Subclase Frigorifico -->
+				<joined-subclass name="Frigorifico" table="frigorifico">
+					<key column="id_item_3" />
+					<property name="clasifEnergetica" column="vc_clasifEnergetica" type="string" />
+					<property name="combi" column="combi" type="true_false" />
+				</joined-subclass>
+		
+				<!-- Subclase Lavadora -->
+				<joined-subclass name="Lavadora" table="lavadora">
+					<key column="id_item_3" />
+					<property name="secadora" column="bo_secadora" type="boolean" />
+					<property name="clasifEnergetica" column="vc_clasifEnergetica" type="string" />
+				</joined-subclass>
+				
+				<!-- Subclase Televisor -->
+				<joined-subclass name="Televisor" table="televisor">
+					<key column="id_item_3" />
+					<property name="tamano" column="vc_tamano" type="string" />
+					<property name="TDT" type="boolean" />
+					<property name="peana" type="string" />
+				</joined-subclass>
+		
+				<!-- Subclase PequenioElectrodomestico -->
+				<joined-subclass name="PequenoElectrodomestico" table="pequeno_electrodomestico">
+					<key column="id_item_3" />
+					<property name="caracteristicas" column="vc_caracteristicas" type="string"/>
+				</joined-subclass>
+				
+				<!-- Subclase Dvd -->
+				<joined-subclass name="Dvd" table="dvd">
+					<key  column="id_item_3"  />
+					<property  name="conectores" column="vc_conectores_io" type="string" />
+					<property name="formato" column="vc_formato" type="string" />
+				</joined-subclass>
+		
+		</joined-subclass>
+		
+		<!-- Subclase Oferta -->
+		<joined-subclass name="Oferta" table="oferta">
+			<key column="id_item_2" />
+			<many-to-one name="principal" column="producto_a"
+				class="Producto" lazy="false" cascade="all"/>
+			<many-to-one name="secundario" column="producto_b"
+				class="Producto" lazy="false" cascade="all"/>
+		</joined-subclass>
+		
+	</class>
+</hibernate-mapping>
