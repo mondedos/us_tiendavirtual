@@ -15,7 +15,10 @@
     	<div id="container">
 <tiles:insert attribute="header" />
 <tiles:insert attribute="breadcrumbs" />
-<tiles:insert attribute="left" />
+		<div id="left">
+<tiles:insert attribute="leftTop" />
+<tiles:insert attribute="leftBottom" />
+		</div>
 <tiles:insert attribute="right" />
 <tiles:insert attribute="foot" />
         </div>
