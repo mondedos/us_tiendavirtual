@@ -5,15 +5,17 @@ import mfis.tiendavirtual.modelo.dao.SingletonSpringContainer;
 
 import org.testng.annotations.Test;
 
+/**
+ * Pruebas que comprueban la carga de los mapas e inicializacion de los beans en spring
+ * @author Edgar
+ *
+ */
 public class AccesoBaseDatos {
 	
 	@Test
-	public void pruebaConexion(){
+	public void pruebaConexionStatica(){
 		
-		
-		SingletonSpringContainer contenedor =  SingletonSpringContainer.getInstance();
-		DaoGenerico daoConcreto = (DaoGenerico)contenedor.getBean("DaoGenerico");		
-		
-		System.out.print("Configuracion de Spring-Hibernate OK");
+		DaoGenerico daoGenerico= (DaoGenerico)SingletonSpringContainer.getBean(SingletonSpringContainer.DAO_GENERICO);
+		System.out.println("Configuracion de Spring-Hibernate OK");
 	}
 }
