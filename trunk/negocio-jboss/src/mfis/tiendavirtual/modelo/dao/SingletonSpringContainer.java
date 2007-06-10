@@ -1,5 +1,7 @@
 package mfis.tiendavirtual.modelo.dao;
 
+import java.io.IOException;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -9,15 +11,22 @@ public class SingletonSpringContainer {
 
 	private static ApplicationContext contenedor;
 
-	private static String xmlConf = "SpringHibernate.xml";
+	private static String xmlConf = "resources/SpringHibernate.xml";
 
 	/**
 	 * Inicializa el contenedor de objetos de Spring a partir del fichero
 	 * configuración SpringHibernate.xml.
 	 */
 	private SingletonSpringContainer() {
+		
+		try{
 		SingletonSpringContainer.contenedor = new ClassPathXmlApplicationContext(
 				SingletonSpringContainer.xmlConf);
+		}
+		catch(Exception ej)
+		{
+			System.out.println(ej.getCause());
+		}
 	}
 
 	/**

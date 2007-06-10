@@ -14,10 +14,10 @@
 	<bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="mappingResources">
 			<list>
-				<value>Item.hbm.xml</value>
-				<value>Linea_pedido.hbm.xml</value>
-				<value>Pedido.hbm.xml</value>
-				<value>Operador.hbm.xml</value>
+				<value>resources/mapping/Item.hbm.xml</value>
+				<value>resources/mapping/Linea_pedido.hbm.xml</value>
+				<value>resources/mapping/Pedido.hbm.xml</value>
+				<value>resources/mapping/Operador.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
