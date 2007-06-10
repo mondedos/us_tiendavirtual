@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Pedido {
 	
-	private Long id;
+	private Integer id;
 	private String direccion;
 	private Date fechaPedido;
 	private Date fechaCancelacion;
@@ -78,11 +78,11 @@ public class Pedido {
 		this.operador = operador;
 	}
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

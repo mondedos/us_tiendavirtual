@@ -3,7 +3,7 @@ package mfis.tiendavirtual.modelo.objetoNegocio;
 
 
 public class LineaPedido {
-	private Long id;
+	private Integer id;
 	private Item compra;
 	private Float precioUnidad;
 	private int unidades;
@@ -37,10 +37,10 @@ public class LineaPedido {
 	public void setCompra(Item compra) {
 		this.compra = compra;
 	}
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Float getPrecioUnidad() {
