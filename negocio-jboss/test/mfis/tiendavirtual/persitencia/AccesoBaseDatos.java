@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 
 public class AccesoBaseDatos {
 	
-	
 	@Test
 	public void pruebaConexion(){
 		
