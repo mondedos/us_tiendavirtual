@@ -1,2 +1,3 @@
 <action path="/login" type="mfis.tiendavirtual.struts.actions.LoginAction" name="loginFrm" scope="request" />
 <action path="/start" type="mfis.tiendavirtual.struts.actions.StartAction" scope="request" />
+<action path="/categoria" type="mfis.tiendavirtual.struts.actions.CategoriaAction" scope="request" />
