@@ -2,7 +2,6 @@ package mfis.tiendavirtual.modelo.objetoNegocio;
 
 public class Dvd extends Producto {
 	
-	private Long id_item_3;
 	private String conectores;
 	private String formato;
 	
@@ -27,10 +26,5 @@ public class Dvd extends Producto {
 	public void setFormato(String formato) {
 		this.formato = formato;
 	}
-	public Long getId() {
-		return id_item_3;
-	}
-	public void setId(Long id) {
-		this.id_item_3 = id;
-	}
+	
 }

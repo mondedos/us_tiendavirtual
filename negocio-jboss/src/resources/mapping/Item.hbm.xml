@@ -3,7 +3,7 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
 	<class name="Item" table="Item">
-		<id name="id" type="long" column="id_item">
+		<id name="id" column="id_item">
 			<generator class="increment" />
 		</id>
 		<property name="referencia" column="vc_referencia" type="string" />
@@ -16,7 +16,7 @@
 			<property name="marca" column="vc_marca" type="string" />
 			<property name="dimensiones" column="vc_dimensiones" type="string" />
 			<property name="precio" column="mo_precio" type="float" />
-			<property name="ganancia" column="mo_ganancia" type="float" />
+			<property name="ganancia" column="in_ganancia" type="float" />
 			<property name="descripcion" column="vc_descripcion" type="string" />
 			<property name="foto" column="vc_foto" type="string" />
 			

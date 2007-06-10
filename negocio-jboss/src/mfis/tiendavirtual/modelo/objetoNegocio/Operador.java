@@ -1,7 +1,7 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
 public class Operador {
-	private Long id;
+	private Integer id;
 	private String login;
 	
 	@Override
@@ -21,11 +21,11 @@ public class Operador {
 
 
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
