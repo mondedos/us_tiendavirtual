@@ -1,16 +1,16 @@
 package mfis.tiendavirtual.modelo.dao;
 
-import java.io.IOException;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SingletonSpringContainer {
 
+	//Beans declarados en el archivo SpringHibernate.xml
+	public static final String DAO_GENERICO= "DaoGenerico";
+	
+	
 	private static SingletonSpringContainer factoria;
-
 	private static ApplicationContext contenedor;
-
 	private static String xmlConf = "resources/SpringHibernate.xml";
 
 	/**
@@ -34,7 +34,7 @@ public class SingletonSpringContainer {
 	 * 
 	 * @return SingletonSpringContainer
 	 */
-	public static SingletonSpringContainer getInstance() {
+	private static SingletonSpringContainer getInstance() {
 		if (SingletonSpringContainer.factoria == null)
 			SingletonSpringContainer.factoria = new SingletonSpringContainer();
 
@@ -44,8 +44,9 @@ public class SingletonSpringContainer {
 	/**
 	 * Se encarga de obtener los beans que se han creado.
 	 */
-	public Object getBean(String idBeans) {
-
+	public static Object getBean(String idBeans) {
+		
+		getInstance();
 		return SingletonSpringContainer.contenedor.getBean(idBeans);
 	}
 }
