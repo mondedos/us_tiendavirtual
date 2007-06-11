@@ -1,6 +1,10 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable{
+	private static final long serialVersionUID = 3637806027003634918L;
+	
 	private Integer id;	
 	private String Referencia;
 	

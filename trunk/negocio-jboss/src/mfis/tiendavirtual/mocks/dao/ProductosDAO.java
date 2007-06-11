@@ -7,6 +7,7 @@ import java.util.List;
 import mfis.tiendavirtual.mocks.persistence.Item;
 import mfis.tiendavirtual.mocks.persistence.Producto;
 
+@Deprecated
 public class ProductosDAO {
 
     @SuppressWarnings("unchecked")

@@ -1,6 +1,8 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
 public class Televisor extends Producto{
+	private static final long serialVersionUID = 2007607369186447320L;
+	
 	private String tamano;
 	private Boolean TDT;
 	private Boolean peana;

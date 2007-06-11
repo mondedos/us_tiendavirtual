@@ -7,6 +7,8 @@ import mfis.tiendavirtual.mocks.persistence.Carrito;
 import mfis.tiendavirtual.mocks.persistence.Item;
 import mfis.tiendavirtual.mocks.persistence.Operador;
 import mfis.tiendavirtual.mocks.persistence.Pedido;
+
+@Deprecated
 public class PedidosDAO {
 
 	public static void registrarPedido(Carrito c, String direccion){

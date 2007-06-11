@@ -1,8 +1,12 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
+import java.io.Serializable;
 
 
-public class LineaPedido {
+
+public class LineaPedido implements Serializable{
+	private static final long serialVersionUID = 8658031675807484674L;
+	
 	private Integer id;
 	private Item compra;
 	private Float precioUnidad;

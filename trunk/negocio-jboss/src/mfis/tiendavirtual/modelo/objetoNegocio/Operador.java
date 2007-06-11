@@ -1,8 +1,18 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
-public class Operador {
+import java.io.Serializable;
+
+public class Operador implements Serializable{
+	private static final long serialVersionUID = 3877420448506150102L;
+	
 	private Integer id;
 	private String login;
+	
+	public Operador(){}
+	
+	public Operador(String login){
+		this.login= login;
+	}
 	
 	@Override
 	public boolean equals(Object o){

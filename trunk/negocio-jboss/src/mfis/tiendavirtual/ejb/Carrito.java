@@ -1,13 +1,10 @@
-package mfis.tiendavirtual.mocks.persistence;
+package mfis.tiendavirtual.ejb;
 
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @deprecated usar mfis.tiendavirtual.ejb.Carrito 
- *
- */
-@Deprecated
+import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
+
 public class Carrito implements Serializable {
 
 	/**
