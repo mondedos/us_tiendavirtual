@@ -7,6 +7,7 @@ import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
+
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -70,7 +71,4 @@ public class ProductoDaoTest {
 		tx.commit();
 		sesion.close();
 	}
-	
-	
-
 }
