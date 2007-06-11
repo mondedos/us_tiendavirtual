@@ -119,7 +119,7 @@ public abstract class HibernateSessionFactory {
     	catch (Exception e) {
     		try{
     			System.err.println("\nNose se pudo realizar la operacion a la base de datos\n");
-	    	    tx.rollback();
+	    	    if(tx!=null) tx.rollback();
 	    	    throw new RuntimeException(e); // or display error message
     		}catch(Exception e1){
     			System.err.println("\nNo se pudo llevar a cavo el rollback\n");
