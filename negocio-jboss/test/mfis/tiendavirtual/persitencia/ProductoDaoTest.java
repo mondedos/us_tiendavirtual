@@ -9,6 +9,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -36,6 +37,8 @@ public class ProductoDaoTest {
 		}
 		
 		Session sesion= HibernateSessionFactory.crearSesion();
+		Transaction tx= sesion.beginTransaction();
+		
 		for(Long id: listaProductos){
 			Producto producto= (Producto)sesion.load(Producto.class, id);
 			try{
@@ -45,14 +48,15 @@ public class ProductoDaoTest {
 			}
 			
 		}
-		sesion.flush();
+		tx.commit();
 		sesion.close();
 		
 		for(Long id: listaProductos)
 			productoDao.eliminarProducto(id);
 		
 		sesion= HibernateSessionFactory.crearSesion();
-		sesion.clear();
+		tx= sesion.beginTransaction();
+		
 		for(Long id: listaProductos){
 			Producto producto= (Producto)sesion.load(Producto.class, id);
 			try{
@@ -63,8 +67,8 @@ public class ProductoDaoTest {
 			}
 		}
 		
+		tx.commit();
 		sesion.close();
-			
 	}
 
 }
