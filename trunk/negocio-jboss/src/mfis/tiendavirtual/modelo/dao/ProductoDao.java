@@ -11,6 +11,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
 
 /**
  * Dao para el manejo de los productos
+ * 
  * @author Edgar
  *
  */
@@ -64,6 +65,8 @@ public class ProductoDao {
 		if(producto!=null) eliminarProducto(producto);
 		
 	}
+	
+	
 	
 	/**
 	 * Devuelve todos los objetos de una determinada categoria
