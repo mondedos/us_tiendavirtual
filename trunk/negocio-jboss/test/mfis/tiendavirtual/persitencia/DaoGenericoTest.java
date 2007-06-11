@@ -91,7 +91,7 @@ public class DaoGenericoTest {
 		assert lavadora!=null : "El resultado no puede ser null";
 		
 		try{
-			Long id= lavadora.getId();
+			Integer id= lavadora.getId();
 			assert id.equals(new Long(2));
 		}catch(Exception e){
 			assert false : "no ha sido posible acceder a la propiedad id de la lavadora";
