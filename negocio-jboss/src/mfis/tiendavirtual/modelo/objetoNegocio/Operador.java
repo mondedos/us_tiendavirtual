@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Operador implements Serializable{
 	private static final long serialVersionUID = 3877420448506150102L;
 	
-	private Integer id;
+	private Long id;
 	private String login;
 	
 	public Operador(){}
@@ -31,11 +31,11 @@ public class Operador implements Serializable{
 
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	protected void setId(Integer id) {
+	protected void setId(Long id) {
 		this.id = id;
 	}
 	

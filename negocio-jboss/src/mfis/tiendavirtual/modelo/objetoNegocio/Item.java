@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Item implements Serializable{
 	private static final long serialVersionUID = 3637806027003634918L;
 	
-	private Integer id;	
+	private Long id;	
 	private String Referencia;
 	
 	
@@ -26,12 +26,12 @@ public class Item implements Serializable{
 	}
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	protected void setId(Integer id) {
-		this.id = id;
+	public void setId(Long id){
+		this.id= id;
 	}
 	
 	public String getReferencia() {

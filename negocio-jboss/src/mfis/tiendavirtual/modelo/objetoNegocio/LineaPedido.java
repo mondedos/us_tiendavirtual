@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class LineaPedido implements Serializable{
 	private static final long serialVersionUID = 8658031675807484674L;
 	
-	private Integer id;
+	private Long id;
 	private Item compra;
 	private Float precioUnidad;
 	private int unidades;
@@ -41,10 +41,10 @@ public class LineaPedido implements Serializable{
 	public void setCompra(Item compra) {
 		this.compra = compra;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	protected void setId(Integer id) {
+	protected void setId(Long id) {
 		this.id = id;
 	}
 	public Float getPrecioUnidad() {

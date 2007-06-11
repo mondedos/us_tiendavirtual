@@ -3,9 +3,14 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
 	<class name="Item" table="Item">
-		<id name="id" column="id_item">
-			<generator class="increment" />
+
+		<id name="id" type="long" column="id_item">
+		        <generator class="org.hibernate.id.TableHiLoGenerator">
+		                <param name="table">identificadorHibernate</param>
+		                <param name="column">generador_item</param>
+		        </generator>
 		</id>
+		
 		<property name="referencia" column="vc_referencia" type="string" />
 
 		<!-- Subclase Producto -->
