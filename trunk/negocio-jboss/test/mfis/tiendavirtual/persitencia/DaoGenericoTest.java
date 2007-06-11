@@ -39,8 +39,6 @@ public class DaoGenericoTest {
 			}
 			
 		}
-			
-		
 	}
 	
 	@Test
@@ -112,7 +110,12 @@ public class DaoGenericoTest {
 		assert lavadora==null : "La lavadora deberia ser nula";
 		
 	}
-	
+
+	@Test
+	public void pruebaModificarObjeto(){
+		
+		
+	}
 	
 
 }

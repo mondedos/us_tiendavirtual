@@ -10,7 +10,7 @@ public class Frigorifico extends Producto {
 	public boolean equals(Object o){
 		if(o==null || !(o instanceof Frigorifico)) return false;
 		
-		Frigorifico f= (Frigorifico)o;
+		Frigorifico f = (Frigorifico)o;
 		
 		return f.getId()!=null && f.getId().equals(this.getId());
 	}

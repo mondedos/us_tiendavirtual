@@ -18,7 +18,7 @@ public class Operador implements Serializable{
 	public boolean equals(Object o){
 		if(o==null || !(o instanceof Operador)) return false;
 		
-		Operador op= (Operador)o;
+		Operador op= (Operador)o;	
 		
 		return op.getId()!=null && op.getId().equals(this.getId());
 	}

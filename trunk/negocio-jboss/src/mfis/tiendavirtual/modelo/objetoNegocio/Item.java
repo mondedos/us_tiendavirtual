@@ -17,7 +17,6 @@ public class Item implements Serializable{
 		Item i= (Item)o;
 		
 		return i.getId()!=null && i.getId().equals(this.getId());
-		
 	}
 	
 	@Override
