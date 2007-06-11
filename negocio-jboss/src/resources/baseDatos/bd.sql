@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     09/06/2007 23:15:34                          */
+/* Created on:     11/06/2007 20:17:39                          */
 /*==============================================================*/
 
 
@@ -226,6 +226,9 @@ alter table PEDIDO add constraint FK_PEDIDO_OPERADOR foreign key (ID_OPERADOR)
 
 alter table PEQUENO_ELECTRODOMESTICO add constraint FK_PE_PRODUCTO foreign key (ID_ITEM_3)
       references PRODUCTO (ID_ITEM_3) on delete restrict on update restrict;
+
+alter table PRODUCTO add constraint FK_ITEM_PROD foreign key (ID_ITEM_3)
+      references ITEM (ID_ITEM) on delete restrict on update restrict;
 
 alter table TELEVISOR add constraint FK_TELEVISOR_PRODUCTO foreign key (ID_ITEM_3)
       references PRODUCTO (ID_ITEM_3) on delete restrict on update restrict;
