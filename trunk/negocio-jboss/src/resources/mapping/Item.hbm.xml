@@ -24,7 +24,7 @@
 				<joined-subclass name="Frigorifico" table="frigorifico">
 					<key column="id_item_3" />
 					<property name="clasifEnergetica" column="vc_clasifEnergetica" type="string" />
-					<property name="combi" column="combi" type="true_false" />
+					<property name="combi" column="combi" type="boolean" />
 				</joined-subclass>
 		
 				<!-- Subclase Lavadora -->
