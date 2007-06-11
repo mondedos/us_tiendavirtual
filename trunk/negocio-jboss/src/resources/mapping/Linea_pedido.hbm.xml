@@ -5,9 +5,12 @@
 <hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
 
     <class name="LineaPedido" table="linea_Pedido">
-        <id name="id" column="id_linea">
-            <generator class="increment"/>
-        </id>
+       <id name="id" type="long" column="id_linea">
+		        <generator class="org.hibernate.id.TableHiLoGenerator">
+		                <param name="table">identificadorHibernate</param>
+		                <param name="column">generador_lp</param>
+		        </generator>
+		</id>
         
         <property name="unidades" column="in_unidades" type="int"/>
         <property name="precioUnidad" column="mo_precio_unidad" type="float"/>

@@ -1,36 +1,8 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     11/06/2007 20:17:39                          */
+/* Created on:     11/06/2007 20:52:54                          */
 /*==============================================================*/
 
-
-drop table if exists BENEFICIO;
-
-drop table if exists DEPRECATED;
-
-drop table if exists DVD;
-
-drop table if exists FRIGORIFICO;
-
-drop table if exists ITEM;
-
-drop table if exists LAVADORA;
-
-drop table if exists LINEA_PEDIDO;
-
-drop table if exists OFERTA;
-
-drop table if exists OPERADOR;
-
-drop table if exists PEDIDO;
-
-drop table if exists PEQUENO_ELECTRODOMESTICO;
-
-drop index IND_PROD on PRODUCTO;
-
-drop table if exists PRODUCTO;
-
-drop table if exists TELEVISOR;
 
 /*==============================================================*/
 /* Table: BENEFICIO                                             */
@@ -72,6 +44,19 @@ create table FRIGORIFICO
    COMBI                bool not null,
    VC_CLASIFENERGETICA  varchar(50),
    primary key (ID_ITEM_3)
+);
+
+/*==============================================================*/
+/* Table: IDENTIFICADORHIBERNATE                                */
+/*==============================================================*/
+create table IDENTIFICADORHIBERNATE
+(
+   PRIMARY_KEY          int not null,
+   GENERADOR_ITEM       int not null,
+   GENERADOR_PEDIDO     int not null,
+   GENERADOR_LP         int not null,
+   GENERADOR_OPERADOR   int not null,
+   primary key (PRIMARY_KEY)
 );
 
 /*==============================================================*/
@@ -227,7 +212,7 @@ alter table PEDIDO add constraint FK_PEDIDO_OPERADOR foreign key (ID_OPERADOR)
 alter table PEQUENO_ELECTRODOMESTICO add constraint FK_PE_PRODUCTO foreign key (ID_ITEM_3)
       references PRODUCTO (ID_ITEM_3) on delete restrict on update restrict;
 
-alter table PRODUCTO add constraint FK_ITEM_PROD foreign key (ID_ITEM_3)
+alter table PRODUCTO add constraint FK_PRODUCTO_ITEM foreign key (ID_ITEM_3)
       references ITEM (ID_ITEM) on delete restrict on update restrict;
 
 alter table TELEVISOR add constraint FK_TELEVISOR_PRODUCTO foreign key (ID_ITEM_3)

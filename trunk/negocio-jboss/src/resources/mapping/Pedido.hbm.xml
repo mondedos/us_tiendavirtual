@@ -3,8 +3,11 @@
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
 	<class name="Pedido" table="Pedido">
-		 <id name="id" column="id_pedido">
-			<generator class="increment"/>
+		<id name="id" type="long" column="id_pedido">
+		        <generator class="org.hibernate.id.TableHiLoGenerator">
+		                <param name="table">identificadorHibernate</param>
+		                <param name="column">generador_pedido</param>
+		        </generator>
 		</id>
 		<property name="precioTotal" column="mo_precio_Total" type="float"/>
 		<property name="direccion" column="vc_direccion" type="string"/>

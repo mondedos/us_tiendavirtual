@@ -43,7 +43,7 @@ public class DaoGenerico {
 	 * @param objetoNoPersistente
 	 * @return devuelve el identificador del objeto creado en la base de datos
 	 */
-	public Integer persistirObjeto(final Object objetoNoPersistente){
+	public Long persistirObjeto(final Object objetoNoPersistente){
 		
 		HibernateSessionFactory hsf= new HibernateSessionFactory(){
 			public Object operacionesBaseDatos(Session sesion){
@@ -51,7 +51,7 @@ public class DaoGenerico {
 			}
 		};
 		
-		return (Integer)hsf.sessionPerRequest();
+		return (Long)hsf.sessionPerRequest();
 		
 	}
 	
@@ -103,11 +103,11 @@ public class DaoGenerico {
 		HibernateSessionFactory hsf= new HibernateSessionFactory(){
 			public Object operacionesBaseDatos(Session sesion){
 				
-				Integer identificador= null;
+				Long identificador= null;
 				Object resultado= null;
 				
 				try{
-					identificador= Integer.parseInt(id);
+					identificador= Long.parseLong(id);
 				}catch(NumberFormatException e){
 					System.err.println("\nEl identificador no es un identificador correcto: "+id+"\n");
 					return null;

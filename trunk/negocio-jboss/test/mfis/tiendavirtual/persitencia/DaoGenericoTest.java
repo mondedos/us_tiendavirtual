@@ -48,7 +48,7 @@ public class DaoGenericoTest {
 		Lavadora lavadora= new Lavadora();
 		lavadora.setDescripcion("descripcion lavadora");
 		
-		Integer o= daoGenerico.persistirObjeto(lavadora);
+		Long o= daoGenerico.persistirObjeto(lavadora);
 		
 		Session sesion= HibernateSessionFactory.crearSesion();
 		Lavadora prueba= (Lavadora)sesion.load(Lavadora.class, o);
@@ -90,7 +90,7 @@ public class DaoGenericoTest {
 		assert lavadora!=null : "El resultado no puede ser null";
 		
 		try{
-			Integer id= lavadora.getId();
+			Long id= lavadora.getId();
 			assert id.equals(2);
 		}catch(Exception e){
 			assert false : "no ha sido posible acceder a la propiedad id de la lavadora";
@@ -116,6 +116,6 @@ public class DaoGenericoTest {
 		
 		
 	}
-	
+
 
 }
