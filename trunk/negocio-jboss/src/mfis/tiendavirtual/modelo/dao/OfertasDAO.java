@@ -30,7 +30,7 @@ public class OfertasDAO {
 	 * Método para obtener la actual oferta de la tienda
 	 * @return oferta vigente
 	 */
-	public Oferta getOferta(){
+	public Oferta obtenerOferta(){
 		DaoGenerico d = new DaoGenerico();
 		List l = null;
 		
