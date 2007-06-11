@@ -1,7 +1,19 @@
 package mfis.tiendavirtual.modelo.dao;
 
-import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import java.util.List;
 
+import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
+import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
+import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
+import mfis.tiendavirtual.modelo.objetoNegocio.PequenoElectrodomestico;
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
+
+/**
+ * Dao para el manejo de los productos
+ * @author Edgar
+ *
+ */
 public class ProductoDao {
 	
 	private DaoGenerico daoGenerico;
@@ -51,6 +63,27 @@ public class ProductoDao {
 		Producto producto= daoGenerico.buscarPorId(Producto.class, idProducto.toString());
 		if(producto!=null) eliminarProducto(producto);
 		
+	}
+	
+	/**
+	 * Devuelve todos los objetos de una determinada categoria
+	 * @param categoria
+	 * @return
+	 */
+	public List<Producto> listarProductoCategoria(Categoria categoria){
+		
+		List<Producto> productos= null;
+		Class clase= null;
+		
+		if(categoria.equals(Categoria.DVD)) clase= Dvd.class;
+		else if(categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO)) clase= PequenoElectrodomestico.class;
+		else if(categoria.equals(Categoria.TELEVISOR)) clase= Televisor.class;
+		else if(categoria.equals(Categoria.FRIGORIFICO)) clase= Frigorifico.class;
+		else if(categoria.equals(Categoria.LAVADORA)) clase= Lavadora.class;
+		
+		productos= daoGenerico.obtenerTodos(clase);
+		
+		return productos;
 	}
 	
 	
