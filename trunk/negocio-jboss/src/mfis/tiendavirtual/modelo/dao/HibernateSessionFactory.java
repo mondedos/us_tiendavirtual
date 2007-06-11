@@ -1,33 +1,32 @@
 package mfis.tiendavirtual.modelo.dao;
 
+import javax.naming.InitialContext;
+import javax.transaction.UserTransaction;
+
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.SessionFactory;
 
 /**
- * Configures and provides access to Hibernate sessions, tied to the
- * current thread of execution.  Follows the Thread Local Session
- * pattern, see {@link http://hibernate.org/42.html}.
+ * Clase que gestiona la creacion de sesiones de hibernate
+ * 
+ * mas informacion en: http://hibernate.org/42.html
+ * 
+ * @author Edgar
+ *
  */
-public class HibernateSessionFactory {
+public abstract class HibernateSessionFactory {
 
-    /** 
-     * Location of hibernate.cfg.xml file.
-     * NOTICE: Location should be on the classpath as Hibernate uses
-     * #resourceAsStream style lookup for its configuration file. That
-     * is place the config file in a Java package - the default location
-     * is the default Java package.<br><br>
-     * Examples: <br>
-     * <code>CONFIG_FILE_LOCATION = "/hibernate.conf.xml". 
-     * CONFIG_FILE_LOCATION = "/com/foo/bar/myhiberstuff.conf.xml".</code> 
-     */
-    private static String CONFIG_FILE_LOCATION = "resources/hibernate.cfg.xml";
+    private static final String CONFIG_FILE_LOCATION = "resources/hibernate.cfg.xml";
+    private static final String DEFAULT_USER_TRANSACTION_NAME = "java:comp/UserTransaction";
 
    
     /** The single instance of hibernate configuration */
     private static final Configuration cfg = new Configuration();
 
     /** The single instance of hibernate SessionFactory */
-    private static org.hibernate.SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
     
 
@@ -57,9 +56,97 @@ public class HibernateSessionFactory {
     }
     
     /**
-     * Default constructor.
+     * Metodo encargado de obtener la session actual, esto se puede hacer si utilizamos transacciones jta
      */
-    private HibernateSessionFactory() {
+    public static Session obtenerSesionActual(){
+    	creaSessionFactory();
+    	return sessionFactory.getCurrentSession();
+    }
+    
+    /**
+     * Estrategia para la apertura de sesiones utilizando un patron session-per-request
+     * Para el manejo de transacciones utilizaremos JDBC: Transaction demarcation with plain JDBC
+     */
+    public abstract Object operacionesBaseDatos(Session sesion);
+    
+    public Object sessionPerRequest(){
+    	
+    	Session session = crearSesion();
+    	Transaction tx = null;
+    	Object resultado= null;
+    	try {
+    	    tx = session.beginTransaction();
+
+    	    //operaciones a realizar: metodo hook
+    	    resultado= operacionesBaseDatos(session);
+
+    	    //actualizamos base de datos
+    	    tx.commit();
+    	}
+    	catch (RuntimeException e) {
+    		//en caso de error desacemos cambios en la base de datos
+    		
+    	    tx.rollback();
+    	    throw e; 
+    	}
+    	finally {
+    	    session.close();
+    	}
+    	return resultado;
+    }
+    
+    /**
+     * Estrategia para la apertura de sesiones utilizando un patron session-per-request
+     * Para el manejo de las transacciones utilizaremos JTA: Transaction demarcation with JTA
+     */
+    public Object sessionPerRequestJTA(){
+    	
+    	Object resultado= null;
+    	UserTransaction tx= null;
+    	
+    	try {
+    	    tx = (UserTransaction)new InitialContext().lookup(DEFAULT_USER_TRANSACTION_NAME);
+    	                            
+    	    tx.begin();
+    	    
+    	    Session sesionActual= obtenerSesionActual();
+
+    	    // Do some work
+    	    operacionesBaseDatos(sesionActual);
+
+    	    tx.commit();
+    	}
+    	catch (Exception e) {
+    		try{
+    			System.err.println("\nNose se pudo realizar la operacion a la base de datos\n");
+	    	    tx.rollback();
+	    	    throw new RuntimeException(e); // or display error message
+    		}catch(Exception e1){
+    			System.err.println("\nNo se pudo llevar a cavo el rollback\n");
+    			throw new RuntimeException(e1);
+    		}
+    	}
+    	
+    	return resultado;
+    	
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

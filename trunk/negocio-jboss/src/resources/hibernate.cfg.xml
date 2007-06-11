@@ -12,22 +12,28 @@
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
-        <!-- Enable Hibernate's automatic session context management -->
-        <property name="current_session_context_class">thread</property>
-
-        <!-- Disable the second-level cache  -->
+        <!-- Desabhilita la cashe de segundo nivel  -->
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
-
-        <!-- Echo all executed SQL to stdout -->
+     
+        <!-- Imprime por consola las sentencias en sql -->
         <property name="show_sql">true</property>
+        
+          <!-- Tipo de transaccion: Transaction demarcation with plain JDBC -->
+        <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="current_session_context_class">thread</property>
+        
+        <!-- Tipo de transaccion: Transaction demarcation with JTA -->
+<!--        <property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.WebSphereTransactionManagerLookup</property>-->
+<!--        <property name="transaction.factory_class">rg.hibernate.transaction.JDBCTransactionFactory</property>-->
+        
+        
+        
         
         <!-- Mapeos de hibernate -->
         <mapping resource="resources/mapping/Item.hbm.xml" />
         <mapping resource="resources/mapping/Linea_pedido.hbm.xml" />
         <mapping resource="resources/mapping/Operador.hbm.xml" />
         <mapping resource="resources/mapping/Pedido.hbm.xml" />
-        
-		
 		
     </session-factory>
    

@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import mfis.tiendavirtual.mocks.persistence.Oferta;
 import mfis.tiendavirtual.mocks.persistence.Producto;
 
+
+@Deprecated
 public class OfertasDAO {
 
 	public static void nuevaOferta(Producto productoA, Producto productoB){
