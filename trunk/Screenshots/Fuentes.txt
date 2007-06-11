@@ -1,0 +1,71 @@
+- Para todos los marcos comunes usar el mismo estilo que en la página "Punto de entrada usuario"
+- Encabezado del frame principal de cada página: arial 12 negrita
+- Para las opciones del operador:
+	# "Opciones": arial 12 negrita
+	# Resto de elementos: arial 12
+- Todos los botones en arial 12
+
+Punto de entrada usuario
+====================================================================================================
+Productos: arial negrita 12
+Nombres de productos: arial 12
+Combo-box de búsqueda: arial 12
+"Categoría:": arial 12
+"Marca:": arial 12
+Botones de búsqueda: arial 12
+Elementos de "Carro de la compra": todos en arial 12 salvo "Carro de la compra" ==> arial 12 negrita
+Pestaña "Página principal": arial 12 negrita
+"Oferta de la semana": arial 12 negrita
+Items en oferta y precio: arial 18 negrita
+Botón "Ver": arial 12
+
+Punto de entrada operador
+====================================================================================================
+Login y contraseña: arial 12 negrita
+Botón: arial 12
+
+Pedido realizado
+====================================================================================================
+"Gracias": arial 12 negrita
+Resto del texto: arial 12
+
+Detalle de producto
+====================================================================================================
+Características: arial 12
+
+Operador - Realizar pedido
+====================================================================================================
+Frame principal (elementos que no son la cabecera): arial 12
+
+Operador - Logout
+====================================================================================================
+Frame principal: arial 12 negrita
+
+Operador - Añadir un producto
+====================================================================================================
+Frame principal (elementos que no son la cabecera): arial 12
+
+Operador - Modificar un producto
+====================================================================================================
+Igual que "Operador - Añadir un producto" y en el texto recuperado arial 12
+
+Usuario - Búsqueda avanzada
+====================================================================================================
+Frame principal (todo salvo la cabecera): arial 12
+
+Usuario - Carro de la compra
+====================================================================================================
+Frame principal (todo salvo la cabecera): arial 12
+
+Operador - Creación de oferta / Usuario - Listado de productos
+====================================================================================================
+Frame principal (todo salvo la cabecera): arial 12
+
+Usuario / operador - Listado de productos
+====================================================================================================
+Frame principal (todo salvo la cabecera): arial 12
+
+Operador - Detalles de pedido
+====================================================================================================
+Frame principal: todos los caracteres en arial (unos en negrita y otros no (se ve claramente cuales
+son)
