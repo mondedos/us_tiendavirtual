@@ -40,7 +40,7 @@ public class LineaPedido {
 	public Integer getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	protected void setId(Integer id) {
 		this.id = id;
 	}
 	public Float getPrecioUnidad() {
