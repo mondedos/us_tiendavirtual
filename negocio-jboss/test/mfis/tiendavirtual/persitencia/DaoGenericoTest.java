@@ -47,6 +47,7 @@ public class DaoGenericoTest {
 		//creacion del objeto
 		Lavadora lavadora= new Lavadora();
 		lavadora.setDescripcion("descripcion lavadora");
+		lavadora.setSecadora(false);
 		
 		Long o= daoGenerico.persistirObjeto(lavadora);
 		
@@ -91,7 +92,7 @@ public class DaoGenericoTest {
 		
 		try{
 			Long id= lavadora.getId();
-			assert id.equals(2);
+			assert id.equals(new Long(2));
 		}catch(Exception e){
 			assert false : "no ha sido posible acceder a la propiedad id de la lavadora";
 		}
@@ -114,8 +115,24 @@ public class DaoGenericoTest {
 	@Test
 	public void pruebaModificarObjeto(){
 		
+		Lavadora lavadora= new Lavadora();
+		lavadora.setDescripcion("descripcion inicial");
+		lavadora.setSecadora(false);
+		
+		Long id= daoGenerico.persistirObjeto(lavadora);
+		
+		Lavadora lavadoraDos= daoGenerico.buscarPorId(Lavadora.class, id.toString());;
+		lavadoraDos.setDescripcion("descripcion actualizada");
+		daoGenerico.modificarObjeto(lavadoraDos);
+		
+		Lavadora lavadoraTres= daoGenerico.buscarPorId(Lavadora.class, id);
+		
+		assert lavadoraTres.getDescripcion().equals("descripcion actualizada") : "La descripcion es incorrecta";
+		
+		daoGenerico.eliminarObjeto(lavadoraTres);
 		
 	}
+	
 
 
 }

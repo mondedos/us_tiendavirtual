@@ -125,4 +125,32 @@ public class DaoGenerico {
 		return (T)hsf.sessionPerRequest();
 		
 	}
+	
+	/**
+	 * Metodo para realizar una busqueda por identificador
+	 * @param <T>
+	 * @param clasePersistente
+	 * @param id
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> T buscarPorId(final Class clasePersistente, final Long id){
+		
+		HibernateSessionFactory hsf= new HibernateSessionFactory(){
+			public Object operacionesBaseDatos(Session sesion){
+				
+				Object resultado= null;
+				
+				Criteria c= sesion.createCriteria(clasePersistente);
+				c.add(Restrictions.idEq(id));
+				
+				resultado= c.uniqueResult();
+				
+				return resultado;
+			}
+		};
+		
+		return (T)hsf.sessionPerRequest();
+		
+	}
 }

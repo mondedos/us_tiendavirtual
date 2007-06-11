@@ -70,5 +70,7 @@ public class ProductoDaoTest {
 		tx.commit();
 		sesion.close();
 	}
+	
+	
 
 }
