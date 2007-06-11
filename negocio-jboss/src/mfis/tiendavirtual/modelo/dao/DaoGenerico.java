@@ -72,6 +72,23 @@ public class DaoGenerico {
 		
 	}
 	
+	/**
+	 * Modifica un objeto de la base de datos
+	 * @param objetoPersistente
+	 */
+	public void modificarObjeto(final Object objetoPersistente){
+		
+		HibernateSessionFactory hsf= new HibernateSessionFactory(){
+			public Object operacionesBaseDatos(Session sesion){
+				sesion.update(objetoPersistente);
+				return null;
+			}
+		};
+		
+		hsf.sessionPerRequest();
+		
+	}
+	
 	
 	/**
 	 * Busca el objeto en la base de datos, cuyo identificador se le pasa como parametro, en caso de no existir se devolvera null
@@ -108,10 +125,4 @@ public class DaoGenerico {
 		return (T)hsf.sessionPerRequest();
 		
 	}
-	
-	
-	
-	
-	
-
 }

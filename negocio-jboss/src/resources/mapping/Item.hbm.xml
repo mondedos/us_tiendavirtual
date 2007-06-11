@@ -39,7 +39,7 @@
 					<key column="id_item_3" />
 					<property name="tamano" column="vc_tamano" type="string" />
 					<property name="TDT" type="boolean" />
-					<property name="peana" type="string" />
+					<property name="peana" type="boolean" />
 				</joined-subclass>
 		
 				<!-- Subclase PequenioElectrodomestico -->
