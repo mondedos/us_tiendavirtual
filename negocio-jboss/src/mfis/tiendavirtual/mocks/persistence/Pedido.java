@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @deprecated usar mfis.tiendavirtual.modelo.objetoNegocio.Pedido
+ */
+@Deprecated
 public class Pedido implements Serializable{
 
 	/**

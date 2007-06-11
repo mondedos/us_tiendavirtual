@@ -1,8 +1,11 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Pedido {
+
+public class Pedido implements Serializable{
+	private static final long serialVersionUID = -6718435133620987646L;
 	
 	private Integer id;
 	private String direccion;

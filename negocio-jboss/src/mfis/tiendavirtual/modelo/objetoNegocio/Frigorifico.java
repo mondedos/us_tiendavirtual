@@ -1,6 +1,7 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
 public class Frigorifico extends Producto {
+	private static final long serialVersionUID = 6480318486447715038L;
 	
 	private String clasifEnergetica;
 	private Boolean combi;

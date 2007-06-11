@@ -1,5 +1,9 @@
 package mfis.tiendavirtual.mocks.persistence;
 
+/**
+ * @deprecated usar mfis.tiendavirtual.modelo.objetoNegocio.Oferta
+ */
+@Deprecated
 public class Oferta extends Item{
 
 	/**

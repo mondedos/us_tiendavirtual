@@ -3,6 +3,8 @@ package mfis.tiendavirtual.mocks.dao;
 import java.util.ArrayList;
 import mfis.tiendavirtual.mocks.persistence.Operador;
 import mfis.tiendavirtual.mocks.persistence.Pedido;
+
+@Deprecated
 public class OperadorDAO {
 
 	public static Operador getOperador(int id){

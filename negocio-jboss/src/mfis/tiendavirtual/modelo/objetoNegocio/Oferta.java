@@ -1,9 +1,20 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
-public class Oferta extends Item{
 
+public class Oferta extends Item{
+	private static final long serialVersionUID = 3703914346061263238L;
+	
 	private Producto principal;
 	private Producto secundario;
+	
+	public Oferta(){}
+	
+	public Oferta(Producto principal, Producto secundario){
+		
+		this.principal= principal;
+		this.secundario= secundario;
+		
+	}
 	
 	@Override
 	public boolean equals(Object o){

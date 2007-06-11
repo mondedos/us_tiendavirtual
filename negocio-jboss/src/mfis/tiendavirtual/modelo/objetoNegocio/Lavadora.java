@@ -1,6 +1,8 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
 public class Lavadora extends Producto{
+	private static final long serialVersionUID = -5521462502759574352L;
+	
 	private Boolean secadora;
 	private String clasifEnergetica;
 	

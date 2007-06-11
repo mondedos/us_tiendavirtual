@@ -2,6 +2,10 @@ package mfis.tiendavirtual.mocks.persistence;
 
 import java.io.Serializable;
 
+/**
+ * @deprecated usar mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido
+ */
+@Deprecated
 public class LineaPedido implements Serializable {
 
 	/**

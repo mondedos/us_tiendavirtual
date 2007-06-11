@@ -2,6 +2,10 @@ package mfis.tiendavirtual.mocks.persistence;
 
 import java.math.BigDecimal;
 
+/**
+ * @deprecated usar mfis.tiendavirtual.modelo.objetoNegocio.Producto
+ */
+@Deprecated
 public class Producto extends Item{
 
 	/**

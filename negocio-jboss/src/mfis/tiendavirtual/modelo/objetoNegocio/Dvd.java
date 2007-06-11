@@ -1,6 +1,7 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
 public class Dvd extends Producto {
+	private static final long serialVersionUID = 7381549180331432954L;
 	
 	private String conectores;
 	private String formato;
