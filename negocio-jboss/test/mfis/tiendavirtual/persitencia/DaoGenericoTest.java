@@ -1,33 +1,32 @@
 package mfis.tiendavirtual.persitencia;
 
-import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
-import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 
+import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.testng.annotations.Test;
+import mfis.tiendavirtual.modelo.dao.DaoGenerico;
+import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
+
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
 
 
 public class DaoGenericoTest {
-	
+
+	private DaoGenerico daoGenerico;
+
 	@BeforeClass
-	public void before(){
-		
-		 
+	public void inicializar(){
+		daoGenerico= new DaoGenerico();
 	}
+	
 	
 	@Test
-	public void saveOperador(){
+	public void pruebaObtenerTodos(){
 		
-		Operador op = new Operador();
-		op.setLogin("prueba@gmail.com");		
+		List<Lavadora> l= daoGenerico.obtenerTodos(Lavadora.class);
+		assert l.size()==5 : "El numero de elementos es incorrecto";
 		
-		Session sesion = HibernateSessionFactory.crearSesion();
-		Transaction tx = sesion.beginTransaction();
-		sesion.save(op);
-		tx.commit();
-		sesion.close();
 	}
+
 }
