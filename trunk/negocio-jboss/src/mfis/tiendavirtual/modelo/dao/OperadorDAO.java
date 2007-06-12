@@ -10,12 +10,12 @@ import java.util.Date;
 /**
  * DAO para el manejo de los operadores
  * 
- * @author Daniel Vazquez
+ * @author Daniel Vazquez Gomez
  *
  */
 public class OperadorDAO {
 
-	private DaoGenerico daoGenerico;
+	private static DaoGenerico daoGenerico;
 	
 	public OperadorDAO() {
 		daoGenerico = new DaoGenerico();
@@ -26,7 +26,7 @@ public class OperadorDAO {
 	 * @param id numero de identificación
 	 * @return un operador
 	 */
-	public Operador obtenerOperador(int id){
+	public static Operador obtenerOperador(int id){
 		return (daoGenerico.buscarPorId(Operador.class, new Long(id)));
 	}
 
@@ -35,7 +35,7 @@ public class OperadorDAO {
 	 * @param login login de GMail.
 	 * @return el operador con el login correspondiente
 	 */
-	public Operador obtenerOperador(String login){
+	public static Operador obtenerOperador(String login){
 		List<Operador> l = null;
 		ListIterator li = null;
 		Operador o = null;
@@ -55,7 +55,7 @@ public class OperadorDAO {
 	 * @param id identificador numerico del operador que quiere que le sea asignado el pedido
 	 * @return pedido asignado al operador o null si no hay ningun pedido por ser asignado
 	 */
-	public Pedido siguientePedido(int id) {
+	public static Pedido siguientePedido(int id) {
 		// Es necesario realizar el siguiente procedimiento para que no existan problemas de concurrencia a la hora de asignar un
 		// pedido a un operador.
 		List<Pedido> listaPedidos = null;

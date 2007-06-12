@@ -8,7 +8,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 /**
  * DAO para el manejo de las ofertas
  * 
- * @author Daniel Vázquez
+ * @author Daniel Vazquez Gomez
  *
  */
 public class OfertasDAO {
@@ -18,7 +18,7 @@ public class OfertasDAO {
 	 * @param productoA objeto persistente
 	 * @param productoB objeto persistente
 	 */
-	public void nuevaOferta(Producto productoA, Producto productoB){
+	public static void nuevaOferta(Producto productoA, Producto productoB){
 		Oferta o = new Oferta();
 		o.setPrincipal(productoA);
 		o.setSecundario(productoB);
@@ -30,7 +30,7 @@ public class OfertasDAO {
 	 * Método para obtener la actual oferta de la tienda
 	 * @return oferta vigente
 	 */
-	public Oferta obtenerOferta(){
+	public static Oferta obtenerOferta(){
 		DaoGenerico d = new DaoGenerico();
 		List l = null;
 		

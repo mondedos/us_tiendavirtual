@@ -16,7 +16,7 @@ import java.util.Iterator;
  */
 public class PedidosDAO {
 	
-	private DaoGenerico daoGenerico;
+	private static DaoGenerico daoGenerico;
 	
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
@@ -27,7 +27,7 @@ public class PedidosDAO {
 	 * @param c carro de la compra
 	 * @param direccion direccion de envio del pedido
 	 */
-	public void registrarPedido(Carrito c, String direccion){
+	public static void registrarPedido(Carrito c, String direccion){
 		/* Hay que generar el pedido a mano */
 		Pedido p = null;
 		List<LineaPedido> lineasPedido = null;
@@ -64,7 +64,7 @@ public class PedidosDAO {
 	 * @param id
 	 * @return pedido correspondiente al identificador "id" y "null" en caso de que no exista
 	 */
-	public Pedido obtenerPedido(int id){
+	public static Pedido obtenerPedido(int id){
 		return (daoGenerico.buscarPorId(Pedido.class, new Long(id)));
 	}
 
@@ -74,7 +74,7 @@ public class PedidosDAO {
 	 * @param estado
 	 * @param fecha
 	 */
-	public void actualizarEstado(Pedido p, String estado, Date fecha) {
+	public static void actualizarEstado(Pedido p, String estado, Date fecha) {
 		if (estado.matches("Placed")) {
 				p.setFechaDeServicio(fecha);
 		} else if (estado.matches("Cancelled")) {
