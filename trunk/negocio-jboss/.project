@@ -34,5 +34,6 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.maven.ide.eclipse.maven2Nature</nature>
+		<nature>com.eviware.soapui.jbosside.jbosswsNature</nature>
 	</natures>
 </projectDescription>
