@@ -4,6 +4,8 @@ import java.util.List;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import java.util.ListIterator;
+import java.util.Iterator;
+import java.util.Date;
 
 /**
  * DAO para el manejo de los operadores
@@ -51,31 +53,51 @@ public class OperadorDAO {
 	/**
 	 * Metodo para asignar un pedido a un operador
 	 * @param id identificador numerico del operador que quiere que le sea asignado el pedido
-	 * @return pedido asignado al operador
+	 * @return pedido asignado al operador o null si no hay ningun pedido por ser asignado
 	 */
 	public Pedido siguientePedido(int id) {
-
-// Esto hay que hacerlo de modo que no haya conflictos por concurrencia tal y como se comentó
-// en clase:  
-//  - habia que añadir una columna al pedido con el id del operador 
-//  - acto seguido recuperamos el pedidode ese operador 
-//  - finalmete asignarle el estado correspondiente 
-
-		Pedido p = new Pedido();
-		/*p.setDireccion("Avda. Reina Mercedes, s/n");
-		p.setEstado("Served");
-		p.setFechaCancelled(null);
-		p.setFechaPlaced(null);
-		p.setFechaServed(null);
-		p.setFechaTransient(null);
-		p.setLineasPedido(new ArrayList());
-		p.setOp(new Operador("operador1"));
-		p.setReferencia("0000012");
-		p.setTotal("1000");
-
-		System.out.println("Se ha obtenido el siguiente pedido para el operador " + id);
-		*/
-
-		return p;
+		// Es necesario realizar el siguiente procedimiento para que no existan problemas de concurrencia a la hora de asignar un
+		// pedido a un operador.
+		List<Pedido> listaPedidos = null;
+		Pedido p = null;
+		Pedido res = null;
+		Iterator it = null;
+		Operador o = null;
+		Long idPedido = null;
+		boolean enc = false;
+		
+		// Recuperamos el operador:
+		o = daoGenerico.buscarPorId(Operador.class, new Long(id));
+		it = listaPedidos.listIterator();
+		// Recuperamos el primer pedido mas antiguo no asignado a ningun operador y que no esté cancelado:
+		while (it.hasNext() && !(enc)) {
+			p = (Pedido) it.next();
+			if ((p.getFechaTransient() == null) && (p.getFechaCancelacion() != null)) {
+				enc = true;
+				res = p;
+				// Guardamos el id de pedido para poder recuperarlo despues de la base de datos.
+				idPedido = res.getId();
+			} 
+		} // Cuando ya lo tenemos seguimos buscando a ver si hay alguno mas antiguo que todavia no este asignado a ningun operador y que
+		// no haya sido cancelado.
+		while (it.hasNext()) {
+			p = (Pedido) it.next();
+			if ((p.getFechaPedido().before(res.getFechaPedido())) && (p.getFechaTransient() == null) && (p.getFechaCancelacion() != null)) {
+				res = p;
+				// Guardamos el id de pedido para poder recuperarlo despues de la base de datos.
+				idPedido = res.getId();
+			}	
+		} // Asignamos el id del operador solicitante al pedido si es que existe:
+		if (res != null) {
+			res.setOperador(o);
+			daoGenerico.modificarObjeto(res);
+			// Recuperamos el pedido con id idPedido:
+			res = daoGenerico.buscarPorId(Pedido.class, idPedido);
+			// Cambiamos su estado a "transient" y hacemos que el pedido tenga la fecha actual:
+			res.setFechaTransient(new Date(System.currentTimeMillis()));
+			daoGenerico.modificarObjeto(res);
+		}
+	
+		return (res);
 	}
 }
