@@ -16,19 +16,19 @@ public interface GestionOperador
    /**
     * Business method
     */
-   public mfis.tiendavirtual.mocks.persistence.Operador getOperador( int id )
+   public mfis.tiendavirtual.modelo.objetoNegocio.Operador getOperador( int id )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public mfis.tiendavirtual.mocks.persistence.Operador getOperador( java.lang.String login )
+   public mfis.tiendavirtual.modelo.objetoNegocio.Operador getOperador( java.lang.String login )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public mfis.tiendavirtual.mocks.persistence.Pedido siguientePedido( int id )
+   public mfis.tiendavirtual.modelo.objetoNegocio.Pedido siguientePedido( int id )
       throws java.rmi.RemoteException;
 
 }

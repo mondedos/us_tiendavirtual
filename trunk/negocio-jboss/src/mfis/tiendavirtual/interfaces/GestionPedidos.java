@@ -16,31 +16,19 @@ public interface GestionPedidos
    /**
     * Business method
     */
-   public void registrarPedido( mfis.tiendavirtual.mocks.persistence.Carrito c,java.lang.String direccion )
+   public void registrarPedido( mfis.tiendavirtual.ejb.Carrito c,java.lang.String direccion )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public void actualizarEstado( mfis.tiendavirtual.mocks.persistence.Pedido p,java.lang.String estado,java.util.Date fecha )
+   public void actualizarEstado( mfis.tiendavirtual.modelo.objetoNegocio.Pedido p,java.lang.String estado,java.util.Date fecha )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public mfis.tiendavirtual.mocks.persistence.Pedido getPedido( int id )
-      throws java.rmi.RemoteException;
-
-   /**
-    * Business method
-    */
-   public void anadeBeneficio( mfis.tiendavirtual.mocks.persistence.Pedido p )
-      throws java.rmi.RemoteException;
-
-   /**
-    * Business method
-    */
-   public void anadeBeneficio( mfis.tiendavirtual.mocks.persistence.Item i )
+   public mfis.tiendavirtual.modelo.objetoNegocio.Pedido getPedido( int id )
       throws java.rmi.RemoteException;
 
 }
