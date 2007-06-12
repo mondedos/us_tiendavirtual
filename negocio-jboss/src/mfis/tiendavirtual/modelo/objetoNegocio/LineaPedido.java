@@ -44,7 +44,7 @@ public class LineaPedido implements Serializable{
 	public Long getId() {
 		return id;
 	}
-	protected void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Float getPrecioUnidad() {
