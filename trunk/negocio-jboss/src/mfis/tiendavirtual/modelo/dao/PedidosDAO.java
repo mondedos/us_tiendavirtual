@@ -3,7 +3,6 @@ package mfis.tiendavirtual.modelo.dao;
 import java.util.Date;
 
 import mfis.tiendavirtual.ejb.Carrito;
-import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import java.util.List;
