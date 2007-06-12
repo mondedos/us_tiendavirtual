@@ -197,7 +197,8 @@ public class BMGenerico {
 	 */
 	public void agregarAnd(Criteria criteria, String propiedad, Object valor){
 		
-		criteria.add(Restrictions.eq(propiedad, valor));
+		if(valor!=null)
+			criteria.add(Restrictions.eq(propiedad, valor));
 		
 	}
 	
@@ -211,9 +212,13 @@ public class BMGenerico {
 	 */
 	public void agregarCadena(Criteria criteria, String propiedad, String valor){
 		
-		String valorBusqueda= "%"+valor+"%";
-		Criterion criterion= Restrictions.like(propiedad, valorBusqueda).ignoreCase();
-		criteria.add(criterion);
+		if(valor!=null){
+			String valorBusqueda= "%"+valor+"%";
+			Criterion criterion= Restrictions.like(propiedad, valorBusqueda).ignoreCase();
+			criteria.add(criterion);
+			
+		}
+		
 	}
 	
 	
@@ -242,8 +247,11 @@ public class BMGenerico {
 	 */
 	public void agregarRango(Criteria criteria, String propiedad, Float menor, Float mayor){
 		
-		criteria.add(Restrictions.ge(propiedad, menor));
-		criteria.add(Restrictions.le(propiedad, mayor));
+		if(menor!=null && mayor!=null){
+			criteria.add(Restrictions.ge(propiedad, menor));
+			criteria.add(Restrictions.le(propiedad, mayor));
+		}
+		
 	}
 	
 	/**
