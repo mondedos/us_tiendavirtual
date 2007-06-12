@@ -59,11 +59,11 @@ public class ProductoDaoTest {
 		tx= sesion.beginTransaction();
 		
 		for(Long id: listaProductos){
-			Producto producto= (Producto)sesion.load(Producto.class, id);
+			Producto producto= (Producto)sesion.get(Producto.class, id);
 			try{
 				producto.getId();
 				assert false : "el producto "+id+" no ha sido borrado";
-			}catch(ObjectNotFoundException e){
+			}catch(NullPointerException e){
 				//el producto ha sido borrado
 			}
 		}
