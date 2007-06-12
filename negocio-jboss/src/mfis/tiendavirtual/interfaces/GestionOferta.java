@@ -16,13 +16,13 @@ public interface GestionOferta
    /**
     * Business method
     */
-   public void nuevaOferta( mfis.tiendavirtual.mocks.persistence.Producto productoA,mfis.tiendavirtual.mocks.persistence.Producto productoB )
+   public void nuevaOferta( mfis.tiendavirtual.modelo.objetoNegocio.Producto productoA,mfis.tiendavirtual.modelo.objetoNegocio.Producto productoB )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public mfis.tiendavirtual.mocks.persistence.Oferta getOferta(  )
+   public mfis.tiendavirtual.modelo.objetoNegocio.Oferta getOferta(  )
       throws java.rmi.RemoteException;
 
 }

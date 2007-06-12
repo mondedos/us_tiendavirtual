@@ -28,19 +28,19 @@ public interface GestionProducto
    /**
     * Business method
     */
-   public mfis.tiendavirtual.mocks.persistence.Item getProducto( int id )
+   public mfis.tiendavirtual.modelo.objetoNegocio.Item getProducto( int id )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public void anadirProducto( mfis.tiendavirtual.mocks.persistence.Producto p )
+   public void anadirProducto( mfis.tiendavirtual.modelo.objetoNegocio.Producto p )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public void modificarProducto( int id,mfis.tiendavirtual.mocks.persistence.Producto p )
+   public void modificarProducto( int id,mfis.tiendavirtual.modelo.objetoNegocio.Producto p )
       throws java.rmi.RemoteException;
 
    /**
