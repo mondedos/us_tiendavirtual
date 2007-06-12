@@ -72,6 +72,21 @@
 			<artifactId>negocio</artifactId>
 			<version>0.1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>google</groupId>
+			<artifactId>gdata-client</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>javax.mail</groupId>
+  			<artifactId>mail</artifactId>
+  			<version>1.4</version>
+  		</dependency>
 	</dependencies>
 
 	<!-- </P.O.M. Relationships>       -->
