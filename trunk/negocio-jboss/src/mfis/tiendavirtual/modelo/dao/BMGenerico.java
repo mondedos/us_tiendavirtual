@@ -1,9 +1,12 @@
 package mfis.tiendavirtual.modelo.dao;
 
 import java.lang.reflect.Method;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -40,7 +43,7 @@ public class BMGenerico {
 		for(Method metodo: clase.getMethods()){
 			
 			String nombreMetodo= metodo.getName();
-			if(nombreMetodo.startsWith("get")){
+			if(nombreMetodo.startsWith("get") && !nombreMetodo.equals("getClass")){
 				
 				try{
 					Object valor= metodo.invoke(dto, new Object[0]);
@@ -81,10 +84,30 @@ public class BMGenerico {
 	
 	/**
 	 * Metodo para realizar una busqueda
+	 * esta es la busqueda que se hace generalmente, donde se tienen que cumplir todos los atributos
+	 * 
 	 * @param dto objeto de negocio que funciona como dto
 	 * @return objeto criteria, se le pueden añadir mas criterios de busqueda
 	 */
 	public Criteria realizarBusqueda(Object dto){
+		
+		return realizarBusqueda(dto, true);
+	}
+	
+	/**
+	 * Permite realizar una busqueda
+	 * @param dto objeto de negocio que funciona como dto
+	 * @param and si es cierto indica que los atributos del dto se añadiran como and a la busqueda, en caso contrario como or
+	 * @return
+	 */
+	public Criteria realizarBusqueda(Object dto, boolean and){
+		
+		if(and) return realizarBusquedaAnd(dto);
+		else return realizarBusquedaOr(dto);
+		
+	}
+	
+	private Criteria realizarBusquedaAnd(Object dto){
 		
 		Class clase= dto.getClass();
 		Session sesion= HibernateSessionFactory.crearSesion();
@@ -93,7 +116,7 @@ public class BMGenerico {
 		for(Method metodo: clase.getMethods()){
 			
 			String nombreMetodo= metodo.getName();
-			if(nombreMetodo.startsWith("get")){
+			if(nombreMetodo.startsWith("get") && !nombreMetodo.equals("getClass")){
 				try{
 					Object valor= metodo.invoke(dto, new Object[0]);
 					if(valor!=null){
@@ -108,7 +131,52 @@ public class BMGenerico {
 		}
 		
 		return criteria;
+		
 	}
+	
+	private Criteria realizarBusquedaOr(Object dto){
+		
+		Class clase= dto.getClass();
+		Session sesion= HibernateSessionFactory.crearSesion();
+		Criteria criteria= sesion.createCriteria(clase);
+		List<Criterion> criterios= new LinkedList<Criterion>();
+		
+		for(Method metodo: clase.getMethods()){
+			
+			String nombreMetodo= metodo.getName();
+			if(nombreMetodo.startsWith("get") && !nombreMetodo.equals("getClass")){
+				try{
+					Object valor= metodo.invoke(dto, new Object[0]);
+					if(valor!=null){
+						String nombreAtributo= obtenerNombreAtributo(nombreMetodo);
+						criterios.add(Restrictions.eq(nombreAtributo, valor));
+					}
+				}catch(Exception e){
+					System.err.println("No debio elevarse esta excepcion");
+					throw new RuntimeException(e);
+				}
+			}
+		}
+		
+		if(criterios.size()>1){
+			
+			Criterion criterion= criterios.get(0);
+			for(int i=1; i<criterios.size(); i++)
+				criterion= Restrictions.or(criterion, criterios.get(i));
+			
+			criteria.add(criterion);
+			
+		}else if(criterios.size()==1){
+			
+			criteria.add(criterios.get(0));
+			
+		}
+		
+		
+		return criteria;
+		
+	}
+	
 	
 	
 	private String obtenerNombreAtributo(String nombreMetodo){
@@ -117,6 +185,78 @@ public class BMGenerico {
 		return inicio+nombreMetodo.substring(4);
 		
 	}
+	
+	
+	
+	
+	/**
+	 * Agrega un criterio and
+	 * @param criteria
+	 * @param propiedad
+	 * @param valor
+	 */
+	public void agregarAnd(Criteria criteria, String propiedad, Object valor){
+		
+		criteria.add(Restrictions.eq(propiedad, valor));
+		
+	}
+	
+	/**
+	 * Agrega una cadena a la busqueda, el criterio de busqueda sera de tal forma que dara cierto si la cadena
+	 * se encuentra en parte y sin tener en cuenta mayusculas y minusculas
+	 * 
+	 * @param criteria
+	 * @param propiedad
+	 * @param valor
+	 */
+	public void agregarCadena(Criteria criteria, String propiedad, String valor){
+		
+		String valorBusqueda= "%"+valor+"%";
+		Criterion criterion= Restrictions.like(propiedad, valorBusqueda).ignoreCase();
+		criteria.add(criterion);
+	}
+	
+	
+	/**
+	 * Metodo para agregar un criterio or
+	 * @param criteria
+	 * @param propiedad
+	 * @param valor
+	 */
+	public void agregarOr(Criteria criteria, String propiedad, Object valor){
+		
+		//TODO
+		
+	}
+	
+	
+	/**
+	 * Agrega un criterio de que la propiedad dada tiene que estar dentro de un rango determinado. Es decir:
+	 * 
+	 * menor <= propiedad <= mayor
+	 * 
+	 * @param criteria
+	 * @param propiedad
+	 * @param menor 
+	 * @param mayor
+	 */
+	public void agregarRango(Criteria criteria, String propiedad, Float menor, Float mayor){
+		
+		criteria.add(Restrictions.ge(propiedad, menor));
+		criteria.add(Restrictions.le(propiedad, mayor));
+	}
+	
+	/**
+	 * Crea un objeto criteria vacio
+	 * @param clase
+	 * @return
+	 */
+	public Criteria crearCriteriaVacio(Class clase){
+		
+		return HibernateSessionFactory.crearSesion().createCriteria(clase);
+		
+	}
+	
 
 }
 
