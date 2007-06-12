@@ -2,13 +2,12 @@ package mfis.tiendavirtual.modelo.dao;
 
 import java.util.Date;
 
-/* Hay que hacer una clase de Negocio con el carrito, aunque después no sea persistente en la base de datos
-import mfis.tiendavirtual.modelo.objetoNegocio.Carrito;
-*/
-import mfis.tiendavirtual.mocks.persistence.Carrito;
-
+import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
+import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
+import java.util.List;
+import java.util.Iterator;
 
 /**
  * DAO para el manejo de los pedidos
@@ -30,8 +29,35 @@ public class PedidosDAO {
 	 * @param direccion direccion de envio del pedido
 	 */
 	public void registrarPedido(Carrito c, String direccion){
-		/* Hay que generar el pedido a mano y crear la clase de negocio Carrito */
-		System.out.println("Se ha registrado un nuevo pedido");
+		/* Hay que generar el pedido a mano */
+		Pedido p = null;
+		List<LineaPedido> lineasPedido = null;
+		Iterator li = null;
+		LineaPedido lP = null;
+		float precioTotal = 0.0f;
+		
+		p = new Pedido();
+		p.setDireccion(direccion);
+		p.setFechaCancelacion(null);
+		p.setFechaDeServicio(null);
+		p.setFechaPedido(new Date(System.currentTimeMillis()));
+		p.setFechaTransient(null);
+		p.setOperador(null);
+		p.setPrecioTotal(new Float(0.0));
+		p.setId(daoGenerico.persistirObjeto(p));
+		lineasPedido = c.getLineasPedido();
+		li = lineasPedido.listIterator();
+		while (li.hasNext()) {	
+		lP = (LineaPedido) li.next();
+			lP.setPedido(p);
+			// Persistimos una linea de pedido del carro de la compra.
+			daoGenerico.persistirObjeto(lP);
+			// Vamos calculando el precio total del carro de la compra...
+			precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
+		} // ...y lo asignamos al pedido en cuestion.
+		p.setPrecioTotal(new Float(precioTotal));
+		// Persistimos el carro de la compra como un pedido.
+		daoGenerico.persistirObjeto(p);
 	}
 
 	/**
@@ -43,13 +69,21 @@ public class PedidosDAO {
 		return (daoGenerico.buscarPorId(Pedido.class, new Long(id)));
 	}
 
+	/**
+	 * Metodo para actualizar el estado de un pedido y asignarle una determinada fecha a dicho estado
+	 * @param p
+	 * @param estado
+	 * @param fecha
+	 */
 	public void actualizarEstado(Pedido p, String estado, Date fecha) {
-		/* System.out.println("Estado del pedido actualizado"); */
-	}
-	public void anadeBeneficio(Pedido p) {
-		/* System.out.println("Beneficio de Pedido anadido"); */
-	}
-	public void anadeBeneficio(Item i) {
-		/* System.out.println("Beneficio de Item anadido"); */
+		if (estado.matches("Placed")) {
+				p.setFechaDeServicio(fecha);
+		} else if (estado.matches("Cancelled")) {
+			p.setFechaCancelacion(fecha);
+		} else if (estado.matches("Transient")) {
+			p.setFechaTransient(fecha);
+		} else {
+			p.setFechaDeServicio(fecha);
+		} daoGenerico.modificarObjeto(p);
 	}
 }
