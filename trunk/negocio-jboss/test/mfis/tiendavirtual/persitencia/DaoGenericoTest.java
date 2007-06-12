@@ -125,7 +125,7 @@ public class DaoGenericoTest {
 		lavadoraDos.setDescripcion("descripcion actualizada");
 		daoGenerico.modificarObjeto(lavadoraDos);
 		
-		Lavadora lavadoraTres= daoGenerico.buscarPorId(Lavadora.class, id);
+		Lavadora lavadoraTres= daoGenerico.buscarPorId(Lavadora.class, id.toString());
 		
 		assert lavadoraTres.getDescripcion().equals("descripcion actualizada") : "La descripcion es incorrecta";
 		
