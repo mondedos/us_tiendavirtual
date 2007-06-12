@@ -9,10 +9,8 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
-import mfis.tiendavirtual.mocks.dao.PedidosDAO;
-import mfis.tiendavirtual.mocks.persistence.Carrito;
-import mfis.tiendavirtual.mocks.persistence.Item;
-import mfis.tiendavirtual.mocks.persistence.Pedido;
+import mfis.tiendavirtual.modelo.dao.PedidosDAO;
+import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 
 /**
  * @ejb.bean name="GestionPedidos"
@@ -87,22 +85,6 @@ public class GestionPedidosBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Pedido getPedido(int id) {
-		return PedidosDAO.getPedido(id);
-	}
-
-	/**
-	 * Business method
-	 * @ejb.interface-method  view-type = "remote"
-	 */
-	public void anadeBeneficio(Pedido p) {
-		PedidosDAO.anadeBeneficio(p);
-	}
-
-	/**
-	 * Business method
-	 * @ejb.interface-method  view-type = "remote"
-	 */
-	public void anadeBeneficio(Item i) {
-		PedidosDAO.anadeBeneficio(i);
+		return PedidosDAO.obtenerPedido(id);
 	}
 }

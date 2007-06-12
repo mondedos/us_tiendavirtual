@@ -8,9 +8,9 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
-import mfis.tiendavirtual.mocks.dao.OperadorDAO;
-import mfis.tiendavirtual.mocks.persistence.Operador;
-import mfis.tiendavirtual.mocks.persistence.Pedido;
+import mfis.tiendavirtual.modelo.dao.OperadorDAO;
+import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
+import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 
 /**
  * @ejb.bean name="GestionOperador"
@@ -68,14 +68,14 @@ public class GestionOperadorBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Operador getOperador(int id) {
-		return OperadorDAO.getOperador(id);
+		return OperadorDAO.obtenerOperador(id);
 	}
 	/**
 	 * Business method
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Operador getOperador(String login) {
-		return OperadorDAO.getOperador(login);
+		return OperadorDAO.obtenerOperador(login);
 	}
 	/**
 	 * Business method

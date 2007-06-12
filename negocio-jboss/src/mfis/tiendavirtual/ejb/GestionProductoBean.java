@@ -9,9 +9,9 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
-import mfis.tiendavirtual.mocks.dao.ProductosDAO;
-import mfis.tiendavirtual.mocks.persistence.Item;
-import mfis.tiendavirtual.mocks.persistence.Producto;
+import mfis.tiendavirtual.modelo.dao.ProductoDao;
+import mfis.tiendavirtual.modelo.objetoNegocio.Item;
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
 /**
  * @ejb.bean name="GestionProducto" display-name="Name for GestionProducto"
@@ -19,36 +19,23 @@ import mfis.tiendavirtual.mocks.persistence.Producto;
  *           jndi-name="ejb/GestionProducto" type="Stateless" view-type="remote"
  */
 public class GestionProductoBean implements SessionBean {
-
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = -1547402712721829410L;
 
 	public GestionProductoBean() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setSessionContext(SessionContext ctx) throws EJBException,
 			RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbRemove() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbActivate() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbPassivate() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -58,7 +45,6 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.create-method
 	 */
 	public void ejbCreate() throws CreateException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -68,8 +54,7 @@ public class GestionProductoBean implements SessionBean {
 	 */
 	public List listarProductosBusqueda(float precioMinimo,
 			float precioMaximo, String categoria, List<String> palabrasClave) {
-		// TODO Auto-generated method stub
-		return ProductosDAO.listarProductosBusqueda(precioMinimo,precioMaximo,categoria, palabrasClave);
+		return ProductoDao.listarProductosBusqueda(precioMinimo,precioMaximo,categoria, palabrasClave);
 	}
 
 	/**
@@ -79,7 +64,7 @@ public class GestionProductoBean implements SessionBean {
 	 */
 	public List listarProductosCategoria(String categoria) {
 
-		return ProductosDAO.listarProductosCategoria(categoria);
+		return ProductoDao.listarProductoCategoria(categoria);
 	}
 
 	/**
@@ -88,7 +73,7 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public Item getProducto(int id) {
-		return ProductosDAO.getProducto(id);
+		return ProductoDao.obtenerProductoPorId(new Long(id));
 	}
 
 	/**
@@ -97,7 +82,7 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void anadirProducto(Producto p) {
-		ProductosDAO.anadirProducto(p);
+		ProductoDao.anadirProducto(p);
 	}
 
 	/**
@@ -106,7 +91,7 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void modificarProducto(int id, Producto p) {
-		ProductosDAO.modificarProducto(id, p);
+		ProductoDao.modificarProducto(new Long(id), p);
 	}
 
 	/**
@@ -115,7 +100,7 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void eliminarProducto(int id) {
-		ProductosDAO.eliminarProducto(id);
+		ProductoDao.eliminarProducto(new Long(id));
 	}
 
 	/**
@@ -124,7 +109,7 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public List get10ProductosMasBeneficiosos() {
-		return ProductosDAO.get10ProductosMasBeneficiosos();
+		return ProductoDao.get10ProductosMasBeneficiosos();
 	}
 
 	/**
@@ -133,6 +118,6 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public List get10ProductosMenosBeneficiosos() {
-		return ProductosDAO.get10ProductosMenosBeneficiosos();
+		return ProductoDao.get10ProductosMenosBeneficiosos();
 	}
 }

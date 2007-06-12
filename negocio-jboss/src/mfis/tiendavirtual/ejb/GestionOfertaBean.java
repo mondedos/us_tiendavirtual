@@ -8,9 +8,9 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
-import mfis.tiendavirtual.mocks.dao.OfertasDAO;
-import mfis.tiendavirtual.mocks.persistence.Oferta;
-import mfis.tiendavirtual.mocks.persistence.Producto;
+import mfis.tiendavirtual.modelo.dao.OfertasDAO;
+import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
 /**
  * @ejb.bean name="GestionOferta"
@@ -75,6 +75,6 @@ public class GestionOfertaBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Oferta getOferta() {
-		return OfertasDAO.getOferta();
+		return OfertasDAO.obtenerOferta();
 	}
 }
