@@ -13,6 +13,8 @@ public class Producto extends Item{
 	private String foto;
 	private String descripcion;
 	
+	public Producto()
+	{}
 	
 	@Override
 	public boolean equals(Object o){
