@@ -18,9 +18,11 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
 public class ProductoDao {
 	
 	private DaoGenerico daoGenerico;
+	private BMGenerico bmGenerico;
 	
 	public ProductoDao(){
 		daoGenerico= new DaoGenerico();
+		bmGenerico= new BMGenerico();
 	}
 
 	
@@ -64,6 +66,16 @@ public class ProductoDao {
 		Producto producto= daoGenerico.buscarPorId(Producto.class, idProducto.toString());
 		if(producto!=null) eliminarProducto(producto);
 		
+	}
+	
+	/**
+	 * Modifica un producto
+	 * @param idProducto identificador del producto
+	 * @param dto objeto de negocio que actua como contenedor de datos
+	 */
+	public void modificarProducto(Long idProducto, Producto dto){
+		
+		bmGenerico.modificarObjeto(dto, idProducto);
 	}
 	
 	
