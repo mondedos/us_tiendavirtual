@@ -1,5 +1,10 @@
 package mfis.tiendavirtual.struts.actions;
 
+import mfis.tiendavirtual.struts.forms.LoginForm;
+
+import com.google.gdata.client.GoogleService;
+import com.google.gdata.util.AuthenticationException;
+
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -17,6 +22,21 @@ public class LoginAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
+
+    	LoginForm loginForm = (LoginForm) c.getForm();
+    	boolean auth = true;
+    	GoogleService gs = new GoogleService("mail", "authSample");
+    	try {
+			gs.setUserCredentials(loginForm.getUsuario(), loginForm.getClave());
+		} catch (AuthenticationException e) {
+			auth = false;
+			//e.printStackTrace();
+		}
+		if(auth){
+			System.out.println("Autenticación contra google correcta");
+		} else {
+			System.out.println("Error en la autenticación contra google");
+		}
 
         return ".mainLayout";
     }
