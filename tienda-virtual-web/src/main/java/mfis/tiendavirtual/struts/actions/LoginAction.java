@@ -23,22 +23,30 @@ public class LoginAction extends MyTilesAction {
 
     public String execute(WebContext c) {
 
-    	LoginForm loginForm = (LoginForm) c.getForm();
-    	boolean auth = true;
-    	GoogleService gs = new GoogleService("mail", "authSample");
-    	try {
-			gs.setUserCredentials(loginForm.getUsuario(), loginForm.getClave());
-		} catch (AuthenticationException e) {
-			auth = false;
-			//e.printStackTrace();
-		}
-		if(auth){
-			System.out.println("Autenticación contra google correcta");
-		} else {
-			System.out.println("Error en la autenticación contra google");
-		}
+    	String forward = ".mainLayout";
 
-        return ".mainLayout";
+    	LoginForm loginForm = (LoginForm) c.getForm();
+
+    	if(loginForm.getUsuario() != null && !loginForm.getUsuario().equals("")) {
+        	boolean auth = true;
+        	GoogleService gs = new GoogleService("mail", "authSample");
+        	try {
+    			gs.setUserCredentials(loginForm.getUsuario(), loginForm.getClave());
+    		} catch (AuthenticationException e) {
+    			auth = false;
+    			//e.printStackTrace();
+    		}
+    		if(auth){
+    			c.setSession("idOperador", loginForm.getUsuario());
+    			System.out.println("Autenticación contra google correcta");
+    		} else {
+    			System.out.println("Error en la autenticación contra google");
+    		}
+    	} else {
+    		forward = ".loginLayout";
+    	}
+
+        return forward;
     }
 
 }
