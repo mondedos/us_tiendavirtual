@@ -15,8 +15,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class ProductoDaoTest {
+	
+	ProductoDao productoDao;
+	
 	@BeforeClass
 	public void inicializar(){
+		
+		productoDao= new ProductoDao();
 	}
 	
 	
@@ -29,7 +34,7 @@ public class ProductoDaoTest {
 		List<Long> listaProductos= new ArrayList<Long>(10);
 		for(int i=0; i<10; i++){
 			Producto producto= new Producto();
-			Long id= ProductoDao.anadirProducto(producto);
+			Long id= productoDao.agregarProducto(producto);
 			listaProductos.add(id);
 		}
 		
@@ -49,7 +54,7 @@ public class ProductoDaoTest {
 		sesion.close();
 		
 		for(Long id: listaProductos)
-			ProductoDao.eliminarProducto(id);
+			productoDao.eliminarProducto(id);
 		
 		sesion= HibernateSessionFactory.crearSesion();
 		tx= sesion.beginTransaction();
