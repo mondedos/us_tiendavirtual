@@ -1,7 +1,7 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
 
-			<div id="top-ventas">
+			<div class="menu-listado-workarea">
 				<h3><bean:write name="titulo"/></h3>
 				<div class="mini-container">
 					<ol>
