@@ -12,8 +12,8 @@
 <a:Code>TIENDAVIRTUAL2</a:Code>
 <a:CreationDate>1180983601</a:CreationDate>
 <a:Creator>Dani</a:Creator>
-<a:ModificationDate>1181587259</a:ModificationDate>
-<a:Modifier>Edgar</a:Modifier>
+<a:ModificationDate>1181754536</a:ModificationDate>
+<a:Modifier>Dani</a:Modifier>
 <a:History>ORG {103AEE37-4F23-4926-9C6A-3DC5085B0D65}
 DAT 1180983603
 ATT FOPT
@@ -101,7 +101,7 @@ GenScriptName6=
 GenScriptName7=
 GenScriptName8=
 GenScriptName9=
-GenPathName=C:\Documents and Settings\Edgar\Mis documentos\home\apuntes\mfis\tiendaVirtual\negocio-jboss\src\resources\baseDatos\
+GenPathName=C:\Users\Dani\Desktop\
 GenSingleFile=Yes
 GenODBC=No
 GenCheckModel=Yes
@@ -2982,7 +2982,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o24">
 <a:CreationDate>1180985539</a:CreationDate>
 <a:ModificationDate>1181229418</a:ModificationDate>
-<a:Rect>((-40634,28224), (-5159,29729))</a:Rect>
+<a:Rect>((-40634,28230), (-5159,28680))</a:Rect>
 <a:ListOfPoints>((-40634,28663),(-5159,28247))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>12615680</a:LineColor>
@@ -3626,10 +3626,10 @@ DAT 1180983603</a:History>
 <a:Code>VC_FOTO</a:Code>
 <a:CreationDate>1180985338</a:CreationDate>
 <a:Creator>Dani</a:Creator>
-<a:ModificationDate>1180985338</a:ModificationDate>
+<a:ModificationDate>1181754509</a:ModificationDate>
 <a:Modifier>Dani</a:Modifier>
-<a:DataType>varchar(50)</a:DataType>
-<a:Length>50</a:Length>
+<a:DataType>varchar(1024)</a:DataType>
+<a:Length>1024</a:Length>
 </o:Column>
 </c:Columns>
 <c:Keys>
