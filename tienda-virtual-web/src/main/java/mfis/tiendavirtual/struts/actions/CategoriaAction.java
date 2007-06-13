@@ -1,10 +1,15 @@
 package mfis.tiendavirtual.struts.actions;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
+
+import mfis.tiendavirtual.interfaces.GestionOferta;
 import mfis.tiendavirtual.interfaces.GestionProducto;
 import mfis.tiendavirtual.jndi.EJB;
+import mfis.tiendavirtual.jndi.OfertaEJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -37,18 +42,25 @@ public class CategoriaAction extends MyTilesAction {
 
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
 
+/*
     	//TODO en pruebas
     	try {
-    		listadoCategorias = gp.get10ProductosMasBeneficiosos();
+    		listadoCategorias = gp.listarProductosCategoria(cats[idcategoria]);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+*/
+    	listadoCategorias = new ArrayList();
+    	Producto p = new Producto();
+    	p.setDimensiones("120x123");
+    	p.setMarca("marca");
+    	p.setModelo("modelo");
+    	listadoCategorias.add(p);
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", "Listado de " +cats[idcategoria]);
 
-        return ".listadoCategoriaLayout";
+        return ".menuLayout";
     }
 
 }
