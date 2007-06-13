@@ -12,29 +12,32 @@ import java.util.Iterator;
  * DAO para el manejo de los pedidos
  * 
  * @author Daniel Vazquez Gomez
- *
+ * 
  */
 public class PedidosDAO {
-	
+
 	private static DaoGenerico daoGenerico;
-	
+
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
 	}
-	
+
 	/**
 	 * Metodo para crear un pedido a partir de un carro de la compra
-	 * @param c carro de la compra
-	 * @param direccion direccion de envio del pedido
+	 * 
+	 * @param c
+	 *            carro de la compra
+	 * @param direccion
+	 *            direccion de envio del pedido
 	 */
-	public static void registrarPedido(Carrito c, String direccion){
+	public void registrarPedido(Carrito c, String direccion) {
 		/* Hay que generar el pedido a mano */
 		Pedido p = null;
 		List<LineaPedido> lineasPedido = null;
 		Iterator li = null;
 		LineaPedido lP = null;
 		float precioTotal = 0.0f;
-		
+
 		p = new Pedido();
 		p.setDireccion(direccion);
 		p.setFechaCancelacion(null);
@@ -46,8 +49,8 @@ public class PedidosDAO {
 		p.setId(daoGenerico.persistirObjeto(p));
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
-		while (li.hasNext()) {	
-		lP = (LineaPedido) li.next();
+		while (li.hasNext()) {
+			lP = (LineaPedido) li.next();
 			lP.setPedido(p);
 			// Persistimos una linea de pedido del carro de la compra.
 			daoGenerico.persistirObjeto(lP);
@@ -61,28 +64,33 @@ public class PedidosDAO {
 
 	/**
 	 * Metodo para obtener un pedido a partir de su identificador
+	 * 
 	 * @param id
-	 * @return pedido correspondiente al identificador "id" y "null" en caso de que no exista
+	 * @return pedido correspondiente al identificador "id" y "null" en caso de
+	 *         que no exista
 	 */
-	public static Pedido obtenerPedido(int id){
+	public Pedido obtenerPedido(int id) {
 		return (daoGenerico.buscarPorId(Pedido.class, new Long(id)));
 	}
 
 	/**
-	 * Metodo para actualizar el estado de un pedido y asignarle una determinada fecha a dicho estado
+	 * Metodo para actualizar el estado de un pedido y asignarle una determinada
+	 * fecha a dicho estado
+	 * 
 	 * @param p
 	 * @param estado
 	 * @param fecha
 	 */
-	public static void actualizarEstado(Pedido p, String estado, Date fecha) {
+	public void actualizarEstado(Pedido p, String estado, Date fecha) {
 		if (estado.matches("Placed")) {
-				p.setFechaDeServicio(fecha);
+			p.setFechaDeServicio(fecha);
 		} else if (estado.matches("Cancelled")) {
 			p.setFechaCancelacion(fecha);
 		} else if (estado.matches("Transient")) {
 			p.setFechaTransient(fecha);
 		} else {
 			p.setFechaDeServicio(fecha);
-		} daoGenerico.modificarObjeto(p);
+		}
+		daoGenerico.modificarObjeto(p);
 	}
 }

@@ -69,7 +69,9 @@ public class GestionPedidosBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public void registrarPedido(Carrito c, String direccion) {
-		PedidosDAO.registrarPedido(c, direccion);
+		PedidosDAO p = new PedidosDAO();
+		
+		p.registrarPedido(c, direccion);
 	}
 
 	/**
@@ -77,7 +79,9 @@ public class GestionPedidosBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public void actualizarEstado(Pedido p, String estado, Date fecha) {
-		PedidosDAO.actualizarEstado(p,estado, fecha);
+		PedidosDAO p2 = new PedidosDAO();
+		
+		p2.actualizarEstado(p,estado, fecha);
 	}
 
 	/**
@@ -85,6 +89,8 @@ public class GestionPedidosBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Pedido getPedido(int id) {
-		return PedidosDAO.obtenerPedido(id);
+		PedidosDAO p = new PedidosDAO();
+		
+		return p.obtenerPedido(id);
 	}
 }

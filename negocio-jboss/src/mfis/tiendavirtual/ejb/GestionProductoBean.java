@@ -2,6 +2,7 @@ package mfis.tiendavirtual.ejb;
 
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -54,7 +55,11 @@ public class GestionProductoBean implements SessionBean {
 	 */
 	public List listarProductosBusqueda(float precioMinimo,
 			float precioMaximo, String categoria, List<String> palabrasClave) {
-		return ProductoDao.listarProductosBusqueda(precioMinimo,precioMaximo,categoria, palabrasClave);
+		/* ProductoDao p = new ProductoDao(); */
+		List l = new ArrayList();
+		
+		return (l);
+		/* return p.listarProductosBusqueda(precioMinimo,precioMaximo,categoria, palabrasClave); */
 	}
 
 	/**
@@ -63,8 +68,9 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public List listarProductosCategoria(String categoria) {
-
-		return ProductoDao.listarProductoCategoria(categoria);
+		ProductoDao p = new ProductoDao();
+		
+		return p.listarProductoCategoria(categoria);
 	}
 
 	/**
@@ -73,7 +79,9 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public Item getProducto(int id) {
-		return ProductoDao.obtenerProductoPorId(new Long(id));
+		ProductoDao p = new ProductoDao();
+		
+		return p.obtenerProductoPorId(new Long(id));
 	}
 
 	/**
@@ -82,7 +90,9 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void anadirProducto(Producto p) {
-		ProductoDao.anadirProducto(p);
+		ProductoDao p2 = new ProductoDao();
+		
+		p2.agregarProducto(p);
 	}
 
 	/**
@@ -91,7 +101,9 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void modificarProducto(int id, Producto p) {
-		ProductoDao.modificarProducto(new Long(id), p);
+		ProductoDao p2 = new ProductoDao();
+		
+		p2.modificarProducto(new Long(id), p);
 	}
 
 	/**
@@ -100,7 +112,9 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void eliminarProducto(int id) {
-		ProductoDao.eliminarProducto(new Long(id));
+		ProductoDao p = new ProductoDao();
+		
+		p.eliminarProducto(new Long(id));
 	}
 
 	/**
@@ -109,7 +123,10 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public List get10ProductosMasBeneficiosos() {
-		return ProductoDao.get10ProductosMasBeneficiosos();
+		List l = new ArrayList();
+		
+		/* return ProductoDao.get10ProductosMasBeneficiosos(); */
+		return (l);
 	}
 
 	/**
@@ -118,6 +135,9 @@ public class GestionProductoBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public List get10ProductosMenosBeneficiosos() {
-		return ProductoDao.get10ProductosMenosBeneficiosos();
+		List l = new ArrayList();
+		
+		/* return ProductoDao.get10ProductosMenosBeneficiosos(); */
+		return (l);
 	}
 }

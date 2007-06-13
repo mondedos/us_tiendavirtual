@@ -11,11 +11,11 @@ import mfis.tiendavirtual.mocks.persistence.Pedido;
 @Deprecated
 public class PedidosDAO {
 
-	public static void registrarPedido(Carrito c, String direccion){
+	public static void registrarPedido(Carrito c, String direccion) {
 		System.out.println("Se ha registrado un nuevo pedido");
 	}
 
-	public static Pedido getPedido(int id){
+	public static Pedido getPedido(int id) {
 
 		Pedido p = new Pedido();
 		p.setDireccion("Avda. Reina Mercedes, s/n");
@@ -37,9 +37,11 @@ public class PedidosDAO {
 	public static void actualizarEstado(Pedido p, String estado, Date fecha) {
 		System.out.println("Estado del pedido actualizado");
 	}
+
 	public static void anadeBeneficio(Pedido p) {
 		System.out.println("Beneficio de Pedido anadido");
 	}
+
 	public static void anadeBeneficio(Item i) {
 		System.out.println("Beneficio de Item anadido");
 	}
