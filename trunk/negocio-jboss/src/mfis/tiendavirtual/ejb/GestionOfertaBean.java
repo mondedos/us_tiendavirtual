@@ -68,13 +68,17 @@ public class GestionOfertaBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public void nuevaOferta(Producto productoA, Producto productoB) {
-		OfertasDAO.nuevaOferta(productoA, productoB);
+		OfertasDAO o = new OfertasDAO();
+		
+		o.nuevaOferta(productoA, productoB);
 	}
 	/**
 	 * Business method
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Oferta getOferta() {
-		return OfertasDAO.obtenerOferta();
+		OfertasDAO o = new OfertasDAO();
+		
+		return o.obtenerOferta();
 	}
 }

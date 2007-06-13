@@ -132,21 +132,3 @@ public abstract class HibernateSessionFactory {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

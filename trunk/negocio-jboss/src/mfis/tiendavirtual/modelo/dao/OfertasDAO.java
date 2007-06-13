@@ -18,7 +18,7 @@ public class OfertasDAO {
 	 * @param productoA objeto persistente
 	 * @param productoB objeto persistente
 	 */
-	public static void nuevaOferta(Producto productoA, Producto productoB){
+	public void nuevaOferta(Producto productoA, Producto productoB){
 		Oferta o = new Oferta();
 		o.setPrincipal(productoA);
 		o.setSecundario(productoB);
@@ -30,7 +30,7 @@ public class OfertasDAO {
 	 * Método para obtener la actual oferta de la tienda
 	 * @return oferta vigente
 	 */
-	public static Oferta obtenerOferta(){
+	public Oferta obtenerOferta(){
 		DaoGenerico d = new DaoGenerico();
 		List l = null;
 		

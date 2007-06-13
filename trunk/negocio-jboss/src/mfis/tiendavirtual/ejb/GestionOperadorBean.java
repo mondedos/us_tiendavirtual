@@ -68,20 +68,26 @@ public class GestionOperadorBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Operador getOperador(int id) {
-		return OperadorDAO.obtenerOperador(id);
+		OperadorDAO o = new OperadorDAO();
+		
+		return o.obtenerOperador(id);
 	}
 	/**
 	 * Business method
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Operador getOperador(String login) {
-		return OperadorDAO.obtenerOperador(login);
+		OperadorDAO o = new OperadorDAO();
+		
+		return o.obtenerOperador(login);
 	}
 	/**
 	 * Business method
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Pedido siguientePedido(int id) {
-		return OperadorDAO.siguientePedido(id);
+		OperadorDAO o = new OperadorDAO();
+		
+		return o.siguientePedido(id);
 	}
 }

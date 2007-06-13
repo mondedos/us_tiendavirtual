@@ -13,6 +13,11 @@
      -->
 
       <session>
+         <ejb-name>GestionOferta</ejb-name>
+         <jndi-name>ejb/GestionOferta</jndi-name>
+
+      </session>
+      <session>
          <ejb-name>GestionProducto</ejb-name>
          <jndi-name>ejb/GestionProducto</jndi-name>
 
@@ -27,14 +32,9 @@
          <jndi-name>ejb/GestionOperador</jndi-name>
 
       </session>
-      <session>
-         <ejb-name>GestionOferta</ejb-name>
-         <jndi-name>ejb/GestionOferta</jndi-name>
-
-      </session>
 
     <!--
-      write a merge file jboss-webservices.ent for webservice-description
+      write a merge file jboss-webservices.ent for webservice-description 
     -->
 
    </enterprise-beans>

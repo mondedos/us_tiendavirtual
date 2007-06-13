@@ -17,8 +17,8 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
  */
 public class ProductoDao {
 	
-	private static DaoGenerico daoGenerico;
-	private static BMGenerico bmGenerico;
+	private DaoGenerico daoGenerico;
+	private BMGenerico bmGenerico;
 	
 	public ProductoDao(){
 		daoGenerico= new DaoGenerico();
@@ -31,7 +31,7 @@ public class ProductoDao {
 	 * @param id
 	 * @return
 	 */
-	public static Producto obtenerProductoPorId(Long identificador){
+	public Producto obtenerProductoPorId(Long identificador){
 		
 		return daoGenerico.buscarPorId(Producto.class, identificador.toString());
 		
@@ -43,7 +43,7 @@ public class ProductoDao {
 	 * @param producto
 	 * @return identificador del producto creado
 	 */
-	public static Long anadirProducto(Producto producto){
+	public  Long agregarProducto(Producto producto){
 		return daoGenerico.persistirObjeto(producto);
 		
 	}
@@ -52,7 +52,7 @@ public class ProductoDao {
 	 * Elimina un producto de la base de datos
 	 * @param producto objeto persistente
 	 */
-	public static void eliminarProducto(Producto producto){
+	public  void eliminarProducto(Producto producto){
 		
 		daoGenerico.eliminarObjeto(producto);
 		
@@ -62,7 +62,7 @@ public class ProductoDao {
 	 * Elimina un producto de la base de datos
 	 * @param idProducto identificador del producto
 	 */
-	public static void eliminarProducto(Long idProducto){
+	public  void eliminarProducto(Long idProducto){
 		Producto producto= daoGenerico.buscarPorId(Producto.class, idProducto.toString());
 		if(producto!=null) eliminarProducto(producto);
 		
@@ -73,7 +73,7 @@ public class ProductoDao {
 	 * @param idProducto identificador del producto
 	 * @param dto objeto de negocio que actua como contenedor de datos
 	 */
-	public static void modificarProducto(Long idProducto, Producto dto){
+	public void modificarProducto(Long idProducto, Producto dto){
 		
 		bmGenerico.modificarObjeto(dto, idProducto);
 	}
@@ -85,7 +85,7 @@ public class ProductoDao {
 	 * @param categoria
 	 * @return
 	 */
-	public static List<Producto> listarProductoCategoria(String categoria){
+	public List<Producto> listarProductoCategoria(String categoria){
 		List<Producto> productos= null;
 		Class clase= null;
 		
