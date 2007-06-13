@@ -140,3 +140,14 @@ INSERT INTO `televisor` (`ID_ITEM_3`,`VC_TAMANO`,`TDT`,`PEANA`) VALUES
  (9,'26 pulgadas',0,1),
  (10,'26 pulgadas',0,1);
 /*!40000 ALTER TABLE `televisor` ENABLE KEYS */;
+
+
+--
+-- Dumping data for table `identificadorhibernate`
+--
+
+/*!40000 ALTER TABLE `identificadorhibernate` DISABLE KEYS */;
+INSERT INTO `identificadorhibernate` (`PRIMARY_KEY`,`GENERADOR_ITEM`,`GENERADOR_PEDIDO`,`GENERADOR_LP`,`GENERADOR_OPERADOR`) VALUES 
+ (0,1,1,1,1);
+/*!40000 ALTER TABLE `identificadorhibernate` ENABLE KEYS */;
+
