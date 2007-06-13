@@ -1,5 +1,9 @@
 package mfis.tiendavirtual.jndi;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -19,6 +23,7 @@ public abstract class ConnectEJB implements EJB{
 	String jndi = null;
 
 	public EJBObject getEJB(String jndi) {
+
     	Hashtable propiedades = new Hashtable();
     	propiedades.put("java.naming.factory.initial",
     	    				"org.jnp.interfaces.NamingContextFactory");
