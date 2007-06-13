@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     11/06/2007 20:52:54                          */
+/* Created on:     13/06/2007 19:08:57                          */
 /*==============================================================*/
 
 
@@ -152,7 +152,7 @@ create table PRODUCTO
    MO_PRECIO            float(8,2),
    IN_GANANCIA          int,
    VC_DESCRIPCION       varchar(2000),
-   VC_FOTO              varchar(50),
+   VC_FOTO              varchar(1024),
    primary key (ID_ITEM_3)
 );
 
