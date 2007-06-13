@@ -6,6 +6,7 @@ import struts.WebContext;
 
 /**
 * @author DVF
+*
 */
 
 // En este caso no podemos usar XDoclets porque nuestras acciones hereadan
