@@ -25,11 +25,11 @@ import struts.WebContext;
 public class CategoriaAction extends MyTilesAction {
 
 	private static String[] cats = {
-		"Televisores",
-		"Lavadoras",
-		"Videos/DVD",
-		"Frigoríficos",
-		"Pequeños eletrodomésticos"
+		"app.categoria.0",
+		"app.categoria.1",
+		"app.categoria.2",
+		"app.categoria.3",
+		"app.categoria.4"
 	};
 
     public CategoriaAction() {
@@ -37,30 +37,37 @@ public class CategoriaAction extends MyTilesAction {
 
     public String execute(WebContext c) {
 
+    	String layout = MENUPAGE;
     	int idcategoria = Integer.parseInt( c.getParameter("categoria") );
     	List listadoCategorias = null;
 
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
-
-/*
     	//TODO en pruebas
     	try {
-    		listadoCategorias = gp.listarProductosCategoria(cats[idcategoria]);
+    		listadoCategorias = gp.listarProductosCategoria(bundle.getString(cats[idcategoria]));
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
+/*
     	listadoCategorias = new ArrayList();
     	Producto p = new Producto();
     	p.setDimensiones("120x123");
     	p.setMarca("marca");
     	p.setModelo("modelo");
     	listadoCategorias.add(p);
-		c.setRequest("lista", listadoCategorias);
-		c.setRequest("titulo", "Listado de " +cats[idcategoria]);
 
-        return ".menuLayout";
+    	*/
+		c.setRequest("lista", listadoCategorias);
+		c.setRequest("titulo", "Listado de " + bundle.getString(cats[idcategoria]));
+		//TODO esto es una cutreria
+		c.setRequest("urlImg", bundle.getString(cats[idcategoria]).replaceAll("Peque�os electrodomesticos","PequenosElectrodomesticos"));
+
+		if(c.getSession("operador") != null) {
+			layout = OPERADOR;
+		}
+
+        return layout;
     }
 
 }

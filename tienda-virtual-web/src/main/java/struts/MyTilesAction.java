@@ -1,6 +1,8 @@
 package struts;
 
 
+import java.util.ResourceBundle;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,6 +29,10 @@ public abstract class MyTilesAction extends TilesAction {
 	//    </definition>
 
 	public static final String MAINPAGE = ".mainLayout";
+	public static final String MENUPAGE = ".menuLayout";
+	public static final String OPERADOR = ".adminLayout";
+	public static final String LOGIN = ".loginLayout";
+	protected ResourceBundle bundle = ResourceBundle.getBundle("messages");
 
 	private HttpSession obtenerSesion(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -46,7 +52,6 @@ public abstract class MyTilesAction extends TilesAction {
 		throws Exception {
 
 		HttpSession session = obtenerSesion(request);
-
 
 		WebContext c =
 			new WebContext(mapping, form, request, response, session);
