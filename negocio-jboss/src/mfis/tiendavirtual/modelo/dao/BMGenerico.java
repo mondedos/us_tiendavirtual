@@ -64,6 +64,7 @@ public class BMGenerico {
 		daoGenerico.modificarObjeto(objetoNegocio);
 	}
 	
+	@SuppressWarnings("unchecked")
 	private Method obtenerMetodoModificador(String metodoConsultor, Class clase, Class parametro){
 		
 		String nombreMetodoModificador= "set"+metodoConsultor.substring(3);
