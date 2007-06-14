@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="tienda-virtual">
+  <body>
+    <links>
+      <item name="Project Management" href="http://localhost:8080/tienda-virtual" />
+    </links>
+
+    ${reports}
+
+  </body>
+</project>

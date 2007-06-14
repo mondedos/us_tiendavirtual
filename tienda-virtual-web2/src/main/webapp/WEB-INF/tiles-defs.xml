@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+
+    <definition name=".mainLayout" path="/gui/layouts/mainLayout.jsp">
+        <put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="leftTop" value="/gui/categorias.jsp"/>
+        <put name="leftBottom" value="/gui/masvendidos.jsp"/>
+        <put name="right" value="/gui/common/right.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+    </definition>
+
+    <definition name=".menuLayout" path="/gui/layouts/menuLayout.jsp">
+        <put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="menu" value="/gui/common/menu.jsp"/>
+        <put name="workarea" value="/gui/listado.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+    </definition>
+
+    <definition name=".adminLayout" path="/gui/layouts/adminLayout.jsp">
+        <put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="menu" value="/gui/common/menu.jsp"/>
+        <put name="admin" value="/gui/common/admin.jsp"/>
+        <put name="workarea" value="/gui/listado.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+    </definition>
+
+    <definition name=".loginLayout" extends=".menuLayout">
+        <put name="workarea" value="/gui/common/login.jsp"/>
+    </definition>
+
+    <definition name=".listadoCategoriaLayout" extends=".mainLayout">
+        <put name="leftBottom" value="/gui/listado.jsp"/>
+    </definition>
+
+
+</tiles-definitions>
