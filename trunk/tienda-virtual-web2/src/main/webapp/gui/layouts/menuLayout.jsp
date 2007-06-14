@@ -17,6 +17,7 @@
 <tiles:insert attribute="breadcrumbs" />
 			<div id="menu">
 <tiles:insert attribute="menu" />
+<tiles:insert attribute="carrito" />
 			</div>
 			<div id="workarea">
 <tiles:insert attribute="workarea" />
