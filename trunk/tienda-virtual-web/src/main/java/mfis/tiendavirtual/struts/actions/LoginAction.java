@@ -23,7 +23,7 @@ public class LoginAction extends MyTilesAction {
 
     public String execute(WebContext c) {
 
-    	String forward = ".mainLayout";
+    	String layout = MAINPAGE;
 
     	LoginForm loginForm = (LoginForm) c.getForm();
 
@@ -37,16 +37,18 @@ public class LoginAction extends MyTilesAction {
     			//e.printStackTrace();
     		}
     		if(auth){
-    			c.setSession("idOperador", loginForm.getUsuario());
-    			System.out.println("Autenticación contra google correcta");
+    			//System.out.println("Autenticación contra google correcta");
+    			// se introduce una variable de sesión que indica que el operador está logado
+    			c.setSession("operador", loginForm.getUsuario());
+    			layout = OPERADOR;
     		} else {
     			System.out.println("Error en la autenticación contra google");
     		}
     	} else {
-    		forward = ".loginLayout";
+    		layout = LOGIN;
     	}
 
-        return forward;
+        return layout;
     }
 
 }
