@@ -25,6 +25,9 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 	background-color: #fee;
 	border-top: 1px solid #c00;
 	border-bottom: 1px solid #c00;
+	font-size: 0.9em;
+	padding: 2px 0px;
+	text-align: center;
 }
 .wrap50 {
 	height: 50px;
@@ -65,7 +68,7 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 
 }
 .menu-container ul li{
-	padding-left: 10px;
+	padding: 4px 2px;
 }
 
 .menu-container ul li a, .menu-container ul li a:hover, .menu-container ul li a:visited {
@@ -108,4 +111,21 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 .fila-submit {
 	text-align: center;
 	padding: 2px 0px;
+}
+table {
+	width: 90%;
+}
+table tr td {
+	padding-left: 10px;
+	text-align: left;
+	width: 50%;
+}
+table tr td p {
+	font-size: 0.8em;
+	padding: 1px;
+}
+table tr td p span {
+	color: #00f;
+}
+table tr td img {
 }
