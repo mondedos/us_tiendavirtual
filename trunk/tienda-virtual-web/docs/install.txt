@@ -1,9 +1,0 @@
-Para montar el proyecto solo tienes que:
-
-1. Ejecutar el archivo INTALL_JBOSSALL-CLIENT.bat desde la consola.
-2. Para generar los ficheros de proyecto para Eclipse:
-	mvn eclipse:eclipse
-	Una vez hecho esto, sólo queda importar el proyecto desde Eclipse
-3. Ejecutar el comando
-	mvn clean compile war:inplace
-	para que genere todo los ficheros necesarios para lanzar el proyecto desde el Eclipse
