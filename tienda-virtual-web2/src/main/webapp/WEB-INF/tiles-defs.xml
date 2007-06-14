@@ -20,6 +20,7 @@
         <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
         <put name="menu" value="/gui/common/menu.jsp"/>
         <put name="workarea" value="/gui/listado.jsp"/>
+        <put name="carrito" value="/gui/carrito.jsp"/>
         <put name="foot" value="/gui/common/foot.jsp"/>
     </definition>
 
@@ -34,6 +35,10 @@
 
     <definition name=".loginLayout" extends=".menuLayout">
         <put name="workarea" value="/gui/common/login.jsp"/>
+    </definition>
+
+    <definition name=".detalleLayout" extends=".menuLayout">
+        <put name="workarea" value="/gui/detalle.jsp"/>
     </definition>
 
     <definition name=".listadoCategoriaLayout" extends=".mainLayout">
