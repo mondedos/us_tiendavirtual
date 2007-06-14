@@ -1,15 +1,11 @@
 package mfis.tiendavirtual.struts.actions;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.List;
 
-import mfis.tiendavirtual.interfaces.GestionOferta;
 import mfis.tiendavirtual.interfaces.GestionProducto;
 import mfis.tiendavirtual.jndi.EJB;
-import mfis.tiendavirtual.jndi.OfertaEJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
-import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -24,12 +20,19 @@ import struts.WebContext;
 // Esta clase no se usa de momento, esta de ejemplo
 public class CategoriaAction extends MyTilesAction {
 
-	private static String[] cats = {
+	public final static String[] cats = {
 		"app.categoria.0",
 		"app.categoria.1",
 		"app.categoria.2",
 		"app.categoria.3",
 		"app.categoria.4"
+	};
+	public final static String[] imgPath = {
+		"Televisores",
+		"Lavadoras",
+		"DVD",
+		"Frigorificos",
+		"PequenosElectrodomesticos"
 	};
 
     public CategoriaAction() {
@@ -58,10 +61,10 @@ public class CategoriaAction extends MyTilesAction {
     	listadoCategorias.add(p);
 
     	*/
+		c.setRequest("idcat", idcategoria + "");
 		c.setRequest("lista", listadoCategorias);
-		c.setRequest("titulo", "Listado de " + bundle.getString(cats[idcategoria]));
-		//TODO esto es una cutreria
-		c.setRequest("urlImg", bundle.getString(cats[idcategoria]).replaceAll("Pequeños electrodomesticos","PequenosElectrodomesticos"));
+		c.setRequest("titulo", bundle.getString(cats[idcategoria]));
+		c.setRequest("urlImg", bundle.getString("app.imgpath") + imgPath[idcategoria]);
 
 		if(c.getSession("operador") != null) {
 			layout = OPERADOR;

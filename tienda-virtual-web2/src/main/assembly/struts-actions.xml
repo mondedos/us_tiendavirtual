@@ -3,3 +3,4 @@
 <action path="/categoria" type="mfis.tiendavirtual.struts.actions.CategoriaAction" scope="request" />
 <action path="/busqueda" type="mfis.tiendavirtual.struts.actions.BusquedaAction" name="busquedaFrm" scope="request" />
 <action path="/opciones" type="mfis.tiendavirtual.struts.actions.OpcionesAction" scope="request" />
+<action path="/listado" type="mfis.tiendavirtual.struts.actions.ListadoAction" scope="request" />
