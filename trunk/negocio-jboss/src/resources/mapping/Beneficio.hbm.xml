@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
+
+    <class name="Beneficio" table="Beneficio">
+       <id name="id" type="long" column="id_item" />
+       
+       <property name="ganancia" column="in_ganancia" type="integer" />
+       
+    </class>
+    
+
+</hibernate-mapping>

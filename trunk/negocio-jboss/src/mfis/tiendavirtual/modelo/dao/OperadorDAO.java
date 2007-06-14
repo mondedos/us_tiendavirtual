@@ -3,9 +3,10 @@ package mfis.tiendavirtual.modelo.dao;
 import java.util.List;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
-import java.util.ListIterator;
 import java.util.Iterator;
 import java.util.Date;
+
+import org.hibernate.Criteria;
 
 /**
  * DAO para el manejo de los operadores
@@ -16,9 +17,11 @@ import java.util.Date;
 public class OperadorDAO {
 
 	private DaoGenerico daoGenerico;
+	private BMGenerico bmGenerico;
 	
 	public OperadorDAO() {
 		daoGenerico = new DaoGenerico();
+		bmGenerico= new BMGenerico();
 	}
 	
 	/**
@@ -36,18 +39,13 @@ public class OperadorDAO {
 	 * @return el operador con el login correspondiente
 	 */
 	public Operador obtenerOperador(String login){
-		List<Operador> l = null;
-		ListIterator li = null;
-		Operador o = null;
+	
+		Operador dto= new Operador();
+		dto.setLogin(login);
+
+		Criteria criteria= bmGenerico.realizarBusqueda(dto);
+		return (Operador)criteria.uniqueResult();
 		
-		l = daoGenerico.obtenerTodos(Operador.class);
-		li = l.listIterator();
-		while (li.hasNext()) {
-			o = (Operador) li.next();
-			if (o.getLogin().matches(login)) {
-				return (o);
-			}
-		} return (o);
 	}
 
 	/**
