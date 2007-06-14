@@ -31,6 +31,7 @@ public abstract class MyTilesAction extends TilesAction {
 	public static final String MAINPAGE = ".mainLayout";
 	public static final String MENUPAGE = ".menuLayout";
 	public static final String OPERADOR = ".adminLayout";
+	public static final String PRODUCTO = ".detalleLayout";
 	public static final String LOGIN = ".loginLayout";
 	protected ResourceBundle bundle = ResourceBundle.getBundle("messages");
 
