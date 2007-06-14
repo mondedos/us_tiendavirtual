@@ -1,0 +1,5 @@
+<controller contentType="text/html;charset=UTF-8" locale="true"
+	nocache="true">
+	<set-property property="processorClass"
+		value="org.apache.struts.tiles.TilesRequestProcessor" />
+</controller>
