@@ -110,7 +110,10 @@ public class PedidosDAO {
 			
 			p.setFechaDeServicio(fecha);
 			
-			beneficioDao.actualizarBeneficio(p);
+			// Lista de productos del pedido.
+			List productosPedido = this.obtenerProductosPedido(p);
+			
+			beneficioDao.actualizarBeneficioPedido(productosPedido);
 		} else
 			throw new IllegalArgumentException("Estado del pedido no valido "
 					+ estado);
