@@ -3,6 +3,8 @@ package mfis.tiendavirtual.persitencia;
 
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.objetoNegocio.*;
+import mfis.tiendavirtual.modelo.objetoNegocio.Deprecated;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
@@ -17,7 +19,7 @@ public class PruebaMapeosTest {
 		 
 	}
 	
-	@Test
+	/*@Test
 	public void saveFrigorifico(){
 		
 		Frigorifico frigorifico = 
@@ -124,5 +126,60 @@ public class PruebaMapeosTest {
 		sesion.delete(lineaPedido2);
 		tx.commit();
 		sesion.close();
+	}*/
+	
+	@Test
+	public void saveBeneficio(){
+		
+		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();
+		
+		Beneficio beneficio = 
+			CreateObjetosNegocio.getInstance().createBeneficio();
+					
+		Session sesion = HibernateSessionFactory.crearSesion();
+		Transaction tx = sesion.beginTransaction();
+		sesion.save(dvd);
+		dvd = (Dvd)sesion.get(Dvd.class, dvd.getId());
+		tx.commit();
+		sesion.close();
+		
+		// Asignamos "id" de beneficio manualmente asociado a un producto.
+		beneficio.setId(dvd.getId());
+		
+		Session sesion1 = HibernateSessionFactory.crearSesion();
+		Transaction tx1 = sesion1.beginTransaction();
+		sesion1.save(beneficio);
+		sesion1.delete(beneficio);
+		sesion1.delete(dvd);
+		tx1.commit();
+		sesion1.close();
+	}
+	
+	
+	@Test
+	public void saveDeprecated(){
+		
+		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();
+		
+		Deprecated deprecated = 
+			CreateObjetosNegocio.getInstance().createDeprecated();
+					
+		Session sesion = HibernateSessionFactory.crearSesion();
+		Transaction tx = sesion.beginTransaction();
+		sesion.save(dvd);
+		dvd = (Dvd)sesion.get(Dvd.class, dvd.getId());
+		tx.commit();
+		sesion.close();
+		
+		// Asignamos "id" manualmente al producto que se va a descatalogar.
+		deprecated.setId(dvd.getId());
+		
+		Session sesion1 = HibernateSessionFactory.crearSesion();
+		Transaction tx1 = sesion1.beginTransaction();
+		sesion1.save(deprecated);
+		sesion1.delete(deprecated);
+		sesion1.delete(dvd);
+		tx1.commit();
+		sesion1.close();
 	}
 }
