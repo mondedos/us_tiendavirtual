@@ -35,9 +35,9 @@ public class PedidosDAOTest {
 		
 		Lavadora lavadora = CreateObjetosNegocio.getInstance()
 				.creatLavadora();
-		Televisor televisor = CreateObjetosNegocio.getInstance()
+		/*Televisor televisor = CreateObjetosNegocio.getInstance()
 				.createTelevisor();
-		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();
+		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();*/
 		
 		// Hacemos persistente los productos.
 		Session sesion = HibernateSessionFactory.crearSesion();
