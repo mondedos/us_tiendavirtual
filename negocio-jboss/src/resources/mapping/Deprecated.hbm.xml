@@ -5,7 +5,7 @@
 <hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
 
     <class name="Deprecated" table="Deprecated">
-       <id name="id" type="long" column="id_item" />
+       <id name="id" type="long" column="id_item_4" />
        
        <property name="fecha" column="fecha" type="date" />
        

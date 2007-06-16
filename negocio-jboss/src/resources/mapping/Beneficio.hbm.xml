@@ -3,13 +3,10 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="mfis.tiendavirtual.modelo.objetoNegocio">
-
     <class name="Beneficio" table="Beneficio">
-       <id name="id" type="long" column="id_item" />
+       <id name="id" type="long" column="id_item_5" />
        
        <property name="ganancia" column="in_ganancia" type="integer" />
        
     </class>
-    
-
 </hibernate-mapping>
