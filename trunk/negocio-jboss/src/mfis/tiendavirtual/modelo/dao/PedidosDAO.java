@@ -118,10 +118,21 @@ public class PedidosDAO {
 	 */
 	public List obtenerLineasPedido(Pedido p){
 		
+		// Creamos un Criteria vacio.
 		Criteria c = bmGenerico.crearCriteriaVacio(LineaPedido.class);
+		
+		/*
+		 *  Añadimos el cirterio de búsqueda 
+		 * Buscamos las líneas de pedido del pedido que se corresponden
+		 * con el "id" del pedido "p".
+		 */ 
 		bmGenerico.agregarAnd(c, "id", p.getId());
-		List lineasPedido = c.list();
+		List lineasPedido = c.list(); // Obtenemos las líneas del pedido.
 		
 		return lineasPedido;
+	}
+	
+	public List obtenerProductosPedido(Pedido p){
+		return null;
 	}
 }
