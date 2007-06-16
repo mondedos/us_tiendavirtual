@@ -149,10 +149,4 @@ public class BMGenericoTest {
 		
 		
 	}
-	
-	
-	
-	
-	
-
 }
