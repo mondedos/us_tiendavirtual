@@ -19,9 +19,11 @@ import org.hibernate.Criteria;
 public class PedidosDAO {
 
 	private static DaoGenerico daoGenerico;
+	private static BMGenerico bmGenerico;
 
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
+		bmGenerico = new BMGenerico();
 	}
 
 	/**
@@ -109,10 +111,17 @@ public class PedidosDAO {
 		daoGenerico.modificarObjeto(p);
 	}
 	
-	
-	public void obtenerLineasPedido(Pedido p){
+	/**
+	 * 
+	 * @param p Pedido
+	 * @return List con las líneas del pedido p.
+	 */
+	public List obtenerLineasPedido(Pedido p){
 		
-		BMGenerico busqueda = new BMGenerico();
-		Criteria c = busqueda.crearCriteriaVacio(Pedido.class);
+		Criteria c = bmGenerico.crearCriteriaVacio(LineaPedido.class);
+		bmGenerico.agregarAnd(c, "id", p.getId());
+		List lineasPedido = c.list();
+		
+		return lineasPedido;
 	}
 }
