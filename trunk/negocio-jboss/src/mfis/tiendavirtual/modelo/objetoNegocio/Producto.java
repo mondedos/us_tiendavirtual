@@ -9,7 +9,7 @@ public class Producto extends Item{
 	private String modelo;
 	private Float precio;
 	private String dimensiones;
-	private Float ganancia;
+	private Integer ganancia;
 	private String foto;
 	private String descripcion;
 	
@@ -50,10 +50,10 @@ public class Producto extends Item{
 		this.foto = foto;
 	}
 
-	public Float getGanancia() {
+	public Integer getGanancia() {
 		return ganancia;
 	}
-	public void setGanancia(Float ganancia) {
+	public void setGanancia(Integer ganancia) {
 		this.ganancia = ganancia;
 	}
 	
