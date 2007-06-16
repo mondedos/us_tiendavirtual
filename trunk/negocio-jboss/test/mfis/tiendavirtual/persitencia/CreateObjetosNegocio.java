@@ -2,7 +2,6 @@ package mfis.tiendavirtual.persitencia;
 
 import java.util.Date;
 
-import mfis.tiendavirtual.mocks.dao.ProductosDAO;
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
@@ -140,13 +139,6 @@ public class CreateObjetosNegocio {
 		pedido.setPrecioTotal(this.FLOAT_PRUEBA);
 		
 		return pedido;
-	}
-	
-	public Item createItem(){
-		Item item = new Item();
-		item.setReferencia(this.STRING_PRUEBA);
-		
-		return item;
 	}
 	
 	// Crea una línea de pedido asociada a un pedido y a un item.
