@@ -26,6 +26,11 @@ public class Producto extends Item{
 	}
 	
 	
+	public Float obtenerPrecio(){
+		return this.getPrecio();
+	}
+	
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
