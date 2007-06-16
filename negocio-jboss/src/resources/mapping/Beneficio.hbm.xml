@@ -6,7 +6,7 @@
     <class name="Beneficio" table="Beneficio">
        <id name="id" type="long" column="id_item_5" />
        
-       <property name="ganancia" column="in_ganancia" type="integer" />
+       <property name="ganancia" column="in_ganancia" type="float" />
        
     </class>
 </hibernate-mapping>
