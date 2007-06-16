@@ -13,6 +13,7 @@ import javax.ejb.CreateException;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.modelo.dao.Categoria;
 
 /**
  * @ejb.bean name="GestionProducto" display-name="Name for GestionProducto"
@@ -67,10 +68,10 @@ public class GestionProductoBean implements SessionBean {
 	 *
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public List listarProductosCategoria(String categoria) {
+	public List listarProductosCategoria(Categoria categoria) {
 		ProductoDao p = new ProductoDao();
 		
-		return p.listarProductoCategoria(categoria);
+		return (p.listarProductoCategoria(categoria));
 	}
 
 	/**
