@@ -4,15 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
-import mfis.tiendavirtual.modelo.dao.PedidosDAO;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
-import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
-import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
-import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
-import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
-import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
-
 
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;

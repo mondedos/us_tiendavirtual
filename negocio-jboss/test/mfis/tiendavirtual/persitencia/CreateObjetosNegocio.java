@@ -5,7 +5,6 @@ import java.util.Date;
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
-import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
