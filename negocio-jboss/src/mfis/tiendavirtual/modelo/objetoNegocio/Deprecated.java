@@ -7,7 +7,7 @@ public class Deprecated implements Serializable{
 
 	private static final long serialVersionUID = -628372451563985956L;
 	
-	private Integer id;
+	private Long id;
 	private Date fecha;
 	
 	
@@ -36,10 +36,10 @@ public class Deprecated implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
