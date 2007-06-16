@@ -34,12 +34,14 @@ public class BeneficioDAO {
 			if(beneficioActual != null){
 				ganancia = beneficioActual.getGanancia()+producto.getGanancia();
 				beneficioActual.setGanancia(ganancia);
+				daoGenerico.persistirObjeto(beneficioActual);
 			}
 			else{
 				// Nuevo beneficio.
 				nuevoBeneficio = new Beneficio();
 				nuevoBeneficio.setId(producto.getId());
 				nuevoBeneficio.setGanancia(producto.getGanancia());
+				daoGenerico.persistirObjeto(nuevoBeneficio);
 			}
 		}
 	}
