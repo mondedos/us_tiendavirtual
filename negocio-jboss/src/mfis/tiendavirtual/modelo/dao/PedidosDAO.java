@@ -5,6 +5,8 @@ import java.util.Date;
 import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+
 import java.util.List;
 import java.util.Iterator;
 
@@ -116,7 +118,7 @@ public class PedidosDAO {
 	 * @param p Pedido
 	 * @return List con las líneas del pedido p.
 	 */
-	public List obtenerLineasPedido(Pedido p){
+	public List obtenerLineasPedido(Pedido pedido){
 		
 		// Creamos un Criteria vacio.
 		Criteria criteria = bmGenerico.crearCriteriaVacio(LineaPedido.class);
@@ -126,15 +128,18 @@ public class PedidosDAO {
 		 * Buscamos las líneas de pedido del pedido que se corresponden
 		 * con el "id" del pedido "p".
 		 */ 
-		bmGenerico.agregarAnd(criteria, "id", p.getId());
+		bmGenerico.agregarAnd(criteria, "id", pedido.getId());
 		List lineasPedido = criteria.list(); // Obtenemos las líneas del pedido.
 		
 		return lineasPedido;
 	}
 	
-	public List obtenerProductosPedido(Pedido p){
+	public List obtenerProductosPedido(Pedido pedido){
 		
-		Criteria criteria;
+		// Obtenemos las líneas del pedido.
+		List lineasPedido = this.obtenerLineasPedido(pedido);
+		
+		Criteria criteria = bmGenerico.crearCriteriaVacio(Producto.class);
 		return null;
 	}
 }
