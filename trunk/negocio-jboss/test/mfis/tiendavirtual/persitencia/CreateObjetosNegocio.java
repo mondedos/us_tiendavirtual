@@ -2,6 +2,8 @@ package mfis.tiendavirtual.persitencia;
 
 import java.util.Date;
 
+import mfis.tiendavirtual.mocks.dao.ProductosDAO;
+import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
@@ -12,6 +14,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.PequenoElectrodomestico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
+import mfis.tiendavirtual.modelo.objetoNegocio.Deprecated;
 
 public class CreateObjetosNegocio {
 
@@ -156,5 +159,21 @@ public class CreateObjetosNegocio {
 		lineaPedido.setUnidades(this.INT_PRUEBA);
 		
 		return lineaPedido;
+	}
+	
+// Crea un objeto de tipo beneficio.
+	public Beneficio createBeneficio(){
+		Beneficio beneficio = new Beneficio();
+		beneficio.setGanancia(this.INT_PRUEBA);
+		
+		return beneficio;
+	}
+	
+//	 Crea un objeto de tipo deprecated.
+	public Deprecated createDeprecated(){
+		Deprecated deprecated = new Deprecated();
+		deprecated.setFecha(this.DATE_PRUEBA);
+		
+		return deprecated;
 	}
 }
