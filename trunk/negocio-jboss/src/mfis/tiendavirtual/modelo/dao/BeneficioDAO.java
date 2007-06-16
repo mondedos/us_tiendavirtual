@@ -20,7 +20,7 @@ public class BeneficioDAO {
 	public void actualizarBeneficioPedido(List<Producto> listaProducto){
 		
 		Beneficio beneficioActual, nuevoBeneficio;
-		int ganancia;
+		float ganancia;
 		
 		// Para cada producto insertar o actualizar el beneficio.
 		for(Producto producto: listaProducto){
