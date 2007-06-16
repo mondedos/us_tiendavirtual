@@ -1,7 +1,6 @@
 package mfis.tiendavirtual.modelo.dao;
 
 import java.util.List;
-
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
@@ -43,7 +42,7 @@ public class ProductoDao {
 	 * @param producto
 	 * @return identificador del producto creado
 	 */
-	public  Long agregarProducto(Producto producto){
+	public Long agregarProducto(Producto producto){
 		return daoGenerico.persistirObjeto(producto);
 		
 	}
@@ -52,7 +51,7 @@ public class ProductoDao {
 	 * Elimina un producto de la base de datos
 	 * @param producto objeto persistente
 	 */
-	public  void eliminarProducto(Producto producto){
+	public void eliminarProducto(Producto producto){
 		
 		daoGenerico.eliminarObjeto(producto);
 		
@@ -62,7 +61,7 @@ public class ProductoDao {
 	 * Elimina un producto de la base de datos
 	 * @param idProducto identificador del producto
 	 */
-	public  void eliminarProducto(Long idProducto){
+	public void eliminarProducto(Long idProducto){
 		Producto producto= daoGenerico.buscarPorId(Producto.class, idProducto.toString());
 		if(producto!=null) eliminarProducto(producto);
 		
@@ -85,18 +84,22 @@ public class ProductoDao {
 	 * @param categoria
 	 * @return
 	 */
-	public List<Producto> listarProductoCategoria(String categoria){
+	public List<Producto> listarProductoCategoria(Categoria categoria){
+		
 		List<Producto> productos= null;
 		Class clase= null;
 		
-		if(categoria.matches("DVD")) clase= Dvd.class;
-		else if(categoria.matches("Pequeños electrodomesticos")) clase= PequenoElectrodomestico.class;
-		else if(categoria.matches("Televisores")) clase= Televisor.class;
-		else if(categoria.equals("Frigorificos")) clase= Frigorifico.class;
-		else if(categoria.equals("Lavadoras")) clase= Lavadora.class;
+		if(categoria.equals(Categoria.DVD)) clase= Dvd.class;
+		else if(categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO)) clase= PequenoElectrodomestico.class;
+		else if(categoria.equals(Categoria.TELEVISOR)) clase= Televisor.class;
+		else if(categoria.equals(Categoria.FRIGORIFICO)) clase= Frigorifico.class;
+		else if(categoria.equals(Categoria.LAVADORA)) clase= Lavadora.class;
 		
 		productos= daoGenerico.obtenerTodos(clase);
 		
 		return productos;
 	}
+	
+	
+
 }
