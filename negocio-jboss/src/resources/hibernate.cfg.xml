@@ -34,6 +34,8 @@
         <mapping resource="resources/mapping/Linea_pedido.hbm.xml" />
         <mapping resource="resources/mapping/Operador.hbm.xml" />
         <mapping resource="resources/mapping/Pedido.hbm.xml" />
+        <mapping resource="resources/mapping/Beneficio.hbm.xml" />
+        <mapping resource="resources/mapping/Deprecated.hbm.xml" />
 		
     </session-factory>
    
