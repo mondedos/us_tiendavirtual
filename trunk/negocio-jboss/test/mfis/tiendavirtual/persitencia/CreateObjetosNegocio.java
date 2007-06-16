@@ -48,7 +48,7 @@ public class CreateObjetosNegocio {
 		producto.setDescripcion(this.STRING_PRUEBA);
 		producto.setDimensiones(this.STRING_PRUEBA);
 		producto.setFoto(this.STRING_PRUEBA);
-		producto.setGanancia(this.INT_PRUEBA);
+		producto.setGanancia(this.FLOAT_PRUEBA);
 		producto.setMarca(this.STRING_PRUEBA);
 		producto.setModelo(this.STRING_PRUEBA);
 		producto.setPrecio(this.FLOAT_PRUEBA);
@@ -156,7 +156,7 @@ public class CreateObjetosNegocio {
 // Crea un objeto de tipo beneficio.
 	public Beneficio createBeneficio(){
 		Beneficio beneficio = new Beneficio();
-		beneficio.setGanancia(this.INT_PRUEBA);
+		beneficio.setGanancia(this.FLOAT_PRUEBA);
 		
 		return beneficio;
 	}
