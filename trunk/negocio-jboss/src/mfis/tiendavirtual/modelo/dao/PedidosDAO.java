@@ -82,6 +82,8 @@ public class PedidosDAO {
 	 * @param fecha
 	 */
 	public void actualizarEstado(Pedido p, String estado, Date fecha) {
+		
+//		Un pedido puede cancelarse si su estado es "Placed" o "Transient".
 		if (estado.matches("Placed")) {
 			p.setFechaDeServicio(fecha);
 		} else if (estado.matches("Cancelled")) {
@@ -89,6 +91,11 @@ public class PedidosDAO {
 		} else if (estado.matches("Transient")) {
 			p.setFechaTransient(fecha);
 		} else if (estado.matches("Served")) {
+/* 		
+ * 	Una vez que el pedido ha sido servido podemos actualizar con seguridad
+ * el beneficio pues el usuario no puede cancelar el pedido.
+ */
+			
 			p.setFechaDeServicio(fecha);
 		} else
 			throw new IllegalArgumentException("Estado del pedido no valido "
