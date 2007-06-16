@@ -111,7 +111,7 @@ public class PedidosDAO {
 			p.setFechaDeServicio(fecha);
 			
 			// Lista de productos del pedido.
-			List productosPedido = this.obtenerProductosPedido(p);
+			List<Producto> productosPedido = this.obtenerProductosPedido(p);
 			
 			beneficioDao.actualizarBeneficioPedido(productosPedido);
 		} else
