@@ -19,7 +19,7 @@ public class PruebaMapeosTest {
 		 
 	}
 	
-	/*@Test
+	@Test
 	public void saveFrigorifico(){
 		
 		Frigorifico frigorifico = 
@@ -108,14 +108,14 @@ public class PruebaMapeosTest {
 	public void savePedido(){
 		
 		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
-		Item item1 = CreateObjetosNegocio.getInstance().createItem();
-		Item item2 = CreateObjetosNegocio.getInstance().createItem();
+		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
+		Televisor televisor = CreateObjetosNegocio.getInstance().createTelevisor();
 		
 		LineaPedido lineaPedido1 = 
-			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, item1);
+			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, lavadora);
 		
 		LineaPedido lineaPedido2 = 
-			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, item2);
+			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, televisor);
 		
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
@@ -126,7 +126,7 @@ public class PruebaMapeosTest {
 		sesion.delete(lineaPedido2);
 		tx.commit();
 		sesion.close();
-	}*/
+	}
 	
 	@Test
 	public void saveBeneficio(){
