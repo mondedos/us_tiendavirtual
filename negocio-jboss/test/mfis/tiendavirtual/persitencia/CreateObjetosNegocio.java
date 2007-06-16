@@ -142,11 +142,11 @@ public class CreateObjetosNegocio {
 	}
 	
 	// Crea una línea de pedido asociada a un pedido y a un item.
-	public  LineaPedido createLineaPedido(Pedido pedido, Item item){
+	public  LineaPedido createLineaPedido(Pedido pedido, Producto producto){
 		
 		LineaPedido lineaPedido = new LineaPedido();
 		lineaPedido.setPedido(pedido);
-		lineaPedido.setCompra(item);
+		lineaPedido.setCompra(producto);
 		lineaPedido.setPrecioUnidad(this.FLOAT_PRUEBA);
 		lineaPedido.setUnidades(this.INT_PRUEBA);
 		
