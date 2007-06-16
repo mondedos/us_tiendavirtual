@@ -123,22 +123,20 @@ public class GestionProductoBean implements SessionBean {
 	 *
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public List get10ProductosMasBeneficiosos() {
-		List l = new ArrayList();
+	public List get10ProductosMenosBeneficiosos() {
+		ProductoDao p = new ProductoDao();
 		
-		/* return ProductoDao.get10ProductosMasBeneficiosos(); */
-		return (l);
+		return (p.getDiezProductosBeneficios(false));
 	}
-
+	
 	/**
 	 * Business method
 	 *
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public List get10ProductosMenosBeneficiosos() {
-		List l = new ArrayList();
+	public List get10ProductosMasBeneficiosos() {
+		ProductoDao p = new ProductoDao();
 		
-		/* return ProductoDao.get10ProductosMenosBeneficiosos(); */
-		return (l);
+		return (p.getDiezProductosBeneficios(true));
 	}
 }
