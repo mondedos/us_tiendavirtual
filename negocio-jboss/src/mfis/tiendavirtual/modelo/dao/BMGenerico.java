@@ -132,7 +132,6 @@ public class BMGenerico {
 		}
 		
 		return criteria;
-		
 	}
 	
 	private Criteria realizarBusquedaOr(Object dto){
