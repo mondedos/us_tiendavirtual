@@ -21,7 +21,7 @@
 			<property name="marca" column="vc_marca" type="string" />
 			<property name="dimensiones" column="vc_dimensiones" type="string" />
 			<property name="precio" column="mo_precio" type="float" />
-			<property name="ganancia" column="in_ganancia" type="integer" />
+			<property name="ganancia" column="in_ganancia" type="float" />
 			<property name="descripcion" column="vc_descripcion" type="string" />
 			<property name="foto" column="vc_foto" type="string" />
 			
