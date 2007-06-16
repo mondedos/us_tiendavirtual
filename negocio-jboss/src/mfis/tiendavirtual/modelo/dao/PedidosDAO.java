@@ -3,10 +3,12 @@ package mfis.tiendavirtual.modelo.dao;
 import java.util.Date;
 
 import mfis.tiendavirtual.ejb.Carrito;
+import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
@@ -22,10 +24,12 @@ public class PedidosDAO {
 
 	private static DaoGenerico daoGenerico;
 	private static BMGenerico bmGenerico;
+	private static ProductoDao productoDao;
 
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
 		bmGenerico = new BMGenerico();
+		productoDao = new ProductoDao();
 	}
 
 	/**
@@ -118,7 +122,8 @@ public class PedidosDAO {
 	 * @param p Pedido
 	 * @return List con las líneas del pedido p.
 	 */
-	public List obtenerLineasPedido(Pedido pedido){
+	@SuppressWarnings("unchecked")
+	public List<LineaPedido> obtenerLineasPedido(Pedido pedido){
 		
 		// Creamos un Criteria vacio.
 		Criteria criteria = bmGenerico.crearCriteriaVacio(LineaPedido.class);
@@ -129,17 +134,34 @@ public class PedidosDAO {
 		 * con el "id" del pedido "p".
 		 */ 
 		bmGenerico.agregarAnd(criteria, "id", pedido.getId());
-		List lineasPedido = criteria.list(); // Obtenemos las líneas del pedido.
+		List<LineaPedido> lineasPedido = criteria.list(); // Obtenemos las líneas del pedido.
 		
 		return lineasPedido;
 	}
 	
-	public List obtenerProductosPedido(Pedido pedido){
+	/**
+	 * 
+	 * @param pedido
+	 * @return Lista con los productos del pedido.
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Producto> obtenerProductosPedido(Pedido pedido){
 		
 		// Obtenemos las líneas del pedido.
-		List lineasPedido = this.obtenerLineasPedido(pedido);
+		List<LineaPedido> lineasPedido = this.obtenerLineasPedido(pedido);
 		
-		Criteria criteria = bmGenerico.crearCriteriaVacio(Producto.class);
-		return null;
+		List<Producto> productosPedido = new ArrayList();
+		Item item;
+		Producto producto;
+		
+		for(LineaPedido lineaPedido: lineasPedido){
+			
+			// Obtenemos el "Item" correspondiente
+			item = lineaPedido.getCompra();
+			producto = productoDao.obtenerProductoPorId(item.getId());
+			productosPedido.add(producto);
+		}
+		
+		return productosPedido;
 	}
 }
