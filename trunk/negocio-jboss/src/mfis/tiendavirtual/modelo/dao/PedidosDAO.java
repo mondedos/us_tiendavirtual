@@ -8,6 +8,8 @@ import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import java.util.List;
 import java.util.Iterator;
 
+import org.hibernate.Criteria;
+
 /**
  * DAO para el manejo de los pedidos
  * 
@@ -97,10 +99,20 @@ public class PedidosDAO {
  */
 			
 			p.setFechaDeServicio(fecha);
+			
+			BeneficioDAO benefDao = new BeneficioDAO();
+			benefDao.actualizarBeneficio(p);
 		} else
 			throw new IllegalArgumentException("Estado del pedido no valido "
 					+ estado);
 
 		daoGenerico.modificarObjeto(p);
+	}
+	
+	
+	public void obtenerLineasPedido(Pedido p){
+		
+		BMGenerico busqueda = new BMGenerico();
+		Criteria c = busqueda.crearCriteriaVacio(Pedido.class);
 	}
 }
