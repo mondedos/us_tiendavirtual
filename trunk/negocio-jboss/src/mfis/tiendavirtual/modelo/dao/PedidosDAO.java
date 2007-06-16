@@ -88,9 +88,12 @@ public class PedidosDAO {
 			p.setFechaCancelacion(fecha);
 		} else if (estado.matches("Transient")) {
 			p.setFechaTransient(fecha);
-		} else {
+		} else if (estado.matches("Served")) {
 			p.setFechaDeServicio(fecha);
-		}
+		} else
+			throw new IllegalArgumentException("Estado del pedido no valido "
+					+ estado);
+
 		daoGenerico.modificarObjeto(p);
 	}
 }
