@@ -25,11 +25,13 @@ public class PedidosDAO {
 	private static DaoGenerico daoGenerico;
 	private static BMGenerico bmGenerico;
 	private static ProductoDao productoDao;
+	private static BeneficioDAO beneficioDao;
 
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
 		bmGenerico = new BMGenerico();
 		productoDao = new ProductoDao();
+		beneficioDao = new BeneficioDAO();
 	}
 
 	/**
@@ -108,8 +110,7 @@ public class PedidosDAO {
 			
 			p.setFechaDeServicio(fecha);
 			
-			BeneficioDAO benefDao = new BeneficioDAO();
-			benefDao.actualizarBeneficio(p);
+			beneficioDao.actualizarBeneficio(p);
 		} else
 			throw new IllegalArgumentException("Estado del pedido no valido "
 					+ estado);
