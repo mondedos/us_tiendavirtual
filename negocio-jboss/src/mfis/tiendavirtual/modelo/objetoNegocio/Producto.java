@@ -2,7 +2,7 @@ package mfis.tiendavirtual.modelo.objetoNegocio;
 
 
 
-public class Producto extends Item{
+public class Producto extends Item {
 	private static final long serialVersionUID = -5095001429299706684L;
 	
 	private String marca;
