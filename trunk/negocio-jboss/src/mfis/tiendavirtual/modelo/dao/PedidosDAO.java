@@ -121,6 +121,7 @@ public class PedidosDAO {
 		daoGenerico.modificarObjeto(p);
 	}
 	
+	
 	/**
 	 * 
 	 * @param p Pedido
@@ -137,7 +138,7 @@ public class PedidosDAO {
 		 * Buscamos las líneas de pedido del pedido que se corresponden
 		 * con el "id" del pedido "p".
 		 */ 
-		bmGenerico.agregarAnd(criteria, "id", pedido.getId());
+		bmGenerico.agregarAnd(criteria, "pedido", pedido);
 		List<LineaPedido> lineasPedido = criteria.list(); // Obtenemos las líneas del pedido.
 		
 		return lineasPedido;
