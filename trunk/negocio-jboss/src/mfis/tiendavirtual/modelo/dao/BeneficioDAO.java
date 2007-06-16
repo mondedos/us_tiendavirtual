@@ -30,12 +30,11 @@ public class BeneficioDAO {
 			// Obtenemos la ganacia actual en porcentajes.
 			gananciaActual = producto.getGanancia();
 			
-			nuevaGanancia = (producto.getGanancia()*producto.getPrecio())/100;
+			nuevaGanancia = (gananciaActual*producto.getPrecio())/100;
 			
 			// Obtenemos el beneficio actual.
 			beneficioActual = daoGenerico.buscarPorId(Beneficio.class, 
 					producto.getId());
-			
 			
 			// Ya existe el objeto beneficio.
 			if(beneficioActual != null){
