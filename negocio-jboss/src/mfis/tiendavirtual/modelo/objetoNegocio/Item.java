@@ -2,7 +2,7 @@ package mfis.tiendavirtual.modelo.objetoNegocio;
 
 import java.io.Serializable;
 
-public class Item implements Serializable{
+public abstract class Item implements Serializable{
 	private static final long serialVersionUID = 3637806027003634918L;
 	
 	private Long id;	
@@ -24,6 +24,14 @@ public class Item implements Serializable{
 		if(this.getId()==null) return System.identityHashCode(this);
 		else return this.getId().hashCode();
 	}
+	
+	
+	/**
+	 * Obtiene el precio de un determinado Item
+	 * Aplicacion del patron double dispatch
+	 * @return precio del item
+	 */
+	public abstract Float obtenerPrecio();
 
 
 	public Long getId() {
