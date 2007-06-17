@@ -18,8 +18,7 @@
 	    
     	<many-to-one 
     		name="operador" column="id_operador" 
-    		class="Operador" lazy="false" cascade="all"/>
-	   
+    		class="Operador" lazy="false" cascade="none"/>
 	</class>
 
 </hibernate-mapping>

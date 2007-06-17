@@ -10,6 +10,4 @@
        <property name="fecha" column="fecha" type="date" />
        
     </class>
-    
-
 </hibernate-mapping>
