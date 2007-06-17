@@ -34,7 +34,7 @@ public class PedidosDAOTest {
 		Operador operador = pedido.getOperador();
 		
 		Lavadora lavadora = CreateObjetosNegocio.getInstance()
-				.creatLavadora();
+				.createLavadora();
 		
 		Televisor televisor = CreateObjetosNegocio.getInstance()
 				.createTelevisor();
