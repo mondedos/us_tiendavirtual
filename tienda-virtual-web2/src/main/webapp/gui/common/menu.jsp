@@ -4,11 +4,11 @@
 				<h3><bean:message key="app.categoria"/></h3>
 				<div class="menu-container">
 					<ul>
-						<li><a href="categoria.do?categoria=0"><bean:message key="app.categoria.0"/></a> </li>
-						<li><a href="categoria.do?categoria=1"><bean:message key="app.categoria.1"/></a> </li>
-						<li><a href="categoria.do?categoria=2"><bean:message key="app.categoria.2"/></a> </li>
-						<li><a href="categoria.do?categoria=3"><bean:message key="app.categoria.3"/></a> </li>
-						<li><a href="categoria.do?categoria=4"><bean:message key="app.categoria.4"/></a> </li>
+						<li><a href="categoria.do?idcat=0"><bean:message key="app.categoria.0"/></a> </li>
+						<li><a href="categoria.do?idcat=1"><bean:message key="app.categoria.1"/></a> </li>
+						<li><a href="categoria.do?idcat=2"><bean:message key="app.categoria.2"/></a> </li>
+						<li><a href="categoria.do?idcat=3"><bean:message key="app.categoria.3"/></a> </li>
+						<li><a href="categoria.do?idcat=4"><bean:message key="app.categoria.4"/></a> </li>
 					</ul>
 				</div>
 			</div>
