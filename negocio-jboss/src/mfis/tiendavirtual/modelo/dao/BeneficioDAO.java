@@ -43,7 +43,7 @@ public class BeneficioDAO {
 				
 				// Actualizamos el beneficio acumulado.
 				beneficioActual.setGanancia(nuevaGanancia);
-				daoGenerico.persistirObjeto(beneficioActual);
+				daoGenerico.modificarObjeto(beneficioActual);
 			}
 			else{
 				// Nuevo beneficio.
