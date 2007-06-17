@@ -276,7 +276,7 @@ public class BMGenerico {
 		return (HibernateSessionFactory.crearSesion().createCriteria(clase));
 	}
 
-	public void agregarCadenaOr(Criteria c, String string, Object object) {
+	public void agregarMarcaOr (Criteria c, List <String> string) {
 		// TODO Auto-generated method stub
 
 	}
