@@ -7,11 +7,4 @@
 					<p>Televisor 43"</p>
 				</div>
 			</div>
-			<div id="otras-ofertas">
-				<h3>Otras ofertas</h3>
-				<div class="mini-container">
-
-
-				</div>
-			</div>
 		</div>
