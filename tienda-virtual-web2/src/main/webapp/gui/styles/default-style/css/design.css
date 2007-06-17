@@ -1,8 +1,11 @@
 body {
 	font-family: Arial, Verdana, Sans serif;
 	font-size: 1em;
+	background-image:url("backgrounds20_files/OneFieldFlower.jpg");
+	background-repeat:repeat-y;
+	background-position:top center;
+	background-attachment:fixed
 }
-
 h1 { font-size: 1.5em;	padding: 10px 15px 0px 15px; }
 h2 { font-size: 1.1em; 	padding: 0px 15px 10px 15px; }
 h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
@@ -116,6 +119,7 @@ table {
 	width: 90%;
 }
 table tr td {
+	vertical-align: top;
 	padding-left: 10px;
 	text-align: left;
 	width: 50%;
@@ -128,4 +132,50 @@ table tr td p span {
 	color: #00f;
 }
 table tr td img {
+	width: 200px;
+	height: 150px;
+	border: 5px solid #c66;
+}
+
+input.minienlace {
+	border: 0px;
+	background-color: transparent;
+	cursor: pointer;
+	width: 100px;
+}
+img.minienlace{
+	width: 20px;
+	height: 19px;
+	border: 0;
+	vertical-align: top;
+}
+
+hr {
+	border-top: 1px dotted #c66;
+	border-bottom: 1px dotted #c66;
+	border-left: 0px;	border-right: 0px;
+	height: 4px;
+}
+
+#carrito .menu-container {
+	background-image:url('../img/carrito.gif');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+table.carrito {
+	text-align: left;
+}
+table.carrito tr th {
+	width: 20%;
+	font-weight: bold;
+}
+table.carrito tr td {
+	width: 20%;
+}
+table.carrito tbody tr td {
+	border-top: 1px solid #c00;
+}
+table.carrito tfoot tr td {
+	border-top: 3px solid #c00;
 }
