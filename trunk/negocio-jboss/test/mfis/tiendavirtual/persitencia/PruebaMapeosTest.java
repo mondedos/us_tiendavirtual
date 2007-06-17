@@ -32,7 +32,7 @@ public class PruebaMapeosTest {
 	@Test
 	public void saveLavadora() {
 
-		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
+		Lavadora lavadora = CreateObjetosNegocio.getInstance().createLavadora();
 
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
@@ -102,7 +102,7 @@ public class PruebaMapeosTest {
 		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
 		Operador operador = pedido.getOperador();
 
-		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
+		Lavadora lavadora = CreateObjetosNegocio.getInstance().createLavadora();
 		Televisor televisor = CreateObjetosNegocio.getInstance()
 				.createTelevisor();
 
