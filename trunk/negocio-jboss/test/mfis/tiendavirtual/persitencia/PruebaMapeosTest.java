@@ -145,7 +145,6 @@ public class PruebaMapeosTest {
 		tx2.commit();
 		sesion2.close();
 		
-		
 		Session sesion3 = HibernateSessionFactory.crearSesion();
 		Transaction tx3 = sesion3.beginTransaction();
 		
