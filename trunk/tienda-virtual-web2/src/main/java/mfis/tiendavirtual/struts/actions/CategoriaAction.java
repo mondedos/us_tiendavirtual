@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import mfis.tiendavirtual.interfaces.GestionProducto;
+import mfis.tiendavirtual.modelo.dao.Categoria;
 import mfis.tiendavirtual.jndi.EJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
 import struts.MyTilesAction;
@@ -34,6 +35,22 @@ public class CategoriaAction extends MyTilesAction {
 		"Frigorificos",
 		"PequenosElectrodomesticos"
 	};
+	
+	
+	public static Categoria obtenerCategoria(int idCategoria){
+		Categoria categoria= null;
+		
+		switch(idCategoria){
+    		case 0: categoria= Categoria.TELEVISOR; break;
+    		case 1: categoria= Categoria.LAVADORA; break;
+    		case 2: categoria= Categoria.DVD; break;
+    		case 3: categoria= Categoria.FRIGORIFICO; break;
+    		case 4: categoria= Categoria.PEQUENIO_ELECTRODOMESTICO; break;
+		}
+		
+		return categoria;
+		
+	}
 
     public CategoriaAction() {
     }
@@ -45,12 +62,11 @@ public class CategoriaAction extends MyTilesAction {
     	List listadoCategorias = null;
 
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
-    	//TODO en pruebas
+
     	try {
-    		listadoCategorias = gp.listarProductosCategoria(bundle.getString(cats[idcategoria]));
+    		listadoCategorias = gp.listarProductosCategoria(obtenerCategoria(idcategoria));
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 /*
     	listadoCategorias = new ArrayList();

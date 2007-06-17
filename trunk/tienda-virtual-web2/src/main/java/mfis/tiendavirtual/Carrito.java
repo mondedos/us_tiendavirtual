@@ -42,16 +42,16 @@ public class Carrito implements Serializable {
 			lineasPedido = new ArrayList();
 		}
 		lineasPedido.add(lp);
-		Float totalNoIva = Float.parseFloat(this.totalSinIVA);
-		this.totalSinIVA = "" + (totalNoIva.floatValue() + precio.floatValue());
-		this.totalConIVA = "" + ((totalNoIva.floatValue() + precio.floatValue()) * 1.16f);
+		float totalNoIva = Float.parseFloat(this.totalSinIVA);
+		this.totalSinIVA = "" + (totalNoIva + precio.floatValue());
+		this.totalConIVA = "" + ((totalNoIva + precio.floatValue()) * 1.16f);
 	}
 	public void removeLineaPedido(int id) {
 		Producto p = (Producto) ((LineaPedido) lineasPedido.get(id)).getCompra();
 		lineasPedido.remove(id);
-		Float totalNoIva = Float.parseFloat(this.totalSinIVA);
-		this.totalSinIVA = "" + (totalNoIva.floatValue() - p.getPrecio().floatValue());
-		this.totalConIVA = "" + ((totalNoIva.floatValue() + p.getPrecio().floatValue()) * 1.16f);
+		float totalNoIva = Float.parseFloat(this.totalSinIVA);
+		this.totalSinIVA = "" + (totalNoIva - p.getPrecio().floatValue());
+		this.totalConIVA = "" + ((totalNoIva + p.getPrecio().floatValue()) * 1.16f);
 
 
 	}
