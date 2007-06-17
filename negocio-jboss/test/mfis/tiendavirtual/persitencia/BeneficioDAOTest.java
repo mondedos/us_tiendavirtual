@@ -42,7 +42,7 @@ public class BeneficioDAOTest {
 		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
 		Operador operador = pedido.getOperador();
 
-		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
+		Lavadora lavadora = CreateObjetosNegocio.getInstance().createLavadora();
 		Televisor televisor = CreateObjetosNegocio.getInstance()
 				.createTelevisor();
 		
