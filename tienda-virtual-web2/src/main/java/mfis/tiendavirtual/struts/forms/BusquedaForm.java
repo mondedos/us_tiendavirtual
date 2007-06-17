@@ -8,22 +8,16 @@ import org.apache.struts.action.ActionForm;
  *
  */
 public class BusquedaForm extends ActionForm {
-	/**
-	 *
-	 */
+	
+	private static final long serialVersionUID = -3969146354667840299L;
+	
 
 	private String categoria;
 	private String marca;
-	private String avanzada;
 	private String min;
 	private String max;
 
-	public String getAvanzada() {
-		return avanzada;
-	}
-	public void setAvanzada(String avanzada) {
-		this.avanzada = avanzada;
-	}
+	
 	public String getCategoria() {
 		return categoria;
 	}

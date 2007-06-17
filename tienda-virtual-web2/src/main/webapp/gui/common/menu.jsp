@@ -12,48 +12,47 @@
 					</ul>
 				</div>
 			</div>
-			<div id="busqueda">
-				<h3><bean:message key="app.categoria.0"/></h3>
-				<div class="menu-container">
-					<div class="fila-buscador">
-						<label for="sel_categoria"><bean:message key="app.busqueda.0"/></label><br/>
-						<select name="sel_categoria" id="sel_categoria">
-							<option>Televisores</option>
-							<option>Lavadoras</option>
-							<option>Videos/DVD</option>
-							<option>Frigoríficos</option>
-							<option>Pequeños electrodomésticos</option>
-						</select>
+			
+			<html:form action="busqueda.do">
+				<div id="busqueda">
+					<h3>Búsqueda</h3>
+					<div class="menu-container">
+						<div class="fila-buscador">
+							<label for="categoria">Categoria</label><br/>
+							<html:select property="categoria">
+								<html:option value=""></html:option>
+								<html:option value="0">Televisores</html:option>
+								<html:option value="1">Lavadoras</html:option>
+								<html:option value="2">Videos/DVD</html:option>
+								<html:option value="3">Frigoríficos</html:option>
+								<html:option value="4">Pequeños electrodomésticos</html:option>
+							</html:select>
+						</div>
+						<div class="fila-buscador">
+							<label for="marca">Marca</label>
+							<html:text property="marca"></html:text>
+						</div>
+						<div class="fila-buscador">
+							<label for="chk_avanzada" >
+								<bean:message key="app.busqueda.2"/>
+								<input class="checkbox" type="checkbox" id="chk_avanzada" name="chk_avanzada" onclick="div=document.getElementById('avanzada'); if(div.style.display=='block') div.style.display='none'; else div.style.display='block'"/>
+							</label>
+						</div>
+						<div id="avanzada" class="fila-buscador nodisplay">
+							<div style="text-align: left;">
+							Buscar por precios <br><br>
+							
+							<label for="min">Precio mínimo</label>
+								<html:text property="min"> &euro; </html:text><br>
+							
+							<label for="max">Precio máximo</label>
+								<html:text property="max"> &euro; </html:text><br>
+								
+						</div></div>
+						<br>
+						<div class="fila-submit">
+							<html:submit property="buscar" styleId="enviar">Buscar</html:submit>
+						</div>
 					</div>
-					<div class="fila-buscador">
-						<label for="txt_marca"><bean:message key="app.busqueda.1"/></label>
-						<input type="text" id="txt_marca" name="txt_marca" />
-					</div>
-					<div class="fila-buscador">
-						<label for="chk_avanzada" >
-							<bean:message key="app.busqueda.2"/>
-							<input class="checkbox" type="checkbox" id="chk_avanzada" name="chk_avanzada" onclick="div=document.getElementById('avanzada'); if(div.style.display=='block') div.style.display='none'; else div.style.display='block'"/>
-						</label>
-					</div>
-					<div id="avanzada" class="fila-buscador nodisplay">
-						<div style="text-align: left;"><bean:message key="app.busqueda.3"/></div>
-						<label for="txt_min"><bean:message key="app.busqueda.4"/></label>
-						<input type="text" id="txt_min" name="txt_min" /> &euro;
-						<label for="txt_max"><bean:message key="app.busqueda.5"/></label>
-						<input type="text" id="txt_max" name="txt_max" /> &euro;
-					</div>
-					<noscript>
-					<div id="avanzada" class="fila-buscador">
-						<div style="text-align: left;"><bean:message key="app.busqueda.3"/></div>
-						<label for="txt_min"><bean:message key="app.busqueda.4"/></label>
-						<input type="text" id="txt_min" name="txt_min" /> &euro;
-						<label for="txt_max"><bean:message key="app.busqueda.5"/></label>
-						<input type="text" id="txt_max" name="txt_max" /> &euro;
-					</div>
-					</noscript>
-
-					<div class="fila-submit">
-						<input class="boton" type="submit" name="Buscar" value="Buscar"/>
-					</div>
-				</div>
+				</html:form>
 			</div>
