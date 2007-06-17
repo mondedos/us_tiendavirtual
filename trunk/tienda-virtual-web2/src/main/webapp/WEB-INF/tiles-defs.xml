@@ -45,5 +45,9 @@
         <put name="leftBottom" value="/gui/listado.jsp"/>
     </definition>
 
+    <definition name=".compraLayout" extends=".menuLayout">
+        <put name="workarea" value="/gui/compra.jsp"/>
+    </definition>
+
 
 </tiles-definitions>
