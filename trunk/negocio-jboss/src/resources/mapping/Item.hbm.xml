@@ -65,10 +65,10 @@
 		<!-- Subclase Oferta -->
 		<joined-subclass name="Oferta" table="oferta">
 			<key column="id_item_2" />
-			<many-to-one name="principal" column="producto_a"
-				class="Producto" lazy="false" cascade="all"/>
-			<many-to-one name="secundario" column="producto_b"
-				class="Producto" lazy="false" cascade="all"/>
+			<many-to-one name="principal" column="id_item_3"
+				class="Producto" lazy="false" cascade="none"/>
+			<many-to-one name="secundario" column="pro_id_item_3"
+				class="Producto" lazy="false" cascade="none"/>
 		</joined-subclass>
 		
 	</class>

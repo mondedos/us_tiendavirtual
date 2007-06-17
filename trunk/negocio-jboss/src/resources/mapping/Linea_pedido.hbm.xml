@@ -16,11 +16,9 @@
         <property name="precioUnidad" column="mo_precio_unidad" type="float"/>
         <many-to-one 
         	name="compra" column="id_item" 
-        	class="Item" lazy="false" cascade="all"/>
+        	class="Item" lazy="false" cascade="none"/>
        	<many-to-one 
        		name="pedido" column="id_pedido" 
-       		class="Pedido" lazy="false" cascade="all"/>
+       		class="Pedido" lazy="false" cascade="none"/>
     </class>
-    
-
 </hibernate-mapping>
