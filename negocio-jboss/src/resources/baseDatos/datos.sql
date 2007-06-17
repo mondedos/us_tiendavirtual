@@ -1,3 +1,7 @@
+﻿INSERT INTO `identificadorHibernate`(`PRIMARY_KEY`, `GENERADOR_ITEM`, `GENERADOR_LP`, `GENERADOR_OPERADOR`, `GENERADOR_PEDIDO`) VALUES
+(0,1,1,1,1);
+
+
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
 INSERT INTO `item` (`ID_ITEM`,`VC_REFERENCIA`) VALUES 
  (1,'ref1'),
@@ -33,41 +37,48 @@ INSERT INTO `item` (`ID_ITEM`,`VC_REFERENCIA`) VALUES
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 
 
+--
+-- Dumping data for table `producto`
+--
 
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (1,'Sony','KV14CT1','Alto 80 cm - Ancho 70 cm',215.00,0,'Televisor pequeño, compacto y mono.','Televisor/Sony_KV_14_CT1.jpg'),
- (2,'Fagor','F 2810','Alto 85 cm - Ancho 59 cm',439.00,0,'Lavadora con carga frontal, cuba de acero inoxidable con una capacidad 8kg.','Lavadora/Fagor_F_2810.jpg'),
- (3,'Fagor','3FC 67 NFXD','Alto 185 cm - Ancho 60 cm',699.00,0,'Frigorifico de gran capacidad, con controles de firgorifico y congelador separados','Frigorifico/Fagor_3FC_67_NFXD.jpg'),
- (4,'Zanussi','ZNB 34 NDX','Alto 185 cm - Ancho 60 cm',456.00,0,'Figrorifico con ventilador interno para distribuir el frio, puerta de acero inoxidable y bandejas de cristal.','Frigorifico/Zanussi_ZNB_34_NDX.jpg'),
- (5,'Bosch','KGU 34175 EU','Alto 186 cm - Ancho 60 cm',465.00,0,'Frigorifico con dos motores, de acero inoxidable y bandejas de cristal.','Frigorifico/Bosch_KGU_34175_EU.jpg'),
- (6,'Bosch','KGU 44170 eu','Alto 201cm - Ancho 70cm',1081.58,0,'Frigorifico de acero inoxidable con dos motores y controles frigorifico-congelador separados.','Frigorifico/Bosch_KGU_44170_EU');
+ (1,'Sony','KV14CT1','Alto 80 cm - Ancho 70 cm',215.00,0,'Televisor pequeño, compacto y mono.','Sony_KV_14_CT1.jpg'),
+ (2,'Fagor','F 2810','Alto 85 cm - Ancho 59 cm',439.00,0,'Lavadora con carga frontal, cuba de acero inoxidable con una capacidad 8kg.','Fagor_F_2810.jpg'),
+ (3,'Fagor','3FC 67 NFXD','Alto 185 cm - Ancho 60 cm',699.00,0,'Frigorifico de gran capacidad, con controles de firgorifico y congelador separados','Fagor_3FC_67_NFXD.jpg'),
+ (4,'Zanussi','ZNB 34 NDX','Alto 185 cm - Ancho 60 cm',456.00,0,'Figrorifico con ventilador interno para distribuir el frio, puerta de acero inoxidable y bandejas de cristal.','Zanussi_ZNB_34_NDX.jpg'),
+ (5,'Bosch','KGU 34175 EU','Alto 186 cm - Ancho 60 cm',465.00,0,'Frigorifico con dos motores, de acero inoxidable y bandejas de cristal.','Bosch_KGU_34175_EU.jpg'),
+ (6,'Bosch','KGU 44170 eu','Alto 201cm - Ancho 70cm',1081.58,0,'Frigorifico de acero inoxidable con dos motores y controles frigorifico-congelador separados.','Bosch_KGU_44170_EU'),
+ (7,'Philips','21 PT 5402','Alto 30 cm - Ancho 40 cm',179.52,0,'Televisor con gran calidad de imagen, compacto, estereo y con teletexto.','Philips_21_PT_5402.jpg');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (7,'Philips','21 PT 5402','Alto 30 cm - Ancho 40 cm',179.52,0,'Televisor con gran calidad de imagen, compacto, estereo y con teletexto.','Televisor/Philips_21_PT_5402.jpg'),
- (8,'Philips','29 PT 5458','Alto 50 cm - Ancho 60 cm',499.00,0,'Televisor con gran calidad de imagen y sonido, estereo y con teletexto.','Televisor/Philips_29_PT_5458.jpg'),
- (9,'Panasonic','TX-26 LXD 65 F','Alto 90 cm - Ancho 110 cm',824.53,0,'Televisor con sonido envolvente, programable y pantalla LCD.','Televisor/Panasonic_TX_26_LXD_65_F.jpg'),
- (10,'Panasonic','TX-26LX60F','Alto 95 cm - Ancho 110 cm',895.00,0,'Televisor con pantalla LCD con gran calidad de imagen y sonido envolvente.','Televisor/Panasonic_TX_26LX60F.jpg'),
- (11,'Zanussi','ZWG-3125','Alto 85 cm - Ancho 60 cm',349.00,0,'Lavadora con sistema antidesbordamiento, carga frontal y cuba de plastico de 6 kg de capacidad.','Lavadora/Zanussi_ZWG_3125.jpg'),
- (12,'Fagor','F2812','Alto 85 cm - Ancho 59 cm',499.00,0,'Lavadora con cuba de acero inosidable y con 8 kg de carga.','Lavadora/Fagor_F_2812.jpg');
+ (8,'Philips','29 PT 5458','Alto 50 cm - Ancho 60 cm',499.00,0,'Televisor con gran calidad de imagen y sonido, estereo y con teletexto.','Philips_29_PT_5458.jpg'),
+ (9,'Panasonic','TX-26 LXD 65 F','Alto 90 cm - Ancho 110 cm',824.53,0,'Televisor con sonido envolvente, programable y pantalla LCD.','Panasonic_TX_26_LXD_65_F.jpg'),
+ (10,'Panasonic','TX-26LX60F','Alto 95 cm - Ancho 110 cm',895.00,0,'Televisor con pantalla LCD con gran calidad de imagen y sonido envolvente.','Panasonic_TX_26LX60F.jpg'),
+ (11,'Zanussi','ZWG-3125','Alto 85 cm - Ancho 60 cm',349.00,0,'Lavadora con sistema antidesbordamiento, carga frontal y cuba de plastico de 6 kg de capacidad.','Zanussi_ZWG_3125.jpg'),
+ (12,'Fagor','F2812','Alto 85 cm - Ancho 59 cm',499.00,0,'Lavadora con cuba de acero inosidable y con 8 kg de carga.','Fagor_F_2812.jpg'),
+ (13,'Whirlpool','FL-5085','Alto 85 cm - Ancho 60 cm',380.50,0,'Lavadora de carga frontal con una capacidad de 5 kg.','Whirlpool_FL_5085.jpg'),
+ (14,'Whirlpool','AWM-7106','Alto 85 cm - Ancho 60 cm',320.75,0,'Lavadora con cuba de plástico de 5 kg de capacidad y carga frontal.','Whirlpool_AWM_7106.jpg');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (13,'Whirlpool','FL-5085','Alto 85 cm - Ancho 60 cm',380.50,0,'Lavadora de carga frontal con una capacidad de 5 kg.','Lavadora/Whirlpool_FL_5085.jpg'),
- (14,'Whirlpool','AWM-7106','Alto 85 cm - Ancho 60 cm',320.75,0,'Lavadora con cuba de plástico de 5 kg de capacidad y carga frontal.','Lavadora/Whirlpool_AWM_7106.jpg'),
- (15,'Panasonic','DVD-LS91','Altura 2.03 in-Ancho 9.28 in-Profundidad 7.28',194.99,0,'Esta impresionante pantalla de 9\" en este reproductor de DVD portátil es ideal para películas en el asiento trasero durante un viaje largo. La entrada dual para audífonos permite que dos personas oigan simultáneamente.','Dvd/Panasonic DVD-LS91.jpg'),
- (16,'Philips','HR-2094','Altura 20 cm',86.20,0,'Pequeña batidora','PequenosElectrodomesticos/Philips_HR_2094__550219.jpg'),
- (21,'Taurus','BAPI 600 IX','Tamaño 18 cm ',28.59,0,'Pequeña batidora.','PequenosElectrodomesticos/Taurus_BAPI_600_IX.jpg'),
- (22,'Solac','T-222 O2 07798.1','Alto 9 cm - Ancho 34 cm.',23.43,0,'Tostadora','PequenosElectrodomesticos/Solac_T_222_O2_077981.jpg');
+ (15,'Panasonic','DVD-LS91','Altura 2.03 in-Ancho 9.28 in-Profundidad 7.28',194.99,0,'Esta impresionante pantalla de 9\" en este reproductor de DVD portátil es ideal para películas en el asiento trasero durante un viaje largo. La entrada dual para audífonos permite que dos personas oigan simultáneamente.','Panasonic DVD-LS91.jpg'),
+ (16,'Philips','HR-2094','Altura 20 cm',86.20,0,'Pequeña batidora','Philips_HR_2094__550219.jpg'),
+ (21,'Taurus','BAPI 600 IX','Tamaño 18 cm ',28.59,0,'Pequeña batidora.','Taurus_BAPI_600_IX.jpg'),
+ (22,'Solac','T-222 O2 07798.1','Alto 9 cm - Ancho 34 cm.',23.43,0,'Tostadora','Solac_T_222_O2_077981.jpg'),
+ (23,'Serverin','AT-2201','Alto 10 cm - Ancho 37 cm',40.12,0,'Tostadora','Severin_AT_2201.jpg'),
+ (24,'Fagor','TP-1110','Alto 4 cm - Ancho 20 cm',35.60,0,'Tostadora','Fagor_TP_1110.jpg'),
+ (25,'Kenwood','JE 700','Altura 24 cm',228.00,0,'Licuadora','Kenwood_JE_700.jpg'),
+ (26,'Samsung','DVD-VR357','Altura 3 cm - Anchura 32 cm',174.54,0,'Esta versátil unidad reproduce tanto discos DVD con casetes VHS, entregando imágenes claras y con una calidad de sonido alta. El Samsung DVD-VR357 incluye una video casetera de 4 cabezas Hi-Fi con la claridad visual de una salida Progressive scan.','DVDVR375.jpg');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (23,'Serverin','AT-2201','Alto 10 cm - Ancho 37 cm',40.12,0,'Tostadora','PequenosElectrodomesticos/Severin_AT_2201.jpg'),
- (24,'Fagor','TP-1110','Alto 4 cm - Ancho 20 cm',35.60,0,'Tostadora','PequenosElectrodomesticos/Fagor_TP_1110.jpg'),
- (25,'Kenwood','JE 700','Altura 24 cm',228.00,0,'Licuadora','PequenosElectrodomesticos/Kenwood_JE_700.jpg'),
- (26,'Samsung','DVD-VR357','Altura 3 cm - Anchura 32 cm',174.54,0,'Esta versátil unidad reproduce tanto discos DVD con casetes VHS, entregando imágenes claras y con una calidad de sonido alta. El Samsung DVD-VR357 incluye una video casetera de 4 cabezas Hi-Fi con la claridad visual de una salida Progressive scan.','Dvd/DVDVR375.jpg'),
- (27,'Samsung','DVD-HD870','Altura 3 cm- Anchura 28 cm',185.90,0,'El reproductor de DVD de Samsung mejora la señal (1080i/720P) con una salida HDMI, 14 bit DAC y reproducción de WMA/MP3.','Dvd/DVD-HD870.jpg'),
- (28,'Coby','DVD-224','Altura 3 cm - Anchura 31 cm',45.60,0,'Supera tu sistema home theater con el reproductor de alto desempeño de Coby DVD-224 DVD. Con un diseño delgado, contiene la tecnología Progressive Scan para la mejor imagen posible. Reproduce tus formatos de discos favoritos incluyendo MP3 para una versatilidad óptima. El acabado plateado hace que complemente cualquier decoración fácilmente.','Dvd/DVD224.jpg');
-INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (29,'Denon','DVD-3930CI','Altura 4 cm - Anchura 33 cm',156.87,0,'Denon\'s rock-solid DVD-3930CI produces a vivid picture that\'s faithful in every detail. It sports extremely advanced video and audio processing, including the professional-grade Realta HQV chip from Silicon Optix â€” formerly available from Denon only in their top-of-the-line DVD-5910CI. This powerful chip reduces noise on a pixel-by-pixel basis and upconverts standard DVD signals to 1080p resolution for an unforgettable movie experience with compatible HDTVs. Regardless of whether the original source was film or video, you\'ll enjoy a remarkably crisp and colorful picture, free from blurriness, \"jaggies,\" and other digital artifacts.','Dvd/DVD3930ci.jpg'),
- (30,'Lynx','4FE-23 	 ','Alto: 155 cm - Ancho: 55 cm',319.00,0,'Frigorifico con un solo motor y bandejas de cristal.','Frigorifico/Lynx_4FE_23.jpg');
+ (27,'Samsung','DVD-HD870','Altura 3 cm- Anchura 28 cm',185.90,0,'El reproductor de DVD de Samsung mejora la señal (1080i/720P) con una salida HDMI, 14 bit DAC y reproducción de WMA/MP3.','DVD-HD870.jpg'),
+ (28,'Coby','DVD-224','Altura 3 cm - Anchura 31 cm',45.60,0,'Supera tu sistema home theater con el reproductor de alto desempeño de Coby DVD-224 DVD. Con un diseño delgado, contiene la tecnología Progressive Scan para la mejor imagen posible. Reproduce tus formatos de discos favoritos incluyendo MP3 para una versatilidad óptima. El acabado plateado hace que complemente cualquier decoración fácilmente.','DVD224.jpg'),
+ (29,'Denon','DVD-3930CI','Altura 4 cm - Anchura 33 cm',156.87,0,'Denon\'s rock-solid DVD-3930CI produces a vivid picture that\'s faithful in every detail. It sports extremely advanced video and audio processing, including the professional-grade Realta HQV chip from Silicon Optix â€” formerly available from Denon only in their top-of-the-line DVD-5910CI. This powerful chip reduces noise on a pixel-by-pixel basis and upconverts standard DVD signals to 1080p resolution for an unforgettable movie experience with compatible HDTVs. Regardless of whether the original source was film or video, you\'ll enjoy a remarkably crisp and colorful picture, free from blurriness, \"jaggies,\" and other digital artifacts.','DVD3930ci.jpg'),
+ (30,'Lynx','4FE-23 	 ','Alto: 155 cm - Ancho: 55 cm',319.00,0,'Frigorifico con un solo motor y bandejas de cristal.','Lynx_4FE_23.jpg');
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 
+
+
+--
+-- Dumping data for table `dvd`
+--
 
 /*!40000 ALTER TABLE `dvd` DISABLE KEYS */;
 INSERT INTO `dvd` (`ID_ITEM_3`,`VC_FORMATO`,`VC_CONECTORES_IO`) VALUES 
@@ -79,6 +90,11 @@ INSERT INTO `dvd` (`ID_ITEM_3`,`VC_FORMATO`,`VC_CONECTORES_IO`) VALUES
 /*!40000 ALTER TABLE `dvd` ENABLE KEYS */;
 
 
+
+--
+-- Dumping data for table `frigorifico`
+--
+
 /*!40000 ALTER TABLE `frigorifico` DISABLE KEYS */;
 INSERT INTO `frigorifico` (`ID_ITEM_3`,`COMBI`,`VC_CLASIFENERGETICA`) VALUES 
  (3,0,'A'),
@@ -89,6 +105,11 @@ INSERT INTO `frigorifico` (`ID_ITEM_3`,`COMBI`,`VC_CLASIFENERGETICA`) VALUES
 /*!40000 ALTER TABLE `frigorifico` ENABLE KEYS */;
 
 
+
+--
+-- Dumping data for table `lavadora`
+--
+
 /*!40000 ALTER TABLE `lavadora` DISABLE KEYS */;
 INSERT INTO `lavadora` (`ID_ITEM_3`,`BO_SECADORA`,`VC_CLASIFENERGETICA`) VALUES 
  (2,0,'A+'),
@@ -98,6 +119,9 @@ INSERT INTO `lavadora` (`ID_ITEM_3`,`BO_SECADORA`,`VC_CLASIFENERGETICA`) VALUES
  (14,0,'B');
 /*!40000 ALTER TABLE `lavadora` ENABLE KEYS */;
 
+--
+-- Dumping data for table `oferta`
+--
 
 /*!40000 ALTER TABLE `oferta` DISABLE KEYS */;
 INSERT INTO `oferta` (`ID_ITEM_2`,`ID_ITEM_3`,`PRO_ID_ITEM_3`) VALUES 
@@ -108,6 +132,11 @@ INSERT INTO `oferta` (`ID_ITEM_2`,`ID_ITEM_3`,`PRO_ID_ITEM_3`) VALUES
 /*!40000 ALTER TABLE `oferta` ENABLE KEYS */;
 
 
+
+--
+-- Dumping data for table `operador`
+--
+
 /*!40000 ALTER TABLE `operador` DISABLE KEYS */;
 INSERT INTO `operador` (`ID_OPERADOR`,`VC_LOGIN`) VALUES 
  (1,'danird1982@hotmail.com'),
@@ -116,6 +145,12 @@ INSERT INTO `operador` (`ID_OPERADOR`,`VC_LOGIN`) VALUES
  (4,'ricardo.prietomendoza@gmail.com');
 /*!40000 ALTER TABLE `operador` ENABLE KEYS */;
 
+
+
+
+--
+-- Dumping data for table `pequeno_electrodomestico`
+--
 
 /*!40000 ALTER TABLE `pequeno_electrodomestico` DISABLE KEYS */;
 INSERT INTO `pequeno_electrodomestico` (`ID_ITEM_3`,`VC_CARACTERISTICAS`) VALUES 
@@ -126,6 +161,8 @@ INSERT INTO `pequeno_electrodomestico` (`ID_ITEM_3`,`VC_CARACTERISTICAS`) VALUES
  (24,'Tostadora con bandeja recogemigas, multipan y sin botón de parada.'),
  (25,'Licuadora con dos velocidades y recipiente para pulpa.');
 /*!40000 ALTER TABLE `pequeno_electrodomestico` ENABLE KEYS */;
+
+
 
 
 --
@@ -140,14 +177,3 @@ INSERT INTO `televisor` (`ID_ITEM_3`,`VC_TAMANO`,`TDT`,`PEANA`) VALUES
  (9,'26 pulgadas',0,1),
  (10,'26 pulgadas',0,1);
 /*!40000 ALTER TABLE `televisor` ENABLE KEYS */;
-
-
---
--- Dumping data for table `identificadorhibernate`
---
-
-/*!40000 ALTER TABLE `identificadorhibernate` DISABLE KEYS */;
-INSERT INTO `identificadorhibernate` (`PRIMARY_KEY`,`GENERADOR_ITEM`,`GENERADOR_PEDIDO`,`GENERADOR_LP`,`GENERADOR_OPERADOR`) VALUES 
- (0,1,1,1,1);
-/*!40000 ALTER TABLE `identificadorhibernate` ENABLE KEYS */;
-
