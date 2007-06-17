@@ -12,6 +12,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.PequenoElectrodomestico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
+import mfis.tiendavirtual.modelo.objetoNegocio.Deprecated;
 
 /**
  * Dao para el manejo de los productos
