@@ -22,7 +22,7 @@ public interface GestionProducto
    /**
     * Business method
     */
-   public java.util.List listarProductosCategoria( java.lang.String categoria )
+   public java.util.List listarProductosCategoria( mfis.tiendavirtual.modelo.dao.Categoria categoria )
       throws java.rmi.RemoteException;
 
    /**
@@ -52,13 +52,13 @@ public interface GestionProducto
    /**
     * Business method
     */
-   public java.util.List get10ProductosMasBeneficiosos(  )
+   public java.util.List get10ProductosMenosBeneficiosos(  )
       throws java.rmi.RemoteException;
 
    /**
     * Business method
     */
-   public java.util.List get10ProductosMenosBeneficiosos(  )
+   public java.util.List get10ProductosMasBeneficiosos(  )
       throws java.rmi.RemoteException;
 
 }
