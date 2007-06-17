@@ -1,11 +1,9 @@
 package mfis.tiendavirtual.ejb;
 
 import java.rmi.RemoteException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -14,7 +12,6 @@ import javax.ejb.SessionContext;
 import javax.ejb.CreateException;
 
 import org.hibernate.Criteria;
-import org.hibernate.ScrollableResults;
 
 import mfis.tiendavirtual.modelo.dao.BMGenerico;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
@@ -83,7 +80,7 @@ public class GestionProductoBean implements SessionBean {
 			clase = Frigorifico.class;
 		else if (categoria.equals(Categoria.LAVADORA))
 			clase = Lavadora.class;
-		c = bM.agregarMarcaOr(palabrasClave);
+		c = bM.agregarMarcaOr(clase, palabrasClave);
 		if (!(precioMinimo == null)) {
 			if (precioMaximo == null) {
 				bM.agregarRango(c, "precio", precioMinimo, new Float(Float.MAX_VALUE));
