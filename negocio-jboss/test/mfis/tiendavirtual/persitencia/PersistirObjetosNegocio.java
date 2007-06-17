@@ -1,5 +1,6 @@
 package mfis.tiendavirtual.persitencia;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import mfis.tiendavirtual.modelo.dao.Categoria;
@@ -78,14 +79,17 @@ public abstract class PersistirObjetosNegocio {
 	
 	/**
 	 * 
-	 * @param productos
+	 * @param objPersist
 	 */
-	public static void eliminarObjetosNegocio(List<Producto> productos){
+	public static void eliminarObjetosNegocio(List objPersist){
 		
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
-		for(Producto producto: productos)
-			sesion.delete(producto);
+		
+		Iterator it = objPersist.iterator();
+		while(it.hasNext()){
+			sesion.delete(it.next());
+		}
 		
 		tx.commit();
 		sesion.close();
@@ -96,12 +100,45 @@ public abstract class PersistirObjetosNegocio {
 	 * @param beneficioAcumulado
 	 * @param idProd
 	 */
-	public void insertaBeneficio(float beneficioAcumulado, long idProd){
+	private static Beneficio insertaBeneficio(float beneficioAcumulado,
+			long idProd){
 		Beneficio beneficio = new Beneficio();
 		beneficio.setGanancia(beneficioAcumulado);
 		beneficio.setId(idProd);
 		
 		DaoGenerico daoGenerico = new DaoGenerico();
 		daoGenerico.persistirObjeto(beneficio);
+		
+		return beneficio;
+	}
+	
+	/**
+	 * 
+	 * @param productos
+	 * @param beneficioAcumulado
+	 * @param precioProducto
+	 * @param gananciaProducto
+	 * @return
+	 */
+	public static List<Beneficio> insertarBeneficios(
+			List<Producto> productos, float[] beneficioAcumulado,
+			float[] precioProducto,	float[] gananciaProducto){
+		
+		List<Beneficio> beneficios = new LinkedList<Beneficio>();
+		DaoGenerico daoGenerico = new DaoGenerico();
+		int i = 0;
+		
+		for(Producto producto: productos){
+			beneficios.add(PersistirObjetosNegocio.insertaBeneficio(
+					beneficioAcumulado[i],
+					producto.getId()));
+			
+			producto.setGanancia(gananciaProducto[i]);
+			producto.setPrecio(precioProducto[i]);
+			daoGenerico.modificarObjeto(producto);
+			i++;
+		}
+		
+		return beneficios;
 	}
 }
