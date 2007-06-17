@@ -104,29 +104,33 @@ public class ProductoDaoTest {
 		List <Producto> lavadorasListadas = 
 			this.productoDao.listarProductoCategoria(Categoria.LAVADORA);
 		assert(lavadorasListadas.size() == this.numProductos);
+		assert(lavadorasListadas.containsAll(lavadoraPersit));
 		
 
 //		Obtenemos los televisores persistidos.
 		List <Producto> televisorListados = 
 			this.productoDao.listarProductoCategoria(Categoria.TELEVISOR);
 		assert(televisorListados.size() == this.numProductos);
+		assert(televisorListados.containsAll(televisorPersist));
 		
 //		Obtenemos los dvd persistidos.
 		List <Producto> dvdListados = 
 			this.productoDao.listarProductoCategoria(Categoria.DVD);
 		assert(dvdListados.size() == this.numProductos);
+		assert(dvdListados.containsAll(dvdPersit));
 		
 //		Obtenemos los frigorificos persistidos.
 		List <Producto> frigorificoListados = 
 			this.productoDao.listarProductoCategoria(Categoria.FRIGORIFICO);
 		assert(frigorificoListados.size() == this.numProductos);
+		assert(frigorificoListados.containsAll(frigorificosPersit));
 		
 //		Obtenemos los pequeños electrodomesticos persistidos.
 		List <Producto> pEListados = 
 			this.productoDao.listarProductoCategoria(
 					Categoria.PEQUENIO_ELECTRODOMESTICO);
 		assert(pEListados.size() == this.numProductos);
-		
+		assert(pEListados.containsAll(pEPersit));
 		
 		// Eliminamos los objetos persistidos.
 		PersistirObjetosNegocio.eliminarObjetosNegocio(lavadoraPersit);
