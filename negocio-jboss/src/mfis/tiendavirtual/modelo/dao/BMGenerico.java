@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
@@ -68,7 +70,8 @@ public class BMGenerico {
 	}
 
 	/**
-	 * Obtiene el metodo modificador correspondiente a cierto metodo consultor con los parametro descritos
+	 * Obtiene el metodo modificador correspondiente a cierto metodo consultor
+	 * con los parametro descritos
 	 * 
 	 * @param metodoConsultor
 	 * @param clase
@@ -125,9 +128,12 @@ public class BMGenerico {
 	}
 
 	/**
-	 * Realiza una busqueda en base al DTO parametro de forma que los resultados de busqueda coincidan con todos los campos del objeto DTO
+	 * Realiza una busqueda en base al DTO parametro de forma que los resultados
+	 * de busqueda coincidan con todos los campos del objeto DTO
 	 * 
-	 * @param objeto DTO que contiene en sus atributos los valores por los que se quiere buscar.
+	 * @param objeto
+	 *            DTO que contiene en sus atributos los valores por los que se
+	 *            quiere buscar.
 	 * @return un objeto Criteria que formaliza la definicion anterior
 	 */
 	private Criteria realizarBusquedaAnd(Object dto) {
@@ -135,7 +141,7 @@ public class BMGenerico {
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Criteria criteria = sesion.createCriteria(clase);
 
-		for (Method metodo: clase.getMethods()) {
+		for (Method metodo : clase.getMethods()) {
 			String nombreMetodo = metodo.getName();
 			if (nombreMetodo.startsWith("get")
 					&& !nombreMetodo.equals("getClass")) {
@@ -156,9 +162,12 @@ public class BMGenerico {
 	}
 
 	/**
-	 * Realiza una busqueda en base al DTO parametro de forma que los resultados de busqueda coincidan con alguno de los campos del objeto DTO
+	 * Realiza una busqueda en base al DTO parametro de forma que los resultados
+	 * de busqueda coincidan con alguno de los campos del objeto DTO
 	 * 
-	 * @param objeto DTO que contiene en sus atributos los valores por los que se quiere buscar.
+	 * @param objeto
+	 *            DTO que contiene en sus atributos los valores por los que se
+	 *            quiere buscar.
 	 * @return un objeto Criteria que formaliza la definicion anterior
 	 */
 	private Criteria realizarBusquedaOr(Object dto) {
@@ -167,7 +176,7 @@ public class BMGenerico {
 		Criteria criteria = sesion.createCriteria(clase);
 		List<Criterion> criterios = new LinkedList<Criterion>();
 
-		for (Method metodo: clase.getMethods()) {
+		for (Method metodo : clase.getMethods()) {
 			String nombreMetodo = metodo.getName();
 			if ((nombreMetodo.startsWith("get"))
 					&& (!(nombreMetodo.equals("getClass")))) {
@@ -182,11 +191,13 @@ public class BMGenerico {
 					throw new RuntimeException(e);
 				}
 			}
-		} if (criterios.size() > 1) {
+		}
+		if (criterios.size() > 1) {
 			Criterion criterion = criterios.get(0);
 			for (int i = 1; i < criterios.size(); i++) {
 				criterion = Restrictions.or(criterion, criterios.get(i));
-			} criteria.add(criterion);
+			}
+			criteria.add(criterion);
 		} else if (criterios.size() == 1) {
 			criteria.add(criterios.get(0));
 		}
@@ -195,14 +206,16 @@ public class BMGenerico {
 	}
 
 	/**
-	 * Agrega obtiene el nombre de un atributo dado el nombre del metodo que lo obtiene
+	 * Agrega obtiene el nombre de un atributo dado el nombre del metodo que lo
+	 * obtiene
 	 * 
 	 * @param nombreMetodo
-	 * @return el nombre del atributo obtenido mediante el uso del metodo parametro
+	 * @return el nombre del atributo obtenido mediante el uso del metodo
+	 *         parametro
 	 */
 	private String obtenerNombreAtributo(String nombreMetodo) {
 		String inicio = nombreMetodo.substring(3, 4).toLowerCase();
-		
+
 		return (inicio + nombreMetodo.substring(4));
 	}
 
@@ -276,8 +289,22 @@ public class BMGenerico {
 		return (HibernateSessionFactory.crearSesion().createCriteria(clase));
 	}
 
-	public void agregarMarcaOr (Criteria c, List <String> string) {
+	/**
+	 * 
+	 * @param listString Lista de cadenas.
+	 * @return Criteria para buscar los productos entre las distintas marcas
+	 * que se pasan en la lista.
+	 * Este
+	 */
+	public Criteria agregarMarcaOr(List<String> listString) {
 		// TODO Auto-generated method stub
+		Criteria criteria = this.crearCriteriaVacio(Producto.class);
+		criteria.add(Restrictions.disjunction());
 
+		for (String cadena : listString) {
+			criteria.add(Restrictions.eq("marca", cadena));
+		}
+
+		return criteria;
 	}
 }
