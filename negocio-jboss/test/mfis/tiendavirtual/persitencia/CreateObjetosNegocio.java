@@ -7,6 +7,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
+import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.PequenoElectrodomestico;
@@ -166,5 +167,19 @@ public class CreateObjetosNegocio {
 		deprecated.setFecha(this.DATE_PRUEBA);
 		
 		return deprecated;
+	}
+	
+// 	Crea un objeto de tipo oferta.
+	public Oferta createOferta(){
+		
+		Lavadora lavadora = this.creatLavadora();
+		Dvd dvd = this.createDvd();
+		
+		Oferta oferta = new Oferta();
+		oferta.setReferencia(this.STRING_PRUEBA);
+		oferta.setPrincipal(lavadora);
+		oferta.setSecundario(dvd);
+		
+		return oferta;
 	}
 }
