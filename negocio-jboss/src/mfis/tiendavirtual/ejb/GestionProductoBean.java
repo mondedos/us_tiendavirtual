@@ -1,9 +1,7 @@
 package mfis.tiendavirtual.ejb;
 
 import java.rmi.RemoteException;
-import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -65,7 +63,6 @@ public class GestionProductoBean implements SessionBean {
 	 */
 	@SuppressWarnings("unchecked")
 	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo, Categoria categoria, List<String> palabrasClave) {
-		List l = new ArrayList();
 		BMGenerico bM = new BMGenerico();
 		Criteria c;
 		Class clase = null;
@@ -93,9 +90,8 @@ public class GestionProductoBean implements SessionBean {
 			} // En la otra rama no habria restricciones de precio por lo que no
 			// añadiriamos restriccion alguna sobre "bM".
 		} 
-		Collections.addAll(l, (c.scroll()).get());
 		
-		return (l);
+		return (c.list());
 	}
 
 	/**
