@@ -56,7 +56,7 @@ public class CreateObjetosNegocio {
 	}
 	
 	// Crea una lavadora con valores por defecto.
-	public Lavadora creatLavadora(){
+	public Lavadora createLavadora(){
 		
 		Lavadora lavadora = new Lavadora();
 		this.createProducto(lavadora);
@@ -172,7 +172,7 @@ public class CreateObjetosNegocio {
 // 	Crea un objeto de tipo oferta.
 	public Oferta createOferta(){
 		
-		Lavadora lavadora = this.creatLavadora();
+		Lavadora lavadora = this.createLavadora();
 		Dvd dvd = this.createDvd();
 		
 		Oferta oferta = new Oferta();
