@@ -2,11 +2,9 @@ package mfis.tiendavirtual.persitencia;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
-
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
