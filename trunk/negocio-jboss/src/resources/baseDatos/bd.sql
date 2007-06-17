@@ -218,3 +218,7 @@ alter table PRODUCTO add constraint FK_PRODUCTO_ITEM foreign key (ID_ITEM_3)
 alter table TELEVISOR add constraint FK_TELEVISOR_PRODUCTO foreign key (ID_ITEM_3)
       references PRODUCTO (ID_ITEM_3) on delete restrict on update restrict;
 
+INSERT INTO `identificadorhibernate` (`PRIMARY_KEY`,`GENERADOR_ITEM`,`GENERADOR_PEDIDO`,`GENERADOR_LP`,`GENERADOR_OPERADOR`) VALUES 
+ (0,1,1,1,1);
+
+
