@@ -1,6 +1,7 @@
 package mfis.tiendavirtual.ejb;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJBException;
@@ -64,7 +65,7 @@ public class GestionProductoBean implements SessionBean {
 	@SuppressWarnings("unchecked")
 	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo, Categoria categoria, List<String> palabrasClave) {
 		BMGenerico bM = new BMGenerico();
-		Criteria c;
+		Criteria c= null;
 		Class clase = null;
 		
 		if (categoria.equals(Categoria.DVD))
@@ -77,7 +78,11 @@ public class GestionProductoBean implements SessionBean {
 			clase = Frigorifico.class;
 		else if (categoria.equals(Categoria.LAVADORA))
 			clase = Lavadora.class;
-		c = bM.agregarMarcaOr(clase, palabrasClave);
+		else return new ArrayList();
+		
+		if(palabrasClave!=null) c = bM.agregarMarcaOr(clase, palabrasClave);
+		else c= bM.crearCriteriaVacio(clase);
+		
 		if (!(precioMinimo == null)) {
 			if (precioMaximo == null) {
 				bM.agregarRango(c, "precio", precioMinimo, new Float(Float.MAX_VALUE));

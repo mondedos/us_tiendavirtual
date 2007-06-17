@@ -4,6 +4,7 @@
   <test name="Pruebas de persistencia">
     <packages>
       <package name="mfis.tiendavirtual.persitencia" />
+      <package name="mfis.tiendavirtual.ejb"/>
    </packages>
  </test>
 </suite>
