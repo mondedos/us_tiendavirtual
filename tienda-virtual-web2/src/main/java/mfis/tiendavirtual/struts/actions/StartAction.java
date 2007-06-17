@@ -1,5 +1,13 @@
 package mfis.tiendavirtual.struts.actions;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+import mfis.tiendavirtual.interfaces.GestionProducto;
+import mfis.tiendavirtual.jndi.EJB;
+import mfis.tiendavirtual.jndi.ProductoEJB;
+
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -18,7 +26,25 @@ public class StartAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-
+    	
+    	//Obtenemos los diez productos mas beneficiosos
+    	
+    	//TODO ARREGLAR EL METODO GET10PRODUCTOSMASBENEFICISOS
+    	
+//    	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
+//
+//    	List productos= null;
+//    	
+//    	try{
+//    		productos= gp.get10ProductosMasBeneficiosos();
+//    	}catch(RemoteException e){
+//    		throw new RuntimeException(e);
+//    	}
+//    	
+//    	c.setRequest("lista", productos);
+    	
+    	c.setRequest("lista", new ArrayList());
+    	
         return MAINPAGE;
     }
 
