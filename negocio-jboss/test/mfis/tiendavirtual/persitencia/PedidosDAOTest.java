@@ -1,10 +1,8 @@
 package mfis.tiendavirtual.persitencia;
 
 import java.util.List;
-
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.dao.PedidosDAO;
-import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
