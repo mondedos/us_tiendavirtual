@@ -7,24 +7,22 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class OperadorDAOTest {
-	
+
 	private OperadorDAO operadorDao;
-	
+
 	@BeforeClass
-	public void inicializar(){
-		operadorDao= new OperadorDAO();
+	public void inicializar() {
+		operadorDao = new OperadorDAO();
 	}
-	
-	
+
 	@Test
-	public void pruebaObtenerOperador(){
-		
-		String login="cuvere@gmail.com";
-		Operador operador= operadorDao.obtenerOperador(login);
-		
-		assert operador!=null && operador.getId().equals(new Long(2)) : "Busqueda erronea";
-		
+	public void pruebaObtenerOperador() {
+
+		String login = "cuvere@gmail.com";
+		Operador operador = operadorDao.obtenerOperador(login);
+
+		assert operador != null && operador.getId().equals(new Long(2)) : "Busqueda erronea";
+
 	}
-	
 
 }
