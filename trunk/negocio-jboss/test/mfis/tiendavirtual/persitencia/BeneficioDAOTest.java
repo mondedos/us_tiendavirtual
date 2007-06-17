@@ -1,14 +1,11 @@
 package mfis.tiendavirtual.persitencia;
 
 import java.util.List;
-
 import mfis.tiendavirtual.modelo.dao.BMGenerico;
 import mfis.tiendavirtual.modelo.dao.BeneficioDAO;
-import mfis.tiendavirtual.modelo.dao.DaoGenerico;
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.dao.PedidosDAO;
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
-import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
@@ -28,8 +25,6 @@ public class BeneficioDAOTest {
 
 	private PedidosDAO pedidoDao;
 
-	private DaoGenerico daoGenerico;
-
 	private BMGenerico bmGenerico;
 
 	@BeforeClass
@@ -37,7 +32,6 @@ public class BeneficioDAOTest {
 
 		this.pedidoDao = new PedidosDAO();
 		this.beneficioDao = new BeneficioDAO();
-		this.daoGenerico = new DaoGenerico();
 		this.bmGenerico = new BMGenerico();
 	}
 
