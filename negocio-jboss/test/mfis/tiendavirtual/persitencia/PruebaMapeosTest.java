@@ -108,13 +108,17 @@ public class PruebaMapeosTest {
 	public void savePedido(){
 		
 		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
+		Operador operador = pedido.getOperador();
+			
 		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
 		Televisor televisor = CreateObjetosNegocio.getInstance().createTelevisor();
+		
 		
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(lavadora);
 		sesion.save(televisor);
+		sesion.save(operador);
 		sesion.save(pedido);
 		tx.commit();
 		sesion.close();
@@ -148,6 +152,7 @@ public class PruebaMapeosTest {
 		sesion3.delete(pedido);
 		sesion3.delete(lavadora);
 		sesion3.delete(televisor);
+		sesion3.delete(operador);
 		tx3.commit();
 		sesion3.close();
 	}
@@ -163,7 +168,6 @@ public class PruebaMapeosTest {
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(dvd);
-		dvd = (Dvd)sesion.get(Dvd.class, dvd.getId());
 		tx.commit();
 		sesion.close();
 		
@@ -191,7 +195,6 @@ public class PruebaMapeosTest {
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(dvd);
-		dvd = (Dvd)sesion.get(Dvd.class, dvd.getId());
 		tx.commit();
 		sesion.close();
 		
@@ -205,5 +208,38 @@ public class PruebaMapeosTest {
 		sesion1.delete(dvd);
 		tx1.commit();
 		sesion1.close();
+	}
+	
+	
+	@Test
+	public void saveOferta(){
+		
+		Oferta oferta = CreateObjetosNegocio.getInstance().createOferta();
+		Producto principal = oferta.getPrincipal();
+		Producto secundario = oferta.getSecundario();
+		
+		
+		Session sesion = HibernateSessionFactory.crearSesion();
+		Transaction tx = sesion.beginTransaction();
+		sesion.save(principal);
+		sesion.save(secundario);
+		tx.commit();
+		sesion.close();
+		
+		Session sesion1 = HibernateSessionFactory.crearSesion();
+		Transaction tx1 = sesion1.beginTransaction();
+		sesion1.save(oferta);
+		tx1.commit();
+		sesion1.close();
+		
+		
+		Session sesion2 = HibernateSessionFactory.crearSesion();
+		Transaction tx2 = sesion2.beginTransaction();
+		
+		sesion2.delete(oferta);
+		sesion2.delete(principal);
+		sesion2.delete(secundario);
+		tx2.commit();
+		sesion2.close();
 	}
 }
