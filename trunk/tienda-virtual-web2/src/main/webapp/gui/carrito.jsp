@@ -5,16 +5,20 @@
 			<div id="carrito">
 				<h3>Carrito</h3>
 				<div class="menu-container">
+
 					<ul>
 				<logic:iterate name="carrito" id="linea" property="lineasPedido" indexId="i">
 						<li>
-							<bean:write name="linea" property="compra.marca"/> <bean:write name="linea" property="compra.modelo"/> <br/>
-							<big><bean:write name="linea" property="precioUnidad"/> &euro;</big><br/>
-							<a href="listado.do?opt=2&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>">borrar</a>
+							<bean:write name="linea" property="compra.marca"/> <bean:write name="linea" property="compra.modelo"/><br/> <bean:write name="linea" property="unidades"/> uds.
+							<a href="listado.do?opt=2&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>"> <bean:message key="app.listado.2"/> </a>
 						</li>
 				</logic:iterate>
 					</ul>
-					<div>Total: <bean:write name="carrito" property="totalSinIVA" /> &euro;</div>
+
+					<p><bean:write name="carrito" property="numProductos"/> items en el carrito</p>
+					<p>Precio: <bean:write name="carrito" property="totalSinIVA" format="#,##0.00" /> &euro;</p>
+					<hr/>
+					<div><a href="listado.do?opt=3&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>" > <img class="minienlace" src="gui/styles/default-style/img/cart.gif"/><bean:message key="app.listado.3"/></a></div>
 				</div>
 			</div>
 </logic:present>
