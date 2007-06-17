@@ -5,6 +5,7 @@ import java.util.List;
 import mfis.tiendavirtual.modelo.dao.Categoria;
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
+import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
@@ -138,5 +139,27 @@ public class ProductoDaoTest {
 		PersistirObjetosNegocio.eliminarObjetosNegocio(dvdPersit);
 		PersistirObjetosNegocio.eliminarObjetosNegocio(frigorificosPersit);
 		PersistirObjetosNegocio.eliminarObjetosNegocio(pEPersit);
+	}
+	
+	@Test
+	public void getDiezProductosBeneficiosTest(){
+		
+		// Insertamos 5 frigorificos.
+		float[] beneficioAcumulado1={100,200,300,400,500,1000, 700, 800, 300, 1000};
+		float[] precioProducto = {600,500,200,800,900,200,700,200,1000,1500};
+		float[] gananciaProducto = {25,50,20,10,40, 40, 15, 40, 50, 30};
+		List<Producto> frigorificoPersist = 
+			PersistirObjetosNegocio.insertarProductos(Categoria.FRIGORIFICO, 10);
+		assert(frigorificoPersist.size()==10);
+			
+		List<Beneficio> beneficios =
+		PersistirObjetosNegocio.insertarBeneficios(frigorificoPersist,
+					precioProducto,	gananciaProducto, beneficioAcumulado1);
+		assert(beneficios.size() == 10);
+			
+			this.productoDao.getDiezProductosBeneficios(true);
+			
+			PersistirObjetosNegocio.eliminarObjetosNegocio(beneficios);
+			PersistirObjetosNegocio.eliminarObjetosNegocio(frigorificoPersist);	
 	}
 }
