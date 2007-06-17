@@ -17,8 +17,8 @@
 
 					<p><bean:write name="carrito" property="numProductos"/> items en el carrito</p>
 					<p>Precio: <bean:write name="carrito" property="totalSinIVA" format="#,##0.00" /> &euro;</p>
-					<hr/>
-					<div><a href="listado.do?opt=3&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>" > <img class="minienlace" src="gui/styles/default-style/img/cart.gif"/><bean:message key="app.listado.3"/></a></div>
+					<hr/><br/>
+					<div><a href="listado.do?opt=3&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>" > <bean:message key="app.listado.3"/></a></div>
 				</div>
 			</div>
 </logic:present>
