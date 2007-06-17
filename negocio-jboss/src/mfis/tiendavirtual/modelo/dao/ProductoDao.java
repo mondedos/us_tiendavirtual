@@ -137,6 +137,7 @@ public class ProductoDao {
 		Long idProducto;
 
 		listaBeneficios = d.obtenerTodos(Beneficio.class);
+		
 		listaBeneficios = ordenarLista(listaBeneficios, menosMas);
 		li = listaBeneficios.listIterator();
 		while (li.hasNext()) {
@@ -160,20 +161,20 @@ public class ProductoDao {
 	 */
 	private List<Beneficio> ordenarLista(List<Beneficio> listaBeneficios,
 			boolean descendentementeAscendentemente) {
-		List<Beneficio> res = new ArrayList<Beneficio>();
-		Beneficio [] b;
+		List res = new ArrayList<Beneficio>();
+		Object [] b;
 		
-		b = (Beneficio []) listaBeneficios.toArray();
+		b = listaBeneficios.toArray();
 		Arrays.sort(b);
 		if (!(descendentementeAscendentemente)) { // Queremos obtener la lista de los productos que han generado menos beneficios ordenados del que menos beneficios ha
 			// generado al que más.
 			for (int i = (b.length - 1); i >= 0; i--) {
-				res.add(b[i]);
+				res.add((Beneficio)b[i]);
 			}
 		} else { // Queremos obtener la lista de los productos que han generado mas beneficios ordenados del que mas beneficios ha obtenido al que menos.
 			res = Arrays.asList(b);
 		}
 		
-		return (res);
+		return res;
 	}
 }
