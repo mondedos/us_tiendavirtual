@@ -35,11 +35,11 @@ public class CategoriaAction extends MyTilesAction {
 		"Frigorificos",
 		"PequenosElectrodomesticos"
 	};
-	
-	
+
+
 	public static Categoria obtenerCategoria(int idCategoria){
 		Categoria categoria= null;
-		
+
 		switch(idCategoria){
     		case 0: categoria= Categoria.TELEVISOR; break;
     		case 1: categoria= Categoria.LAVADORA; break;
@@ -47,9 +47,9 @@ public class CategoriaAction extends MyTilesAction {
     		case 3: categoria= Categoria.FRIGORIFICO; break;
     		case 4: categoria= Categoria.PEQUENIO_ELECTRODOMESTICO; break;
 		}
-		
+
 		return categoria;
-		
+
 	}
 
     public CategoriaAction() {
@@ -58,13 +58,13 @@ public class CategoriaAction extends MyTilesAction {
     public String execute(WebContext c) {
 
     	String layout = MENUPAGE;
-    	int idcategoria = Integer.parseInt( c.getParameter("categoria") );
+    	int idcategoria = Integer.parseInt( c.getParameter("idcat") );
     	List listadoCategorias = null;
 
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
 
     	try {
-    		listadoCategorias = gp.listarProductosCategoria(obtenerCategoria(idcategoria));
+    		listadoCategorias = gp.listarProductosCategoria( obtenerCategoria(idcategoria) );
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
 		}
