@@ -7,9 +7,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Iterator;
 
