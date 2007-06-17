@@ -1,8 +1,11 @@
 package mfis.tiendavirtual.ejb;
 
 import java.rmi.RemoteException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -10,9 +13,18 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
+import org.hibernate.Criteria;
+import org.hibernate.ScrollableResults;
+
+import mfis.tiendavirtual.modelo.dao.BMGenerico;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
+import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
+import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
+import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
+import mfis.tiendavirtual.modelo.objetoNegocio.PequenoElectrodomestico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
 import mfis.tiendavirtual.modelo.dao.Categoria;
 
 /**
@@ -54,13 +66,39 @@ public class GestionProductoBean implements SessionBean {
 	 *
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public List listarProductosBusqueda(float precioMinimo,
-			float precioMaximo, String categoria, List<String> palabrasClave) {
-		/* ProductoDao p = new ProductoDao(); */
+	@SuppressWarnings("unchecked")
+	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo, Categoria categoria, List<String> palabrasClave) {
 		List l = new ArrayList();
+		BMGenerico bM = new BMGenerico();
+		Criteria c;
+		Class clase = null;
+		
+		if (categoria.equals(Categoria.DVD))
+			clase = Dvd.class;
+		else if (categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO))
+			clase = PequenoElectrodomestico.class;
+		else if (categoria.equals(Categoria.TELEVISOR))
+			clase = Televisor.class;
+		else if (categoria.equals(Categoria.FRIGORIFICO))
+			clase = Frigorifico.class;
+		else if (categoria.equals(Categoria.LAVADORA))
+			clase = Lavadora.class;
+		c = bM.agregarMarcaOr(palabrasClave);
+		if (!(precioMinimo == null)) {
+			if (precioMaximo == null) {
+				bM.agregarRango(c, "precio", precioMinimo, new Float(Float.MAX_VALUE));
+			} else {
+				bM.agregarRango(c, "precio", precioMinimo, precioMaximo);
+			}
+		} else {
+			if (!(precioMaximo == null)) {
+				bM.agregarRango(c, "precio", new Float(Float.MIN_VALUE), precioMaximo);
+			} // En la otra rama no habria restricciones de precio por lo que no
+			// añadiriamos restriccion alguna sobre "bM".
+		} 
+		Collections.addAll(l, (c.scroll()).get());
 		
 		return (l);
-		/* return p.listarProductosBusqueda(precioMinimo,precioMaximo,categoria, palabrasClave); */
 	}
 
 	/**
