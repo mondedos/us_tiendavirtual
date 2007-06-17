@@ -3,7 +3,9 @@ package mfis.tiendavirtual.persitencia;
 import java.util.LinkedList;
 import java.util.List;
 import mfis.tiendavirtual.modelo.dao.Categoria;
+import mfis.tiendavirtual.modelo.dao.DaoGenerico;
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
+import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
@@ -16,6 +18,12 @@ import org.hibernate.Transaction;
 
 public abstract class PersistirObjetosNegocio {
 
+	/**
+	 * 
+	 * @param categoria
+	 * @param numProductos
+	 * @return
+	 */
 	public static List<Producto> insertarProductos(Categoria categoria,
 			int numProductos){
 		List <Producto> productos = new LinkedList<Producto>();
@@ -68,6 +76,10 @@ public abstract class PersistirObjetosNegocio {
 		return productos;
 	}
 	
+	/**
+	 * 
+	 * @param productos
+	 */
 	public static void eliminarObjetosNegocio(List<Producto> productos){
 		
 		Session sesion = HibernateSessionFactory.crearSesion();
@@ -77,5 +89,19 @@ public abstract class PersistirObjetosNegocio {
 		
 		tx.commit();
 		sesion.close();
+	}
+	
+	/**
+	 * 
+	 * @param beneficioAcumulado
+	 * @param idProd
+	 */
+	public void insertaBeneficio(float beneficioAcumulado, long idProd){
+		Beneficio beneficio = new Beneficio();
+		beneficio.setGanancia(beneficioAcumulado);
+		beneficio.setId(idProd);
+		
+		DaoGenerico daoGenerico = new DaoGenerico();
+		daoGenerico.persistirObjeto(beneficio);
 	}
 }
