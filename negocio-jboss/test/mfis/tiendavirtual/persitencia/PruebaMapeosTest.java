@@ -111,21 +111,45 @@ public class PruebaMapeosTest {
 		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
 		Televisor televisor = CreateObjetosNegocio.getInstance().createTelevisor();
 		
+		Session sesion = HibernateSessionFactory.crearSesion();
+		Transaction tx = sesion.beginTransaction();
+		sesion.save(lavadora);
+		sesion.save(televisor);
+		sesion.save(pedido);
+		tx.commit();
+		sesion.close();
+		
 		LineaPedido lineaPedido1 = 
 			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, lavadora);
 		
 		LineaPedido lineaPedido2 = 
 			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, televisor);
 		
-		Session sesion = HibernateSessionFactory.crearSesion();
-		Transaction tx = sesion.beginTransaction();
-		sesion.save(lineaPedido1);
-		sesion.save(lineaPedido2);
+		Session sesion1 = HibernateSessionFactory.crearSesion();
+		Transaction tx1 = sesion1.beginTransaction();
+		sesion1.save(lineaPedido1);
+		sesion1.save(lineaPedido2);
 		
-		sesion.delete(lineaPedido1);
-		sesion.delete(lineaPedido2);
-		tx.commit();
-		sesion.close();
+		tx1.commit();
+		sesion1.close();
+		
+		
+		Session sesion2 = HibernateSessionFactory.crearSesion();
+		Transaction tx2 = sesion2.beginTransaction();
+		sesion2.delete(lineaPedido1);
+		sesion2.delete(lineaPedido2);
+		tx2.commit();
+		sesion2.close();
+		
+		
+		Session sesion3 = HibernateSessionFactory.crearSesion();
+		Transaction tx3 = sesion3.beginTransaction();
+		
+		sesion3.delete(pedido);
+		sesion3.delete(lavadora);
+		sesion3.delete(televisor);
+		tx3.commit();
+		sesion3.close();
 	}
 	
 	@Test
