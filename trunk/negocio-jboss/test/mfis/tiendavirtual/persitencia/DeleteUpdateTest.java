@@ -20,14 +20,9 @@ public class DeleteUpdateTest {
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(operador);
+		sesion.delete(operador);
 		tx.commit();
 		sesion.close();
-		
-		Session sesion1 = HibernateSessionFactory.crearSesion();
-		Transaction tx1 = sesion1.beginTransaction();
-		sesion1.delete(operador);
-		tx1.commit();
-		sesion1.close();
 	}
 	
 	@Test
@@ -52,7 +47,7 @@ public class DeleteUpdateTest {
 		tx1.commit();
 		sesion1.close();
 		
-		//borramos de la base de datos
+		//borramos el operador de la base de datos
 		Session sesion2= HibernateSessionFactory.crearSesion();
 		Transaction tx2= sesion2.beginTransaction();
 		sesion2.delete(operador1);

@@ -1,30 +1,26 @@
 package mfis.tiendavirtual.persitencia;
 
-
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.objetoNegocio.*;
 import mfis.tiendavirtual.modelo.objetoNegocio.Deprecated;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 
-
 public class PruebaMapeosTest {
-	
+
 	@BeforeClass
-	public void before(){
-		
-		 
+	public void before() {
+
 	}
-	
+
 	@Test
-	public void saveFrigorifico(){
-		
-		Frigorifico frigorifico = 
-			CreateObjetosNegocio.getInstance().createFrigorifico();
-		
+	public void saveFrigorifico() {
+
+		Frigorifico frigorifico = CreateObjetosNegocio.getInstance()
+				.createFrigorifico();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(frigorifico);
@@ -32,13 +28,12 @@ public class PruebaMapeosTest {
 		tx.commit();
 		sesion.close();
 	}
-	
+
 	@Test
-	public void saveLavadora(){
-		
-		Lavadora lavadora = 
-			CreateObjetosNegocio.getInstance().creatLavadora();
-		
+	public void saveLavadora() {
+
+		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(lavadora);
@@ -46,12 +41,12 @@ public class PruebaMapeosTest {
 		tx.commit();
 		sesion.close();
 	}
-	
+
 	@Test
-	public void saveDdv(){
-		
+	public void saveDdv() {
+
 		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();
-		
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(dvd);
@@ -59,13 +54,13 @@ public class PruebaMapeosTest {
 		tx.commit();
 		sesion.close();
 	}
-	
+
 	@Test
-	public void saveTelevisor(){
-		
-		Televisor televisor = 
-			CreateObjetosNegocio.getInstance().createTelevisor();
-		
+	public void saveTelevisor() {
+
+		Televisor televisor = CreateObjetosNegocio.getInstance()
+				.createTelevisor();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(televisor);
@@ -73,13 +68,13 @@ public class PruebaMapeosTest {
 		tx.commit();
 		sesion.close();
 	}
-	
+
 	@Test
-	public void savePequenoElectrodomestico(){
-		
-		PequenoElectrodomestico pE = 
-			CreateObjetosNegocio.getInstance().createPequenoElectrodomestico();
-		
+	public void savePequenoElectrodomestico() {
+
+		PequenoElectrodomestico pE = CreateObjetosNegocio.getInstance()
+				.createPequenoElectrodomestico();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(pE);
@@ -87,14 +82,12 @@ public class PruebaMapeosTest {
 		tx.commit();
 		sesion.close();
 	}
-	
+
 	@Test
-	public void saveOperador(){
-		
-		Operador operador = 
-			CreateObjetosNegocio.getInstance().createOperador();
-		
-			
+	public void saveOperador() {
+
+		Operador operador = CreateObjetosNegocio.getInstance().createOperador();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(operador);
@@ -102,143 +95,97 @@ public class PruebaMapeosTest {
 		tx.commit();
 		sesion.close();
 	}
-	
-	
+
 	@Test
-	public void savePedido(){
-		
+	public void savePedido() {
+
 		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
 		Operador operador = pedido.getOperador();
-			
+
 		Lavadora lavadora = CreateObjetosNegocio.getInstance().creatLavadora();
-		Televisor televisor = CreateObjetosNegocio.getInstance().createTelevisor();
-		
-		
+		Televisor televisor = CreateObjetosNegocio.getInstance()
+				.createTelevisor();
+
+		LineaPedido lineaPedido1 = CreateObjetosNegocio.getInstance()
+				.createLineaPedido(pedido, lavadora);
+
+		LineaPedido lineaPedido2 = CreateObjetosNegocio.getInstance()
+				.createLineaPedido(pedido, televisor);
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(lavadora);
 		sesion.save(televisor);
 		sesion.save(operador);
 		sesion.save(pedido);
+		sesion.save(lineaPedido1);
+		sesion.save(lineaPedido2);
+		sesion.delete(lineaPedido1);
+		sesion.delete(lineaPedido2);
+		sesion.delete(pedido);
+		sesion.delete(lavadora);
+		sesion.delete(televisor);
+		sesion.delete(operador);
 		tx.commit();
 		sesion.close();
-		
-		LineaPedido lineaPedido1 = 
-			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, lavadora);
-		
-		LineaPedido lineaPedido2 = 
-			CreateObjetosNegocio.getInstance().createLineaPedido(pedido, televisor);
-		
-		Session sesion1 = HibernateSessionFactory.crearSesion();
-		Transaction tx1 = sesion1.beginTransaction();
-		sesion1.save(lineaPedido1);
-		sesion1.save(lineaPedido2);
-		
-		tx1.commit();
-		sesion1.close();
-		
-		
-		Session sesion2 = HibernateSessionFactory.crearSesion();
-		Transaction tx2 = sesion2.beginTransaction();
-		sesion2.delete(lineaPedido1);
-		sesion2.delete(lineaPedido2);
-		tx2.commit();
-		sesion2.close();
-		
-		Session sesion3 = HibernateSessionFactory.crearSesion();
-		Transaction tx3 = sesion3.beginTransaction();
-		
-		sesion3.delete(pedido);
-		sesion3.delete(lavadora);
-		sesion3.delete(televisor);
-		sesion3.delete(operador);
-		tx3.commit();
-		sesion3.close();
 	}
-	
+
 	@Test
-	public void saveBeneficio(){
-		
+	public void saveBeneficio() {
+
 		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();
-		
-		Beneficio beneficio = 
-			CreateObjetosNegocio.getInstance().createBeneficio();
-					
+
+		Beneficio beneficio = CreateObjetosNegocio.getInstance()
+				.createBeneficio();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(dvd);
-		tx.commit();
-		sesion.close();
-		
-		// Asignamos "id" de beneficio manualmente asociado a un producto.
+//		 Asignamos "id" de beneficio manualmente asociado a un producto.
 		beneficio.setId(dvd.getId());
-		
-		Session sesion1 = HibernateSessionFactory.crearSesion();
-		Transaction tx1 = sesion1.beginTransaction();
-		sesion1.save(beneficio);
-		sesion1.delete(beneficio);
-		sesion1.delete(dvd);
-		tx1.commit();
-		sesion1.close();
+		sesion.save(beneficio);
+		sesion.delete(beneficio);
+		sesion.delete(dvd);
+		tx.commit();
+		sesion.close();
 	}
-	
-	
+
 	@Test
-	public void saveDeprecated(){
-		
+	public void saveDeprecated() {
+
 		Dvd dvd = CreateObjetosNegocio.getInstance().createDvd();
-		
-		Deprecated deprecated = 
-			CreateObjetosNegocio.getInstance().createDeprecated();
-					
+
+		Deprecated deprecated = CreateObjetosNegocio.getInstance()
+				.createDeprecated();
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(dvd);
+//		 Asignamos "id" manualmente al producto que se va a descatalogar.
+		deprecated.setId(dvd.getId());
+		sesion.save(deprecated);
+		sesion.delete(deprecated);
+		sesion.delete(dvd);
 		tx.commit();
 		sesion.close();
-		
-		// Asignamos "id" manualmente al producto que se va a descatalogar.
-		deprecated.setId(dvd.getId());
-		
-		Session sesion1 = HibernateSessionFactory.crearSesion();
-		Transaction tx1 = sesion1.beginTransaction();
-		sesion1.save(deprecated);
-		sesion1.delete(deprecated);
-		sesion1.delete(dvd);
-		tx1.commit();
-		sesion1.close();
 	}
-	
-	
+
 	@Test
-	public void saveOferta(){
-		
+	public void saveOferta() {
+
 		Oferta oferta = CreateObjetosNegocio.getInstance().createOferta();
 		Producto principal = oferta.getPrincipal();
 		Producto secundario = oferta.getSecundario();
-		
-		
+
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		sesion.save(principal);
 		sesion.save(secundario);
+		sesion.save(oferta);
+		sesion.delete(oferta);
+		sesion.delete(principal);
+		sesion.delete(secundario);
 		tx.commit();
 		sesion.close();
-		
-		Session sesion1 = HibernateSessionFactory.crearSesion();
-		Transaction tx1 = sesion1.beginTransaction();
-		sesion1.save(oferta);
-		tx1.commit();
-		sesion1.close();
-		
-		
-		Session sesion2 = HibernateSessionFactory.crearSesion();
-		Transaction tx2 = sesion2.beginTransaction();
-		
-		sesion2.delete(oferta);
-		sesion2.delete(principal);
-		sesion2.delete(secundario);
-		tx2.commit();
-		sesion2.close();
 	}
 }
