@@ -2,6 +2,7 @@ package mfis.tiendavirtual;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
@@ -17,6 +18,7 @@ public class Carrito implements Serializable {
 	private String totalSinIVA = "0";
 	private String totalConIVA = "0";
 	private List lineasPedido = null;
+	private int numProductos = 0;
 
 	public List getLineasPedido() {
 		return lineasPedido;
@@ -43,17 +45,27 @@ public class Carrito implements Serializable {
 		}
 		lineasPedido.add(lp);
 		float totalNoIva = Float.parseFloat(this.totalSinIVA);
-		this.totalSinIVA = "" + (totalNoIva + precio.floatValue());
-		this.totalConIVA = "" + ((totalNoIva + precio.floatValue()) * 1.16f);
+		this.totalSinIVA = "" + (totalNoIva + 	precio.floatValue() * lp.getUnidades() ) ;
+		this.totalConIVA = "" + (totalNoIva + 	precio.floatValue() * lp.getUnidades() ) * 1.16f ;
 	}
 	public void removeLineaPedido(int id) {
-		Producto p = (Producto) ((LineaPedido) lineasPedido.get(id)).getCompra();
+		LineaPedido lp = (LineaPedido) lineasPedido.get(id);
+		Producto p = (Producto) (lp).getCompra();
 		lineasPedido.remove(id);
 		float totalNoIva = Float.parseFloat(this.totalSinIVA);
-		this.totalSinIVA = "" + (totalNoIva - p.getPrecio().floatValue());
-		this.totalConIVA = "" + ((totalNoIva + p.getPrecio().floatValue()) * 1.16f);
+		this.totalSinIVA = "" + (totalNoIva - 	p.getPrecio().floatValue() * lp.getUnidades());
+		this.totalConIVA = "" + (totalNoIva + 	p.getPrecio().floatValue() * lp.getUnidades()) * 1.16f ;
+	}
 
+	public int getNumProductos() {
+		int total = 0;
+		Iterator it = lineasPedido.iterator();
+		while (it.hasNext()) {
+			LineaPedido l = (LineaPedido) it.next();
+			total += l.getUnidades();
+		}
 
+		return total;
 	}
 
 }
