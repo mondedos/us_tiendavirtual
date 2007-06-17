@@ -4,8 +4,6 @@ import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 
-import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Criterion;
@@ -290,15 +288,15 @@ public class BMGenerico {
 	}
 
 	/**
+	 * Se agregan a un objeto Criteria que despues se devuelve la condicion de
+	 * buscar cierto tipo de electrodomestico segun una disyuncion de marcas.
 	 * 
 	 * @param listString Lista de cadenas.
 	 * @return Criteria para buscar los productos entre las distintas marcas
 	 * que se pasan en la lista.
-	 * Este
 	 */
-	public Criteria agregarMarcaOr(List<String> listString) {
-		// TODO Auto-generated method stub
-		Criteria criteria = this.crearCriteriaVacio(Producto.class);
+	public Criteria agregarMarcaOr(Class categoria, List <String> listString) {
+		Criteria criteria = this.crearCriteriaVacio(categoria);
 		criteria.add(Restrictions.disjunction());
 
 		for (String cadena : listString) {
