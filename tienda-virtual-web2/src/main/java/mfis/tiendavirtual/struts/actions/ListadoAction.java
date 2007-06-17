@@ -11,6 +11,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.actions.CategoriaAction;
+import mfis.tiendavirtual.struts.beans.CarritoBean;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -26,8 +27,7 @@ public class ListadoAction extends MyTilesAction {
 
 	private static String[] opciones = {
 		"app.listado.0",
-		"app.listado.1",
-		"app.listado.2"
+		"app.listado.1"
 	};
 
     public ListadoAction() {
@@ -36,6 +36,8 @@ public class ListadoAction extends MyTilesAction {
     public String execute(WebContext c) {
 
     	String layout = MENUPAGE;
+
+    	CarritoBean carritobean = null;
 
     	int opt = -1;
     	int idcat = Integer.parseInt(c.getParameter("idcat"));
@@ -48,16 +50,15 @@ public class ListadoAction extends MyTilesAction {
     	try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
-			throw new RuntimeException(e);
+    		for(int i = 0; i < opciones.length ; i++) {
+    			if(bundle.getString(opciones[i]).startsWith(c.getParameter("opt").substring(0,6)))
+    				opt = i;
+    		}
 		}
+
     	List listadoCategorias = null;
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
-    	Carrito carrito = null;
-		if(c.getSession("carrito") == null) {
-			carrito = new Carrito();
-		} else {
-			carrito = (Carrito) c.getSession("carrito");
-		}
+
     	switch (opt) {
     		// ver detalle
 			case 0:
@@ -65,7 +66,8 @@ public class ListadoAction extends MyTilesAction {
 				try {
 					p = (Producto) gp.getProducto(idpro);
 				} catch (RemoteException e1) {
-					throw new RuntimeException(e1);
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 
 				c.setRequest("producto", p);
@@ -74,41 +76,46 @@ public class ListadoAction extends MyTilesAction {
 				break;
 			// añadir a carrito
 			case 1:
-				LineaPedido linea = new LineaPedido();
+		    	int unidades = Integer.parseInt(c.getParameter("unidades"));
+				carritobean = new CarritoBean(c);
+
 				Item i = null;
-				
-		    	try {
-		    		i = gp.getProducto( idpro );
-		    		listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
-				} catch (RemoteException e) {
-					throw new RuntimeException(e);
+				try {
+					i = gp.getProducto( idpro );
+					listadoCategorias = gp.listarProductosCategoria(nombrecat);
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
-
-				Float precio = ((Producto)i).getPrecio() ;
-				linea.setCompra(i);
-				linea.setUnidades(1);
-				linea.setPrecioUnidad( precio );
-
-				carrito.addLineaPedido(linea, precio);
-
-				c.setSession("carrito", carrito);
-
+				carritobean.crearLineaPedido(i, nombrecat, unidades);
 				break;
 			//borra de carrito
 			case 2:
+				carritobean = new CarritoBean(c);
+				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
 
-				carrito.removeLineaPedido( Integer.parseInt(lid) );
-				
 				try {
-					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
+					listadoCategorias = gp.listarProductosCategoria(nombrecat);
 				} catch (RemoteException e) {
-					throw new RuntimeException(e);
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				c.setSession("carrito", carrito);
+
+				if( COMPRA.startsWith(c.getParameter("l"))) {
+					layout = COMPRA;
+				}
+
+				break;
+				//borra de carrito
+			case 3:
+				layout = COMPRA;
 				break;
 			default:
 				break;
 		}
+    	if(carritobean != null) {
+    		c.setSession("carrito", carritobean.getCarrito() );
+    	}
 		c.setRequest("idcat", idcat + "");
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", nombrecat);
