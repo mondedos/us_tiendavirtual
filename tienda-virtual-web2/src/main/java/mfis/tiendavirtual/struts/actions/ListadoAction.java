@@ -48,7 +48,7 @@ public class ListadoAction extends MyTilesAction {
     	try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
     	List listadoCategorias = null;
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
@@ -65,8 +65,7 @@ public class ListadoAction extends MyTilesAction {
 				try {
 					p = (Producto) gp.getProducto(idpro);
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					throw new RuntimeException(e1);
 				}
 
 				c.setRequest("producto", p);
@@ -77,14 +76,12 @@ public class ListadoAction extends MyTilesAction {
 			case 1:
 				LineaPedido linea = new LineaPedido();
 				Item i = null;
-
-		    	// TODO en pruebas
+				
 		    	try {
 		    		i = gp.getProducto( idpro );
-		    		listadoCategorias = gp.listarProductosCategoria(nombrecat);
+		    		listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new RuntimeException(e);
 				}
 
 				Float precio = ((Producto)i).getPrecio() ;
@@ -101,11 +98,11 @@ public class ListadoAction extends MyTilesAction {
 			case 2:
 
 				carrito.removeLineaPedido( Integer.parseInt(lid) );
+				
 				try {
-					listadoCategorias = gp.listarProductosCategoria(nombrecat);
+					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new RuntimeException(e);
 				}
 				c.setSession("carrito", carrito);
 				break;
