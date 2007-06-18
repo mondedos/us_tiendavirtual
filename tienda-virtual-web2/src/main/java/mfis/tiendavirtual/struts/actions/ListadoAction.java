@@ -119,7 +119,7 @@ public class ListadoAction extends MyTilesAction {
 		c.setRequest("idcat", idcat + "");
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", nombrecat);
-		c.setRequest("urlImg", bundle.getString("app.imgpath") + CategoriaAction.imgPath[idcat]);
+		c.setRequest("urlImg", "gui/images");
         return layout;
     }
 
