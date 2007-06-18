@@ -28,29 +28,20 @@ public class GestionOperadorBean implements SessionBean {
 	private static final long serialVersionUID = -4631672726696710373L;
 	public GestionOperadorBean() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setSessionContext(SessionContext ctx)
 		throws EJBException,
 		RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbRemove() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbActivate() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbPassivate() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -60,7 +51,6 @@ public class GestionOperadorBean implements SessionBean {
 	 * @ejb.create-method
 	 */
 	public void ejbCreate() throws CreateException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
