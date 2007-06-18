@@ -5,6 +5,7 @@ package mfis.tiendavirtual.modelo.dao;
  * @author Edgar
  *
  */
+
 public enum Categoria {
 	
 	LAVADORA,
