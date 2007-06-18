@@ -1,12 +1,9 @@
 package mfis.tiendavirtual.persitencia;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import mfis.tiendavirtual.modelo.dao.Categoria;
-import mfis.tiendavirtual.modelo.dao.DaoGenerico;
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
-import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
@@ -19,12 +16,6 @@ import org.hibernate.Transaction;
 
 public abstract class PersistirObjetosNegocio {
 
-	/**
-	 * 
-	 * @param categoria
-	 * @param numProductos
-	 * @return
-	 */
 	public static List<Producto> insertarProductos(Categoria categoria,
 			int numProductos){
 		List <Producto> productos = new LinkedList<Producto>();
@@ -77,68 +68,14 @@ public abstract class PersistirObjetosNegocio {
 		return productos;
 	}
 	
-	/**
-	 * 
-	 * @param objPersist
-	 */
-	public static void eliminarObjetosNegocio(List objPersist){
+	public static void eliminarObjetosNegocio(List<Producto> productos){
 		
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
-		
-		Iterator it = objPersist.iterator();
-		while(it.hasNext()){
-			sesion.delete(it.next());
-		}
+		for(Producto producto: productos)
+			sesion.delete(producto);
 		
 		tx.commit();
 		sesion.close();
-	}
-	
-	/**
-	 * 
-	 * @param beneficioAcumulado
-	 * @param idProd
-	 */
-	private static Beneficio insertaBeneficio(float beneficioAcumulado,
-			long idProd){
-		Beneficio beneficio = new Beneficio();
-		beneficio.setGanancia(beneficioAcumulado);
-		beneficio.setId(idProd);
-		
-		DaoGenerico daoGenerico = new DaoGenerico();
-		daoGenerico.persistirObjeto(beneficio);
-		
-		return beneficio;
-	}
-	
-	/**
-	 * 
-	 * @param productos
-	 * @param beneficioAcumulado
-	 * @param precioProducto
-	 * @param gananciaProducto
-	 * @return
-	 */
-	public static List<Beneficio> insertarBeneficios(
-			List<Producto> productos, float[] beneficioAcumulado,
-			float[] precioProducto,	float[] gananciaProducto){
-		
-		List<Beneficio> beneficios = new LinkedList<Beneficio>();
-		DaoGenerico daoGenerico = new DaoGenerico();
-		int i = 0;
-		
-		for(Producto producto: productos){
-			beneficios.add(PersistirObjetosNegocio.insertaBeneficio(
-					beneficioAcumulado[i],
-					producto.getId()));
-			
-			producto.setGanancia(gananciaProducto[i]);
-			producto.setPrecio(precioProducto[i]);
-			daoGenerico.modificarObjeto(producto);
-			i++;
-		}
-		
-		return beneficios;
 	}
 }
