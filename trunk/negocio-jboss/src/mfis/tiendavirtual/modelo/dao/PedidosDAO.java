@@ -43,13 +43,13 @@ public class PedidosDAO {
 	 */
 	public void registrarPedido(Carrito c, String direccion) {
 		/* Hay que generar el pedido a mano */
-		Pedido p = null;
+		
 		List<LineaPedido> lineasPedido = null;
 		Iterator li = null;
 		LineaPedido lP = null;
 		float precioTotal = 0.0f;
 
-		p = new Pedido();
+		Pedido p = new Pedido();
 		p.setDireccion(direccion);
 		p.setFechaCancelacion(null);
 		p.setFechaDeServicio(null);
@@ -57,7 +57,10 @@ public class PedidosDAO {
 		p.setFechaTransient(null);
 		p.setOperador(null);
 		p.setPrecioTotal(new Float(0.0));
-		p.setId(daoGenerico.persistirObjeto(p));
+		
+//		 Persistimos el carro de la compra como un pedido.
+		daoGenerico.persistirObjeto(p);
+		
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
 		while (li.hasNext()) {
@@ -69,8 +72,7 @@ public class PedidosDAO {
 			precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
 		} // ...y lo asignamos al pedido en cuestion.
 		p.setPrecioTotal(new Float(precioTotal));
-		// Persistimos el carro de la compra como un pedido.
-		daoGenerico.persistirObjeto(p);
+		daoGenerico.modificarObjeto(p);
 	}
 
 	/**
