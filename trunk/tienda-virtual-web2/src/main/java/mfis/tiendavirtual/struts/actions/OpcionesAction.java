@@ -1,5 +1,11 @@
 package mfis.tiendavirtual.struts.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.struts.beans.OfertaBean;
+import mfis.tiendavirtual.struts.beans.OperadoresBean;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -41,9 +47,31 @@ public class OpcionesAction extends MyTilesAction {
 
 				break;
 			case 1:
+				// crear oferta
 
+				// obtener productos mas beneficiosos
+ 				List listaMas = OperadoresBean.obtenerProductosMasBeneficiosos();
+				//c.setRequest("listaMas", listaMas);
+				// obtener productos menos beneficiosos
+				List listaMenos = OperadoresBean.obtenerProductosMenosBeneficiosos();
+				//c.setRequest("listaMenos", listaMenos);
+
+				List listaOfertas = new ArrayList();
+				for(int i = 0; i < listaMas.size() ; i++) {
+					listaOfertas.add( new OfertaBean((Producto)listaMas.get(i), (Producto)listaMenos.get(i)) );
+				}
+
+				c.setRequest("lista", listaOfertas);
+
+				layout = OFERTA;
 				break;
 			case 2:
+				// guardar oferta en base de datos
+				String prodA = c.getParameter("prodA");
+				String prodB = c.getParameter("prodB");
+
+				OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
+
 
 				break;
 			case 3:

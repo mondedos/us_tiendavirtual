@@ -99,7 +99,7 @@ public class ListadoAction extends MyTilesAction {
 					e.printStackTrace();
 				}
 
-				if( COMPRA.startsWith(c.getParameter("l"))) {
+				if( c.getParameter("l") != null && COMPRA.startsWith(c.getParameter("l"))) {
 					layout = COMPRA;
 				}
 
