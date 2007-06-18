@@ -1,6 +1,7 @@
 package mfis.tiendavirtual.persitencia;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import mfis.tiendavirtual.modelo.dao.Categoria;
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
@@ -145,27 +146,134 @@ public class ProductoDaoTest {
 	public void getDiezProductosBeneficiosTest() throws Exception{
 		
 		// Insertamos 5 frigorificos.
-		float[] beneficioAcumulado1={100,200,300,400,500,1000, 700, 800, 300, 1000};
-		float[] precioProducto = {600,500,200,800,900,200,700,200,1000,1500};
-		float[] gananciaProducto = {25,50,20,10,40, 40, 15, 40, 50, 30};
+		float[] beneficioAcumulado=
+		{100,200,300,400,500,1000, 700, 800, 300, 1000,0,60, 400, 500, 0};
+		
+		float[] precioProducto = 
+		{600,500,200,800,900,200,700,200,1000,1500, 500, 700, 350, 120, 450};
+		
+		float[] gananciaProducto = 
+		{25,50,20,10,40, 40, 15, 40, 50, 30, 10, 21, 34, 56, 20};
+		
+		
+		List<Float[]> beneficioProductos = calcularBeneficio(
+				beneficioAcumulado, precioProducto, gananciaProducto);
+		
 		List<Producto> frigorificoPersist = 
-			PersistirObjetosNegocio.insertarProductos(Categoria.FRIGORIFICO, 10);
-		assert(frigorificoPersist.size()==10);
+			PersistirObjetosNegocio.insertarProductos(Categoria.FRIGORIFICO, 15);
+		assert(frigorificoPersist.size()==15);
 			
 		List<Beneficio> beneficios =
 		PersistirObjetosNegocio.insertarBeneficios(frigorificoPersist,
-					precioProducto,	gananciaProducto, beneficioAcumulado1);
-		assert(beneficios.size() == 10);
+					precioProducto,	gananciaProducto, beneficioAcumulado);
+		assert(beneficios.size() == 15);
 			
 		try{
-			this.productoDao.getDiezProductosBeneficios(true);
+			List<Producto> masBeneficios =
+				this.productoDao.getDiezProductosBeneficios(true);
+			System.err.print(masBeneficios.size());
+			assert(masBeneficios.size() == 10);
+			
+			this.comprobarProductos(masBeneficios,beneficioProductos, true,
+					frigorificoPersist);
+			
+			List<Producto> menosBenefios =
+				this.productoDao.getDiezProductosBeneficios(false);
+			assert(menosBenefios.size() == 10);
+			this.comprobarProductos(masBeneficios,beneficioProductos, false,
+					frigorificoPersist);
 		}
 		catch(Exception e){
-			
+			throw new  Exception(e.getLocalizedMessage().toString());
+		}
+		finally{
 			PersistirObjetosNegocio.eliminarObjetosNegocio(beneficios);
-			PersistirObjetosNegocio.eliminarObjetosNegocio(frigorificoPersist);	
-			throw new  Exception(e.getMessage());
+			PersistirObjetosNegocio.eliminarObjetosNegocio(frigorificoPersist);
+		}
+	}
+	
+	private List<Float[]> calcularBeneficio(float[] beneficioAcumulado, 
+			float[] precioProducto, float[] gananciaProducto){
+	
+		List<Float> nuevoBeneficio = new LinkedList<Float>();
+		for(int i =0; i < beneficioAcumulado.length; i++){
+			nuevoBeneficio.add(beneficioAcumulado[i]+
+			(precioProducto[i]*gananciaProducto[i])/100);
+		}
+		
+		List<Float[]> parBebefAcuPos = new LinkedList<Float[]>();
+		
+		int posMayor;
+		Float[] par;
+		while(!nuevoBeneficio.isEmpty()){
 			
+			posMayor = this.posMayor(nuevoBeneficio);
+			
+			par = new Float[2]; 
+			par[0] = (float)posMayor;
+			par[1] = nuevoBeneficio.get(posMayor);
+			nuevoBeneficio.remove(posMayor);
+				
+			parBebefAcuPos.add(par);
+		}
+		
+		
+		return parBebefAcuPos;
+	}
+	
+	private int posMayor(List<Float>nuevoBeneficio){
+		
+		int posMayor = 0;
+		int posActual = 0;
+		float mayorBene = Float.MIN_VALUE;
+		
+		for(float b: nuevoBeneficio){
+			
+			if(b > mayorBene){
+				
+				posMayor = posActual;
+				mayorBene = b;
+			}
+		}
+		
+		
+		return posMayor;
+	}
+	
+	/**
+	 * 
+	 * @param masBeneficios
+	 * @param beneficioProductos
+	 * @param masMenos
+	 */
+	private void comprobarProductos(List<Producto> masBeneficios,
+			List<Float[]> beneficioProductos, boolean masMenos,
+			List<Producto> productosPersist){
+		System.err.print("HOLA HOLA ");
+		
+		int i;
+		Float[] par;
+		int pos;
+		if(masMenos){
+		
+			i = 0;
+			while(i <= 9 && i < beneficioProductos.size()){
+					
+				par = beneficioProductos.get(i);
+				pos = par[0].intValue();
+				assert(masBeneficios.contains(productosPersist.get(pos)));
+				i++;
+			}
+		}
+		else{
+			i = 9;
+			while(i >= 0 && i < beneficioProductos.size()){
+				
+				par = beneficioProductos.get(i);
+				pos = par[0].intValue();
+				assert(masBeneficios.contains(productosPersist.get(pos)));
+				i--;
+			}	
 		}
 	}
 }
