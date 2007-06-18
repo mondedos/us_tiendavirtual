@@ -36,17 +36,21 @@ public class BusquedaAction extends MyTilesAction {
     	Categoria categoria= obtenerCategoria(formulario.getCategoria());
     	List palabrasClave= obtenerPalabrasClave(formulario.getMarca());
     	
-    	Float pmin= null;
-    	Float pmax= null;
+    	Float pmin= new Float(0);
+    	Float pmax= new Float(0);
     	
     	String cadPmin= formulario.getMin();
-    	String cadPMax= formulario.getMax();
+    	String cadPmax= formulario.getMax();
     	
-    	if(cadPmin!=null && cadPMax!=null){
+    	if(cadPmin!=null && cadPmax!=null){
+    		
+    		if(cadPmin.trim().equals("")) pmin=null;
+    		if(cadPmax.trim().equals("")) pmax=null;
     		
     		try{
-        		pmin= new Float(Float.parseFloat(formulario.getMin()));
-            	pmax= new Float(Float.parseFloat(formulario.getMax()));
+    			if(pmin!=null) pmin= new Float(Float.parseFloat(formulario.getMin()));
+    			if(pmax!=null) pmax= new Float(Float.parseFloat(formulario.getMax()));
+    			
         	}catch(NumberFormatException e){
         		//TODO poner un error en la web, de momento ignoramos
         		pmin=null;

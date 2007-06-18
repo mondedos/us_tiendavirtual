@@ -48,6 +48,6 @@
     <definition name=".compraLayout" extends=".menuLayout">
         <put name="workarea" value="/gui/compra.jsp"/>
     </definition>
-
+    
 
 </tiles-definitions>

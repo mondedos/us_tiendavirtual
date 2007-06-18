@@ -1,6 +1,6 @@
 package mfis.tiendavirtual.struts.beans;
 
-import mfis.tiendavirtual.Carrito;
+import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
