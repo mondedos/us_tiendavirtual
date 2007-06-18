@@ -35,14 +35,10 @@ public class LoginAction extends MyTilesAction {
     		} catch (AuthenticationException e) {
     			auth = false;
     			e.printStackTrace();
-    			// quitar esto
-    			c.setSession("operador", "dariver@gmail.com");
-    			// quitar esto
-    			layout = OPERADOR;
     		}
     		if(auth){
     			//System.out.println("Autenticación contra google correcta");
-    			// se introduce una variable de sesión que indica que el operador está logado
+    			// se introduce una variable de sesion que indica que el operador está logado
     			c.setSession("operador", loginForm.getUsuario());
     			layout = OPERADOR;
     		} else {
