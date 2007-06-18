@@ -179,3 +179,29 @@ table.carrito tbody tr td {
 table.carrito tfoot tr td {
 	border-top: 3px solid #c00;
 }
+table.oferta {
+	width: 100%;
+}
+table.oferta tr th {
+	border-bottom: 3px solid #c00;
+}
+table.oferta tr td.productoa {
+	width: 40%;
+	text-align: right;
+}
+table.oferta tr td.productob {
+	width: 40%;
+	padding: 0px;
+	text-align: left;
+}
+table.oferta tr td.radio-button {
+	width: 2%;
+}
+.oferta-submit {
+	padding-top: 10px;
+	text-align: center;
+}
+.oferta-submit input{
+	width: 150px;
+	border: 1px solid #f00;
+}
