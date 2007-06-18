@@ -72,6 +72,7 @@ public class OpcionesAction extends MyTilesAction {
 
 				OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
 
+				layout = OPERADOR;
 
 				break;
 			case 3:
@@ -90,6 +91,7 @@ public class OpcionesAction extends MyTilesAction {
 
     private void logout(WebContext c){
     	c.removeSession("operador");
+    	c.setRequest("lista", new ArrayList());
     }
 
 }
