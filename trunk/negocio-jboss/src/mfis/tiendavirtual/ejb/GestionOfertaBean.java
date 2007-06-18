@@ -33,23 +33,15 @@ public class GestionOfertaBean implements SessionBean {
 	public void setSessionContext(SessionContext ctx)
 		throws EJBException,
 		RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbRemove() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbActivate() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void ejbPassivate() throws EJBException, RemoteException {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -59,7 +51,6 @@ public class GestionOfertaBean implements SessionBean {
 	 * @ejb.create-method
 	 */
 	public void ejbCreate() throws CreateException {
-		// TODO Auto-generated method stub
 	}
 
 	/**
