@@ -49,7 +49,7 @@
         <put name="workarea" value="/gui/compra.jsp"/>
     </definition>
 
-    <definition name=".ofertaLayout" extends=".menuLayout">
+    <definition name=".ofertaLayout" extends=".adminLayout">
         <put name="workarea" value="/gui/oferta.jsp"/>
     </definition>
 
