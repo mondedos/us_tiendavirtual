@@ -8,6 +8,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Iterator;
 
@@ -58,23 +59,28 @@ public class PedidosDAO {
 		p.setOperador(null);
 		p.setPrecioTotal(new Float(0.0));
 		
+		List <Producto> productos = new LinkedList<Producto>();
+		
 //		 Persistimos el carro de la compra como un pedido.
-		daoGenerico.persistirObjeto(p);
+		this.daoGenerico.persistirObjeto(p);
 		
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
 		while (li.hasNext()) {
 			lP = (LineaPedido) li.next();
+			productos.add((Producto)lP.getCompra());
 			lP.setPedido(p);
 			// Persistimos una linea de pedido del carro de la compra.
-			daoGenerico.persistirObjeto(lP);
+			this.daoGenerico.persistirObjeto(lP);
 			// Vamos calculando el precio total del carro de la compra...
 			precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
 		} // ...y lo asignamos al pedido en cuestion.
 		p.setPrecioTotal(new Float(precioTotal));
 		
 		//Actualizamos el pedido con el precio total. 
-		daoGenerico.modificarObjeto(p);
+		this.daoGenerico.modificarObjeto(p);
+		
+		this.beneficioDao.actualizarBeneficioPedido(productos);
 	}
 
 	/**
