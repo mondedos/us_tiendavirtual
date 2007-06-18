@@ -79,6 +79,11 @@ public class BeneficioDAOTest {
 		tx.commit();
 		sesion.close();
 
+		Beneficio beneTelevisor = null;
+		Beneficio beneLavadora = null;
+		
+		try
+		{
 		List<Producto> productosPedido = this.pedidoDao
 				.obtenerProductosPedido(pedido);
 
@@ -87,27 +92,35 @@ public class BeneficioDAOTest {
 
 		Criteria criteria = this.bmGenerico.crearCriteriaVacio(Beneficio.class);
 		this.bmGenerico.agregarAnd(criteria, "id", televisor.getId());
-		Beneficio beneTelevisor = (Beneficio)criteria.uniqueResult();
+		beneTelevisor = (Beneficio)criteria.list().get(0);
 		assert(beneTelevisor.getGanancia() == 50);
 		
 		Criteria criteria1 = this.bmGenerico
 				.crearCriteriaVacio(Beneficio.class);
 		this.bmGenerico.agregarAnd(criteria1, "id", lavadora.getId());
-		Beneficio beneLavadora = (Beneficio)criteria.uniqueResult();
+		beneLavadora = (Beneficio)criteria1.list().get(0);
 		assert(beneLavadora.getGanancia() == 500);
+		}
+		catch(Exception e)
+		{
+			
+		}
+		finally{
 
 		Session sesion1 = HibernateSessionFactory.crearSesion();
 		Transaction tx1 = sesion1.beginTransaction();
 		sesion1.delete(lineaPedido1);
 		sesion1.delete(lineaPedido2);
-		sesion1.delete(beneTelevisor);
-		sesion1.delete(beneLavadora);
-		sesion1.delete(beneficio);
+		if(beneTelevisor != null)
+			sesion1.delete(beneTelevisor);
+		if(beneLavadora != null)
+			sesion1.delete(beneLavadora);
 		sesion1.delete(pedido);
 		sesion1.delete(lavadora);
 		sesion1.delete(televisor);
 		sesion1.delete(operador);
 		tx1.commit();
 		sesion1.close();
+		}
 	}
 }
