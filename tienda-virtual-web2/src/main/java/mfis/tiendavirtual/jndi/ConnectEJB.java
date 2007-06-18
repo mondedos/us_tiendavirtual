@@ -1,16 +1,8 @@
 package mfis.tiendavirtual.jndi;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Hashtable;
-import java.util.Properties;
-import java.util.ResourceBundle;
-
 import javax.ejb.EJBHome;
 import javax.ejb.EJBObject;
-import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
