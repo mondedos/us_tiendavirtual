@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
-
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
@@ -165,9 +164,9 @@ public class ProductoDao {
 	private List<Beneficio> ordenarLista(List<Beneficio> listaBeneficios,
 			boolean descendentementeAscendentemente) {
 		List res = new ArrayList<Beneficio>();
-		Beneficio [] b;
+		Object [] b;
 		
-		b = (Beneficio []) listaBeneficios.toArray();
+		b = listaBeneficios.toArray();
 		Arrays.sort(b);
 		if (!(descendentementeAscendentemente)) { // Queremos obtener la lista de los productos que han generado menos beneficios ordenados del que menos beneficios ha
 			// generado al que más.
