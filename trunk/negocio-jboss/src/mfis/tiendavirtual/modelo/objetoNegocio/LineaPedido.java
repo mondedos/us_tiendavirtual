@@ -63,10 +63,10 @@ public class LineaPedido implements Serializable{
 	public String toString() {
 		String res = "";
 		
-		res += "Producto: " + this.getCompra().toString() + "\n";
-		res += "Unidades: " + this.getUnidades() + "\n";
-		res += "Precio por unidad: " + this.getPrecioUnidad() + "\n";
+		res += "\r\nProducto: " + this.getCompra().toString();
+		res += "Unidades: " + this.getUnidades() + "\r\n";
+		res += "Precio por unidad: " + this.getPrecioUnidad() + "\r\n";
 		
-		return (res);
+		return res;
 	}
 }
