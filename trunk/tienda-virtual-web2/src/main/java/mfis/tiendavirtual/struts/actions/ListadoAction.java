@@ -3,12 +3,10 @@ package mfis.tiendavirtual.struts.actions;
 import java.rmi.RemoteException;
 import java.util.List;
 
-import mfis.tiendavirtual.Carrito;
 import mfis.tiendavirtual.interfaces.GestionProducto;
 import mfis.tiendavirtual.jndi.EJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
-import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.actions.CategoriaAction;
 import mfis.tiendavirtual.struts.beans.CarritoBean;
@@ -82,7 +80,7 @@ public class ListadoAction extends MyTilesAction {
 				Item i = null;
 				try {
 					i = gp.getProducto( idpro );
-					listadoCategorias = gp.listarProductosCategoria(nombrecat);
+					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -95,7 +93,7 @@ public class ListadoAction extends MyTilesAction {
 				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
 
 				try {
-					listadoCategorias = gp.listarProductosCategoria(nombrecat);
+					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
