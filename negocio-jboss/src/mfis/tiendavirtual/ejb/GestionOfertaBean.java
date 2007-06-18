@@ -28,7 +28,6 @@ public class GestionOfertaBean implements SessionBean {
 	private static final long serialVersionUID = -6546078935309483841L;
 	public GestionOfertaBean() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public void setSessionContext(SessionContext ctx)
