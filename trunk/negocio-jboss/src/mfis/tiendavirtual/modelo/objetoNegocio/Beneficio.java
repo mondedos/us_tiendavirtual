@@ -2,7 +2,7 @@ package mfis.tiendavirtual.modelo.objetoNegocio;
 
 import java.io.Serializable;
 
-public class Beneficio implements Serializable {
+public class Beneficio implements Serializable,  Comparable{
 
 	private static final long serialVersionUID = 1700015941437531107L;
 
