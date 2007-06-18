@@ -76,5 +76,13 @@ public class Producto extends Item {
 		this.precio = precio;
 	}
 
-
+	public String toString() {
+		String res = "";
+		res += this.getClass().getName() + "\n";
+		res += "Marca: " + this.getMarca() + "\n";
+		res += "Modelo: " + this.getModelo() + "\n";
+		res += "Referencia: " + this.getReferencia() + "\n";
+		
+		return (res);
+	}
 }

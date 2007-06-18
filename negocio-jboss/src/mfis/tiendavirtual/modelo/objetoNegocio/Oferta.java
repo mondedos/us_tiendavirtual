@@ -48,5 +48,12 @@ public class Oferta extends Item{
 		this.secundario = secundario;
 	}
 
-
+	public String toString() {
+		String res = "";
+		
+		res = "Oferta: \n" + "Producto principal: " + this.getPrincipal() + "\n";
+		res = "Producto asociado: " + this.getSecundario() + "\n";
+		
+		return (res);
+	}
 }
