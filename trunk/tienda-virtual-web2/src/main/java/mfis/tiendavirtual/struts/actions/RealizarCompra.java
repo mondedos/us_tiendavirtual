@@ -14,7 +14,6 @@ import struts.WebContext;
 public class RealizarCompra extends MyTilesAction{
 
 	public String execute(WebContext c) throws Exception {
-		
 		Carrito carrito= (Carrito)c.getSession("carrito");
 		GestionPedidos gp= (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		
@@ -23,7 +22,8 @@ public class RealizarCompra extends MyTilesAction{
 		
 		if(direccionUsuario!=null || direccionUsuario.trim().equals("")){
 			try{
-				gp.registrarPedido(carrito, formulario.getDireccionUsuario());
+				gp.registrarPedido(carrito, "Hola");
+			
 			}catch(RemoteException e){
 				throw new RuntimeException(e);
 			}
