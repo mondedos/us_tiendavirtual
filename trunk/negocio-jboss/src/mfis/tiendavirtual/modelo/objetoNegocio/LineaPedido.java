@@ -59,6 +59,14 @@ public class LineaPedido implements Serializable{
 	public void setUnidades(int unidades) {
 		this.unidades = unidades;
 	}
-  
-
+	
+	public String toString() {
+		String res = "";
+		
+		res += "Producto: " + this.getCompra().toString() + "\n";
+		res += "Unidades: " + this.getUnidades() + "\n";
+		res += "Precio por unidad: " + this.getPrecioUnidad() + "\n";
+		
+		return (res);
+	}
 }

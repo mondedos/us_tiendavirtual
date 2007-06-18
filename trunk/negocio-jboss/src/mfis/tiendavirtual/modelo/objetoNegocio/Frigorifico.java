@@ -31,5 +31,12 @@ public class Frigorifico extends Producto {
 		this.combi = combi;
 	}
 	
-
+	public String toString() {
+		String res = "";
+		
+		
+		res+=super.toString();
+		
+		return (res);
+	}
 }

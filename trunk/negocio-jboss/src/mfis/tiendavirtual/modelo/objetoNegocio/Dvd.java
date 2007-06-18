@@ -28,4 +28,12 @@ public class Dvd extends Producto {
 		this.formato = formato;
 	}
 	
+	public String toString() {
+		String res = "";
+		
+		res += "DVD" + "\n";
+		res+=super.toString();
+		
+		return (res);
+	}
 }
