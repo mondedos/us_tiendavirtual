@@ -72,6 +72,8 @@ public class PedidosDAO {
 			precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
 		} // ...y lo asignamos al pedido en cuestion.
 		p.setPrecioTotal(new Float(precioTotal));
+		
+		//Actualizamos el pedido con el precio total. 
 		daoGenerico.modificarObjeto(p);
 	}
 
