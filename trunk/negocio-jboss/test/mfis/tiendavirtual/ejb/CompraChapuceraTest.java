@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import mfis.tiendavirtual.modelo.dao.DaoGenerico;
+import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
@@ -28,14 +29,28 @@ private String STRING_PRUEBA = "STRING_PRUEBA";
 	public void compraChapucera() throws Exception{
 		
 		List carritoPersist = this.crearCarrito();
+<<<<<<< .mine
+
+=======
+>>>>>>> .r311
 		Carrito carrito =
 			(Carrito)carritoPersist.remove(carritoPersist.size()-1);
+<<<<<<< .mine
+		Iterator it = carritoPersist.iterator();
+=======
 	
 		daoGenerico.persistirObjeto(carritoPersist.get(0));
 		daoGenerico.persistirObjeto(carritoPersist.get(1));
 		
+>>>>>>> .r311
+<<<<<<< .mine
+		while(it.hasNext()){	
+			Item o=(Item)it.next();
+			daoGenerico.persistirObjeto(o);
+=======
 		try{
 				this.gp.registrarPedido(carrito,this.STRING_PRUEBA);
+>>>>>>> .r311
 		}
 		catch(Exception e){
 			throw new Exception(e.getMessage());
@@ -75,10 +90,25 @@ private String STRING_PRUEBA = "STRING_PRUEBA";
 					null, televisor);
 		lineaPedido2.setPrecioUnidad(new Float(850));		
 		
+<<<<<<< .mine
+		// Oferta oferta = CreateObjetosNegocio.getInstance().createOferta();
+		//LineaPedido lineaPedido3 = 
+			// CreateObjetosNegocio.getInstance().createLineaPedido(pedido, oferta);
+		//objectPersist.add(oferta);
+		objectPersist.add(pedido);
+		objectPersist.add(lineaPedido1);
+		objectPersist.add(lineaPedido2);
+		// objectPersist.add(lineaPedido3);
+=======
+>>>>>>> .r311
 		
 		List<LineaPedido> lineas = new LinkedList<LineaPedido>();
 		lineas.add(lineaPedido1);
 		lineas.add(lineaPedido2);
+<<<<<<< .mine
+		// lineas.add(lineaPedido3);
+=======
+>>>>>>> .r311
 		
 		Carrito carrito = new Carrito();
 		carrito.setLineasPedido(lineas);
