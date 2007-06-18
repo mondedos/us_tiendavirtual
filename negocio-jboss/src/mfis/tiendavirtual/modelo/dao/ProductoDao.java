@@ -140,6 +140,7 @@ public class ProductoDao {
 		listaBeneficios = d.obtenerTodos(Beneficio.class);
 		
 		listaBeneficios = ordenarLista(listaBeneficios, menosMas);
+		
 		li = listaBeneficios.listIterator();
 		while ((li.hasNext()) && (i < 10)) {
 			idProducto = ((Beneficio) li.next()).getId();
