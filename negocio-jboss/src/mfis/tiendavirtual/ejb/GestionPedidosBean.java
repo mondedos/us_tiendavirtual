@@ -83,7 +83,7 @@ public class GestionPedidosBean implements SessionBean {
 
 		cad += "=================================================================";
 
-		// cad += c.toString();
+		cad += c.toString();
 		generarArchivoLog(cad);
 	}
 
