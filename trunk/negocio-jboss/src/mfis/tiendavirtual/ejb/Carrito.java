@@ -2,6 +2,7 @@ package mfis.tiendavirtual.ejb;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.ListIterator;
 
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 
@@ -33,6 +34,23 @@ public class Carrito implements Serializable {
 	}
 	public void setTotalSinIVA(String totalSinIVA) {
 		this.totalSinIVA = totalSinIVA;
+	}
+	
+	public String toString() {
+		String res = "";
+		ListIterator li;
+		LineaPedido lP;
+		
+		li = lineasPedido.listIterator();
+		while (li.hasNext()) {
+			lP = (LineaPedido) li.next();
+			
+			res += lP.toString() + "\n";
+		} res += "=================================================================" + "\n";
+		res += "Total sin IVA: " + getTotalSinIVA() + "\n";
+		res += "Total con IVA: " + getTotalConIVA() + "\n";
+		
+		return (res);
 	}
 
 }
