@@ -16,7 +16,7 @@ public interface GestionProducto
    /**
     * Business method
     */
-   public java.util.List listarProductosBusqueda( float precioMinimo,float precioMaximo,java.lang.String categoria,java.util.List palabrasClave )
+   public java.util.List listarProductosBusqueda( java.lang.Float precioMinimo,java.lang.Float precioMaximo,mfis.tiendavirtual.modelo.dao.Categoria categoria,java.util.List palabrasClave )
       throws java.rmi.RemoteException;
 
    /**
