@@ -5,6 +5,7 @@ import java.util.Date;
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Frigorifico;
+import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
@@ -142,7 +143,7 @@ public class CreateObjetosNegocio {
 	}
 	
 	// Crea una línea de pedido asociada a un pedido y a un item.
-	public  LineaPedido createLineaPedido(Pedido pedido, Producto producto){
+	public  LineaPedido createLineaPedido(Pedido pedido, Item producto){
 		
 		LineaPedido lineaPedido = new LineaPedido();
 		lineaPedido.setPedido(pedido);
