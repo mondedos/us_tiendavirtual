@@ -78,7 +78,13 @@ public class Producto extends Item {
 
 	public String toString() {
 		String res = "";
-		res += this.getClass().getName() + "\n";
+		
+		String nombreClase=this.getClass().getName();
+		String []nombreChorizo=nombreClase.split("\\.");
+		
+		
+		
+		res += nombreChorizo[nombreChorizo.length-1] + "\n";
 		res += "Marca: " + this.getMarca() + "\n";
 		res += "Modelo: " + this.getModelo() + "\n";
 		res += "Referencia: " + this.getReferencia() + "\n";
