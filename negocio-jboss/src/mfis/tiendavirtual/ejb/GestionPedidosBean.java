@@ -69,11 +69,11 @@ public class GestionPedidosBean implements SessionBean {
 	private void registrarVentaProvisional(Carrito c, String direccion) {
 		String cad = "";
 
-		cad += "Eviar el pedido a " + direccion+"\r\n\r\n";
+		cad += "Enviar el pedido a " + direccion + "\r\n\r\n";
 
 		cad += "=================================================================";
 
-		cad += "\r\n"+c.toString();
+		cad += "\r\n" + c.toString();
 		generarArchivoLog(cad);
 	}
 
