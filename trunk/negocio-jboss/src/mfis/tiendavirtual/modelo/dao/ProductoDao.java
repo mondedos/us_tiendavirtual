@@ -135,16 +135,18 @@ public class ProductoDao {
 		DaoGenerico d = new DaoGenerico();
 		ListIterator li;
 		Long idProducto;
+		int i = 0;
 
 		listaBeneficios = d.obtenerTodos(Beneficio.class);
 		
 		listaBeneficios = ordenarLista(listaBeneficios, menosMas);
 		li = listaBeneficios.listIterator();
-		while (li.hasNext()) {
+		while ((li.hasNext()) && (i < 10)) {
 			idProducto = ((Beneficio) li.next()).getId();
 			p = d.buscarPorId(Producto.class, idProducto);
 			if (d.buscarPorId(Deprecated.class, idProducto) == null) {
 				res.add(p);
+				i++;
 			}
 		}
 
@@ -159,17 +161,18 @@ public class ProductoDao {
 	 * @return la lista de entrada ordenada de forma descendente por el valor del atributo "beneficio" de cada objeto "Beneficio" si el parametro
 	 * "descendentementeAscendentemente" tiene el valor "false" y ordenada ascendentemente e.c.c. 
 	 */
+	@SuppressWarnings("unchecked")
 	private List<Beneficio> ordenarLista(List<Beneficio> listaBeneficios,
 			boolean descendentementeAscendentemente) {
 		List res = new ArrayList<Beneficio>();
-		Object [] b;
+		Beneficio [] b;
 		
-		b = listaBeneficios.toArray();
+		b = (Beneficio []) listaBeneficios.toArray();
 		Arrays.sort(b);
 		if (!(descendentementeAscendentemente)) { // Queremos obtener la lista de los productos que han generado menos beneficios ordenados del que menos beneficios ha
 			// generado al que más.
 			for (int i = (b.length - 1); i >= 0; i--) {
-				res.add((Beneficio)b[i]);
+				res.add(b[i]);
 			}
 		} else { // Queremos obtener la lista de los productos que han generado mas beneficios ordenados del que mas beneficios ha obtenido al que menos.
 			res = Arrays.asList(b);
