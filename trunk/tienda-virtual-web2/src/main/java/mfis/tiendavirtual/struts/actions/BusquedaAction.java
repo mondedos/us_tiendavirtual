@@ -64,6 +64,8 @@ public class BusquedaAction extends MyTilesAction {
     	
     	c.setRequest("lista", resultadoBusqueda);
     	c.setRequest("titulo", "Resultados Búsqueda");
+    	c.setRequest("idcat", new Integer(0));
+    	c.setRequest("urlImg", "gui/images");
     	
     	if(c.getSession("operador")!=null) return OPERADOR;
     	else return MENUPAGE;
@@ -73,7 +75,7 @@ public class BusquedaAction extends MyTilesAction {
     
     private Categoria obtenerCategoria(String cadenaCategoria){
     	
-    	if(cadenaCategoria!=null && !cadenaCategoria.equals("")){
+    	if(cadenaCategoria!=null && !cadenaCategoria.trim().equals("")){
     		int idCategoria= Integer.parseInt(cadenaCategoria);
         	return CategoriaAction.obtenerCategoria(idCategoria);
     		
@@ -84,7 +86,7 @@ public class BusquedaAction extends MyTilesAction {
     
     private List obtenerPalabrasClave(String marca){
     	
-    	if(marca==null) return null;
+    	if(marca==null || marca.trim().equals("")) return null;
     	
     	String []auxiliar= marca.split(" ");
     	return Arrays.asList(auxiliar);

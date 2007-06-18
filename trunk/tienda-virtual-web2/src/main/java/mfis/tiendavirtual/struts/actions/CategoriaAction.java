@@ -80,7 +80,7 @@ public class CategoriaAction extends MyTilesAction {
 		c.setRequest("idcat", idcategoria + "");
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", bundle.getString(cats[idcategoria]));
-		c.setRequest("urlImg", bundle.getString("app.imgpath") + imgPath[idcategoria]);
+		c.setRequest("urlImg", "gui/images");
 
 		if(c.getSession("operador") != null) {
 			layout = OPERADOR;
