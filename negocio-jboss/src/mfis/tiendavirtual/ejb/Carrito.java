@@ -83,10 +83,11 @@ public class Carrito implements Serializable {
 		while (li.hasNext()) {
 			lP = (LineaPedido) li.next();
 			
-			res += lP.toString() + "\n";
-		} res += "=================================================================" + "\n";
-		res += "Total sin IVA: " + getTotalSinIVA() + "\n";
-		res += "Total con IVA: " + getTotalConIVA() + "\n";
+			res += lP.toString() + "\n\r";
+		}
+		res += "\r\n=================================================================\r\n";
+		res += "\r\nTotal sin IVA: " + getTotalSinIVA() + "\r\n";
+		res += "Total con IVA: " + getTotalConIVA() + "\r\n";
 		
 		return (res);
 	}
