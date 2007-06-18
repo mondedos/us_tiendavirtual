@@ -142,12 +142,31 @@ INSERT INTO `televisor` (`ID_ITEM_3`,`VC_TAMANO`,`TDT`,`PEANA`) VALUES
 /*!40000 ALTER TABLE `televisor` ENABLE KEYS */;
 
 
---
--- Dumping data for table `identificadorhibernate`
---
-
-/*!40000 ALTER TABLE `identificadorhibernate` DISABLE KEYS */;
-INSERT INTO `identificadorhibernate` (`PRIMARY_KEY`,`GENERADOR_ITEM`,`GENERADOR_PEDIDO`,`GENERADOR_LP`,`GENERADOR_OPERADOR`) VALUES 
- (0,1,1,1,1);
-/*!40000 ALTER TABLE `identificadorhibernate` ENABLE KEYS */;
-
+/*!40000 ALTER TABLE `beneficio` DISABLE KEYS */;
+INSERT INTO `beneficio` (`ID_ITEM_5`,`IN_GANANCIA`) VALUES 
+ (1,100),
+ (2,150),
+ (3,210),
+ (4,50),
+ (5,300),
+ (6,100),
+ (7,10),
+ (8,1),
+ (9,20),
+ (10,500),
+ (11,120),
+ (12,200),
+ (13,350),
+ (14,210),
+ (15,30),
+ (16,250),
+ (21,34),
+ (22,237),
+ (24,1200),
+ (25,12),
+ (26,0),
+ (27,123),
+ (28,30),
+ (29,700),
+ (30,5);
+/*!40000 ALTER TABLE `beneficio` ENABLE KEYS */;
