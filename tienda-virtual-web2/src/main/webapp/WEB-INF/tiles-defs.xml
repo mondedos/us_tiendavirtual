@@ -29,7 +29,7 @@
         <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
         <put name="menu" value="/gui/common/menu.jsp"/>
         <put name="admin" value="/gui/common/admin.jsp"/>
-        <put name="workarea" value="/gui/listado.jsp"/>
+        <put name="workarea" value="/gui/common/adminarea.jsp"/>
         <put name="foot" value="/gui/common/foot.jsp"/>
     </definition>
 
@@ -48,6 +48,9 @@
     <definition name=".compraLayout" extends=".menuLayout">
         <put name="workarea" value="/gui/compra.jsp"/>
     </definition>
-    
+
+    <definition name=".ofertaLayout" extends=".menuLayout">
+        <put name="workarea" value="/gui/oferta.jsp"/>
+    </definition>
 
 </tiles-definitions>
