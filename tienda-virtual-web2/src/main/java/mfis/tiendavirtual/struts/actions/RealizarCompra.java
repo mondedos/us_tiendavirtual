@@ -6,6 +6,7 @@ import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.interfaces.GestionPedidos;
 import mfis.tiendavirtual.jndi.EJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
+import mfis.tiendavirtual.jndi.PedidosEJB;
 import mfis.tiendavirtual.struts.forms.PedidoForm;
 import struts.MyTilesAction;
 import struts.WebContext;
@@ -15,7 +16,7 @@ public class RealizarCompra extends MyTilesAction{
 	public String execute(WebContext c) throws Exception {
 		
 		Carrito carrito= (Carrito)c.getSession("carrito");
-		GestionPedidos gp= (GestionPedidos)new ProductoEJB().getEJB(EJB.PEDIDOS_JNDI);
+		GestionPedidos gp= (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		
 		PedidoForm formulario= (PedidoForm)c.getForm();
 		String direccionUsuario= formulario.getDireccionUsuario();
