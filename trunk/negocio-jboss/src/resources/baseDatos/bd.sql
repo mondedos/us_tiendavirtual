@@ -101,6 +101,7 @@ create table OFERTA
    ID_ITEM_2            int not null,
    ID_ITEM_3            int,
    PRO_ID_ITEM_3        int,
+   ACTUAL				bool not null,
    primary key (ID_ITEM_2)
 );
 
@@ -220,5 +221,3 @@ alter table TELEVISOR add constraint FK_TELEVISOR_PRODUCTO foreign key (ID_ITEM_
 
 INSERT INTO `identificadorhibernate` (`PRIMARY_KEY`,`GENERADOR_ITEM`,`GENERADOR_PEDIDO`,`GENERADOR_LP`,`GENERADOR_OPERADOR`) VALUES 
  (0,1,1,1,1);
-
-
