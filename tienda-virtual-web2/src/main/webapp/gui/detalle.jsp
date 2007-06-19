@@ -18,10 +18,6 @@
 									</p>
 									<p>
 										<span><bean:message key="app.producto.1"/>:</span> <br/>
-										<bean:write name="producto" property="referencia"/>
-									</p>
-									<p>
-										<span><bean:message key="app.producto.1"/>:</span> <br/>
 										<bean:write name="producto" property="descripcion"/>
 									</p>
 									<p>
