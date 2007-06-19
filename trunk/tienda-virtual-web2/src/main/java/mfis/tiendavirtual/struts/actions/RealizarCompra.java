@@ -19,17 +19,29 @@ public class RealizarCompra extends MyTilesAction{
 		PedidoForm formulario= (PedidoForm) c.getForm();
 		String direccionUsuario = formulario.getDireccionUsuario();
 		
-		if ((direccionUsuario != null) || (direccionUsuario.trim().equals(""))) {
+
+		if(direccionUsuario!=null && !direccionUsuario.trim().equals("")){
+
 			try{
 				gp.registrarPedido(carrito, direccionUsuario);
-			} catch(RemoteException e){
+				
+				//borramos el carrito de compra
+				c.setSession("carrito", null);
+			
+			}catch(RemoteException e){
 				throw new RuntimeException(e);
 			}
-		} else {
-			//TODO MOSTRAR MENSAJE DE ERROR SOLICITANDO LA DIRECCION
+
+			//actualizamos la oferta y otros campos necesarios
+			StartAction.obtenerOfertas(c);
+			
+			//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL
+			return ".compraRealizada";
+			
+		}else{
+
+			//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL.
+			return (MAINPAGE);
 		}
-		
-		//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL.
-		return (MAINPAGE);
 	}
 }
