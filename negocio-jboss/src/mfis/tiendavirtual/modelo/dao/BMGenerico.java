@@ -248,17 +248,6 @@ public class BMGenerico {
 	}
 
 	/**
-	 * Metodo para agregar un criterio or
-	 * 
-	 * @param criteria
-	 * @param propiedad
-	 * @param valor
-	 */
-	public void agregarOr(Criteria criteria, String propiedad, Object valor) {
-		// TODO
-	}
-
-	/**
 	 * Agrega un criterio de que la propiedad dada tiene que estar dentro de un
 	 * rango determinado. Es decir:
 	 * 
