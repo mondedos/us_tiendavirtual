@@ -44,9 +44,11 @@ public class StartAction extends MyTilesAction {
 //
 //    	c.setRequest("lista", productos);
 
+    	
+    	
     	//obtenemos la oferta
     	obtenerOfertas(c);
-
+    	
         return MAINPAGE;
     }
     
