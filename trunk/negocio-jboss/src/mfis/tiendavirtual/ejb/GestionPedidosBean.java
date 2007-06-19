@@ -2,6 +2,7 @@ package mfis.tiendavirtual.ejb;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.Date;
@@ -79,9 +80,9 @@ public class GestionPedidosBean implements SessionBean {
 
 	public void generarArchivoLog(String cad) {
 		try {
-			java.io.FileOutputStream fichero = new FileOutputStream(
+			FileWriter fichero = new FileWriter(
 					"c:\\ventas.txt", true);
-			fichero.write(cad.getBytes());
+			fichero.append("\r\n\r\n"+cad);
 			fichero.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
