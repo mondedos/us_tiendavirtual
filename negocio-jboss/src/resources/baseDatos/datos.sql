@@ -1,6 +1,4 @@
-﻿
-
-INSERT INTO `item` (`ID_ITEM`,`VC_REFERENCIA`) VALUES 
+﻿INSERT INTO `item` (`ID_ITEM`,`VC_REFERENCIA`) VALUES
  (1,'ref1'),
  (2,'ref2'),
  (3,'ref3'),
@@ -32,9 +30,7 @@ INSERT INTO `item` (`ID_ITEM`,`VC_REFERENCIA`) VALUES
  (29,'ref29'),
  (30,'ref30');
 
-
-
-INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
+INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES
  (1,'Sony','KV14CT1','Alto 80 cm - Ancho 70 cm',215.00,15,'Televisor pequeÃ±o, compacto y mono.','Televisor/Sony_KV_14_CT1.jpg'),
  (2,'Fagor','F 2810','Alto 85 cm - Ancho 59 cm',439.00,24,'Lavadora con carga frontal, cuba de acero inoxidable con una capacidad 8kg.','Lavadora/Fagor_F_2810.jpg'),
  (3,'Fagor','3FC 67 NFXD','Alto 185 cm - Ancho 60 cm',699.00,13,'Frigorifico de gran capacidad, con controles de firgorifico y congelador separados','Frigorifico/Fagor_3FC_67_NFXD.jpg'),
