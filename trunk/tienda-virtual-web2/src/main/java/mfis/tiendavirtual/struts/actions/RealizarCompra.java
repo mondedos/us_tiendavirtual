@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.interfaces.GestionPedidos;
 import mfis.tiendavirtual.jndi.EJB;
-import mfis.tiendavirtual.jndi.ProductoEJB;
 import mfis.tiendavirtual.jndi.PedidosEJB;
 import mfis.tiendavirtual.struts.forms.PedidoForm;
 import struts.MyTilesAction;
@@ -15,27 +14,22 @@ public class RealizarCompra extends MyTilesAction{
 
 	public String execute(WebContext c) throws Exception {
 		Carrito carrito= (Carrito)c.getSession("carrito");
-		GestionPedidos gp= (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
+		GestionPedidos gp = (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		
-		PedidoForm formulario= (PedidoForm)c.getForm();
-		String direccionUsuario= formulario.getDireccionUsuario();
+		PedidoForm formulario= (PedidoForm) c.getForm();
+		String direccionUsuario = formulario.getDireccionUsuario();
 		
-		if(direccionUsuario!=null || direccionUsuario.trim().equals("")){
+		if ((direccionUsuario != null) || (direccionUsuario.trim().equals(""))) {
 			try{
-				gp.registrarPedido(carrito, "Hola");
-			
-			}catch(RemoteException e){
+				gp.registrarPedido(carrito, direccionUsuario);
+			} catch(RemoteException e){
 				throw new RuntimeException(e);
 			}
-			
-		}else{
+		} else {
 			//TODO MOSTRAR MENSAJE DE ERROR SOLICITANDO LA DIRECCION
 		}
 		
-
-		//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL
-		return MAINPAGE;
-		
+		//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL.
+		return (MAINPAGE);
 	}
-
 }
