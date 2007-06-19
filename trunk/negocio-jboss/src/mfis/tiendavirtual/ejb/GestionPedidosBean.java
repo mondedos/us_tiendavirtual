@@ -1,7 +1,6 @@
 package mfis.tiendavirtual.ejb;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
