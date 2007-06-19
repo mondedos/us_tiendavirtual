@@ -92,9 +92,9 @@ INSERT INTO `lavadora` (`ID_ITEM_3`,`BO_SECADORA`,`VC_CLASIFENERGETICA`) VALUES
 
 INSERT INTO `oferta` (`ID_ITEM_2`,`ID_ITEM_3`,`PRO_ID_ITEM_3`,`ACTUAL`) VALUES 
  (17,16,1,1),
- (18,21,6,1),
- (19,21,10,1),
- (20,16,7,1);
+ (18,21,6,0),
+ (19,21,10,0),
+ (20,16,7,0);
 
 
 
