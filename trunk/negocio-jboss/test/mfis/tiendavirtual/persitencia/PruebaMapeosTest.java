@@ -174,6 +174,7 @@ public class PruebaMapeosTest {
 	public void saveOferta() {
 
 		Oferta oferta = CreateObjetosNegocio.getInstance().createOferta();
+		oferta.setOfertaActual(false);
 		Producto principal = oferta.getPrincipal();
 		Producto secundario = oferta.getSecundario();
 
