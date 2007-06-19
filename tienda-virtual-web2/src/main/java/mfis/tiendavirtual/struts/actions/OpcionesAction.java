@@ -80,6 +80,7 @@ public class OpcionesAction extends MyTilesAction {
 				break;
 			case 4:
 				logout(c);
+				StartAction.obtenerOfertas(c);
 				layout = MAINPAGE;
 				break;
 			default:
