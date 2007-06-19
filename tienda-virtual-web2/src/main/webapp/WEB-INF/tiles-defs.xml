@@ -53,8 +53,13 @@
         <put name="workarea" value="/gui/oferta.jsp"/>
     </definition>
     
+    <definition name=".error" extends=".menuLayout">
+    	<put name="workarea" value="/gui/common/error.jsp" />
+    </definition>
+    
     <definition name=".compraRealizada" extends=".menuLayout">
     	<put name="workarea" value="/gui/compraRealizada.jsp" />
-    </definition>>
+   	</definition>
+    	
 
 </tiles-definitions>

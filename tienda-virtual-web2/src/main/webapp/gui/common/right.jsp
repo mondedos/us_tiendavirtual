@@ -18,7 +18,7 @@
 						<tr>
 							<td class="izda"><img class="oferton" src="gui/images/<bean:write name="prB" property="foto"/>" width="75" height="50"/></td>
 							<td >
-								<p><bean:write name="prB" property="marca"/> <bean:write name="prA" property="modelo"/></p>
+								<p><bean:write name="prB" property="marca"/> <bean:write name="prB" property="modelo"/></p>
 								<p><bean:write name="prB" property="dimensiones"/></p>
 								<p><big><bean:write name="prB" property="precio"/> &euro;</big></p>
 							</td>
