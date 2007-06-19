@@ -1,5 +1,4 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
-			<br/>
 			<div id="opciones">
 				<h3><bean:message key="app.opciones"/></h3>
 				<div class="menu-container">

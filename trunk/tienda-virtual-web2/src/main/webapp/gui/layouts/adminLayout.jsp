@@ -16,7 +16,6 @@
 <tiles:insert attribute="header" />
 <tiles:insert attribute="breadcrumbs" />
 			<div id="menu">
-<tiles:insert attribute="menu" />
 <tiles:insert attribute="admin" />
 			</div>
 			<div id="workarea">
