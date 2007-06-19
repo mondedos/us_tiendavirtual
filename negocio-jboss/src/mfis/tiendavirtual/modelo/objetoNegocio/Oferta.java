@@ -6,7 +6,10 @@ public class Oferta extends Item{
 	
 	private Producto principal;
 	private Producto secundario;
+	private Boolean ofertaActual;
 	
+	
+
 	public Oferta(){}
 	
 	public Oferta(Producto principal, Producto secundario){
@@ -46,6 +49,14 @@ public class Oferta extends Item{
 	}
 	public void setSecundario(Producto secundario) {
 		this.secundario = secundario;
+	}
+	
+	public Boolean getOfertaActual() {
+		return ofertaActual;
+	}
+
+	public void setOfertaActual(Boolean ofertaActual) {
+		this.ofertaActual = ofertaActual;
 	}
 
 	public String toString() {

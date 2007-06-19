@@ -77,10 +77,10 @@ public class GestionPedidosBean implements SessionBean {
 		generarArchivoLog(cad);
 	}
 
-	private void generarArchivoLog(String cad) {
+	public void generarArchivoLog(String cad) {
 		try {
 			java.io.FileOutputStream fichero = new FileOutputStream(
-					"ventas.txt", false);
+					"c:\\ventas.txt", true);
 			fichero.write(cad.getBytes());
 			fichero.close();
 		} catch (FileNotFoundException e) {
