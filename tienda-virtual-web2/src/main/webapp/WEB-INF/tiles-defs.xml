@@ -27,7 +27,6 @@
     <definition name=".adminLayout" path="/gui/layouts/adminLayout.jsp">
         <put name="header" value="/gui/common/header.jsp"/>
         <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
-        <put name="menu" value="/gui/common/menu.jsp"/>
         <put name="admin" value="/gui/common/admin.jsp"/>
         <put name="workarea" value="/gui/common/adminarea.jsp"/>
         <put name="foot" value="/gui/common/foot.jsp"/>
@@ -52,14 +51,14 @@
     <definition name=".ofertaLayout" extends=".adminLayout">
         <put name="workarea" value="/gui/oferta.jsp"/>
     </definition>
-    
+
     <definition name=".error" extends=".menuLayout">
     	<put name="workarea" value="/gui/common/error.jsp" />
     </definition>
-    
+
     <definition name=".compraRealizada" extends=".menuLayout">
     	<put name="workarea" value="/gui/compraRealizada.jsp" />
    	</definition>
-    	
+
 
 </tiles-definitions>
