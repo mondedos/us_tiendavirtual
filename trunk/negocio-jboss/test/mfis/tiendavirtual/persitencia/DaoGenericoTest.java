@@ -29,7 +29,7 @@ public class DaoGenericoTest {
 	public void pruebaObtenerTodos(){
 		
 		List<Lavadora> l= daoGenerico.obtenerTodos(Lavadora.class);
-		assert l.size()==5 : "El numero de elementos es incorrecto";
+		assert l.size()==5 : "El numero de elementos es incorrecto"+l.size();
 		
 		for(Lavadora lavadora : l){
 			try{
