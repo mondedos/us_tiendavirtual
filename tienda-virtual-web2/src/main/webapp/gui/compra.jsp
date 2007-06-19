@@ -47,15 +47,19 @@ float total = (float) lp.getUnidades() * lp.getPrecioUnidad().floatValue();
 					<br><br>
 					
 					<html:form action="realizarCompra.do">
-						<label for="nombreUsuario">Introduzca su nombre</label>
-						<html:text property="nombreUsuario" />	
+						<label for="nombreUsuario">Introduzca su nombre</label><br>
+						<html:text property="nombreUsuario" />
+						
 						<br><br>
 						
-						<label for="direccionUsuario">Introduzca la dirección</label>
+						<label for="direccionUsuario">Introduzca la dirección</label><br>
 						<html:text property="direccionUsuario" />
+						
+						<br><br>
+						
+						<html:submit property="Realizar compra" />
 					</html:form>
-					
-					<a href="realizarCompra.do">Realizar compra</a>
+	
 				</logic:present>
 				<logic:notPresent name="carrito">
 					Actualmente no tiene productos en el carrito.

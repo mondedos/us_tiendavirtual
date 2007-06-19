@@ -1,9 +1,7 @@
 package mfis.tiendavirtual.struts.actions;
 
 import java.rmi.RemoteException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Formatter;
 
 import mfis.tiendavirtual.interfaces.GestionOferta;
 import mfis.tiendavirtual.jndi.EJB;
@@ -13,7 +11,6 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
 import struts.MyTilesAction;
 import struts.WebContext;
-import sun.misc.FormattedFloatingDecimal;
 
 
 /**
@@ -47,6 +44,14 @@ public class StartAction extends MyTilesAction {
 //
 //    	c.setRequest("lista", productos);
 
+    	//obtenemos la oferta
+    	obtenerOfertas(c);
+
+        return MAINPAGE;
+    }
+    
+    
+    public static void obtenerOfertas(WebContext c){
     	GestionOferta go = (GestionOferta) new OfertaEJB().getEJB(EJB.OFERTAS_JNDI);
     	Producto prA = null;
     	Producto prB = null;
@@ -55,8 +60,7 @@ public class StartAction extends MyTilesAction {
 			prA = o.getPrincipal();
 			prB = o.getSecundario();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 
 		float precioFinal = 0.0f;
@@ -72,8 +76,7 @@ public class StartAction extends MyTilesAction {
 		c.setRequest("prB", prB);
 		c.setRequest("precioFinal", tmp.substring(0, (tmp.indexOf(".")+ 3) ));
     	c.setRequest("lista", new ArrayList());
-
-        return MAINPAGE;
+    	
     }
 
 }

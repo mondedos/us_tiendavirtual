@@ -47,6 +47,10 @@ public class LoginAction extends MyTilesAction {
     	} else {
     		layout = LOGIN;
     	}
+    	
+    	//borramos el carrito de compras
+    	c.setSession("carrito", null);
+    	
 
         return layout;
     }
