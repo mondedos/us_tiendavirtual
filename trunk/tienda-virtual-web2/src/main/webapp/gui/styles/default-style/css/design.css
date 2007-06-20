@@ -6,28 +6,32 @@ body {
 	background-position:top center;
 	background-attachment:fixed
 }
-h1 { font-size: 1.5em;	padding: 10px 15px 0px 15px; }
+h1 { font-size: 1.5em; }
 h2 { font-size: 1.1em; 	padding: 0px 15px 10px 15px; }
-h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
+h3{ padding: 2px 10px; 	background-color: #c00; color: #eee; }
 
 #breadcrumbs {
 	font-size: 0.9em;
 	padding: 3px 15px;
+	border-right: 1px solid #c00;
+	border-left: 1px solid #c00;
 	border-bottom: 1px solid #c00;
-	background-color: #fee;
+	background-color: #eee;
 }
 #header {
+	border-top: 1px solid #c00;
+	border-left: 1px solid #c00;
 	background-color: #c00;
-	color: #fee;
+	color: #eee;
+	height: 151px;
 }
 #container {
 	background-color: #fff;
 }
 #foot{
 	margin-top: 10px;
-	background-color: #fee;
-	border-top: 1px solid #c00;
-	border-bottom: 1px solid #c00;
+	background-color: #eee;
+	border: 1px solid #c00;
 	font-size: 0.9em;
 	padding: 2px 0px;
 	text-align: center;
@@ -47,7 +51,7 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 .mini-container {
 	padding: 5px 10px;
 	border: 1px solid #c00;
-	background-color: #fee;
+	background-color: #eee;
 }
 .mini-container ul li{
 	float: left;
@@ -56,16 +60,22 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 }
 
 .mini-container ul li a {
-
+	color: #000;
+	padding: 2px 3px;
+	display: block;
+	text-decoration: none;
 }
-
+.mini-container ul li a:hover {
+	background-color: #3d3d3d;
+	color: #fff;
+}
 
 
 .menu-container {
 	font-size: 0.9em;
 	padding: 5px 10px;
 	border: 1px solid #c00;
-	background-color: #fee;
+	background-color: #eee;
 }
 .menu-container ul {
 	color: #c00;
@@ -78,10 +88,18 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 	padding: 4px 2px;
 }
 
-.menu-container ul li a, .menu-container ul li a:hover, .menu-container ul li a:visited {
+.menu-container ul li a {
 	color: #000;
+	padding: 2px 3px;
+	display: block;
+	text-decoration: none;
 }
-
+.menu-container ul li a:hover {
+	background-color: #3d3d3d;
+	color: #fff;
+}
+.menu-container ul li a:visited {
+}
 .menu-container select, .menu-container input {
 	width: 150px;
 	border: 1px solid #c00;
@@ -92,7 +110,7 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #fee; }
 }
 .menu-container .boton {
 	border: 1px solid #000;
-	color: #fee;
+	color: #eee;
 	background-color: #c00;
 }
 #avanzada {
