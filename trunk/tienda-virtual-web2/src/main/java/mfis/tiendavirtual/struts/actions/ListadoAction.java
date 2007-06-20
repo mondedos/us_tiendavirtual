@@ -120,18 +120,19 @@ public class ListadoAction extends MyTilesAction {
 		c.setRequest("titulo", nombrecat);
 		c.setRequest("urlImg", "gui/images");
 
-		construyeMigas(c, idcat, opt, p.getMarca() + " " +p.getModelo());
+		construyeMigas(c, idcat, opt, p);
+
         return layout;
 
     }
 
-    public void construyeMigas(WebContext c, int cat, int opt, String marca) {
+    public void construyeMigas(WebContext c, int cat, int opt, Producto p) {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio",c.getRequest().getContextPath()+"/"));
 
     	if(opt == 0) {
     		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), c.getRequest().getContextPath() + "/categoria.do?idcat=" + cat));
-    		l.add(new LabelValueBean(marca,""));
+    		l.add(new LabelValueBean(p.getMarca() + " " +p.getModelo(),""));
     	} else {
     		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), ""));
     	}
