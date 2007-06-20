@@ -25,7 +25,7 @@ public class RealizarCompra extends MyTilesAction{
 			try{
 				gp.registrarPedido(carrito, direccionUsuario);
 				
-				//borramos el carrito de compra
+				// Borramos el carrito de compra.
 				c.setSession("carrito", null);
 			
 			}catch(RemoteException e){

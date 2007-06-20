@@ -15,13 +15,12 @@ public class ProductoEJB extends ConnectEJB {
 			gph = (GestionProductoHome) home;
 			ejb = gph.create();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CreateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ejb;
+		
+		return (ejb);
 	}
 
 }
