@@ -50,7 +50,7 @@ INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_
  (15,'Panasonic','DVD-LS91','Alto 2.03 in. - Ancho: 9.28 in. - Profundidad 7.28 in.',194.99,12,'Esta impresionante pantalla de 9\" en este reproductor de DVD portátil es ideal para películas en el asiento trasero de su vehículo durante un viaje largo. La entrada dual para auriculares permite que dos personas oigan simultáneamente.','Dvd/Panasonic DVD-LS91.jpg'),
  (16,'Philips','HR-2094','Alto: 20 cm.',86.20,30,'Pequeña batidora.','PequenosElectrodomesticos/Philips_HR_2094__550219.jpg'),
  (21,'Taurus','BAPI 600 IX','Tamaño 18 cm. ',28.59,21,'Pequeña batidora.','PequenosElectrodomesticos/Taurus_BAPI_600_IX.jpg'),
- (22,'Solac','T-222 O2 07798.1','Alto: 9 cm. - Ancho: 34 cm..',23.43,10,'Tostadora','PequenosElectrodomesticos/Solac_T_222_O2_077981.jpg');
+ (22,'Solac','T-222 O2 07798.1','Alto: 9 cm. - Ancho: 34 cm.',23.43,10,'Tostadora','PequenosElectrodomesticos/Solac_T_222_O2_077981.jpg');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
  (23,'Serverin','AT-2201','Alto: 10 cm. - Ancho: 37 cm.',40.12,13,'Tostadora.','PequenosElectrodomesticos/Severin_AT_2201.jpg'),
  (24,'Fagor','TP-1110','Alto: 4 cm. - Ancho: 20 cm.',35.60,7,'Tostadora.','PequenosElectrodomesticos/Fagor_TP_1110.jpg'),
