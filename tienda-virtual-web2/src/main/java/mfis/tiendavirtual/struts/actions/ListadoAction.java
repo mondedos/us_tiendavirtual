@@ -1,7 +1,10 @@
 package mfis.tiendavirtual.struts.actions;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.struts.util.LabelValueBean;
 
 import mfis.tiendavirtual.interfaces.GestionProducto;
 import mfis.tiendavirtual.jndi.EJB;
@@ -56,11 +59,12 @@ public class ListadoAction extends MyTilesAction {
 
     	List listadoCategorias = null;
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
+    	Producto p = null;
 
     	switch (opt) {
     		// ver detalle
 			case 0:
-				Producto p = null;
+
 				try {
 					p = (Producto) gp.getProducto(idpro);
 				} catch (RemoteException e1) {
@@ -115,7 +119,24 @@ public class ListadoAction extends MyTilesAction {
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", nombrecat);
 		c.setRequest("urlImg", "gui/images");
-		
-        return (layout);
+
+		construyeMigas(c, idcat, opt, p.getMarca() + " " +p.getModelo());
+        return layout;
+
+    }
+
+    public void construyeMigas(WebContext c, int cat, int opt, String marca) {
+    	List l = new ArrayList();
+    	l.add(new LabelValueBean("Inicio",c.getRequest().getContextPath()+"/"));
+
+    	if(opt == 0) {
+    		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), c.getRequest().getContextPath() + "/categoria.do?idcat=" + cat));
+    		l.add(new LabelValueBean(marca,""));
+    	} else {
+    		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), ""));
+    	}
+
+    	c.setRequest("migas",l);
+
     }
 }

@@ -81,6 +81,7 @@ public class OpcionesAction extends MyTilesAction {
 			case 4:
 				logout(c);
 				StartAction.obtenerOfertas(c);
+				StartAction.construyeMigas(c);
 				layout = MAINPAGE;
 				break;
 			default:
