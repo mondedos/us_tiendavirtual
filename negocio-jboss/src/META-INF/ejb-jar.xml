@@ -11,6 +11,20 @@
 
       <!-- Session Beans -->
       <session >
+         <description><![CDATA[Description for GestionOferta]]></description>
+         <display-name>Name for GestionOferta</display-name>
+
+         <ejb-name>GestionOferta</ejb-name>
+
+         <home>mfis.tiendavirtual.interfaces.GestionOfertaHome</home>
+         <remote>mfis.tiendavirtual.interfaces.GestionOferta</remote>
+         <ejb-class>mfis.tiendavirtual.ejb.GestionOfertaBean</ejb-class>
+         <session-type>Stateless</session-type>
+         <transaction-type>Container</transaction-type>
+
+      </session>
+
+      <session >
          <description><![CDATA[Description for GestionProducto]]></description>
          <display-name>Name for GestionProducto</display-name>
 
@@ -47,20 +61,6 @@
          <home>mfis.tiendavirtual.interfaces.GestionOperadorHome</home>
          <remote>mfis.tiendavirtual.interfaces.GestionOperador</remote>
          <ejb-class>mfis.tiendavirtual.ejb.GestionOperadorBean</ejb-class>
-         <session-type>Stateless</session-type>
-         <transaction-type>Container</transaction-type>
-
-      </session>
-
-      <session >
-         <description><![CDATA[Description for GestionOferta]]></description>
-         <display-name>Name for GestionOferta</display-name>
-
-         <ejb-name>GestionOferta</ejb-name>
-
-         <home>mfis.tiendavirtual.interfaces.GestionOfertaHome</home>
-         <remote>mfis.tiendavirtual.interfaces.GestionOferta</remote>
-         <ejb-class>mfis.tiendavirtual.ejb.GestionOfertaBean</ejb-class>
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
