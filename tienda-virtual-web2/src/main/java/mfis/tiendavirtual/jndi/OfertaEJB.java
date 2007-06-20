@@ -16,13 +16,12 @@ public class OfertaEJB extends ConnectEJB {
 			gph = (GestionOfertaHome) home;
 			ejb = gph.create();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (CreateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ejb;
+		
+		return (ejb);
 	}
 
 }

@@ -64,7 +64,6 @@ public class ListadoAction extends MyTilesAction {
 				try {
 					p = (Producto) gp.getProducto(idpro);
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -72,7 +71,7 @@ public class ListadoAction extends MyTilesAction {
 				layout = PRODUCTO;
 
 				break;
-			// añadir a carrito
+			// Añade al carrito.
 			case 1:
 		    	int unidades = Integer.parseInt(c.getParameter("unidades"));
 				carritobean = new CarritoBean(c);
@@ -82,12 +81,11 @@ public class ListadoAction extends MyTilesAction {
 					i = gp.getProducto( idpro );
 					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				carritobean.crearLineaPedido(i, nombrecat, unidades);
 				break;
-			//borra de carrito
+			// Borra del carrito.
 			case 2:
 				carritobean = new CarritoBean(c);
 				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
@@ -95,7 +93,6 @@ public class ListadoAction extends MyTilesAction {
 				try {
 					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
 				} catch (RemoteException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 
@@ -104,7 +101,7 @@ public class ListadoAction extends MyTilesAction {
 				}
 
 				break;
-				//borra de carrito
+				// Borra del carrito.
 			case 3:
 				layout = COMPRA;
 				break;
@@ -118,7 +115,7 @@ public class ListadoAction extends MyTilesAction {
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", nombrecat);
 		c.setRequest("urlImg", "gui/images");
-        return layout;
+		
+        return (layout);
     }
-
 }

@@ -53,11 +53,7 @@ public class OperadoresBean {
 			Producto prodB = (Producto) gp.getProducto(idProdB);
 			go.nuevaOferta(prodA, prodB);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
 	}
-
 }

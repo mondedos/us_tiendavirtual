@@ -28,9 +28,7 @@ public class StartAction extends MyTilesAction {
 
     public String execute(WebContext c) {
 
-    	//Obtenemos los diez productos mas beneficiosos
-
-    	//TODO ARREGLAR EL METODO GET10PRODUCTOSMASBENEFICISOS
+    	// Obtenemos los diez productos mas beneficiosos.
 
 //    	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
 //
@@ -49,7 +47,7 @@ public class StartAction extends MyTilesAction {
     	//obtenemos la oferta
     	obtenerOfertas(c);
     	
-        return MAINPAGE;
+        return (MAINPAGE);
     }
     
     
