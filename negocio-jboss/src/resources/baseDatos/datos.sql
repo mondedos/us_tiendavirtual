@@ -46,7 +46,7 @@ INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_
  (12,'Fagor','F2812','Alto: 85 cm. - Ancho: 59 cm.',499.00,10,'Lavadora con cuba de acero inoxidable y con 8 kg. de capacidad de carga.','Lavadora/Fagor_F_2812.jpg');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
  (13,'Whirlpool','FL-5085','Alto: 85 cm. - Ancho: 60 cm.',380.50,7,'Lavadora de carga frontal con una capacidad de 5 kg.','Lavadora/Whirlpool_FL_5085.jpg'),
- (14,'Whirlpool','AWM-7106','Alto: 85 cm. - Ancho: 60 cm.',320.75,20,'Lavadora con cuba de plástico de 5 kg de capacidad y carga frontal.','Lavadora/Whirlpool_AWM_7106.jpg'),
+ (14,'Whirlpool','AWM-7106','Alto: 85 cm. - Ancho: 60 cm.',320.75,20,'Lavadora con cuba de plástico de 5 kg. de capacidad y carga frontal.','Lavadora/Whirlpool_AWM_7106.jpg'),
  (15,'Panasonic','DVD-LS91','Alto 2.03 in. - Ancho: 9.28 in. - Profundidad 7.28 in.',194.99,12,'Esta impresionante pantalla de 9\" en este reproductor de DVD portátil es ideal para películas en el asiento trasero de su vehículo durante un viaje largo. La entrada dual para auriculares permite que dos personas oigan simultáneamente.','Dvd/Panasonic DVD-LS91.jpg'),
  (16,'Philips','HR-2094','Alto: 20 cm.',86.20,30,'Pequeña batidora.','PequenosElectrodomesticos/Philips_HR_2094__550219.jpg'),
  (21,'Taurus','BAPI 600 IX','Tamaño 18 cm. ',28.59,21,'Pequeña batidora.','PequenosElectrodomesticos/Taurus_BAPI_600_IX.jpg'),
