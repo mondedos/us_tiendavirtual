@@ -9,7 +9,7 @@
 					<ol>
 <logic:iterate name="lista" id="producto">
 						<li>
-							<form style="form<bean:write name="producto" property="id"/>" action="listado.do">
+							<form id="form<bean:write name="producto" property="id"/>" action="listado.do">
 								<input type="hidden" name="idpr" value="<bean:write name="producto" property="id"/>"/>
 								<input type="hidden" name="refpr" value="<bean:write name="producto" property="referencia"/>"/>
 								<input type="hidden" name="idcat" value="<bean:write name="idcat"/>"/>

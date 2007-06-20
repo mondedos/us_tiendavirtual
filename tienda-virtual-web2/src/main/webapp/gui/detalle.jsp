@@ -5,7 +5,7 @@
 			<div class="menu-listado-workarea">
 				<h3>Detalle del producto</h3>
 				<div class="mini-container">
-					<form style="form<bean:write name="producto" property="id"/>" action="listado.do">
+					<form id="form<bean:write name="producto" property="id"/>" action="listado.do">
 						<input type="hidden" name="idpr" value="<bean:write name="producto" property="id"/>"/>
 						<input type="hidden" name="refpr" value="<bean:write name="producto" property="referencia"/>"/>
 						<input type="hidden" name="idcat" value="<bean:write name="idcat"/>"/>
