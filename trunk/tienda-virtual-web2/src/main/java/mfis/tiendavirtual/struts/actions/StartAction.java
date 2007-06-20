@@ -2,6 +2,9 @@ package mfis.tiendavirtual.struts.actions;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts.util.LabelValueBean;
 
 import mfis.tiendavirtual.interfaces.GestionOferta;
 import mfis.tiendavirtual.jndi.EJB;
@@ -42,15 +45,24 @@ public class StartAction extends MyTilesAction {
 //
 //    	c.setRequest("lista", productos);
 
-    	
-    	
+
+
     	//obtenemos la oferta
     	obtenerOfertas(c);
-    	
+    	construyeMigas(c);
+
         return (MAINPAGE);
     }
-    
-    
+
+    public static void construyeMigas(WebContext c) {
+    	List l = new ArrayList();
+    	l.add(new LabelValueBean("Inicio",""));
+
+    	c.setRequest("migas",l);
+
+    }
+
+
     public static void obtenerOfertas(WebContext c){
     	GestionOferta go = (GestionOferta) new OfertaEJB().getEJB(EJB.OFERTAS_JNDI);
     	Producto prA = null;
@@ -76,7 +88,7 @@ public class StartAction extends MyTilesAction {
 		c.setRequest("prB", prB);
 		c.setRequest("precioFinal", tmp.substring(0, (tmp.indexOf(".")+ 3) ));
     	c.setRequest("lista", new ArrayList());
-    	
+
     }
 
 }

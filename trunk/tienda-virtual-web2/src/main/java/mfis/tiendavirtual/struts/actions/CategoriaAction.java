@@ -1,7 +1,10 @@
 package mfis.tiendavirtual.struts.actions;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.struts.util.LabelValueBean;
 
 import mfis.tiendavirtual.interfaces.GestionProducto;
 import mfis.tiendavirtual.modelo.dao.Categoria;
@@ -46,6 +49,7 @@ public class CategoriaAction extends MyTilesAction {
     		case 2: categoria= Categoria.DVD; break;
     		case 3: categoria= Categoria.FRIGORIFICO; break;
     		case 4: categoria= Categoria.PEQUENIO_ELECTRODOMESTICO; break;
+
 		}
 
 		return categoria;
@@ -85,8 +89,19 @@ public class CategoriaAction extends MyTilesAction {
 		if(c.getSession("operador") != null) {
 			layout = OPERADOR;
 		}
+		construyeMigas(c, idcategoria);
 
         return layout;
+    }
+
+    public void construyeMigas(WebContext c, int tipo) {
+    	List l = new ArrayList();
+    	l.add(new LabelValueBean("Inicio", c.getRequest().getContextPath()+"/"));
+
+    	l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(cats[tipo]),""));
+
+    	c.setRequest("migas",l);
+
     }
 
 }
