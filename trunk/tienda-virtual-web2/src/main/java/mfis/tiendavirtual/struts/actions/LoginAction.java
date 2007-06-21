@@ -22,36 +22,32 @@ public class LoginAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
+    	
+    	//borramos el operador
+    	c.removeSession("operador");
+    	
 
-    	String layout = MAINPAGE;
+    	String layout = LOGIN;
 
     	LoginForm loginForm = (LoginForm) c.getForm();
+    	String login= loginForm.getUsuario();
 
-    	if(loginForm.getUsuario() != null && !loginForm.getUsuario().equals("")) {
-        	boolean auth = true;
+    	if(login != null && !login.trim().equals("")) {
+    		
         	GoogleService gs = new GoogleService("mail", "authSample");
         	try {
     			gs.setUserCredentials(loginForm.getUsuario(), loginForm.getClave());
-    		} catch (AuthenticationException e) {
-    			auth = false;
-    			e.printStackTrace();
-    		}
-    		if(auth){
-    			//System.out.println("Autenticación contra google correcta");
-    			// se introduce una variable de sesion que indica que el operador está logado
-    			c.setSession("operador", loginForm.getUsuario());
+    			c.setSession("operador", login);
     			layout = OPERADOR;
-    		} else {
-    			System.out.println("Error en la autenticación contra google");
+    		} catch (AuthenticationException e) {
+    			//Error en autentificacion
+    			
+    			String mensajeError= "No se ha podido autentificar contra Google, por favor intentelo más tarde";
+    			c.setRequest("mensajeError", mensajeError);
+    			layout= ".error";
     		}
-    	} else {
-    		layout = LOGIN;
-    	}
+    	} 
     	
-    	//borramos el carrito de compras
-    	c.setSession("carrito", null);
-    	
-
         return layout;
     }
 

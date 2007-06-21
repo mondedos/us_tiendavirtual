@@ -14,7 +14,7 @@
 	        	</logic:iterate>
 			</logic:present>
 			<logic:present name="operador">
-	        	<span style="margin-left: 740px">
+	        	<span style="margin-left: 600px">
 		        	Operador: <bean:write name="operador"/>
 	        	</span>
 	        </logic:present>

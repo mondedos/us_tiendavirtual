@@ -4,6 +4,10 @@
 
 	<div class="menu-container">
 	
-		Error
+		<bean:write name="mensajeError" />
+		
+		<br><br>
+		<a href=" " onclick="javascript.history.back()"> Volver a la página anterior </a>
+		
 	
 	</div>

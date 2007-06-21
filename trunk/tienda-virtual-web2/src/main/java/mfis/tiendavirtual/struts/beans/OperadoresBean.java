@@ -4,10 +4,13 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import mfis.tiendavirtual.interfaces.GestionOferta;
+import mfis.tiendavirtual.interfaces.GestionOperador;
 import mfis.tiendavirtual.interfaces.GestionProducto;
 import mfis.tiendavirtual.jndi.EJB;
 import mfis.tiendavirtual.jndi.OfertaEJB;
+import mfis.tiendavirtual.jndi.OperadorEJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
+import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
 public class OperadoresBean {
@@ -55,5 +58,19 @@ public class OperadoresBean {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Operador obtenerOperador(String login){
+		GestionOperador go= (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
+		
+		Operador operador=null;
+		
+		try{
+			operador= go.getOperador(login);
+		}catch(RemoteException e){
+			e.printStackTrace();
+		}
+		
+		return operador;
 	}
 }

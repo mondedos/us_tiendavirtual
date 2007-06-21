@@ -30,24 +30,10 @@ public class StartAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
+    	
+    	//eliminamos el operador si existe
+    	c.removeSession("operador");
 
-    	// Obtenemos los diez productos mas beneficiosos.
-
-//    	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
-//
-//    	List productos= null;
-//
-//    	try{
-//    		productos= gp.get10ProductosMasBeneficiosos();
-//    	}catch(RemoteException e){
-//    		throw new RuntimeException(e);
-//    	}
-//
-//    	c.setRequest("lista", productos);
-
-
-
-    	//obtenemos la oferta
     	obtenerOfertas(c);
     	construyeMigas(c);
 
@@ -67,26 +53,30 @@ public class StartAction extends MyTilesAction {
     	GestionOferta go = (GestionOferta) new OfertaEJB().getEJB(EJB.OFERTAS_JNDI);
     	Producto prA = null;
     	Producto prB = null;
+    	String auxiliar= null;
     	try {
 			Oferta o = go.getOferta();
 			prA = o.getPrincipal();
 			prB = o.getSecundario();
+			auxiliar= o.obtenerPrecio().toString();
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
 		}
 
-		float precioFinal = 0.0f;
-
-		precioFinal = (prA.getPrecio().floatValue() + prB.getPrecio().floatValue());
-
-		//aplicamos el descuento del 10%
-		precioFinal -= (precioFinal * 0.10f);
-
-		String tmp = "" + precioFinal;
+		
+		String precioFinal= null;
+		try{
+			precioFinal= auxiliar.substring(0, auxiliar.indexOf(".")+3);
+		}catch(IndexOutOfBoundsException e){
+			//en caso de que no tenga dos decimales
+			precioFinal= auxiliar;
+		}
+		
+		
 
 		c.setRequest("prA", prA);
 		c.setRequest("prB", prB);
-		c.setRequest("precioFinal", tmp.substring(0, (tmp.indexOf(".")+ 3) ));
+		c.setRequest("precioFinal", precioFinal);
     	c.setRequest("lista", new ArrayList());
 
     }

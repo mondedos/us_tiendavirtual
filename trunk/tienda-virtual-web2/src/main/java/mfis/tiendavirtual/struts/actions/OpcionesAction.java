@@ -72,7 +72,9 @@ public class OpcionesAction extends MyTilesAction {
 
 				OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
 
-				layout = OPERADOR;
+				//mostramos la nueva oferta creada
+				StartAction.obtenerOfertas(c);
+				layout = ".ofertaCreada";
 
 				break;
 			case 3:
