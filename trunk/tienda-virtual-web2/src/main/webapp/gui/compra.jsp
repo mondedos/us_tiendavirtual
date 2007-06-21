@@ -22,7 +22,7 @@
 							<tr>
 								<td><bean:write name="linea" property="compra.marca"/></td>
 								<td><bean:write name="linea" property="compra.modelo"/></td>
-								<td><bean:write name="linea" property="unidades"/> uds.
+								<td><bean:write name="linea" property="unidades"/> ud(s).
 								<td><bean:write name="linea" property="precioUnidad"/></td>
 <%
 mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido lp = (mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido)pageContext.getAttribute("linea");
@@ -47,17 +47,13 @@ float total = (float) lp.getUnidades() * lp.getPrecioUnidad().floatValue();
 					<br><br>
 					
 					<html:form action="realizarCompra.do">
-						<label for="nombreUsuario">Introduzca su nombre</label><br>
-						<html:text property="nombreUsuario" />
+						
+						<label for="direccionUsuario">Por favor, introduzca la dirección a la que desea que el pedido le sea enviado:</label><br>
+						<html:textarea property="direccionUsuario" />
 						
 						<br><br>
 						
-						<label for="direccionUsuario">Introduzca la dirección</label><br>
-						<html:text property="direccionUsuario" />
-						
-						<br><br>
-						
-						<html:submit property="Realizar compra" />
+						<html:submit property="Realizar compra" value="Realizar compra"/>
 					</html:form>
 	
 				</logic:present>

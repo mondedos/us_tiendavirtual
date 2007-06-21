@@ -95,7 +95,4 @@ public final class WebContext {
 	public void removeRequest(String key) {
 		request.removeAttribute(key);
 	}
-
-
-
 }

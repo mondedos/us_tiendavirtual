@@ -1,7 +1,7 @@
 package mfis.tiendavirtual.util;
 
 
-// En esta clase tendrán cabida operaciones comunes que tendremos que realizar
+// En esta clase tendran cabida operaciones comunes que tendremos que realizar.
 
 public class Utilidades {
     public Utilidades() {

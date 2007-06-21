@@ -32,7 +32,7 @@ public class RealizarCompra extends MyTilesAction{
 				throw new RuntimeException(e);
 			}
 
-			//actualizamos la oferta y otros campos necesarios
+			// Actualizamos la oferta y otros campos necesarios.
 			StartAction.obtenerOfertas(c);
 			
 			//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL

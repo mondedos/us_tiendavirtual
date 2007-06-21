@@ -21,9 +21,6 @@
 												<bean:write name="producto" property="marca"/> <bean:write name="producto" property="modelo"/>
 											</p>
 											<p>
-												<span><bean:message key="app.producto.2"/>:</span> <br/>
-												<bean:write name="producto" property="dimensiones"/></p>
-											<p>
 												<span><bean:message key="app.producto.3"/>:</span> <br/>
 												<big><bean:write name="producto" property="precio"/></big> &euro;
 											</p>
