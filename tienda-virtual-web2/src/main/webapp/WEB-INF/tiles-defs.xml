@@ -59,6 +59,10 @@
     <definition name=".compraRealizada" extends=".menuLayout">
     	<put name="workarea" value="/gui/compraRealizada.jsp" />
    	</definition>
+   	
+   	<definition name=".ofertaCreada" extends=".adminLayout">
+   		<put name="workarea" value="/gui/ofertaCreada.jsp" />
+	</definition>
 
 
 </tiles-definitions>
