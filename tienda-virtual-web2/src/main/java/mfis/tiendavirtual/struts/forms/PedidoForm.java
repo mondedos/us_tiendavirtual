@@ -15,11 +15,6 @@ public class PedidoForm extends ActionForm{
 	private String nombreUsuario;
 	private String direccionUsuario;
 	
-	
-	
-	
-	
-	
 	public String getDireccionUsuario() {
 		return direccionUsuario;
 	}
@@ -32,9 +27,4 @@ public class PedidoForm extends ActionForm{
 	public void setNombreUsuario(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	
-	
-	
-	
-
 }

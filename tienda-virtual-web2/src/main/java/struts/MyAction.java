@@ -79,5 +79,4 @@ public abstract class MyAction extends Action {
 			}
 		}
 	}
-
 }

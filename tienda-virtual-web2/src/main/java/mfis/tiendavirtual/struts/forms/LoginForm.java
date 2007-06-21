@@ -8,7 +8,7 @@ import org.apache.struts.action.ActionForm;
  *
  */
 public class LoginForm extends ActionForm {
-	//	Esta clase no se usa de momento, está de ejemplo
+	//	Esta clase no se usa de momento, esta de ejemplo
 	/**
 	 *
 	 */
@@ -32,7 +32,4 @@ public class LoginForm extends ActionForm {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-
-
-
 }

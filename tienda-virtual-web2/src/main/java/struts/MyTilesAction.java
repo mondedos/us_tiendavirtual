@@ -16,7 +16,7 @@ import org.apache.struts.tiles.actions.TilesAction;
 public abstract class MyTilesAction extends TilesAction {
 
 	// Extendiendo de esta clase mapeamos directamente con el fichero tiles-defs.xml
-	// Solo habría que retprnar en el método execute
+	// Solo habra que retornar en el metodo execute
 	// el nombre de plantilla definida en tiles-defs.xml
 	// Por ejemplo retornar .mainLayout para esta plantilla
 	//
@@ -99,5 +99,4 @@ public abstract class MyTilesAction extends TilesAction {
 			}
 		}
 	}
-
 }
