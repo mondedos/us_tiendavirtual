@@ -30,10 +30,11 @@ public class Oferta extends Item{
 	
 	
 	public Float obtenerPrecio(){
-		Float precio= secundario.obtenerPrecio();
-		precio= precio-(precio*new Float(0.1));
+		Float precio= principal.obtenerPrecio()+secundario.obtenerPrecio();
+		precio= precio - (precio* new Float(0.1));
 		
-		return precio+principal.obtenerPrecio();
+		
+		return precio;
 	}
 	
 	
