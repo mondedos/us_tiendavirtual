@@ -15,7 +15,7 @@
 				</td>
 				<td>
 					<div align="left">
-					<p><b>Datos de la primera oferta:</b></p>
+					<p><b>Datos del primer producto:</b></p>
 					<br>
 					<p><b>Marca:</b> <bean:write name="prA" property="marca"/> <bean:write name="prA" property="modelo"/></p>
 					<p><b>Dimensiones:</b> <bean:write name="prA" property="dimensiones"/></p>
@@ -33,7 +33,7 @@
 				</td>
 				<td>
 					<div align="left">
-					<p><b>Datos de la segunda oferta:</b></p>
+					<p><b>Datos del segundo producto:</b></p>
 					<br>
 					<p><b>Marca:</b> <bean:write name="prB" property="marca"/> <bean:write name="prB" property="modelo"/></p>
 					<p><b>Dimensiones:</b> <bean:write name="prB" property="dimensiones"/></p>
