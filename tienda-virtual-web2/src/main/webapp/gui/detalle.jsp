@@ -26,7 +26,7 @@
 									</p>
 									<p>
 										<span><bean:message key="app.producto.3"/>:</span> <br/>
-										<big><bean:write name="producto" property="precio"/></big> &euro;
+										<big><bean:write name="producto" property="precioFormateado"/></big> &euro;
 									</p>
 									<br/>
 									<p style="text-align: center">

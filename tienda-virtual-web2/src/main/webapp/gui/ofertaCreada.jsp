@@ -19,7 +19,7 @@
 					<br>
 					<p><b>Marca:</b> <bean:write name="prA" property="marca"/> <bean:write name="prA" property="modelo"/></p>
 					<p><b>Dimensiones:</b> <bean:write name="prA" property="dimensiones"/></p>
-					<p><b>Precio: </b><bean:write name="prA" property="precio"/> &euro;</p>
+					<p><b>Precio: </b><bean:write name="prA" property="precioFormateado"/> &euro;</p>
 					</div>
 				</td>
 			</tr>
@@ -37,10 +37,13 @@
 					<br>
 					<p><b>Marca:</b> <bean:write name="prB" property="marca"/> <bean:write name="prB" property="modelo"/></p>
 					<p><b>Dimensiones:</b> <bean:write name="prB" property="dimensiones"/></p>
-					<p><b>Precio:</b> <bean:write name="prB" property="precio"/> &euro;</p>
+					<p><b>Precio:</b> <bean:write name="prB" property="precioFormateado"/> &euro;</p>
 					</div>
 				</td>
 			</tr>
 		</table>
+		
+		<br><br>
+		<a href=".adminLayout">Volver </a>
 		
 	</div>

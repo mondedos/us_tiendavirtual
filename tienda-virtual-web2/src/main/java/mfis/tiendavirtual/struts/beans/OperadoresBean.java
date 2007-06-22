@@ -10,8 +10,10 @@ import mfis.tiendavirtual.jndi.EJB;
 import mfis.tiendavirtual.jndi.OfertaEJB;
 import mfis.tiendavirtual.jndi.OperadorEJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
+import mfis.tiendavirtual.modelo.dao.Categoria;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.struts.actions.CategoriaAction;
 
 public class OperadoresBean {
 
@@ -72,5 +74,30 @@ public class OperadoresBean {
 		}
 		
 		return operador;
+	}
+	
+	public static List listarProductosCategoria(int idCat){
+		
+		Categoria categoria= CategoriaAction.obtenerCategoria(idCat);
+		
+		GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
+		
+		try{
+			return gp.listarProductosCategoria(categoria);
+		}catch(RemoteException e){
+			throw new RuntimeException(e);
+		}
+		
+	}
+	
+	public static Producto getProducto(int idProducto){
+		GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
+		
+		try{
+			return (Producto)gp.getProducto(idProducto);
+		}catch(RemoteException e){
+			throw new RuntimeException(e);
+			
+		}
 	}
 }

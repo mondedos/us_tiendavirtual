@@ -16,7 +16,7 @@
 					</ul>
 
 					<p><bean:write name="carrito" property="numProductos"/> items en el carrito</p>
-					<p>Precio: <bean:write name="carrito" property="totalSinIVA" format="#,##0.00" /> &euro;</p>
+					<p>Precio: <bean:write name="carrito" property="totalSinIvaFormateado"/> &euro;</p>
 					<hr/><br/>
 					<div><a href="listado.do?opt=3&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>" > <bean:message key="app.listado.3"/></a></div>
 				</div>
