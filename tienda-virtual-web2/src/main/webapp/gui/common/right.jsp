@@ -26,7 +26,7 @@
 							</td>
 						</tr>
 					</table>
-					<p class="letra-grande">por tan solo <big><bean:write name="precioFinal"/> &euro;</big></p>
+					<p class="letra-grande">por tan solo <big><bean:write name="precioFinal" format="#,##0.00"/> &euro;</big></p>
 				</div>
 			</div>
 		</div>
