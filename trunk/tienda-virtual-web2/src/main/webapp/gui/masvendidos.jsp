@@ -7,6 +7,6 @@
 					<logic:iterate name="lista" id="producto">
 						<bean:write name="producto" property="marca"/>
 						<img src="<bean:write name="urlImg"/>/<bean:write name="producto" property="foto"/>" />
-					</logic:iterate>
+						</logic:iterate>
 				</div>
 			</div>
