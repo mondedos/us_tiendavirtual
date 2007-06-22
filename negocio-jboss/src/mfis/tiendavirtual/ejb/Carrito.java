@@ -53,6 +53,17 @@ public class Carrito implements Serializable {
 	
 	
 	
+	public String getTotalSinIvaFormateado(){
+		return Utilidades.obtenerPrecio(totalSinIVA);
+	}
+	
+	public String getTotalConIvaFormateado(){
+		return Utilidades.obtenerPrecio(totalConIVA);
+	}
+	
+	
+	
+	
 	
 
 	public List<LineaPedido> getLineasPedido() {
