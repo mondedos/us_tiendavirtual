@@ -36,10 +36,24 @@
 							</tr>
 						</logic:iterate>
 						</table>
-						<div class="oferta-submit">
-							<input type="submit" name="enviar" value="Crear oferta"/>  
-						</div>
+							<table>
+								<tr>
+									<td class="oferta-submit">
+										<input type="submit" name="enviar" value="Crear oferta"/>
+									</td>
+								</tr>
+							</table>
 					</form>
-					</logic:present>
+					<form id="ofertaForm" action="opciones.do">
+						<input type="hidden" name="opt" value="3">
+						<table>
+							<tr>
+								<td class="oferta-submit">
+									<input type="submit" name="enviar" value="Cancelar"/>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</logic:present>
 				</div>
 			</div>
