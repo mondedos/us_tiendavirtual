@@ -48,38 +48,13 @@ public class OpcionesAction extends MyTilesAction {
 				break;
 			case 1:
 				// crear oferta
-
-				// obtener productos mas beneficiosos
- 				List listaMas = OperadoresBean.obtenerProductosMasBeneficiosos();
-				//c.setRequest("listaMas", listaMas);
-				// obtener productos menos beneficiosos
-				List listaMenos = OperadoresBean.obtenerProductosMenosBeneficiosos();
-				//c.setRequest("listaMenos", listaMenos);
-
-				List listaOfertas = new ArrayList();
-				for(int i = 0; i < listaMas.size() ; i++) {
-					listaOfertas.add( new OfertaBean((Producto)listaMas.get(i), (Producto)listaMenos.get(i)) );
-				}
-
-				c.setRequest("lista", listaOfertas);
-
-				layout = OFERTA;
+				layout= crearOferta(c);
 				break;
 			case 2:
-				// guardar oferta en base de datos
-				String prodA = c.getParameter("prodA");
-				String prodB = c.getParameter("prodB");
-
-				OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
-
-				//mostramos la nueva oferta creada
-				StartAction.obtenerOfertas(c);
-				layout = ".ofertaCreada";
-
+				//guardar oferta
+				layout= guardarOferta(c); 
 				break;
-			case 3:
-
-				break;
+			case 3: break;
 			case 4:
 				logout(c);
 				StartAction.obtenerOfertas(c);
@@ -96,6 +71,49 @@ public class OpcionesAction extends MyTilesAction {
     private void logout(WebContext c){
     	c.removeSession("operador");
     	c.setRequest("lista", new ArrayList());
+    }
+    
+    
+    
+    private String guardarOferta(WebContext c){
+    	String layout=null;
+			
+		//guardar oferta en base de datos
+		String prodA = c.getParameter("prodA");
+		String prodB = c.getParameter("prodB");
+		
+		if(prodA!=null && prodB!=null){
+			OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
+			//mostramos la nueva oferta creada
+			StartAction.obtenerOfertas(c);
+			layout = ".ofertaCreada";
+		}else{
+			//TODO EN DESARROLLO caso que no se han seleccionado las ofertas	
+			//String mensajeError= "Debe seleccionar dos productos para poder crear la nueva oferta";
+			//c.setRequest("mensajeError", mensajeError);
+			//layout= ".error";
+		}
+		
+		return layout;
+   
+    }
+    
+    private String crearOferta(WebContext c){
+    	//obtener productos mas beneficiosos
+			List listaMas = OperadoresBean.obtenerProductosMasBeneficiosos();
+		//c.setRequest("listaMas", listaMas);
+		// obtener productos menos beneficiosos
+		List listaMenos = OperadoresBean.obtenerProductosMenosBeneficiosos();
+		//c.setRequest("listaMenos", listaMenos);
+
+		List listaOfertas = new ArrayList();
+		for(int i = 0; i < listaMas.size() ; i++) {
+			listaOfertas.add( new OfertaBean((Producto)listaMas.get(i), (Producto)listaMenos.get(i)) );
+		}
+
+		c.setRequest("lista", listaOfertas);
+
+		return OFERTA;
     }
 
 }

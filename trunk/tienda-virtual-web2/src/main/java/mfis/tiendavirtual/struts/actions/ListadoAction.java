@@ -1,18 +1,15 @@
 package mfis.tiendavirtual.struts.actions;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts.util.LabelValueBean;
 
-import mfis.tiendavirtual.interfaces.GestionProducto;
-import mfis.tiendavirtual.jndi.EJB;
-import mfis.tiendavirtual.jndi.ProductoEJB;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.actions.CategoriaAction;
 import mfis.tiendavirtual.struts.beans.CarritoBean;
+import mfis.tiendavirtual.struts.beans.OperadoresBean;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -58,19 +55,14 @@ public class ListadoAction extends MyTilesAction {
 		}
 
     	List listadoCategorias = null;
-    	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
+    	
     	Producto p = null;
 
     	switch (opt) {
     		// ver detalle
 			case 0:
-
-				try {
-					p = (Producto) gp.getProducto(idpro);
-				} catch (RemoteException e1) {
-					e1.printStackTrace();
-				}
-
+				
+				p= OperadoresBean.getProducto(idpro);
 				c.setRequest("producto", p);
 				layout = PRODUCTO;
 
@@ -80,25 +72,16 @@ public class ListadoAction extends MyTilesAction {
 		    	int unidades = Integer.parseInt(c.getParameter("unidades"));
 				carritobean = new CarritoBean(c);
 
-				Item i = null;
-				try {
-					i = gp.getProducto( idpro );
-					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
-				} catch (RemoteException e1) {
-					e1.printStackTrace();
-				}
+				Item i = OperadoresBean.getProducto(idpro);
+				listadoCategorias= OperadoresBean.listarProductosCategoria(idcat);
+				
 				carritobean.crearLineaPedido(i, nombrecat, unidades);
 				break;
 			// Borra del carrito.
 			case 2:
 				carritobean = new CarritoBean(c);
 				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
-
-				try {
-					listadoCategorias = gp.listarProductosCategoria(CategoriaAction.obtenerCategoria(idcat));
-				} catch (RemoteException e) {
-					e.printStackTrace();
-				}
+				listadoCategorias= OperadoresBean.listarProductosCategoria(idcat);
 
 				if( c.getParameter("l") != null && COMPRA.startsWith(c.getParameter("l"))) {
 					layout = COMPRA;
@@ -113,8 +96,11 @@ public class ListadoAction extends MyTilesAction {
 				break;
 		}
     	if(carritobean != null) {
-    		c.setSession("carrito", carritobean.getCarrito() );
+    		c.setSession("carrito", carritobean.getCarrito());
     	}
+    	
+    	
+    	
 		c.setRequest("idcat", idcat + "");
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", nombrecat);

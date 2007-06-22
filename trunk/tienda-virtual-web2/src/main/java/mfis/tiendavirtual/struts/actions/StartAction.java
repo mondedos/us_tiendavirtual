@@ -11,6 +11,7 @@ import mfis.tiendavirtual.jndi.EJB;
 import mfis.tiendavirtual.jndi.OfertaEJB;
 import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.util.Utilidades;
 
 import struts.MyTilesAction;
 import struts.WebContext;
@@ -64,15 +65,7 @@ public class StartAction extends MyTilesAction {
 		}
 
 		
-		String precioFinal= null;
-		try{
-			precioFinal= auxiliar.substring(0, auxiliar.indexOf(".")+3);
-		}catch(IndexOutOfBoundsException e){
-			//en caso de que no tenga dos decimales
-			precioFinal= auxiliar;
-		}
-		
-		
+		String precioFinal= Utilidades.obtenerPrecio(auxiliar);
 
 		c.setRequest("prA", prA);
 		c.setRequest("prB", prB);

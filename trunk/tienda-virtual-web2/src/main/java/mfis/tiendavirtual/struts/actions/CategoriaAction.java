@@ -72,23 +72,12 @@ public class CategoriaAction extends MyTilesAction {
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
 		}
-/*
-    	listadoCategorias = new ArrayList();
-    	Producto p = new Producto();
-    	p.setDimensiones("120x123");
-    	p.setMarca("marca");
-    	p.setModelo("modelo");
-    	listadoCategorias.add(p);
 
-    	*/
 		c.setRequest("idcat", idcategoria + "");
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", bundle.getString(cats[idcategoria]));
 		c.setRequest("urlImg", "gui/images");
 
-		if(c.getSession("operador") != null) {
-			layout = OPERADOR;
-		}
 		construyeMigas(c, idcategoria);
 
         return layout;
