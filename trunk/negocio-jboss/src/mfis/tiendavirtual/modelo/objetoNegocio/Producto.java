@@ -1,5 +1,7 @@
 package mfis.tiendavirtual.modelo.objetoNegocio;
 
+import mfis.tiendavirtual.ejb.Utilidades;
+
 
 
 public class Producto extends Item {
@@ -29,6 +31,12 @@ public class Producto extends Item {
 	public Float obtenerPrecio(){
 		return this.getPrecio();
 	}
+	
+	public String getPrecioFormateado(){
+		return Utilidades.obtenerPrecio(this.obtenerPrecio().toString());
+	}
+	
+	
 	
 	
 	public String getDescripcion() {
