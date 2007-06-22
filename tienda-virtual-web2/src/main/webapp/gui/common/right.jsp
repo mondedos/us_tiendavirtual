@@ -7,7 +7,7 @@
 						<tr>
 							<td>
 								<p><bean:write name="prA" property="marca"/> <bean:write name="prA" property="modelo"/></p>
-								<p><big><bean:write name="prA" property="precio"/> &euro;</big></p>
+								<p><big><bean:write name="prA" property="precio" format="#,##0.00"/> &euro;</big></p>
 							</td>
 							<td class="drcha"><img class="oferton" src="gui/images/<bean:write name="prA" property="foto"/>" width="75" height="50"/></td>
 						</tr>
@@ -18,7 +18,7 @@
 							<td class="izda"><img class="oferton" src="gui/images/<bean:write name="prB" property="foto"/>" width="75" height="50"/></td>
 							<td >
 								<p><bean:write name="prB" property="marca"/> <bean:write name="prB" property="modelo"/></p>
-								<p><big><bean:write name="prB" property="precio"/> &euro;</big></p>
+								<p><big><bean:write name="prB" property="precio" format="#,##0.00"/> &euro;</big></p>
 							</td>
 						</tr>
 					</table>
