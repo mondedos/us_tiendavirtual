@@ -7,7 +7,7 @@
 				<div class="mini-container">
 				<logic:present name="lista">
 					<form id="ofertaForm" action="opciones.do">
-						<input type="hidden" name="opt" value="2">
+						<input type="hidden" name="opt" value="5">
 						<table class="oferta">
 							<tr>
 								<th style="text-align: right">Productos más beneficiosos</th>
