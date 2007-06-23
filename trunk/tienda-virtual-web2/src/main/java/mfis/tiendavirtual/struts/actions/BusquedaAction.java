@@ -62,7 +62,7 @@ public class BusquedaAction extends MyTilesAction {
     	List resultadoBusqueda= null;
     	try{
     		resultadoBusqueda= gp.listarProductosBusqueda(pmin, pmax, categoria, palabrasClave);
-    	}catch(RemoteException e){
+    	} catch(RemoteException e){
     		throw new RuntimeException(e);
     	}
     	
@@ -71,32 +71,23 @@ public class BusquedaAction extends MyTilesAction {
     	c.setRequest("idcat", new Integer(0));
     	c.setRequest("urlImg", "gui/images");
     	
-    	if(c.getSession("operador")!=null) return OPERADOR;
-    	else return MENUPAGE;
-    	
+    	if (c.getSession("operador") != null) return (OPERADOR);
+    	else return (MENUPAGE);
     }
     
-    
     private Categoria obtenerCategoria(String cadenaCategoria){
-    	
-    	if(cadenaCategoria!=null && !cadenaCategoria.trim().equals("")){
-    		int idCategoria= Integer.parseInt(cadenaCategoria);
-        	return CategoriaAction.obtenerCategoria(idCategoria);
-    		
-    	}else return null;
-    	
-    	
+    	if (cadenaCategoria != null && !(cadenaCategoria.trim().equals(""))) {
+    		int idCategoria = Integer.parseInt(cadenaCategoria);
+        	return (CategoriaAction.obtenerCategoria(idCategoria));
+    	} else return null;
     }
     
     private List obtenerPalabrasClave(String marca){
     	
-    	if(marca==null || marca.trim().equals("")) return null;
+    	if((marca == null) || (marca.trim().equals(""))) return (null);
     	
-    	String []auxiliar= marca.split(" ");
-    	return Arrays.asList(auxiliar);
+    	String [] auxiliar = marca.split(" ");
+    	
+    	return (Arrays.asList(auxiliar));
     }
-    
-    
-    
-
 }
