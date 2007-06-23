@@ -49,7 +49,7 @@
 						<table>
 							<tr>
 								<td class="oferta-submit">
-									<input type="submit" name="enviar" value="Cancelar"/>
+									<input type="submit" name="cancelar" value="Cancelar"/>
 								</td>
 							</tr>
 						</table>
