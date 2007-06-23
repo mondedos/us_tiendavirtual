@@ -6,7 +6,7 @@
 				<h3>Crear oferta</h3>
 				<div class="mini-container">
 				<logic:present name="lista">
-					<form id="ofertaForm" action="opciones.do">
+					<form id="ofertaForm" action="opciones.do" onsubmit="return validarPagina()">
 						<input type="hidden" name="opt" value="2">
 						<table class="oferta">
 							<tr>
@@ -23,10 +23,10 @@
 									</label>
 								</td>
 								<td class="radio-button">
-									<input type="radio" name="prodA" id="prodA<bean:write name="oferta" property="productoA.referencia"/>" value="<bean:write name="oferta" property="productoA.id"/>"/>
+									<input type="radio" name="prodA" checked id="prodA<bean:write name="oferta" property="productoA.referencia"/>" value="<bean:write name="oferta" property="productoA.id"/>"/>
 								</td>
 								<td class="radio-button">
-									<input type="radio" name="prodB" id="prodB<bean:write name="oferta" property="productoB.referencia"/>" value="<bean:write name="oferta" property="productoB.id"/>"/>
+									<input type="radio" name="prodB" checked id="prodB<bean:write name="oferta" property="productoB.referencia"/>" value="<bean:write name="oferta" property="productoB.id"/>"/>
 								</td>
 								<td class="productob">
 									<label for="prodB<bean:write name="oferta" property="productoB.referencia"/>">
