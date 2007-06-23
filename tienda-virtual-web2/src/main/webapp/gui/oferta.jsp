@@ -6,7 +6,7 @@
 				<h3>Crear oferta</h3>
 				<div class="mini-container">
 				<logic:present name="lista">
-					<form id="ofertaForm" action="opciones.do" onsubmit="return validarPagina()">
+					<form id="ofertaForm" action="opciones.do">
 						<input type="hidden" name="opt" value="2">
 						<table class="oferta">
 							<tr>
