@@ -16,7 +16,7 @@ public class OfertaBean {
 		return productoA;
 	}
 
-	public void setProductoA(Producto productoA) {
+	public void setProductoA (Producto productoA) {
 		this.productoA = productoA;
 	}
 
