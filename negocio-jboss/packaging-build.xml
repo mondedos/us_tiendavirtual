@@ -9,7 +9,7 @@
 <zipfileset dir="src/META-INF" prefix="META-INF">
 <include name="jboss.xml"/>
 </zipfileset>
-<zipfileset dir="bin" includes="mfis/tiendavirtual/ejb/*.class,mfis/tiendavirtual/interfaces/*.class,mfis/tiendavirtual/modelo/dao/*.class,mfis/tiendavirtual/modelo/objetoNegocio/*.class,resources/mapping/*.xml,resources/*.xml"/>
+<zipfileset dir="bin" includes="mfis/tiendavirtual/ejb/*.class,mfis/tiendavirtual/interfaces/*.class,mfis/tiendavirtual/modelo/dao/*.class,mfis/tiendavirtual/modelo/objetoNegocio/*.class,resources/mapping/*.xml,resources/hibernate.cfg.xml"/>
 </jar>
 </target>
 </project>

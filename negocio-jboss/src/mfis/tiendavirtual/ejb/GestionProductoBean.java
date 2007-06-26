@@ -3,6 +3,7 @@ package mfis.tiendavirtual.ejb;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -159,10 +160,23 @@ public class GestionProductoBean implements SessionBean {
 	 *
 	 * @ejb.interface-method view-type = "remote"
 	 */
+	@SuppressWarnings("unchecked")
 	public List get10ProductosMenosBeneficiosos() {
 		ProductoDao p = new ProductoDao();
+		List mas = p.getDiezProductosBeneficios(true);
+		List menos = p.getDiezProductosBeneficios(false);
+		ListIterator li = menos.listIterator();
+		Producto prod = null;
+		List res = new ArrayList <Producto>();
 		
-		return (p.getDiezProductosBeneficios(false));
+		while (li.hasNext()) {
+			prod = (Producto) li.next();
+			if (!(mas.contains(prod))) {
+				res.add(prod);
+			}
+		}
+		
+		return (res);
 	}
 	
 	/**
@@ -170,9 +184,22 @@ public class GestionProductoBean implements SessionBean {
 	 *
 	 * @ejb.interface-method view-type = "remote"
 	 */
+	@SuppressWarnings("unchecked")
 	public List get10ProductosMasBeneficiosos() {
 		ProductoDao p = new ProductoDao();
+		List mas = p.getDiezProductosBeneficios(true);
+		List menos = p.getDiezProductosBeneficios(false);
+		ListIterator li = mas.listIterator();
+		Producto prod = null;
+		List res = new ArrayList <Producto>();
 		
-		return (p.getDiezProductosBeneficios(true));
+		while (li.hasNext()) {
+			prod = (Producto) li.next();
+			if (!(menos.contains(prod))) {
+				res.add(prod);
+			}
+		}
+		
+		return (res);
 	}
 }
