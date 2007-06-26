@@ -62,7 +62,6 @@ public class GestionPedidosBean implements SessionBean {
 		PedidosDAO p = new PedidosDAO();
 
 		p.registrarPedido(c, direccion);
-		// TODO Eliminar esto cuando se haga la venta con PayPal.
 		registrarVentaProvisional(c, direccion);
 	}
 
