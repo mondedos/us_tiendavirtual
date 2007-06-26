@@ -44,17 +44,17 @@ public class OpcionesAction extends MyTilesAction {
 
     	switch (opt) {
 			case 0:
-
 				break;
 			case 1:
-				// crear oferta
+				// Crear oferta
 				layout= crearOferta(c);
 				break;
 			case 2:
-				//guardar oferta
+				// Guardar oferta
 				layout= guardarOferta(c); 
 				break;
-			case 3: break;
+			case 3:
+				break;
 			case 4:
 				logout(c);
 				StartAction.obtenerOfertas(c);
@@ -65,7 +65,7 @@ public class OpcionesAction extends MyTilesAction {
 				break;
 		}
 
-        return layout;
+        return (layout);
     }
 
     private void logout(WebContext c){
@@ -73,33 +73,29 @@ public class OpcionesAction extends MyTilesAction {
     	c.setRequest("lista", new ArrayList());
     }
     
-    
-    
     private String guardarOferta(WebContext c){
-    	String layout=null;
+    	String layout = null;
 			
-		//guardar oferta en base de datos
-		String prodA = c.getParameter("prodA");
+		// Guardar oferta en la base de datos.
+		String prodA = c.getParameter ("prodA");
 		String prodB = c.getParameter("prodB");
-		
-		if(prodA!=null && prodB!=null){
+		if ((prodA != null) && (prodB != null)) {
 			OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
-			//mostramos la nueva oferta creada
+			// Mostramos la nueva oferta creada.
 			StartAction.obtenerOfertas(c);
 			layout = ".ofertaCreada";
-		}else{
-			//TODO EN DESARROLLO caso que no se han seleccionado las ofertas	
-			//String mensajeError= "Debe seleccionar dos productos para poder crear la nueva oferta";
-			//c.setRequest("mensajeError", mensajeError);
-			//layout= ".error";
+		} else {
+			// En caso de que no se han seleccionado las ofertas...	
+			String mensajeError = "Debe seleccionar un producto de cada columna para poder crear la nueva oferta.";
+			c.setRequest("mensajeError", mensajeError);
+			layout= ".error";
 		}
 		
-		return layout;
-   
+		return (layout);
     }
     
     private String crearOferta(WebContext c){
-    	//obtener productos mas beneficiosos
+    	// Obtener los productos que han generado mas beneficios.
 			List listaMas = OperadoresBean.obtenerProductosMasBeneficiosos();
 		//c.setRequest("listaMas", listaMas);
 		// obtener productos menos beneficiosos

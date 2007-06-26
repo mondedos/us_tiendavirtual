@@ -33,33 +33,30 @@ public class BusquedaAction extends MyTilesAction {
     	
     	BusquedaForm formulario= (BusquedaForm)c.getForm();
     	
-    	Categoria categoria= obtenerCategoria(formulario.getCategoria());
-    	List palabrasClave= obtenerPalabrasClave(formulario.getMarca());
+    	Categoria categoria = obtenerCategoria(formulario.getCategoria());
+    	List palabrasClave = obtenerPalabrasClave(formulario.getMarca());
     	
-    	Float pmin= new Float(0);
-    	Float pmax= new Float(0);
+    	Float pmin = new Float(0);
+    	Float pmax = new Float(0);
     	
-    	String cadPmin= formulario.getMin();
-    	String cadPmax= formulario.getMax();
+    	String cadPmin = formulario.getMin();
+    	String cadPmax = formulario.getMax();
     	
-    	if(cadPmin!=null && cadPmax!=null){
+    	if ((cadPmin != null) && (cadPmax != null)) {
+    		if (cadPmin.trim().equals("")) pmin = null;
+    		if(cadPmax.trim().equals("")) pmax = null;
     		
-    		if(cadPmin.trim().equals("")) pmin=null;
-    		if(cadPmax.trim().equals("")) pmax=null;
-    		
-    		try{
-    			if(pmin!=null) pmin= new Float(Float.parseFloat(formulario.getMin()));
-    			if(pmax!=null) pmax= new Float(Float.parseFloat(formulario.getMax()));
+    		try {
+    			if (pmin != null) pmin= new Float(Float.parseFloat(formulario.getMin()));
+    			if (pmax != null) pmax= new Float(Float.parseFloat(formulario.getMax()));
     			
-        	} catch(NumberFormatException e){
-        		// TODO poner un error en la web, de momento ignoramos
+        	} catch (NumberFormatException e){
+        		// TODO Poner un error en la web. De momento, ignoramos esto.
         		pmin = null;
         		pmax = null;
         	}
     		
-    	}
-    	
-    	List resultadoBusqueda= null;
+    	} List resultadoBusqueda= null;
     	try{
     		resultadoBusqueda= gp.listarProductosBusqueda(pmin, pmax, categoria, palabrasClave);
     	} catch(RemoteException e){
