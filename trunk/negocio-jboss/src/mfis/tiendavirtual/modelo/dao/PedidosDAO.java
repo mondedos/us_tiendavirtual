@@ -61,9 +61,8 @@ public class PedidosDAO {
 		
 		List <Producto> productos = new LinkedList<Producto>();
 		
-//		 Persistimos el carro de la compra como un pedido.
-		this.daoGenerico.persistirObjeto(p);
-		
+		// Persistimos el carro de la compra como un pedido.
+		daoGenerico.persistirObjeto(p);	
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
 		while (li.hasNext()) {
@@ -71,16 +70,14 @@ public class PedidosDAO {
 			productos.add((Producto)lP.getCompra());
 			lP.setPedido(p);
 			// Persistimos una linea de pedido del carro de la compra.
-			this.daoGenerico.persistirObjeto(lP);
+			daoGenerico.persistirObjeto(lP);
 			// Vamos calculando el precio total del carro de la compra...
 			precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
 		} // ...y lo asignamos al pedido en cuestion.
 		p.setPrecioTotal(new Float(precioTotal));
-		
 		//Actualizamos el pedido con el precio total. 
-		this.daoGenerico.modificarObjeto(p);
-		
-		this.beneficioDao.actualizarBeneficioPedido(productos);
+		daoGenerico.modificarObjeto(p);
+		beneficioDao.actualizarBeneficioPedido(productos);
 	}
 
 	/**
