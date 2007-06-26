@@ -12,6 +12,7 @@ import javax.ejb.SessionContext;
 import javax.ejb.CreateException;
 
 import org.hibernate.Criteria;
+import org.hibernate.stat.CategorizedStatistics;
 
 import mfis.tiendavirtual.modelo.dao.BMGenerico;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
@@ -51,7 +52,7 @@ public class GestionProductoBean implements SessionBean {
 
 	/**
 	 * Default create method
-	 *
+	 * 
 	 * @throws CreateException
 	 * @ejb.create-method
 	 */
@@ -60,104 +61,160 @@ public class GestionProductoBean implements SessionBean {
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	@SuppressWarnings("unchecked")
-	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo, Categoria categoria, List<String> palabrasClave) {
+	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo,
+			Categoria categoria, List<String> palabrasClave) {
+		
+		List productos = new ArrayList();
+		
+		if (categoria.equals(Categoria.DVD) || categoria == null){
+			List<Dvd> dvd = this.obtenerProductosPorCategoria(palabrasClave, 
+					precioMinimo, precioMaximo, Dvd.class);
+			
+			if(categoria == null)
+				productos.addAll(dvd);
+			else
+				productos = dvd;			
+		}
+		
+		if (categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO) 
+				|| categoria == null){
+			List<PequenoElectrodomestico> pE = this.obtenerProductosPorCategoria(palabrasClave, 
+					precioMinimo, precioMaximo, PequenoElectrodomestico.class);
+			
+			if(categoria == null)
+				productos.addAll(pE);
+			else
+				productos = pE;	
+		}
+		
+		if (categoria.equals(Categoria.TELEVISOR)
+				|| categoria == null){
+			List<Televisor> televisor = this.obtenerProductosPorCategoria(palabrasClave, 
+					precioMinimo, precioMaximo, Televisor.class);
+			
+			if(categoria == null)
+				productos.addAll(televisor);
+			else
+				productos = televisor;	
+		}
+		
+		if (categoria.equals(Categoria.FRIGORIFICO)
+				|| categoria == null){
+			List<Frigorifico> frigorifico = this.obtenerProductosPorCategoria(palabrasClave, 
+					precioMinimo, precioMaximo, Frigorifico.class);
+			
+			if(categoria == null)
+				productos.addAll(frigorifico);
+			else
+				productos = frigorifico;	
+		}
+		
+		if (categoria.equals(Categoria.LAVADORA)
+				|| categoria == null){
+			List<Lavadora> lavadora = this.obtenerProductosPorCategoria(palabrasClave, 
+					precioMinimo, precioMaximo, Lavadora.class);
+			
+			if(categoria == null)
+				productos.addAll(lavadora);
+			else
+				productos = lavadora;	
+		}
+					
+		
+		return productos;
+	}
+	
+	private List obtenerProductosPorCategoria(List<String> palabrasClave, Float precioMinimo,
+			Float precioMaximo, Class clase){
+		Criteria c = null;
 		BMGenerico bM = new BMGenerico();
-		Criteria c= null;
-		Class clase = null;
 		
-		if (categoria.equals(Categoria.DVD))
-			clase = Dvd.class;
-		else if (categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO))
-			clase = PequenoElectrodomestico.class;
-		else if (categoria.equals(Categoria.TELEVISOR))
-			clase = Televisor.class;
-		else if (categoria.equals(Categoria.FRIGORIFICO))
-			clase = Frigorifico.class;
-		else if (categoria.equals(Categoria.LAVADORA))
-			clase = Lavadora.class;
-		else return new ArrayList();
-		
-		if(palabrasClave!=null) c = bM.agregarMarcaOr(clase, palabrasClave);
-		else c= bM.crearCriteriaVacio(clase);
-		
+		if (palabrasClave != null || !palabrasClave.isEmpty())
+			c = bM.agregarMarcaOr(clase, palabrasClave);
+		else
+			c = bM.crearCriteriaVacio(clase);
+
 		if (!(precioMinimo == null)) {
 			if (precioMaximo == null) {
-				bM.agregarRango(c, "precio", precioMinimo, new Float(Float.MAX_VALUE));
+				bM.agregarRango(c, "precio", precioMinimo, new Float(
+						Float.MAX_VALUE));
 			} else {
 				bM.agregarRango(c, "precio", precioMinimo, precioMaximo);
 			}
 		} else {
 			if (!(precioMaximo == null)) {
-				bM.agregarRango(c, "precio", new Float(Float.MIN_VALUE), precioMaximo);
-			} // En la otra rama no habria restricciones de precio por lo que no
+				bM.agregarRango(c, "precio", new Float(Float.MIN_VALUE),
+						precioMaximo);
+			} // En la otra rama no habria restricciones de precio por lo que
+				// no
 			// añadiriamos restriccion alguna sobre "bM".
-		} 
+		}
 		
-		return (c.list());
+		return c.list();
 	}
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public List listarProductosCategoria(Categoria categoria) {
 		ProductoDao p = new ProductoDao();
-		
+
 		return (p.listarProductoCategoria(categoria));
 	}
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public Item getProducto(int id) {
 		ProductoDao p = new ProductoDao();
-		
+
 		return p.obtenerProductoPorId(new Long(id));
 	}
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void anadirProducto(Producto p) {
 		ProductoDao p2 = new ProductoDao();
-		
+
 		p2.agregarProducto(p);
 	}
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void modificarProducto(int id, Producto p) {
 		ProductoDao p2 = new ProductoDao();
-		
+
 		p2.modificarProducto(new Long(id), p);
 	}
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void eliminarProducto(int id) {
 		ProductoDao p = new ProductoDao();
-		
+
 		p.eliminarProducto(new Long(id));
 	}
 
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	@SuppressWarnings("unchecked")
@@ -167,21 +224,21 @@ public class GestionProductoBean implements SessionBean {
 		List menos = p.getDiezProductosBeneficios(false);
 		ListIterator li = menos.listIterator();
 		Producto prod = null;
-		List res = new ArrayList <Producto>();
-		
+		List res = new ArrayList<Producto>();
+
 		while (li.hasNext()) {
 			prod = (Producto) li.next();
 			if (!(mas.contains(prod))) {
 				res.add(prod);
 			}
 		}
-		
+
 		return (res);
 	}
-	
+
 	/**
 	 * Business method
-	 *
+	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	@SuppressWarnings("unchecked")
@@ -191,15 +248,15 @@ public class GestionProductoBean implements SessionBean {
 		List menos = p.getDiezProductosBeneficios(false);
 		ListIterator li = mas.listIterator();
 		Producto prod = null;
-		List res = new ArrayList <Producto>();
-		
+		List res = new ArrayList<Producto>();
+
 		while (li.hasNext()) {
 			prod = (Producto) li.next();
 			if (!(menos.contains(prod))) {
 				res.add(prod);
 			}
 		}
-		
+
 		return (res);
 	}
 }
