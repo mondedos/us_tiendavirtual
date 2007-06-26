@@ -47,8 +47,8 @@ public class BusquedaAction extends MyTilesAction {
     		if(cadPmax.trim().equals("")) pmax = null;
     		
     		try {
-    			if (pmin != null) pmin= new Float(Float.parseFloat(formulario.getMin()));
-    			if (pmax != null) pmax= new Float(Float.parseFloat(formulario.getMax()));
+    			if (pmin != null) pmin = new Float(Float.parseFloat(formulario.getMin()));
+    			if (pmax != null) pmax = new Float(Float.parseFloat(formulario.getMax()));
     			
         	} catch (NumberFormatException e){
         		// TODO Poner un error en la web. De momento, ignoramos esto.

@@ -88,7 +88,7 @@ public class OpcionesAction extends MyTilesAction {
 			// En caso de que no se han seleccionado las ofertas...	
 			String mensajeError = "Debe seleccionar un producto de cada columna para poder crear la nueva oferta.";
 			c.setRequest("mensajeError", mensajeError);
-			layout= ".error";
+			layout = ERROR;
 		}
 		
 		return (layout);
