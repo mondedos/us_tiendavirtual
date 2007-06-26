@@ -13,13 +13,15 @@
     </head>
     <body>
     	<div id="container">
-<tiles:insert attribute="header" />
-<tiles:insert attribute="breadcrumbs" />
-		<div id="left">
-<tiles:insert attribute="leftTop" />
-		</div>
-<tiles:insert attribute="right" />
-<tiles:insert attribute="foot" />
+			<tiles:insert attribute="header" />
+			<tiles:insert attribute="breadcrumbs" />
+			<div id="menu">
+				<tiles:insert attribute="admin" />
+			</div>
+			<div id="workarea">
+				<tiles:insert attribute="workarea" />
+			</div>
+				<tiles:insert attribute="foot" />
         </div>
     </body>
 </html>

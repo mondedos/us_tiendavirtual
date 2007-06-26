@@ -15,32 +15,24 @@ public class RealizarCompra extends MyTilesAction{
 	public String execute(WebContext c) throws Exception {
 		Carrito carrito= (Carrito)c.getSession("carrito");
 		GestionPedidos gp = (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
-		
 		PedidoForm formulario= (PedidoForm) c.getForm();
 		String direccionUsuario = formulario.getDireccionUsuario();
 		
-
-		if(direccionUsuario!=null && !direccionUsuario.trim().equals("")){
-
-			try{
+		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals("")))) {
+			try {
 				gp.registrarPedido(carrito, direccionUsuario);
-				
 				// Borramos el carrito de compra.
 				c.setSession("carrito", null);
-			
-			}catch(RemoteException e){
+			} catch (RemoteException e){
 				throw new RuntimeException(e);
-			}
-
-			// Actualizamos la oferta y otros campos necesarios.
+			} // Actualizamos la oferta y otros campos necesarios.
 			StartAction.obtenerOfertas(c);
 			
-			//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL
-			return ".compraRealizada";
+			//TODO Enlace a la página de PayPal. De momento volvemos a la página principal.
+			return (".compraRealizada");
 			
-		}else{
-
-			//TODO ENLACE A LA PAGINA DE PAYPAL, DE MOMENTO VOLVEMOS A LA PRINCIPAL.
+		} else {
+			//TODO Enlace a la página de PayPal. De momento volvemos a la página principal.
 			return (MAINPAGE);
 		}
 	}
