@@ -1,7 +1,6 @@
 package mfis.tiendavirtual.modelo.dao;
 
 import java.util.List;
-
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 
@@ -18,7 +17,6 @@ public class BeneficioDAO {
 	 * @param pedido Pedido que ha sido servido (no puede cancelarse).
 	 */
 	public void actualizarBeneficioPedido(List<Producto> listaProducto){
-		
 		Beneficio beneficioActual, nuevoBeneficio;
 		float gananciaActual;
 		float nuevaGanancia;
