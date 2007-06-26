@@ -2,11 +2,9 @@ package mfis.tiendavirtual.ejb;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import mfis.tiendavirtual.modelo.dao.DaoGenerico;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
-import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Televisor;
 import mfis.tiendavirtual.persitencia.CreateObjetosNegocio;
 import org.testng.annotations.BeforeClass;
