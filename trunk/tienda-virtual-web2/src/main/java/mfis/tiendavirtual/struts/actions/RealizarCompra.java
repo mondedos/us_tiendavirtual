@@ -17,6 +17,7 @@ public class RealizarCompra extends MyTilesAction{
 		GestionPedidos gp = (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		PedidoForm formulario= (PedidoForm) c.getForm();
 		String direccionUsuario = formulario.getDireccionUsuario();
+		String layout = null;
 		
 		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals("")))) {
 			try {
@@ -27,13 +28,16 @@ public class RealizarCompra extends MyTilesAction{
 				throw new RuntimeException(e);
 			} // Actualizamos la oferta y otros campos necesarios.
 			StartAction.obtenerOfertas(c);
-			
 			//TODO Enlace a la página de PayPal. De momento volvemos a la página principal.
-			return (".compraRealizada");
-			
+			layout = COMPRA_REALIZADA;
 		} else {
-			//TODO Enlace a la página de PayPal. De momento volvemos a la página principal.
-			return (MAINPAGE);
+			// En caso de que el usuario no haya introducido ninguna direccion o haya introducido una direccion
+			// incorrecta...
+			String mensajeError = "Debe introducir una dirección a la cual le podamos enviar su pedido.";
+			c.setRequest("mensajeError", mensajeError);
+			layout = ERROR;
 		}
+		
+		return (layout);
 	}
 }

@@ -46,7 +46,6 @@ public class StartAction extends MyTilesAction {
     	l.add(new LabelValueBean("Inicio",""));
 
     	c.setRequest("migas",l);
-
     }
 
 
@@ -73,7 +72,5 @@ public class StartAction extends MyTilesAction {
 		c.setRequest("precioPrA", Utilidades.obtenerPrecio(prA.getPrecio().toString()));
 		c.setRequest("precioPrB", Utilidades.obtenerPrecio(prB.getPrecio().toString()));
     	c.setRequest("lista", new ArrayList());
-
     }
-
 }

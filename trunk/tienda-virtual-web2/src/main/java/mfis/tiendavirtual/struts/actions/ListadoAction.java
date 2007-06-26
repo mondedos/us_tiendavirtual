@@ -61,8 +61,7 @@ public class ListadoAction extends MyTilesAction {
     	switch (opt) {
     		// ver detalle
 			case 0:
-				
-				p= OperadoresBean.getProducto(idpro);
+				p = OperadoresBean.getProducto(idpro);
 				c.setRequest("producto", p);
 				layout = PRODUCTO;
 
