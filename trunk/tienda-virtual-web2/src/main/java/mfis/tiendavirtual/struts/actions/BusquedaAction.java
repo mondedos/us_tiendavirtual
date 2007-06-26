@@ -51,10 +51,10 @@ public class BusquedaAction extends MyTilesAction {
     			if(pmin!=null) pmin= new Float(Float.parseFloat(formulario.getMin()));
     			if(pmax!=null) pmax= new Float(Float.parseFloat(formulario.getMax()));
     			
-        	}catch(NumberFormatException e){
-        		//TODO poner un error en la web, de momento ignoramos
-        		pmin=null;
-        		pmax=null;
+        	} catch(NumberFormatException e){
+        		// TODO poner un error en la web, de momento ignoramos
+        		pmin = null;
+        		pmax = null;
         	}
     		
     	}
@@ -64,10 +64,8 @@ public class BusquedaAction extends MyTilesAction {
     		resultadoBusqueda= gp.listarProductosBusqueda(pmin, pmax, categoria, palabrasClave);
     	} catch(RemoteException e){
     		throw new RuntimeException(e);
-    	}
-    	
-    	c.setRequest("lista", resultadoBusqueda);
-    	c.setRequest("titulo", "Resultados Busqueda");
+    	} c.setRequest("lista", resultadoBusqueda);
+    	c.setRequest("titulo", "resultados de la búsqueda");
     	c.setRequest("idcat", new Integer(0));
     	c.setRequest("urlImg", "gui/images");
     	
