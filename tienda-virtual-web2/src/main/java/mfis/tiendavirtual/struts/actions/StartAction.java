@@ -70,6 +70,8 @@ public class StartAction extends MyTilesAction {
 		c.setRequest("prA", prA);
 		c.setRequest("prB", prB);
 		c.setRequest("precioFinal", precioFinal);
+		c.setRequest("precioPrA", Utilidades.obtenerPrecio(prA.getPrecio().toString()));
+		c.setRequest("precioPrB", Utilidades.obtenerPrecio(prB.getPrecio().toString()));
     	c.setRequest("lista", new ArrayList());
 
     }

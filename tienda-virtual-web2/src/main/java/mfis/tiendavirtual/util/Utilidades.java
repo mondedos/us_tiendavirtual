@@ -28,8 +28,12 @@ public class Utilidades {
     	
     	if(precioFinal.matches("[0-9]+.000")|| precioFinal.matches("[0-9]+.00") || precioFinal.matches("[0-9]+.0"))
     		precioFinal= original.substring(0, posicion);
+    	if ((precioFinal.matches("[0-9]+.[0-9]")) && (precioFinal).contains(".")) {
+    		precioFinal += "0";
+    	} // Reemplazamos el punto anglosajon por una coma. 
+    	precioFinal = precioFinal.replace('.', ',');
     	
-    	return precioFinal;
+    	return (precioFinal);
     }
     
     
