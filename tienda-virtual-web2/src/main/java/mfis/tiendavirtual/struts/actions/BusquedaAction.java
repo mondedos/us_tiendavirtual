@@ -67,7 +67,7 @@ public class BusquedaAction extends MyTilesAction {
     	}
     	
     	c.setRequest("lista", resultadoBusqueda);
-    	c.setRequest("titulo", "Resultados Búsqueda");
+    	c.setRequest("titulo", "Resultados Busqueda");
     	c.setRequest("idcat", new Integer(0));
     	c.setRequest("urlImg", "gui/images");
     	
