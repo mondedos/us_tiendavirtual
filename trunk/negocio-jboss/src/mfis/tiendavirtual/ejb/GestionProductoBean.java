@@ -66,73 +66,71 @@ public class GestionProductoBean implements SessionBean {
 	@SuppressWarnings("unchecked")
 	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo,
 			Categoria categoria, List<String> palabrasClave) {
-		
+
 		List productos = new ArrayList();
-		
-		if (categoria.equals(Categoria.DVD) || categoria == null){
-			List<Dvd> dvd = this.obtenerProductosPorCategoria(palabrasClave, 
+
+		if (categoria == null || categoria.equals(Categoria.DVD)) {
+			List<Dvd> dvd = this.obtenerProductosPorCategoria(palabrasClave,
 					precioMinimo, precioMaximo, Dvd.class);
-			
-			if(categoria == null)
+
+			if (categoria == null)
 				productos.addAll(dvd);
 			else
-				productos = dvd;			
+				productos = dvd;
 		}
-		
-		if (categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO) 
-				|| categoria == null){
-			List<PequenoElectrodomestico> pE = this.obtenerProductosPorCategoria(palabrasClave, 
-					precioMinimo, precioMaximo, PequenoElectrodomestico.class);
-			
-			if(categoria == null)
+
+		if (categoria == null
+				|| categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO)) {
+			List<PequenoElectrodomestico> pE = this
+					.obtenerProductosPorCategoria(palabrasClave, precioMinimo,
+							precioMaximo, PequenoElectrodomestico.class);
+
+			if (categoria == null)
 				productos.addAll(pE);
 			else
-				productos = pE;	
+				productos = pE;
 		}
-		
-		if (categoria.equals(Categoria.TELEVISOR)
-				|| categoria == null){
-			List<Televisor> televisor = this.obtenerProductosPorCategoria(palabrasClave, 
-					precioMinimo, precioMaximo, Televisor.class);
-			
-			if(categoria == null)
+
+		if (categoria == null || categoria.equals(Categoria.TELEVISOR)) {
+			List<Televisor> televisor = this.obtenerProductosPorCategoria(
+					palabrasClave, precioMinimo, precioMaximo, Televisor.class);
+
+			if (categoria == null)
 				productos.addAll(televisor);
 			else
-				productos = televisor;	
+				productos = televisor;
 		}
-		
-		if (categoria.equals(Categoria.FRIGORIFICO)
-				|| categoria == null){
-			List<Frigorifico> frigorifico = this.obtenerProductosPorCategoria(palabrasClave, 
-					precioMinimo, precioMaximo, Frigorifico.class);
-			
-			if(categoria == null)
+
+		if (categoria == null || categoria.equals(Categoria.FRIGORIFICO)) {
+			List<Frigorifico> frigorifico = this.obtenerProductosPorCategoria(
+					palabrasClave, precioMinimo, precioMaximo,
+					Frigorifico.class);
+
+			if (categoria == null)
 				productos.addAll(frigorifico);
 			else
-				productos = frigorifico;	
+				productos = frigorifico;
 		}
-		
-		if (categoria.equals(Categoria.LAVADORA)
-				|| categoria == null){
-			List<Lavadora> lavadora = this.obtenerProductosPorCategoria(palabrasClave, 
-					precioMinimo, precioMaximo, Lavadora.class);
-			
-			if(categoria == null)
+
+		if (categoria == null || categoria.equals(Categoria.LAVADORA)) {
+			List<Lavadora> lavadora = this.obtenerProductosPorCategoria(
+					palabrasClave, precioMinimo, precioMaximo, Lavadora.class);
+
+			if (categoria == null)
 				productos.addAll(lavadora);
 			else
-				productos = lavadora;	
+				productos = lavadora;
 		}
-					
-		
+
 		return productos;
 	}
-	
-	private List obtenerProductosPorCategoria(List<String> palabrasClave, Float precioMinimo,
-			Float precioMaximo, Class clase){
+
+	private List obtenerProductosPorCategoria(List<String> palabrasClave,
+			Float precioMinimo, Float precioMaximo, Class clase) {
 		Criteria c = null;
 		BMGenerico bM = new BMGenerico();
-		
-		if (palabrasClave != null || !palabrasClave.isEmpty())
+
+		if (palabrasClave != null)
 			c = bM.agregarMarcaOr(clase, palabrasClave);
 		else
 			c = bM.crearCriteriaVacio(clase);
@@ -149,10 +147,10 @@ public class GestionProductoBean implements SessionBean {
 				bM.agregarRango(c, "precio", new Float(Float.MIN_VALUE),
 						precioMaximo);
 			} // En la otra rama no habria restricciones de precio por lo que
-				// no
+			// no
 			// añadiriamos restriccion alguna sobre "bM".
 		}
-		
+
 		return c.list();
 	}
 
