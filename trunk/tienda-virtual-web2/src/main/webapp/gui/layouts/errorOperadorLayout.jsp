@@ -21,7 +21,7 @@
 			<div id="workarea">
 				<tiles:insert attribute="workarea" />
 			</div>
-				<tiles:insert attribute="foot" />
+			<tiles:insert attribute="foot" />
         </div>
     </body>
 </html>

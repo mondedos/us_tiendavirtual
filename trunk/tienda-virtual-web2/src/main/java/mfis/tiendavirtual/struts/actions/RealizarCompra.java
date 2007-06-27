@@ -35,7 +35,7 @@ public class RealizarCompra extends MyTilesAction{
 			// incorrecta...
 			String mensajeError = "Debe introducir una dirección a la cual le podamos enviar su pedido.";
 			c.setRequest("mensajeError", mensajeError);
-			layout = ERROR;
+			layout = ERROR_USUARIO;
 		}
 		
 		return (layout);

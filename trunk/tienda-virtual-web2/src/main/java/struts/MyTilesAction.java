@@ -36,7 +36,8 @@ public abstract class MyTilesAction extends TilesAction {
 	public static final String COMPRA 	= ".compraLayout";
 	public static final String COMPRA_REALIZADA = ".compraRealizadaLayout";
 	public static final String OFERTA	= ".ofertaLayout";
-	public static final String ERROR = ".errorLayout";
+	public static final String ERROR_USUARIO = ".errorUsuarioLayout";
+	public static final String ERROR_OPERADOR = ".errorOperadorLayout";
 	protected ResourceBundle bundle = ResourceBundle.getBundle("messages");
 
 	private HttpSession obtenerSesion(HttpServletRequest request) {

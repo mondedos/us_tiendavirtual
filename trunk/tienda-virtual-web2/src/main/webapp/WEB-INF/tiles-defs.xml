@@ -51,7 +51,11 @@
         <put name="workarea" value="/gui/oferta.jsp"/>
     </definition>
 
-    <definition name=".error" extends=".menuLayout">
+    <definition name=".errorUsuarioLayout" extends=".menuLayout">
+    	<put name="workarea" value="/gui/common/error.jsp" />
+    </definition>
+    
+    <definition name=".errorOperadorLayout" extends=".adminLayout">
     	<put name="workarea" value="/gui/common/error.jsp" />
     </definition>
 
@@ -62,6 +66,5 @@
    	<definition name=".ofertaCreada" extends=".adminLayout">
    		<put name="workarea" value="/gui/ofertaCreada.jsp" />
 	</definition>
-
 
 </tiles-definitions>
