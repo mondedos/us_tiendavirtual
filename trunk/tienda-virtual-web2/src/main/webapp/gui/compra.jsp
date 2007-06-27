@@ -2,20 +2,6 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic" %>
 
-<script language="JavaScript" type="text/javascript">
-<!--
-	function validarPagina() {
-			if (document.getElementsById("direccionUsuario") == "") {
-			 			alert("Por favor, introduzca en el campo \"dirección\" la dirección a la que desea que le sea
-			 			enviado el pedido.");
-						
-						return (false);
-			} else
-						return (true);
-	}
-//-->
-</script>
-
 			<div class="menu-listado-workarea">
 				<h3>Comprar carrito</h3>
 				<div class="mini-container">
@@ -60,10 +46,10 @@ float total = (float) lp.getUnidades() * lp.getPrecioUnidad().floatValue();
 					</table>
 					<br><br>
 					
-					<html:form action="realizarCompra.do" onsubmit="return validarPagina()">
+					<html:form action="realizarCompra.do" styleId="compraForm" onsubmit="return validarPagina(this)">
 						
 						<label for="direccionUsuario">Por favor, introduzca la dirección a la que desea que el pedido le sea enviado:</label><br>
-						<html:textarea id="direccionUsuario" property="direccionUsuario"/>
+						<html:textarea  styleId="direccionUsuario" property="direccionUsuario"/>
 						
 						<br><br>
 						

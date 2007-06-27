@@ -59,7 +59,7 @@
     	<put name="workarea" value="/gui/common/error.jsp" />
     </definition>
 
-    <definition name=".compraRealizada" extends=".menuLayout">
+    <definition name=".compraRealizadaLayout" extends=".menuLayout">
     	<put name="workarea" value="/gui/compraRealizada.jsp" />
    	</definition>
    	

@@ -9,7 +9,7 @@
 		<link href="gui/styles/default-style/css/reset.css" rel="stylesheet" type="text/css" />
 		<link href="gui/styles/default-style/css/layout.css" rel="stylesheet" type="text/css" />
 		<link href="gui/styles/default-style/css/design.css" rel="stylesheet" type="text/css" />
-        <script src="gui/styles/default-style/js/bdi.js"></script>
+        <script src="gui/styles/default-style/js/mfis.js"></script>
     </head>
     <body>
     	<div id="container">
