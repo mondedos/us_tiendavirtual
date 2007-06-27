@@ -12,7 +12,6 @@ import javax.ejb.SessionContext;
 import javax.ejb.CreateException;
 
 import org.hibernate.Criteria;
-import org.hibernate.stat.CategorizedStatistics;
 
 import mfis.tiendavirtual.modelo.dao.BMGenerico;
 import mfis.tiendavirtual.modelo.dao.ProductoDao;
