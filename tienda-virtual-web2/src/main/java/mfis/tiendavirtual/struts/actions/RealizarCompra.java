@@ -18,7 +18,7 @@ public class RealizarCompra extends MyTilesAction{
 		PedidoForm formulario= (PedidoForm) c.getForm();
 		String direccionUsuario = formulario.getDireccionUsuario();
 		String layout = null;
-		
+
 		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals("")))) {
 			try {
 				gp.registrarPedido(carrito, direccionUsuario);
@@ -35,7 +35,7 @@ public class RealizarCompra extends MyTilesAction{
 			// incorrecta...
 			String mensajeError = "Debe introducir una dirección a la cual le podamos enviar su pedido.";
 			c.setRequest("mensajeError", mensajeError);
-			c.setRequest("idcat", "");
+			c.setRequest("opt", "3");
 			layout = ERROR_USUARIO;
 		}
 		
