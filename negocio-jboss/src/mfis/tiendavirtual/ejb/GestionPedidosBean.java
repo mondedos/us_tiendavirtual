@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -26,9 +27,13 @@ public class GestionPedidosBean implements SessionBean {
 	 * 
 	 */
 	private static final long serialVersionUID = -8301107721106977850L;
+	private PedidosDAO p;
 
 	public GestionPedidosBean() {
 		super();
+		p= new PedidosDAO();
+		
+		
 	}
 
 	public void setSessionContext(SessionContext ctx) throws EJBException,
@@ -59,8 +64,6 @@ public class GestionPedidosBean implements SessionBean {
 	 * @ejb.interface-method view-type = "remote"
 	 */
 	public void registrarPedido(Carrito c, String direccion) {
-		PedidosDAO p = new PedidosDAO();
-
 		p.registrarPedido(c, direccion);
 		registrarVentaProvisional(c, direccion);
 	}
@@ -94,10 +97,8 @@ public class GestionPedidosBean implements SessionBean {
 	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public void actualizarEstado(Pedido p, String estado, Date fecha) {
-		PedidosDAO p2 = new PedidosDAO();
-
-		p2.actualizarEstado(p, estado, fecha);
+	public void actualizarEstado(Pedido pedido, String estado, Date fecha) {
+		p.actualizarEstado(pedido, estado, fecha);
 	}
 
 	/**
@@ -109,5 +110,14 @@ public class GestionPedidosBean implements SessionBean {
 		PedidosDAO p = new PedidosDAO();
 
 		return p.obtenerPedido(id);
+	}
+	
+	/**
+	 * Obtiene las lineas de pedido asociados a  un determinado pedido
+	 * @param idPedido identificador del pedido
+	 * @return lineas de pedido
+	 */
+	public List obtenerLineasPedido(Pedido pedido){
+		return p.obtenerLineasPedido(pedido);
 	}
 }

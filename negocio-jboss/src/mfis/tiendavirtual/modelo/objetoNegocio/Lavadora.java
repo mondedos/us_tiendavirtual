@@ -16,6 +16,11 @@ public class Lavadora extends Producto{
 		return l.getId()!=null && l.getId().equals(this.getId());
 	}
 	
+	@Override
+	public String getTipoItem(){
+		return "Lavadora";
+	}
+	
 
 	public Boolean getSecadora() {
 		return secadora;

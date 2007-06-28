@@ -13,6 +13,11 @@ public class PequenoElectrodomestico extends Producto{
 		
 		return p.getId()!=null && p.getId().equals(this.getId());
 	}
+	
+	@Override
+	public String getTipoItem(){
+		return "Pequeño electrodoméstico";
+	}
 
 	public String getCaracteristicas() {
 		return caracteristicas;
@@ -21,6 +26,8 @@ public class PequenoElectrodomestico extends Producto{
 	public void setCaracteristicas(String caracteristicas) {
 		this.caracteristicas = caracteristicas;
 	}
+	
+
 
 
 

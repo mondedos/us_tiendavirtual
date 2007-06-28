@@ -27,6 +27,10 @@ public class Producto extends Item {
 		return p.getId()!=null && p.getId().equals(this.getId());
 	}
 	
+	public String getTipoItem(){
+		return "Producto";
+	}
+	
 	
 	public Float obtenerPrecio(){
 		return this.getPrecio();

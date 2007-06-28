@@ -14,6 +14,11 @@ public class Frigorifico extends Producto {
 		
 		return f.getId()!=null && f.getId().equals(this.getId());
 	}
+	
+	@Override
+	public String getTipoItem(){
+		return "Frigorifico";
+	}
 
 	public String getClasifEnergetica() {
 		return clasifEnergetica;

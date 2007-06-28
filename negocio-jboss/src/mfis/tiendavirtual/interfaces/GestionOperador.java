@@ -30,5 +30,12 @@ public interface GestionOperador
     */
    public mfis.tiendavirtual.modelo.objetoNegocio.Pedido siguientePedido( int id )
       throws java.rmi.RemoteException;
+   
+   /**
+    * Business method
+    */
+   public java.util.List obtenerPedidosOperador(java.lang.String login)
+   		throws java.rmi.RemoteException;
+   
 
 }

@@ -22,7 +22,7 @@ public interface GestionPedidos
    /**
     * Business method
     */
-   public void actualizarEstado( mfis.tiendavirtual.modelo.objetoNegocio.Pedido p,java.lang.String estado,java.util.Date fecha )
+   public void actualizarEstado( mfis.tiendavirtual.modelo.objetoNegocio.Pedido pedido,java.lang.String estado,java.util.Date fecha )
       throws java.rmi.RemoteException;
 
    /**
@@ -30,5 +30,11 @@ public interface GestionPedidos
     */
    public mfis.tiendavirtual.modelo.objetoNegocio.Pedido getPedido( int id )
       throws java.rmi.RemoteException;
+   
+   /**
+    * Business method
+    */
+   public java.util.List obtenerLineasPedido(mfis.tiendavirtual.modelo.objetoNegocio.Pedido pedido)
+   	throws java.rmi.RemoteException;
 
 }
