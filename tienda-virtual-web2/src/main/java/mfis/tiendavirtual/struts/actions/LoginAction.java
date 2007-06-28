@@ -26,6 +26,9 @@ public class LoginAction extends MyTilesAction {
     	//borramos el operador
     	c.removeSession("operador");
     	
+    	//borramos el carrito
+    	c.removeSession("carrito");
+    	
 
     	String layout = LOGIN;
 

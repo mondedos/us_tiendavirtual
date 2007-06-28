@@ -1,11 +1,16 @@
 package mfis.tiendavirtual.struts.actions;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
+import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.beans.OfertaBean;
 import mfis.tiendavirtual.struts.beans.OperadoresBean;
+import mfis.tiendavirtual.struts.beans.PedidosBean;
+import mfis.tiendavirtual.struts.vista.PedidoVista;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -54,6 +59,8 @@ public class OpcionesAction extends MyTilesAction {
 				layout= guardarOferta(c); 
 				break;
 			case 3:
+				//ver lista de pedidos
+				layout= verListaPedidos(c);
 				break;
 			case 4:
 				logout(c);
@@ -61,11 +68,54 @@ public class OpcionesAction extends MyTilesAction {
 				StartAction.construyeMigas(c);
 				layout = MAINPAGE;
 				break;
+			case 5:
+				//realizar asignacion de pedido
+				layout= realizarAsignacionPedido(c);
+				break;
 			default:
 				break;
 		}
 
         return (layout);
+    }
+    
+    private String realizarAsignacionPedido(WebContext c){
+    	
+    	String login= (String)c.getSession("operador");
+    	Operador operador= OperadoresBean.obtenerOperador(login);
+    	
+    	Pedido pedido= PedidosBean.asignarPedido(operador.getId().intValue());
+    	
+    	String mensajeInformativo= "Se le ha asignado un nuevo pedido";
+    	String paginaRetorno= "detallesPedido.do?id="+pedido.getId().toString();
+    	String mensajeAceptar= "Ver detalles del pedido";
+    	
+    	c.setRequest("mensajeInformativo", mensajeInformativo);
+    	c.setRequest("paginaRetorno", paginaRetorno);
+    	c.setRequest("mensajeAceptar", mensajeAceptar);
+    	
+    	return ".operacionRealizada";
+    }
+    
+    private String verListaPedidos(WebContext c){
+    	
+    	String login= (String)c.getSession("operador");
+    	List auxiliar= OperadoresBean.obtenerListaPedidosOperador(login);
+    	
+    	if(auxiliar.isEmpty()) c.setRequest("listaPedidos", null);
+    	else{
+    		List listaPedidos= new ArrayList(auxiliar.size());
+    		Iterator it= auxiliar.iterator();
+    		while(it.hasNext()){
+    			listaPedidos.add(new PedidoVista((Pedido)it.next()));
+    		}
+    		
+    		c.setRequest("listaPedidos", listaPedidos);
+    	}
+    	
+    	return ".listaPedidos";
+    	
+    	
     }
 
     private void logout(WebContext c){

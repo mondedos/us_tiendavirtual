@@ -74,5 +74,17 @@
    	<definition name=".ofertaCreadaLayour" extends=".adminLayout">
    		<put name="workarea" value="/gui/ofertaCreada.jsp" />
 	</definition>
-
+	
+	<definition name=".listaPedidos" extends=".adminLayout">
+		<put name="workarea" value="/gui/listaPedidos.jsp"/>
+	</definition>
+	
+	<definition name=".detallesPedido" extends=".adminLayout">
+		<put name="workarea" value="/gui/detallesPedido.jsp"/>
+	</definition>
+	
+	<definition name=".operacionRealizada" extends=".adminLayout">
+		<put name="workarea" value="/gui/common/operacionRealizada.jsp"/>
+	</definition>
+	
 </tiles-definitions>
