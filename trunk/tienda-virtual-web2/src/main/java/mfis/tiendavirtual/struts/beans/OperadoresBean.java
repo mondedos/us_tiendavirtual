@@ -24,7 +24,7 @@ public class OperadoresBean {
 	}
 	
 	public static List obtenerListaPedidosOperador(String login){
-		GestionOperador go= (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
+		GestionOperador go = (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 		List resultado= null;
 		try {
 			resultado= go.obtenerPedidosOperador(login);
@@ -32,7 +32,7 @@ public class OperadoresBean {
 			throw new RuntimeException(e);
 		}
 		
-		return resultado;
+		return (resultado);
 	}
 
 	public static List obtenerProductosMasBeneficiosos(){
