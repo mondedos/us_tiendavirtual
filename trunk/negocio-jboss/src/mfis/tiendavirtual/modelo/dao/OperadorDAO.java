@@ -85,11 +85,6 @@ public class OperadorDAO {
 		// operador y que no esté cancelado:
 		while (it.hasNext() && !(enc)) {
 			p = (Pedido) it.next();
-			System.out.println("Pedido "+p.getFechaPedido());
-			System.out.println("Operador coge "+p.getFechaTransient());
-			System.out.println("Fecha salida "+p.getFechaDeServicio());
-			System.out.println("Fecha cancelacion "+p.getFechaCancelacion());
-			System.out.println("\n\n\n");
 			
 			// Si el operador lo ha cogido para o no se ha cancelado.
 			if (p.getFechaTransient() == null
@@ -130,7 +125,6 @@ public class OperadorDAO {
 			// la fecha actual:
 			res.setFechaTransient(new Date(System.currentTimeMillis()));
 			daoGenerico.modificarObjeto(res);
-			System.out.println("Pedido "+res.getId());
 		}
 		
 		
