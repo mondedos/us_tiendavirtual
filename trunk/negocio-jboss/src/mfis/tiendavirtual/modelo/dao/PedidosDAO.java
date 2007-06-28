@@ -127,7 +127,28 @@ public class PedidosDAO {
 		daoGenerico.modificarObjeto(p);
 	}
 	
-	
+	/**
+	 * Metodo para obtener el estado de un pedido
+	 * 
+	 * @param p
+	 * @return el estado asociado al pedido parametro
+	 */
+	public String obtenerEstado(Pedido p) {
+		String res = null;
+		
+		if ((p.getFechaTransient() == null) && (p.getFechaDeServicio() == null) && (p.getFechaCancelacion() == null)) {
+			res = "Placed";
+		} else if ((p.getFechaTransient() != null) && (p.getFechaDeServicio() == null) && (p.getFechaCancelacion() == null)) {
+			res = "Transient";
+		} else if ((p.getFechaTransient() != null) && (p.getFechaDeServicio() != null) && (p.getFechaCancelacion() == null)) {
+			res = "Served";
+		} else {
+			res = "Cancelled";
+		}
+		
+		return (res);
+	}
+
 	/**
 	 * 
 	 * @param p Pedido
