@@ -1,5 +1,8 @@
 package mfis.tiendavirtual.util;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 // En esta clase tendran cabida operaciones comunes que tendremos que realizar.
 
 public class Utilidades {
@@ -34,6 +37,23 @@ public class Utilidades {
     	precioFinal = precioFinal.replace('.', ',');
     	
     	return (precioFinal);
+    }
+    
+    public static String formatearFecha(Date fecha){
+    	
+    	String fechaFormateada= "";
+    	
+    	if(fecha!=null){
+    		DateFormat df= DateFormat.getDateInstance(DateFormat.DEFAULT);
+    		fechaFormateada= df.format(fecha);
+    	}
+    	
+    	return fechaFormateada;
+    	
+    }
+    
+    public static boolean cadenaVacia(String cadena){
+    	return cadena== null || cadena.trim().equals("");
     }
     
     

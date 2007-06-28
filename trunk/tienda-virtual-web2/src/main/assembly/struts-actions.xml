@@ -4,4 +4,5 @@
 <action path="/busqueda" type="mfis.tiendavirtual.struts.actions.BusquedaAction" name="busquedaFrm" scope="request" />
 <action path="/opciones" type="mfis.tiendavirtual.struts.actions.OpcionesAction" scope="request" />
 <action path="/listado" type="mfis.tiendavirtual.struts.actions.ListadoAction" scope="request" />
-<action path="/realizarCompra" type="mfis.tiendavirtual.struts.actions.RealizarCompra" name="pedidoFrm" scope="request" />
+<action path="/realizarCompra"  type="mfis.tiendavirtual.struts.actions.RealizarCompra" name="pedidoFrm" scope="request" />
+<action path="/detallesPedido" type="mfis.tiendavirtual.struts.actions.DetallesPedido" name="detallePedidoFrm" scope="request"/>
