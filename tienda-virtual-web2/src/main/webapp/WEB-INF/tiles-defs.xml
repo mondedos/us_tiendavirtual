@@ -23,7 +23,7 @@
         <put name="foot" value="/gui/common/foot.jsp"/>
     </definition>
     
-      <definition name=".menuSinCarritoLayout" path="/gui/layouts/menuSinCarritoLayout.jsp">
+    <definition name=".menuSinCarritoLayout" path="/gui/layouts/menuSinCarritoLayout.jsp">
         <put name="header" value="/gui/common/header.jsp"/>
         <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
         <put name="menu" value="/gui/common/menu.jsp"/>
