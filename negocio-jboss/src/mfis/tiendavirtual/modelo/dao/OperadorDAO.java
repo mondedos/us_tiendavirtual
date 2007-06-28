@@ -12,49 +12,59 @@ import org.hibernate.Criteria;
  * DAO para el manejo de los operadores
  * 
  * @author Daniel Vazquez Gomez
- *
+ * 
  */
 public class OperadorDAO {
 
 	private DaoGenerico daoGenerico;
+
 	private BMGenerico bmGenerico;
-	
+
 	public OperadorDAO() {
 		daoGenerico = new DaoGenerico();
-		bmGenerico= new BMGenerico();
+		bmGenerico = new BMGenerico();
 	}
-	
+
 	/**
 	 * Metodo para obtener un operador a partir de su numero identificativo
-	 * @param id numero de identificación
+	 * 
+	 * @param id
+	 *            numero de identificación
 	 * @return un operador
 	 */
-	public Operador obtenerOperador(int id){
+	public Operador obtenerOperador(int id) {
 		return (daoGenerico.buscarPorId(Operador.class, new Long(id)));
 	}
 
 	/**
 	 * Metodo para obtener un operador a partir de su login de GMail
-	 * @param login login de GMail.
+	 * 
+	 * @param login
+	 *            login de GMail.
 	 * @return el operador con el login correspondiente
 	 */
-	public Operador obtenerOperador(String login){
-	
-		Operador dto= new Operador();
+	public Operador obtenerOperador(String login) {
+
+		Operador dto = new Operador();
 		dto.setLogin(login);
 
-		Criteria criteria= bmGenerico.realizarBusqueda(dto);
-		return (Operador)criteria.uniqueResult();
-		
+		Criteria criteria = bmGenerico.realizarBusqueda(dto);
+		return (Operador) criteria.uniqueResult();
+
 	}
 
 	/**
 	 * Metodo para asignar un pedido a un operador
-	 * @param id identificador numerico del operador que quiere que le sea asignado el pedido
-	 * @return pedido asignado al operador o null si no hay ningun pedido por ser asignado
+	 * 
+	 * @param id
+	 *            identificador numerico del operador que quiere que le sea
+	 *            asignado el pedido
+	 * @return pedido asignado al operador o null si no hay ningun pedido por
+	 *         ser asignado
 	 */
-	public Pedido siguientePedido(int id) {
-		// Es necesario realizar el siguiente procedimiento para que no existan problemas de concurrencia a la hora de asignar un
+	public Pedido siguientePedido(long id) {
+		// Es necesario realizar el siguiente procedimiento para que no existan
+		// problemas de concurrencia a la hora de asignar un
 		// pedido a un operador.
 		List<Pedido> listaPedidos = null;
 		Pedido p = null;
@@ -63,57 +73,87 @@ public class OperadorDAO {
 		Operador o = null;
 		Long idPedido = null;
 		boolean enc = false;
-		
+
 		// Recuperamos el operador:
 		o = daoGenerico.buscarPorId(Operador.class, new Long(id));
+
+		// Obtener todos los pedidos.
+		listaPedidos = this.daoGenerico.obtenerTodos(Pedido.class);
+
 		it = listaPedidos.listIterator();
-		// Recuperamos el primer pedido mas antiguo no asignado a ningun operador y que no esté cancelado:
+		// Recuperamos el primer pedido mas antiguo no asignado a ningun
+		// operador y que no esté cancelado:
 		while (it.hasNext() && !(enc)) {
 			p = (Pedido) it.next();
-			if ((p.getFechaTransient() == null) && (p.getFechaCancelacion() != null)) {
+			System.out.println("Pedido "+p.getFechaPedido());
+			System.out.println("Operador coge "+p.getFechaTransient());
+			System.out.println("Fecha salida "+p.getFechaDeServicio());
+			System.out.println("Fecha cancelacion "+p.getFechaCancelacion());
+			System.out.println("\n\n\n");
+			
+			// Si el operador lo ha cogido para o no se ha cancelado.
+			if (p.getFechaTransient() == null
+					&& p.getFechaCancelacion() == null) {
 				enc = true;
 				res = p;
-				// Guardamos el id de pedido para poder recuperarlo despues de la base de datos.
+				// Guardamos el id de pedido para poder recuperarlo despues de
+				// la base de datos.
 				idPedido = res.getId();
-			} 
-		} // Cuando ya lo tenemos seguimos buscando a ver si hay alguno mas antiguo que todavia no este asignado a ningun operador y que
+			}
+		}
+
+		
+		// Cuando ya lo tenemos seguimos buscando a ver si hay alguno mas
+		// antiguo que todavia no este asignado a ningun operador y que
 		// no haya sido cancelado.
 		while (it.hasNext()) {
 			p = (Pedido) it.next();
-			if ((p.getFechaPedido().before(res.getFechaPedido())) && (p.getFechaTransient() == null) && (p.getFechaCancelacion() != null)) {
+			if (p.getFechaPedido().before(res.getFechaPedido())
+					&& p.getFechaTransient() == null
+					&& p.getFechaCancelacion() == null) {
 				res = p;
-				// Guardamos el id de pedido para poder recuperarlo despues de la base de datos.
+				// Guardamos el id de pedido para poder recuperarlo despues de
+				// la base de datos.
 				idPedido = res.getId();
-			}	
-		} // Asignamos el id del operador solicitante al pedido si es que existe:
+			}
+		} // Asignamos el id del operador solicitante al pedido si es que
+			// existe:
+
+		// Se le puede asignar un pedido a un operador.
 		if (res != null) {
+
 			res.setOperador(o);
 			daoGenerico.modificarObjeto(res);
 			// Recuperamos el pedido con id idPedido:
 			res = daoGenerico.buscarPorId(Pedido.class, idPedido);
-			// Cambiamos su estado a "transient" y hacemos que el pedido tenga la fecha actual:
+			// Cambiamos su estado a "transient" y hacemos que el pedido tenga
+			// la fecha actual:
 			res.setFechaTransient(new Date(System.currentTimeMillis()));
 			daoGenerico.modificarObjeto(res);
+			System.out.println("Pedido "+res.getId());
 		}
-	
+		
+		
+
 		return (res);
 	}
-	
-	
+
 	/**
 	 * Método para obtener los pedidos asignados a un operador
-	 * @param login login del operador
-	 * @return lista de pedidos 
+	 * 
+	 * @param login
+	 *            login del operador
+	 * @return lista de pedidos
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Pedido> obtenerPedidosOperador(String login){
-		
-		Operador operador= obtenerOperador(login);
-		
-		Criteria criteria= bmGenerico.crearCriteriaVacio(Pedido.class);
+	public List<Pedido> obtenerPedidosOperador(String login) {
+
+		Operador operador = obtenerOperador(login);
+
+		Criteria criteria = bmGenerico.crearCriteriaVacio(Pedido.class);
 		bmGenerico.agregarAnd(criteria, "operador.id", operador.getId());
-		
+
 		return criteria.list();
-		
+
 	}
 }
