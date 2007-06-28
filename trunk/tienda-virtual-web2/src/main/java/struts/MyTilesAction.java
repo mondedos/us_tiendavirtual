@@ -31,13 +31,16 @@ public abstract class MyTilesAction extends TilesAction {
 	public static final String MAINPAGE = ".mainLayout";
 	public static final String MENUPAGE = ".menuLayout";
 	public static final String OPERADOR = ".adminLayout";
-	public static final String PRODUCTO = ".detalleLayout";
 	public static final String LOGIN 	= ".loginLayout";
+	public static final String PRODUCTO = ".detalleLayout";
+	public static final String LISTADO_CATEGORIA = ".listadoCategoriaLayout";
 	public static final String COMPRA 	= ".compraLayout";
-	public static final String COMPRA_REALIZADA = ".compraRealizadaLayout";
 	public static final String OFERTA	= ".ofertaLayout";
+	public static final String OFERTA_CREADA = ".ofertaCreadaLayout";
 	public static final String ERROR_USUARIO = ".errorUsuarioLayout";
 	public static final String ERROR_OPERADOR = ".errorOperadorLayout";
+	public static final String COMPRA_REALIZADA = ".compraRealizadaLayout";
+
 	protected ResourceBundle bundle = ResourceBundle.getBundle("messages");
 
 	private HttpSession obtenerSesion(HttpServletRequest request) {
