@@ -26,9 +26,9 @@ public class OperadoresBean {
 	public static List obtenerListaPedidosOperador(String login){
 		GestionOperador go= (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 		List resultado= null;
-		try{
+		try {
 			resultado= go.obtenerPedidosOperador(login);
-		}catch(RemoteException e){
+		} catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
 		
