@@ -1,6 +1,7 @@
 package mfis.tiendavirtual.ejb;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 import javax.ejb.EJBException;
 import javax.ejb.SessionBean;
@@ -22,12 +23,14 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
  */
 public class GestionOperadorBean implements SessionBean {
 
-	/**
-	 *
-	 */
+	
 	private static final long serialVersionUID = -4631672726696710373L;
+	private OperadorDAO operadorDao;
+	
 	public GestionOperadorBean() {
 		super();
+		
+		operadorDao= new OperadorDAO();
 	}
 
 	public void setSessionContext(SessionContext ctx)
@@ -58,26 +61,24 @@ public class GestionOperadorBean implements SessionBean {
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Operador getOperador(int id) {
-		OperadorDAO o = new OperadorDAO();
-		
-		return o.obtenerOperador(id);
+		return operadorDao.obtenerOperador(id);
 	}
 	/**
 	 * Business method
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Operador getOperador(String login) {
-		OperadorDAO o = new OperadorDAO();
-		
-		return o.obtenerOperador(login);
+		return operadorDao.obtenerOperador(login);
 	}
 	/**
 	 * Business method
 	 * @ejb.interface-method  view-type = "remote"
 	 */
 	public Pedido siguientePedido(int id) {
-		OperadorDAO o = new OperadorDAO();
-		
-		return o.siguientePedido(id);
+		return operadorDao.siguientePedido(id);
+	}
+	
+	public List obtenerPedidosOperador(String login){
+		return operadorDao.obtenerPedidosOperador(login);
 	}
 }

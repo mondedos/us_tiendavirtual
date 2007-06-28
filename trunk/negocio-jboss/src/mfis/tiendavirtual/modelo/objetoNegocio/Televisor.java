@@ -16,6 +16,11 @@ public class Televisor extends Producto{
 		return t.getId()!=null && t.getId().equals(this.getId());
 	}
 	
+	@Override
+	public String getTipoItem(){
+		return "Televisor";
+	}
+	
 	
 	public Boolean getPeana() {
 		return peana;

@@ -12,6 +12,10 @@ public class Oferta extends Item{
 
 	public Oferta(){}
 	
+	public String getTipoItem(){
+		return "Oferta";
+	}
+	
 	public Oferta(Producto principal, Producto secundario){
 		
 		this.principal= principal;

@@ -32,6 +32,11 @@ public abstract class Item implements Serializable{
 	 * @return precio del item
 	 */
 	public abstract Float obtenerPrecio();
+	
+	/**
+	 * Obtiene la categoria del item
+	 */
+	public abstract String getTipoItem();
 
 
 	public Long getId() {

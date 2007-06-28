@@ -98,4 +98,22 @@ public class OperadorDAO {
 	
 		return (res);
 	}
+	
+	
+	/**
+	 * Método para obtener los pedidos asignados a un operador
+	 * @param login login del operador
+	 * @return lista de pedidos 
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Pedido> obtenerPedidosOperador(String login){
+		
+		Operador operador= obtenerOperador(login);
+		
+		Criteria criteria= bmGenerico.crearCriteriaVacio(Pedido.class);
+		bmGenerico.agregarAnd(criteria, "operador.id", operador.getId());
+		
+		return criteria.list();
+		
+	}
 }

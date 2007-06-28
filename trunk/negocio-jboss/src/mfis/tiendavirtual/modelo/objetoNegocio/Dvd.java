@@ -15,6 +15,11 @@ public class Dvd extends Producto {
 		return d.getId()!=null && d.getId().equals(this.getId());
 	}
 	
+	@Override
+	public String getTipoItem(){
+		return "Dvd";
+	}
+	
 	public String getConectores() {
 		return conectores;
 	}
