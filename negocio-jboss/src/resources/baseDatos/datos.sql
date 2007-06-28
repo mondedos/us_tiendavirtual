@@ -140,3 +140,14 @@ INSERT INTO `beneficio` (`ID_ITEM_5`,`IN_GANANCIA`) VALUES
  (28,30),
  (29,700),
  (30,5);
+
+INSERT INTO `pedido` (`ID_PEDIDO`, `ID_OPERADOR`, `MO_PRECIO_TOTAL`, `VC_DIRECCION`, `FECHA_PLACED`) VALUES
+ (1, 1, 1000, 'Reina Mercedes', '2005/1/06'),
+ (2, 1, 1000, 'Reina Mercedes', '2005/1/05'),
+ (3, 3, 1000, 'Reina Mercedes', '2005/1/07'),
+ (4, 3, 2000, 'Reina Mercedes', '2006/2/09');
+
+INSERT INTO `linea_pedido` (`ID_LINEA`, `ID_ITEM`, `ID_PEDIDO`, `MO_PRECIO_UNIDAD`, `IN_UNIDADES`) VALUES
+ (1, 1, 3, 100, 1),
+ (2, 2, 3, 200, 2),
+ (3, 3, 4, 100, 1);
