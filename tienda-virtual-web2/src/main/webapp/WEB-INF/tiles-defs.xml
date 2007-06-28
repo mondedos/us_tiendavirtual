@@ -22,6 +22,14 @@
         <put name="carrito" value="/gui/carrito.jsp"/>
         <put name="foot" value="/gui/common/foot.jsp"/>
     </definition>
+    
+      <definition name=".menuSinCarritoLayout" path="/gui/layouts/menuSinCarritoLayout.jsp">
+        <put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="menu" value="/gui/common/menu.jsp"/>
+        <put name="workarea" value="/gui/listado.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+    </definition>
 
     <definition name=".adminLayout" path="/gui/layouts/adminLayout.jsp">
         <put name="header" value="/gui/common/header.jsp"/>
@@ -51,7 +59,7 @@
         <put name="workarea" value="/gui/oferta.jsp"/>
     </definition>
 
-    <definition name=".errorUsuarioLayout" extends=".menuLayout">
+    <definition name=".errorUsuarioLayout" extends=".menuSinCarritoLayout">
     	<put name="workarea" value="/gui/common/error.jsp" />
     </definition>
     
