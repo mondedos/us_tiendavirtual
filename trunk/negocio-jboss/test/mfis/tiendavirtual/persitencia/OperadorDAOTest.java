@@ -21,23 +21,22 @@ public class OperadorDAOTest {
 		
 	}
 
-	@Test
+	/*@Test
 	public void pruebaObtenerOperador() {
 
 		String login = "cuvere@gmail.com";
 		Operador operador = operadorDao.obtenerOperador(login);
 
 		assert operador != null && operador.getId().equals(new Long(2)) : "Busqueda erronea";
-	}
+	}*/
 
-	
+	@Test
 	public void siguientePedidoTest(){
 		Operador operador1 = this.operadorDao.obtenerOperador("danird@gmail.com");
-		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
-		
 	
 		Pedido p = this.operadorDao.siguientePedido(operador1.getId());
 		assert(p != null);
+		System.out.println(p.getId());
 	}
 	
 	/*@Test
