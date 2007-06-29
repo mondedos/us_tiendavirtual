@@ -66,7 +66,6 @@ public class OperadorDAO {
 		// Es necesario realizar el siguiente procedimiento para que no existan
 		// problemas de concurrencia a la hora de asignar un
 		// pedido a un operador.
-		System.out.println("Operador: " + id);
 		List<Pedido> listaPedidos = null;
 		Pedido p = null;
 		Pedido res = null;
