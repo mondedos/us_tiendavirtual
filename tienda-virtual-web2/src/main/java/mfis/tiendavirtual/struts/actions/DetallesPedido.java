@@ -60,8 +60,7 @@ public class DetallesPedido extends MyTilesAction{
 	private String mostrarDetalles(WebContext c, Pedido pedido){
 	
 		PedidoVista pedidoVista= new PedidoVista(pedido);
-		List lineasPedido= PedidosBean.obtenerLineasPedido(pedido);
-		
+		List lineasPedido = PedidosBean.obtenerLineasPedido(pedido);
 		c.setRequest("lineasPedido", lineasPedido);
 		c.setRequest("pedido", pedidoVista);
 		System.out.println(pedidoVista.getEstado());
