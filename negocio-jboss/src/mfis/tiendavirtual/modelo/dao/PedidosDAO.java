@@ -105,20 +105,19 @@ public class PedidosDAO {
 	 * @param fecha
 	 * @throws IlegalChangedStateOrder 
 	 */
-	public void actualizarEstado(Pedido pedido, String nuevoEstado, Date fecha)
-			throws IlegalChangedStateOrder {
+	public void actualizarEstado(Pedido pedido, String nuevoEstado, Date fecha){
 		
 		// Obtenemos el estado del pedido.
 		String estadoActualp = this.obtenerEstado(pedido);
 		
 		if(estadoActualp.equals(this.estadoCancelled))
-			throw new IlegalChangedStateOrder("No se puede cancelar el estado de un pedido ya cancelado");
+			throw new IllegalArgumentException("No se puede cancelar el estado de un pedido ya cancelado");
 		else if (estadoActualp.equals(this.estadoPlaced)){
 			if(nuevoEstado.equals(this.estadoTransient) || 
 					nuevoEstado.equals(this.estadoCancelled))
 				pedido.setFechaPedido(fecha);
 			else
-				throw new IlegalChangedStateOrder("No se puede modificar el estado a "+nuevoEstado);
+				throw new IllegalArgumentException("No se puede modificar el estado a "+nuevoEstado);
 		}else if (estadoActualp.equals(this.estadoTransient)){
 			if(nuevoEstado.equals(this.estadoServed)){
 				pedido.setFechaDeServicio(fecha);
@@ -132,9 +131,9 @@ public class PedidosDAO {
 				beneficioDao.actualizarBeneficioPedido(productosPedido);
 			}
 			else
-				throw new IlegalChangedStateOrder("No se puede modificar el estado a "+nuevoEstado);
+				throw new IllegalArgumentException("No se puede modificar el estado a "+nuevoEstado);
 		} else if (estadoActualp.matches(this.estadoServed)) {
-			throw new IlegalChangedStateOrder("No se puede modificar el estado a el pedido esta servido");
+			throw new IllegalArgumentException("No se puede modificar el estado a el pedido esta servido");
 		}
 		
 		// Modificamos el pedido que ya existe en la BD.
