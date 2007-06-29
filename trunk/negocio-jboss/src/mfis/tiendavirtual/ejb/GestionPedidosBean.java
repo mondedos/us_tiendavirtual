@@ -13,7 +13,6 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
-import mfis.tiendavirtual.modelo.dao.IlegalChangedStateOrder;
 import mfis.tiendavirtual.modelo.dao.PedidosDAO;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 
@@ -99,7 +98,7 @@ public class GestionPedidosBean implements SessionBean {
 	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public void actualizarEstado(Pedido pedido, String estado, Date fecha) throws IlegalChangedStateOrder {
+	public void actualizarEstado(Pedido pedido, String estado, Date fecha){
 		p.actualizarEstado(pedido, estado, fecha);
 	}
 
