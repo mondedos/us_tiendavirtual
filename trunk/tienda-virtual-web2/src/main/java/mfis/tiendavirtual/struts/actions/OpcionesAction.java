@@ -80,21 +80,23 @@ public class OpcionesAction extends MyTilesAction {
     }
     
     private String realizarAsignacionPedido(WebContext c){
-    	
     	String login= (String)c.getSession("operador");
     	Operador operador= OperadoresBean.obtenerOperador(login);
+    	String paginaRetorno = null;
     	
     	Pedido pedido= PedidosBean.asignarPedido(operador.getId().intValue());
+    	if (pedido == null) {
+    		c.setRequest("mensajeInformativo", "No existe actualmente ningún pedido por asignar.");
+    		c.setRequest("mensajeRetorno", "");
+	    	c.setRequest("paginaRetorno", "");
+    	} else {
+    		paginaRetorno = "detallesPedido.do?id=" + pedido.getId().toString();
+	    	c.setRequest("mensajeInformativo", "Pedido asignado correctamente");
+	    	c.setRequest("mensajeRetorno", "Ver detalles del pedido");
+	    	c.setRequest("paginaRetorno", paginaRetorno);
+    	}
     	
-    	String mensajeInformativo= "Se le ha asignado un nuevo pedido";
-    	String paginaRetorno= "detallesPedido.do?id="+pedido.getId().toString();
-    	String mensajeAceptar= "Ver detalles del pedido";
-    	
-    	c.setRequest("mensajeInformativo", mensajeInformativo);
-    	c.setRequest("paginaRetorno", paginaRetorno);
-    	c.setRequest("mensajeAceptar", mensajeAceptar);
-    	
-    	return ".operacionRealizada";
+    	return (".operacionRealizada");
     }
     
     private String verListaPedidos(WebContext c){
