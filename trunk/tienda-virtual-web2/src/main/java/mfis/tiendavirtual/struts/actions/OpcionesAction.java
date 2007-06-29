@@ -159,7 +159,6 @@ public class OpcionesAction extends MyTilesAction {
 
 		c.setRequest("lista", listaOfertas);
 
-		return OFERTA;
+		return (OFERTA);
     }
-
 }

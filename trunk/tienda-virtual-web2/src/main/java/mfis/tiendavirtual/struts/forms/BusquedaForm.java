@@ -10,13 +10,12 @@ import org.apache.struts.action.ActionForm;
 public class BusquedaForm extends ActionForm {
 	
 	private static final long serialVersionUID = -3969146354667840299L;
-	
 
 	private String categoria;
 	private String marca;
 	private String min;
 	private String max;
-
+	private Boolean chk_avanzada;
 	
 	public String getCategoria() {
 		return categoria;
@@ -42,7 +41,12 @@ public class BusquedaForm extends ActionForm {
 	public void setMin(String min) {
 		this.min = min;
 	}
-
-
-
+	
+	public Boolean getChk_avanzada() {
+		return (chk_avanzada);
+	}
+	
+	public void setChk_avanzada(Boolean chk_avanzada) {
+		this.chk_avanzada = chk_avanzada;
+	}
 }
