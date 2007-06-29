@@ -3,6 +3,7 @@ package mfis.tiendavirtual.struts.vista;
 import java.util.Date;
 
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
+import mfis.tiendavirtual.struts.beans.PedidosBean;
 import mfis.tiendavirtual.util.Utilidades;
 
 public class PedidoVista {
@@ -28,19 +29,7 @@ public class PedidoVista {
 	
 	
 	private String calcularEstado(Pedido pedido){
-		String estado;
-		
-		if ((pedido.getFechaTransient() == null) && (pedido.getFechaDeServicio() == null) && (pedido.getFechaCancelacion() == null)) {
-			estado = "Placed";
-		} else if ((pedido.getFechaTransient() != null) && (pedido.getFechaDeServicio() == null) && (pedido.getFechaCancelacion() == null)) {
-			estado = "Transient";
-		} else if ((pedido.getFechaTransient() != null) && (pedido.getFechaDeServicio() != null) && (pedido.getFechaCancelacion() == null)) {
-			estado = "Served";
-		} else {
-			estado = "Cancelled";
-		}
-		
-		return (estado);
+		return PedidosBean.obtenerEstado(pedido);
 	}
 	
 	private String formatearFecha(Date fecha){
@@ -76,7 +65,7 @@ public class PedidoVista {
 	public void setEstadoM(String estado) {
 		this.estadoM = estado;
 	}
-
+	
 	public String getFechaDeServicio() {
 		return fechaDeServicio;
 	}

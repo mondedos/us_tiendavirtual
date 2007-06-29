@@ -33,15 +33,24 @@ public class DetallesPedido extends MyTilesAction{
 	
 	private String cambiarEstado(WebContext c, String nuevoEstado, Pedido pedido){
 		
-		PedidosBean.cambiarEstado(pedido, nuevoEstado);
+		String paginaRetorno;
+		String mensajeInformativo;
+		String mensajeAceptar;
 		
-		String paginaRetorno= "detallesPedido.do?id="+pedido.getId().toString();
-		String mensajeInformativo= "El estado del pedido ha sido modificado correctamente";
-		String mensajeAceptar= "Volver a la página de detalles";
+		try{
+			PedidosBean.cambiarEstado(pedido, nuevoEstado);
+			mensajeInformativo= "El estado del pedido ha sido modificado correctamente";
+		}catch(RuntimeException e){
+			//no se puede cambiar el estado
+			mensajeInformativo= "No se puede modificar el estado a el pedido. El pedido está servido";
+		}
+		
+		mensajeAceptar= "Volver a la página de detalles";
+		paginaRetorno= "detallesPedido.do?id="+pedido.getId().toString();
 		
 		c.setRequest("paginaRetorno", paginaRetorno);
 		c.setRequest("mensajeInformativo", mensajeInformativo);
-		c.setRequest("mensajeAceptar", mensajeAceptar);
+		c.setRequest("mensajeRetorno", mensajeAceptar);
 		
 		
 		return ".operacionRealizada";

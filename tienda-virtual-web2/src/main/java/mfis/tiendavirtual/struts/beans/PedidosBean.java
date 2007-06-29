@@ -73,4 +73,15 @@ public class PedidosBean {
 		
 		return (pedido);	
 	}
+	
+	public static String obtenerEstado(Pedido pedido){
+		String estado= null;
+		try{
+			estado= gp.obtenerEstado(pedido);
+		}catch(RemoteException e){
+			throw new RuntimeException(e);
+		}
+		
+		return estado;
+	}
 }
