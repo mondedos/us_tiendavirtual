@@ -104,6 +104,4 @@ public class Pedido implements Serializable{
 	public void setPrecioTotal(Float precioTotal) {
 		this.precioTotal = precioTotal;
 	}
-
-
 }
