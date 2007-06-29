@@ -24,14 +24,6 @@ import struts.WebContext;
 // src/main/assembly/struts-actions.xml
 public class OpcionesAction extends MyTilesAction {
 
-	private static String[] opciones = {
-		"app.opciones.0",
-		"app.opciones.1",
-		"app.opciones.2",
-		"app.opciones.3",
-		"app.opciones.4"
-	};
-
     public OpcionesAction() {
     }
 
@@ -44,10 +36,7 @@ public class OpcionesAction extends MyTilesAction {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
 			e.printStackTrace();
-		}
-
-
-    	switch (opt) {
+		} switch (opt) {
 			case 0:
 				break;
 			case 1:

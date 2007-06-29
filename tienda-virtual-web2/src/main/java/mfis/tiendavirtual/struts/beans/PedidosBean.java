@@ -17,7 +17,7 @@ public class PedidosBean {
 	private static GestionOperador go;
 	
 	static{
-		gp= (GestionPedidos)new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
+		gp = (GestionPedidos)new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		go = (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 	}
 	
@@ -38,12 +38,12 @@ public class PedidosBean {
 		
 	}
 	
-	public static List obtenerLineasPedido(Pedido pedido){
+	public static List obtenerLineasPedido (Pedido pedido) {
 
 		List lineasPedido= null;
-		try{
-			lineasPedido= gp.obtenerLineasPedido(pedido);
-		}catch(RemoteException e){
+		try {
+			gp.obtenerLineasPedido(pedido);
+		} catch (RemoteException e){
 			throw new RuntimeException(e);
 		}
 		
@@ -54,9 +54,8 @@ public class PedidosBean {
 		
 		Date fechaActual= new Date(System.currentTimeMillis());
 		
-		try{
-			gp.actualizarEstado(pedido, nuevoEstado, fechaActual);
-		}catch(RemoteException e){
+		try{ gp.actualizarEstado(pedido, nuevoEstado, fechaActual);
+		} catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
 		
