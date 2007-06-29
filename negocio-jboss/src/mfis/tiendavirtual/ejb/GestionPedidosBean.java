@@ -121,4 +121,8 @@ public class GestionPedidosBean implements SessionBean {
 	public List obtenerLineasPedido(Pedido pedido){
 		return p.obtenerLineasPedido(pedido);
 	}
+	
+	public String obtenerEstado(Pedido pedido){
+		return p.obtenerEstado(pedido);	
+	}
 }
