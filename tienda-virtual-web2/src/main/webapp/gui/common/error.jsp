@@ -4,5 +4,5 @@
 	<bean:write name="mensajeError"/>
 	<br>
 	<br>
-	<a href="listado.do?opt=3" >Volver a la página anterior</a>
+	<a href="<bean:write name="direccionRetorno"/>">Volver a la página anterior</a>
 </div>

@@ -19,16 +19,15 @@ import struts.WebContext;
 *
 */
 
-// En este caso no podemos usar XDoclets porque nuestras acciones hereadan
+// En este caso no podemos usar XDoclets porque nuestras acciones heredan
 // de MyTilesAction y no de Action. En su lugar, las acciones se mapean en el fichero
 // src/main/assembly/struts-actions.xml
 public class BusquedaAction extends MyTilesAction {
-
+	
     public BusquedaAction() {
     }
 
     public String execute(WebContext c) {
-    	
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
     	
     	BusquedaForm formulario= (BusquedaForm)c.getForm();
@@ -42,18 +41,35 @@ public class BusquedaAction extends MyTilesAction {
     	String cadPmin = formulario.getMin();
     	String cadPmax = formulario.getMax();
     	
+    	try {
+	    	if (formulario.getChk_avanzada().booleanValue()) {
+	    		;
+	    	}
+    	} catch (NullPointerException e){
+    		cadPmin = "";
+    		cadPmax = "";
+    	}
+    	
     	if ((cadPmin != null) && (cadPmax != null)) {
     		if (cadPmin.trim().equals("")) pmin = null;
     		if(cadPmax.trim().equals("")) pmax = null;
     		
     		try {
-    			if (pmin != null) pmin = new Float(Float.parseFloat(formulario.getMin()));
-    			if (pmax != null) pmax = new Float(Float.parseFloat(formulario.getMax()));
+    			// Eliminamos los posibles puntos de millares que puedan venir en los campos "precio maximo" y
+    			// "precio minimo":
+    			if (pmin != null) pmin = new Float(Float.parseFloat(formulario.getMin().replace(".", "")));
+    			if (pmax != null) pmax = new Float(Float.parseFloat(formulario.getMax().replace(".", "")));
     			
-        	} catch (NumberFormatException e){
+        	} catch (NumberFormatException e){ //Si no es un valor numerico lo que tenemos.
         		// TODO Poner un error en la web. De momento, ignoramos esto.
         		pmin = null;
         		pmax = null;
+    			// En caso de que el usuario no haya introducido un rango de precios correcto...
+    			String mensajeError = "Debe introducir un rango de precios correcto.";
+    			c.setRequest("mensajeError", mensajeError);
+    			c.setRequest("direccionRetorno", "categoria.do?idcat=0");
+    		
+    			return (ERROR_USUARIO);
         	}
     		
     	} List resultadoBusqueda= null;

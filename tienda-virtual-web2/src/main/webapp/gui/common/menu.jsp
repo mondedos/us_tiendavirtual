@@ -35,7 +35,7 @@
 						<div class="fila-buscador">
 							<label for="chk_avanzada" >
 								<bean:message key="app.busqueda.2"/>
-								<input class="checkbox" type="checkbox" id="chk_avanzada" name="chk_avanzada" onclick="div=document.getElementById('avanzada'); if(div.style.display=='block') div.style.display='none'; else div.style.display='block'"/>
+								<input class="checkbox" type="checkbox" property="chk_avanzada" id="chk_avanzada" name="chk_avanzada" onclick="div=document.getElementById('avanzada'); if(div.style.display=='block') div.style.display='none'; else div.style.display='block'"/>						
 							</label>
 						</div>
 						<div id="avanzada" class="fila-buscador nodisplay">

@@ -12,21 +12,22 @@ function validarPagina(objForm) {
 }
 
 function validarBusqueda(objForm) {
-	window.alert("Hola.");
 	var res = true;
 	
-	window.alert(objForm.min.value);
-	
-	/*
-	if ((((objForm.min.value.matches("[0-9]+")) || (objForm.min.value.matches("[1-9](\.[0-9]{3})+"))) &&
-	((objForm.max.value.matches("[0-9]+")) || (objForm.max.value.matches("[1-9](\.[0-9]{3})+")))) {
-		res = (true);
-		window.alert("Cierto.";
+	if (objForm.chk_avanzada.checked) {
+		if ((((objForm.min.value.match("^[0-9]+$")) || (objForm.min.value.match("^[1-9](\.[0-9]{3})+$"))) &&
+			((objForm.max.value.match("^[0-9]+$")) || (objForm.max.value.match("^[1-9](\.[0-9]{3})+$"))))) {
+				res = true;
+		} else {
+				window.alert("Por favor, introduzca un precio minimo y un precio maximo correctos para la busqueda.");
+				res = false;
+		}
 	} else {
-		window.alert("Por favor, introduzca un precio minimo y un precio maximo correctos para la busqueda.");
-		res = (false);
-		window.alert("Falso.");
-	}*/
+		res = true;
+		// Reiniciamos el checkbox para que no se busque por precios.
+		objForm.min.value = "";
+		objForm.max.value = "";
+	}
 	
 	return (res);
 }
