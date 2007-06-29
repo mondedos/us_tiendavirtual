@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			
-			<html:form action="busqueda.do">
+			<html:form action="busqueda.do" onsubmit="return validarBusqueda(this)">
 				<div id="busqueda">
 					<h3>Búsqueda</h3>
 					<div class="menu-container">
