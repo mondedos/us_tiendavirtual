@@ -9,14 +9,11 @@ import mfis.tiendavirtual.util.Utilidades;
 public class PedidoVista {
 	
 	private String estado;
-	private String estadoM;
 	private String fechaPedido;
 	private String fechaDeServicio;
 	private String precioTotal;
 	private String id;
 	private String direccion;
-	
-	
 
 	public PedidoVista(Pedido pedido){
 		this.estado= calcularEstado(pedido);
@@ -36,8 +33,6 @@ public class PedidoVista {
 		return Utilidades.formatearFecha(fecha);
 	}
 
-	
-
 	public String getId() {
 		return id;
 	}
@@ -47,11 +42,9 @@ public class PedidoVista {
 		this.id = id;
 	}
 
-
 	public String getEstado() {
 		return estado;
 	}
-
 
 	public void setEstado(String estado) {
 		this.estado = estado;
@@ -60,16 +53,10 @@ public class PedidoVista {
 	public String getEstadoM() {
 		return (estado.substring(0, 1).toLowerCase() + estado.substring(1, estado.length()));
 	}
-
-
-	public void setEstadoM(String estado) {
-		this.estadoM = estado;
-	}
 	
 	public String getFechaDeServicio() {
 		return fechaDeServicio;
 	}
-
 
 	public void setFechaDeServicio(String fechaDeServicio) {
 		this.fechaDeServicio = fechaDeServicio;
