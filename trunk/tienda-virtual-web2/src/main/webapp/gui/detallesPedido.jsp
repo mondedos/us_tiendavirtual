@@ -11,7 +11,7 @@
 				<tr><td><b>Dirección:  </b><bean:write name="pedido" property="direccion"/></td></tr>
 				<tr><td><br></td></tr>
 				<tr>
-					<td><b>Estado:  </b> <bean:write name="pedido" property="estado"/></td>
+					<td><b>Estado:  </b> <bean:write name="pedido" property="estadoM"/></td>
 					<td><b>Cambiar a:  </b> 
 						<html:select property="nuevoEstado">
 							<html:option value=""></html:option>
