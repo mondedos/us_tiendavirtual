@@ -1,13 +1,10 @@
 package mfis.tiendavirtual.persitencia;
 
-import mfis.tiendavirtual.modelo.dao.DaoGenerico;
 import java.util.List;
 import mfis.tiendavirtual.modelo.dao.OperadorDAO;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.persitencia.asignacionPedido.AsignacionPedidoConcurrente;
-import mfis.tiendavirtual.persitencia.asignacionPedido.ConcurrenteUtilidades;
-
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -15,13 +12,9 @@ public class OperadorDAOTest {
 
 	private OperadorDAO operadorDao;
 
-	private DaoGenerico daoGenerico;
-
 	@BeforeClass
 	public void inicializar() {
 		this.operadorDao = new OperadorDAO();
-		this.daoGenerico = new DaoGenerico();
-
 	}
 
 	// @Test

@@ -110,16 +110,16 @@ public class PedidosDAO {
 		// Obtenemos el estado del pedido.
 		String estadoActualp = this.obtenerEstado(pedido);
 		
-		if(estadoActualp.equals(this.estadoCancelled))
+		if(estadoActualp.equals(estadoCancelled))
 			throw new IllegalArgumentException("No se puede cancelar el estado de un pedido ya cancelado");
-		else if (estadoActualp.equals(this.estadoPlaced)){
-			if(nuevoEstado.equals(this.estadoTransient) || 
-					nuevoEstado.equals(this.estadoCancelled))
+		else if (estadoActualp.equals(estadoPlaced)){
+			if(nuevoEstado.equals(estadoTransient) || 
+					nuevoEstado.equals(estadoCancelled))
 				pedido.setFechaPedido(fecha);
 			else
 				throw new IllegalArgumentException("No se puede modificar el estado a "+nuevoEstado);
-		}else if (estadoActualp.equals(this.estadoTransient)){
-			if(nuevoEstado.equals(this.estadoServed)){
+		}else if (estadoActualp.equals(estadoTransient)){
+			if(nuevoEstado.equals(estadoServed)){
 				pedido.setFechaDeServicio(fecha);
 				
 //				 Lista de productos del pedido.
@@ -132,7 +132,7 @@ public class PedidosDAO {
 			}
 			else
 				throw new IllegalArgumentException("No se puede modificar el estado a "+nuevoEstado);
-		} else if (estadoActualp.matches(this.estadoServed)) {
+		} else if (estadoActualp.matches(estadoServed)) {
 			throw new IllegalArgumentException("No se puede modificar el estado a el pedido esta servido");
 		}
 		
