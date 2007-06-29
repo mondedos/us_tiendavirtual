@@ -16,7 +16,6 @@ import struts.WebContext;
 // de MyTilesAction y no de Action. En su lugar, las acciones se mapean en el fichero
 // src/main/assembly/struts-actions.xml
 
-// Esta clase no se usa de momento, está de ejemplo
 public class LoginAction extends MyTilesAction {
     public LoginAction() {
     }

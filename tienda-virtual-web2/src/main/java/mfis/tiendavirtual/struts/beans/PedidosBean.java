@@ -4,17 +4,21 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
+import mfis.tiendavirtual.interfaces.GestionOperador;
 import mfis.tiendavirtual.interfaces.GestionPedidos;
 import mfis.tiendavirtual.jndi.EJB;
+import mfis.tiendavirtual.jndi.OperadorEJB;
 import mfis.tiendavirtual.jndi.PedidosEJB;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 
 public class PedidosBean {
 	
 	private static GestionPedidos gp;
+	private static GestionOperador go;
 	
 	static{
 		gp= (GestionPedidos)new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
+		go = (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 	}
 	
 	
@@ -62,15 +66,11 @@ public class PedidosBean {
 		
 		Pedido pedido= null;
 		try{
-			pedido= gp.getPedido(idOperador);
+			pedido = go.siguientePedido(idOperador);
 		}catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
 		
-		return pedido;
-		
-		
-		
+		return (pedido);	
 	}
-
 }

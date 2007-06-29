@@ -6,7 +6,7 @@
 		<bean:write name="mensajeInformativo"/>
 		<br><br>
 		<a href="<bean:write name="paginaRetorno"/>">
-			<bean:write name="mensajeAceptar"/>
+			<bean:write name="mensajeRetorno"/>
 		</a>
 		
 	</div>
