@@ -116,12 +116,12 @@ public class PedidosDAO {
 		else if (estadoActualp.equals(this.estadoPlaced)){
 			if(nuevoEstado.equals(this.estadoTransient) || 
 					nuevoEstado.equals(this.estadoCancelled))
-				this.cambiarEstado(pedido, fecha);
+				pedido.setFechaPedido(fecha);
 			else
 				throw new IlegalChangedStateOrder("No se puede modificar el estado a "+nuevoEstado);
 		}else if (estadoActualp.equals(this.estadoTransient)){
 			if(nuevoEstado.equals(this.estadoServed)){
-				this.cambiarEstado(pedido, fecha);
+				pedido.setFechaDeServicio(fecha);
 				
 //				 Lista de productos del pedido.
 				List<Producto> productosPedido = this.obtenerProductosPedido(pedido);
@@ -139,11 +139,6 @@ public class PedidosDAO {
 		
 		// Modificamos el pedido que ya existe en la BD.
 		daoGenerico.modificarObjeto(pedido);
-	}
-	
-	
-	private void cambiarEstado(Pedido pedido, Date fecha){
-		pedido.setFechaDeServicio(fecha);
 	}
 	
 	/**
