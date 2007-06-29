@@ -26,6 +26,11 @@ public class PedidosDAO {
 	private static BMGenerico bmGenerico;
 	private static ProductoDao productoDao;
 	private static BeneficioDAO beneficioDao;
+	
+	private static final String estadoCancelled = "Cancelled";
+	private static final String estadoTransient = "Transient";
+	private static final String estadoServed   = "Served";
+	private static final String estadoPlaced = "Placed";
 
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
@@ -98,33 +103,47 @@ public class PedidosDAO {
 	 * @param p
 	 * @param estado
 	 * @param fecha
+	 * @throws IlegalChangedStateOrder 
 	 */
-	public void actualizarEstado(Pedido p, String estado, Date fecha) {
+	public void actualizarEstado(Pedido pedido, String nuevoEstado, Date fecha)
+			throws IlegalChangedStateOrder {
 		
-//		Un pedido puede cancelarse si su estado es "Placed" o "Transient".
-		if (estado.matches("Placed")) {
-			p.setFechaDeServicio(fecha);
-		} else if (estado.matches("Cancelled")) {
-			p.setFechaCancelacion(fecha);
-		} else if (estado.matches("Transient")) {
-			p.setFechaTransient(fecha);
-		} else if (estado.matches("Served")) {
-/* 		
- * 	Una vez que el pedido ha sido servido podemos actualizar con seguridad
- * el beneficio pues el usuario no puede cancelar el pedido.
- */
-			
-			p.setFechaDeServicio(fecha);
-			
-			// Lista de productos del pedido.
-			List<Producto> productosPedido = this.obtenerProductosPedido(p);
-			
-			beneficioDao.actualizarBeneficioPedido(productosPedido);
-		} else
-			throw new IllegalArgumentException("Estado del pedido no valido "
-					+ estado);
-
-		daoGenerico.modificarObjeto(p);
+		// Obtenemos el estado del pedido.
+		String estadoActualp = this.obtenerEstado(pedido);
+		
+		if(estadoActualp.equals(this.estadoCancelled))
+			throw new IlegalChangedStateOrder("No se puede cancelar el estado de un pedido ya cancelado");
+		else if (estadoActualp.equals(this.estadoPlaced)){
+			if(nuevoEstado.equals(this.estadoTransient) || 
+					nuevoEstado.equals(this.estadoCancelled))
+				this.cambiarEstado(pedido, fecha);
+			else
+				throw new IlegalChangedStateOrder("No se puede modificar el estado a "+nuevoEstado);
+		}else if (estadoActualp.equals(this.estadoTransient)){
+			if(nuevoEstado.equals(this.estadoServed)){
+				this.cambiarEstado(pedido, fecha);
+				
+//				 Lista de productos del pedido.
+				List<Producto> productosPedido = this.obtenerProductosPedido(pedido);
+				/* 		
+				 * 	Una vez que el pedido ha sido servido podemos actualizar con seguridad
+				 * el beneficio pues el usuario no puede cancelar el pedido.
+				 */
+				beneficioDao.actualizarBeneficioPedido(productosPedido);
+			}
+			else
+				throw new IlegalChangedStateOrder("No se puede modificar el estado a "+nuevoEstado);
+		} else if (estadoActualp.matches(this.estadoServed)) {
+			throw new IlegalChangedStateOrder("No se puede modificar el estado a el pedido esta servido");
+		}
+		
+		// Modificamos el pedido que ya existe en la BD.
+		daoGenerico.modificarObjeto(pedido);
+	}
+	
+	
+	private void cambiarEstado(Pedido pedido, Date fecha){
+		pedido.setFechaDeServicio(fecha);
 	}
 	
 	/**
