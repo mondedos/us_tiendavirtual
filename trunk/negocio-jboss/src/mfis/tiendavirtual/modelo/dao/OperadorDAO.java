@@ -62,7 +62,7 @@ public class OperadorDAO {
 	 * @return pedido asignado al operador o null si no hay ningun pedido por
 	 *         ser asignado
 	 */
-	public Pedido siguientePedido(long id) {
+	synchronized public Pedido siguientePedido(long id) {
 		// Es necesario realizar el siguiente procedimiento para que no existan
 		// problemas de concurrencia a la hora de asignar un
 		// pedido a un operador.
@@ -127,9 +127,7 @@ public class OperadorDAO {
 			daoGenerico.modificarObjeto(res);
 		}
 		
-		
-
-		return (res);
+		return res;
 	}
 
 	/**
