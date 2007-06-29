@@ -8,6 +8,7 @@ import mfis.tiendavirtual.util.Utilidades;
 public class PedidoVista {
 	
 	private String estado;
+	private String estadoM;
 	private String fechaPedido;
 	private String fechaDeServicio;
 	private String precioTotal;
@@ -27,7 +28,19 @@ public class PedidoVista {
 	
 	
 	private String calcularEstado(Pedido pedido){
-		return "Estado";
+		String estado;
+		
+		if ((pedido.getFechaTransient() == null) && (pedido.getFechaDeServicio() == null) && (pedido.getFechaCancelacion() == null)) {
+			estado = "Placed";
+		} else if ((pedido.getFechaTransient() != null) && (pedido.getFechaDeServicio() == null) && (pedido.getFechaCancelacion() == null)) {
+			estado = "Transient";
+		} else if ((pedido.getFechaTransient() != null) && (pedido.getFechaDeServicio() != null) && (pedido.getFechaCancelacion() == null)) {
+			estado = "Served";
+		} else {
+			estado = "Cancelled";
+		}
+		
+		return (estado);
 	}
 	
 	private String formatearFecha(Date fecha){
@@ -54,7 +67,15 @@ public class PedidoVista {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	public String getEstadoM() {
+		return (estado.substring(0, 1).toLowerCase() + estado.substring(1, estado.length()));
+	}
 
+
+	public void setEstadoM(String estado) {
+		this.estadoM = estado;
+	}
 
 	public String getFechaDeServicio() {
 		return fechaDeServicio;

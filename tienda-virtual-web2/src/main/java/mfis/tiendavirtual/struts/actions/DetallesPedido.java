@@ -55,6 +55,7 @@ public class DetallesPedido extends MyTilesAction{
 		
 		c.setRequest("lineasPedido", lineasPedido);
 		c.setRequest("pedido", pedidoVista);
+		System.out.println(pedidoVista.getEstado());
 		
 		return ".detallesPedido";
 	}
