@@ -9,20 +9,28 @@ public class AsignacionPedidoConcurrente implements Runnable {
 	private OperadorDAO operadorDao;
 	private Long idOperador;
 	private Pedido pedido;
+	private int retardo;
 	
-	public AsignacionPedidoConcurrente (OperadorDAO operadorDao, long idOperador){
+	public AsignacionPedidoConcurrente (OperadorDAO operadorDao,long idOperador, int retardo){
 		this.operadorDao = operadorDao;
 		this.idOperador = idOperador;
+		this.retardo = retardo;
 		
+		this.hilo = new Thread(this);
 		this.hilo.start();
 	}
 	
 	
 	public void run() {
 		// TODO Auto-generated method stub
-		
+		try {
+			Thread.sleep(this.retardo);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		this.pedido = this.operadorDao.siguientePedido(this.idOperador);
-		
 	}
 	
 	public boolean isAlive(){
