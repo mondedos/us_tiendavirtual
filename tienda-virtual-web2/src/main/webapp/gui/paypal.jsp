@@ -3,13 +3,15 @@
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"%>
 
 	<div class="menu-container">
-		<form action="https://www.paypal.com/cgi-bin/websrc" method="post" id="formulario">
+<!--		<form action="https://www.paypal.com/cgi-bin/websrc" method="post" id="formulario">-->
+			<form action="https://www.sandbox.paypal.com/cgi-bin/websrc" method="post" id="formulario">
+			
+			<input type="hidden" name="business" value="seller@hotmail.com"/>
 			<input type="hidden" name="cmd" value="_cart"/>
 			<input type="hidden" name="cancel_return" value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=3"/>
 			<input type="hidden" name="charset" value="utf-8"/>
 			<input type="hidden" name="currency_code" value="EUR"/>
 			<input type="hidden" name="upload" value="1"/>
-			<input type="hidden" name="business" value="cuvere@hotmail.com"/>
 			<input type="hidden" name="return" value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=2"/>
 			<input type="hidden" name="undefined_quantity" value="0"/>
 			

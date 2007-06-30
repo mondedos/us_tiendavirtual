@@ -85,9 +85,9 @@ public class PedidosBean {
 		return estado;
 	}
 	
-	public static void registrarPedido(Carrito carrito, String direccionUsuario){
+	public static Long registrarPedido(Carrito carrito, String direccionUsuario){
 		try{
-			gp.registrarPedido(carrito, direccionUsuario);
+			return gp.registrarPedido(carrito, direccionUsuario);
 		}catch(RemoteException e){
 			throw new RuntimeException(e);
 		}

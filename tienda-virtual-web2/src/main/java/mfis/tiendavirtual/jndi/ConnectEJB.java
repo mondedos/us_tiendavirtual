@@ -14,7 +14,6 @@ public abstract class ConnectEJB implements EJB{
 
 	String jndi = null;
 
-	@SuppressWarnings("unchecked")
 	public EJBObject getEJB(String jndi) {
 		Hashtable propiedades = new Hashtable();
     	
