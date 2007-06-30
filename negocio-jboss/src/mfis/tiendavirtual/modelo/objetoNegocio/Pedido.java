@@ -16,7 +16,6 @@ public class Pedido implements Serializable{
 	private Date fechaTransient;
 	private Operador operador;	
 	
-	
 	@Override
 	public boolean equals(Object o){
 		if(o==null ||!(o instanceof Pedido)) return false;
@@ -26,17 +25,12 @@ public class Pedido implements Serializable{
 		return p.getId()!=null && p.getId().equals(this.getId());
 	}
 	
-	
 	@Override
 	public int hashCode(){
 		if(this.getId()==null) return System.identityHashCode(this);
 		else return this.getId().hashCode();
 	}
-	
-	
-	
-	
-	
+
 	public String getDireccion() {
 		return direccion;
 	}

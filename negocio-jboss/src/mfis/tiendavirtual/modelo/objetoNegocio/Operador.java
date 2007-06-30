@@ -16,7 +16,7 @@ public class Operador implements Serializable{
 	
 	@Override
 	public boolean equals(Object o){
-		if(o==null || !(o instanceof Operador)) return false;
+		if(o == null || (!(o instanceof Operador))) return false;
 		
 		Operador op= (Operador)o;	
 		
@@ -28,8 +28,6 @@ public class Operador implements Serializable{
 		if(this.getId()==null) return System.identityHashCode(this);
 		else return this.getId().hashCode();
 	}
-
-
 
 	public Long getId() {
 		return id;
