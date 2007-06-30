@@ -40,9 +40,6 @@ public class Producto extends Item {
 		return Utilidades.obtenerPrecio(this.obtenerPrecio().toString());
 	}
 	
-	
-	
-	
 	public String getDescripcion() {
 		return descripcion;
 	}
