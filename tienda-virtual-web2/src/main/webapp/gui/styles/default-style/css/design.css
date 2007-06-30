@@ -165,11 +165,18 @@ input.minienlace {
 	cursor: pointer;
 	width: 100px;
 }
-img.minienlace{
+img.minienlace {
 	width: 20px;
 	height: 19px;
 	border: 0;
 	vertical-align: top;
+}
+
+img.carroDeLaCompra {
+	width: 35px;
+	height: 35px;
+	border: 0;
+	vertical-align: middle;
 }
 
 hr {
@@ -177,12 +184,6 @@ hr {
 	border-bottom: 1px dotted #c66;
 	border-left: 0px;	border-right: 0px;
 	height: 4px;
-}
-
-#carrito .menu-container {
-	background-image:url('../img/carrito.gif');
-	background-repeat: no-repeat;
-	background-position: bottom right;
 }
 
 table.carrito {
