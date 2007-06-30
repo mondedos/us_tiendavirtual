@@ -41,7 +41,6 @@ public class StartAction extends MyTilesAction {
         return (MAINPAGE);
     }
 
-    @SuppressWarnings("unchecked")
     public static void construyeMigas(WebContext c) {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio",""));

@@ -44,11 +44,15 @@ public class RealizarCompra extends MyTilesAction{
 	private String persistirCompra(WebContext c){
 		
 		Carrito carrito= (Carrito)c.getSession("carrito");
-		PedidoForm formulario= (PedidoForm) c.getForm();
-		String direccionUsuario = formulario.getDireccionUsuario();
+		String direccionUsuario = (String)c.getSession("direccionUsuario");
 			
-		PedidosBean.registrarPedido(carrito, direccionUsuario);
+		Long idPedido= PedidosBean.registrarPedido(carrito, direccionUsuario);
 		StartAction.obtenerOfertas(c);
+		
+		c.removeSession("direccionUsuario");
+		c.removeSession("carrito");
+		c.setRequest("idPedido", idPedido);
+		
 			
 		return COMPRA_REALIZADA;
 		
@@ -56,7 +60,6 @@ public class RealizarCompra extends MyTilesAction{
 		
 	}
 	
-	@SuppressWarnings("unchecked")
 	private String paypal(WebContext c){
 		
 		PedidoForm formulario= (PedidoForm) c.getForm();
@@ -77,7 +80,7 @@ public class RealizarCompra extends MyTilesAction{
 				String amount= "amount_"+indice;
 				String number= "quantity_"+indice;
 				
-				String nombreArticulo= producto.getModelo();
+				String nombreArticulo= producto.getMarca()+" "+producto.getModelo();
 				String precioArticulo= lineaPedido.getPrecioUnidad().toString();
 				String numeroUnidades= ""+lineaPedido.getUnidades();
 				
@@ -104,8 +107,6 @@ public class RealizarCompra extends MyTilesAction{
 		return (layout);
 	}
 	
-	@Deprecated
-	@SuppressWarnings("unchecked")
 	private String redirectCompraPayPal(Carrito carrito){
 		String url = "https://www.paypal.com/cgi-bin/webscr?";
 		url += "businesss=mfisg16@gmail.com";
@@ -125,8 +126,6 @@ public class RealizarCompra extends MyTilesAction{
 		return (url);	
 	}
 	
-	@Deprecated
-	@SuppressWarnings("unchecked")
 	private void realizarCompraPayPal(Carrito carrito){
 		HttpURLConnection p = null;
 		BufferedOutputStream bos = null;
