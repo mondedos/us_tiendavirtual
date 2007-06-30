@@ -51,7 +51,7 @@ public class PedidoVista {
 	}
 	
 	public String getEstadoM() {
-		return (estado.substring(0, 1).toLowerCase() + estado.substring(1, estado.length()));
+		return (estado.toLowerCase());
 	}
 	
 	public String getFechaDeServicio() {

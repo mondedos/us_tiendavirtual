@@ -10,6 +10,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.actions.CategoriaAction;
 import mfis.tiendavirtual.struts.beans.CarritoBean;
 import mfis.tiendavirtual.struts.beans.OperadoresBean;
+
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -22,7 +23,6 @@ import struts.WebContext;
 // de MyTilesAction y no de Action. En su lugar, las acciones se mapean en el fichero
 // src/main/assembly/struts-actions.xml
 public class ListadoAction extends MyTilesAction {
-
 	private static String[] opciones = {
 		"app.listado.0",
 		"app.listado.1"
@@ -32,19 +32,15 @@ public class ListadoAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-
     	String layout = MENUPAGE;
-
     	CarritoBean carritobean = null;
-
     	int opt = -1;
     	int idcat = Integer.parseInt(c.getParameter("idcat"));
     	int idpro = Integer.parseInt(c.getParameter("idpr"));
-
-    	//se usa para borrar linea de pedido
+    	// Se usa para borrar linea de pedido
     	String lid = c.getParameter("lid");
-
     	String nombrecat = bundle.getString(CategoriaAction.cats[idcat]);
+    	
     	try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
@@ -52,63 +48,46 @@ public class ListadoAction extends MyTilesAction {
     			if(bundle.getString(opciones[i]).startsWith(c.getParameter("opt").substring(0,6)))
     				opt = i;
     		}
-		}
-
-    	List listadoCategorias = null;
-    	
-    	Producto p = null;
-
-    	switch (opt) {
-    		// ver detalle
+		} List listadoCategorias = null;
+		Producto p = null;
+		switch (opt) {
+    		// Ver detalle.
 			case 0:
 				p = OperadoresBean.getProducto(idpro);
 				c.setRequest("producto", p);
 				layout = PRODUCTO;
-
 				break;
 			// Añade al carrito.
 			case 1:
 		    	int unidades = Integer.parseInt(c.getParameter("unidades"));
 				carritobean = new CarritoBean(c);
-
 				Item i = OperadoresBean.getProducto(idpro);
 				listadoCategorias= OperadoresBean.listarProductosCategoria(idcat);
-				
 				carritobean.crearLineaPedido(i, nombrecat, unidades);
 				break;
-			// Borra del carrito.
+			// Borra del carrito (1).
 			case 2:
 				carritobean = new CarritoBean(c);
 				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
 				listadoCategorias= OperadoresBean.listarProductosCategoria(idcat);
-
 				if( c.getParameter("l") != null && COMPRA.startsWith(c.getParameter("l"))) {
 					layout = COMPRA;
-				}
-
-				break;
-				// Borra del carrito.
+				} break;
+			// Borra del carrito (2).
 			case 3:
 				layout = COMPRA;
 				break;
 			default:
 				break;
-		}
-    	if(carritobean != null) {
+		} if(carritobean != null) {
     		c.setSession("carrito", carritobean.getCarrito());
-    	}
-    	
-    	
-    	
-		c.setRequest("idcat", idcat + "");
+    	} c.setRequest("idcat", idcat + "");
 		c.setRequest("lista", listadoCategorias);
 		c.setRequest("titulo", nombrecat);
 		c.setRequest("urlImg", "gui/images");
-
 		construyeMigas(c, idcat, opt, p);
-
-        return layout;
-
+        
+		return layout;
     }
 
     public void construyeMigas(WebContext c, int cat, int opt, Producto p) {
@@ -123,6 +102,5 @@ public class ListadoAction extends MyTilesAction {
     	}
 
     	c.setRequest("migas",l);
-
     }
 }
