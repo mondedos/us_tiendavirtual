@@ -83,6 +83,7 @@ public class CategoriaAction extends MyTilesAction {
         return layout;
     }
 
+    @SuppressWarnings("unchecked")
     public void construyeMigas(WebContext c, int tipo) {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio", c.getRequest().getContextPath()+"/"));

@@ -14,10 +14,11 @@ public abstract class ConnectEJB implements EJB{
 
 	String jndi = null;
 
+	@SuppressWarnings("unchecked")
 	public EJBObject getEJB(String jndi) {
-
-    	Hashtable propiedades = new Hashtable();
-    	propiedades.put("java.naming.factory.initial",
+		Hashtable propiedades = new Hashtable();
+    	
+		propiedades.put("java.naming.factory.initial",
     	    				"org.jnp.interfaces.NamingContextFactory");
     	propiedades.put("java.naming.factory.url.pkgs",
     	    				"org.jboss.naming:org.jnp.interfaces");

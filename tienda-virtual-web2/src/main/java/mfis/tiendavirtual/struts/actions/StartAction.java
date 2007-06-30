@@ -41,13 +41,13 @@ public class StartAction extends MyTilesAction {
         return (MAINPAGE);
     }
 
+    @SuppressWarnings("unchecked")
     public static void construyeMigas(WebContext c) {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio",""));
 
     	c.setRequest("migas",l);
     }
-
 
     public static void obtenerOfertas(WebContext c){
     	GestionOferta go = (GestionOferta) new OfertaEJB().getEJB(EJB.OFERTAS_JNDI);
