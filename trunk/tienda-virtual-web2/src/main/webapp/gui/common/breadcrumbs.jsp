@@ -6,7 +6,7 @@
 			<logic:present name="migas">
 	        	<logic:iterate name="migas"  id="migas">
 	        		<logic:equal name="migas" property="value" value="">
-		        		<span><bean:write name="migas" property="label"/></span> /
+		        		<span><bean:write name="migas" property="label"/></span>
 	        		</logic:equal>
 	        		<logic:notEqual name="migas" property="value" value="">
 		        		<span><a href="<bean:write name="migas" property="value"/>"><bean:write name="migas" property="label"/></a></span> /

@@ -21,7 +21,6 @@ import struts.WebContext;
 // de MyTilesAction y no de Action. En su lugar, las acciones se mapean en el fichero
 // src/main/assembly/struts-actions.xml
 
-// Esta clase no se usa de momento, esta de ejemplo
 public class CategoriaAction extends MyTilesAction {
 
 	public final static String[] cats = {
@@ -87,10 +86,9 @@ public class CategoriaAction extends MyTilesAction {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio", c.getRequest().getContextPath()+"/"));
 
-    	l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(cats[tipo]),""));
+    	l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(cats[tipo]).toLowerCase(),""));
 
-    	c.setRequest("migas",l);
-
+    	c.setRequest("migas", l);
     }
 
 }

@@ -17,11 +17,10 @@ public class PedidosBean {
 	private static GestionPedidos gp;
 	private static GestionOperador go;
 	
-	static{
-		gp = (GestionPedidos)new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
+	static {
+		gp = (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		go = (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 	}
-	
 	
 	public static Pedido obtenerPedido(String id){
 		
@@ -86,7 +85,7 @@ public class PedidosBean {
 	}
 	
 	public static Long registrarPedido(Carrito carrito, String direccionUsuario){
-		try{
+		try {
 			return gp.registrarPedido(carrito, direccionUsuario);
 		}catch(RemoteException e){
 			throw new RuntimeException(e);

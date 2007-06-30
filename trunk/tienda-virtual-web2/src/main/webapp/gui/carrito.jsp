@@ -16,7 +16,7 @@
 			<p>
 				<bean:write name="carrito" property="numProductos"/> items en el carrito
 			</p>
-			<p>Precio: <bean:write name="carrito" property="totalSinIvaFormateado" format="#,##0.00"/> &euro;
+			<p>Precio: <bean:write name="carrito" property="totalSinIvaFormateado"/> &euro;
 			</p>
 			<hr/>
 			<br/>

@@ -120,20 +120,15 @@ public class RealizarCompra extends MyTilesAction{
 			p.addRequestProperty("rm", "2");
 			p.addRequestProperty("undefined_quantity", "1");
 			p.addRequestProperty("charset", "utf-8");
-			p.addRequestProperty("no_shipping", "1");
-			
-			//TODO hacer la pagina de cancelar
+			p.addRequestProperty("no_shipping", "1");	
+			//XXX hacer la pagina de cancelar
 			//p.addRequestProperty("cancel_return", "pagina error");
-			
 			p.addRequestProperty("no_note", "0");
 			p.addRequestProperty("item_name", "Compra MFIS");
 			p.addRequestProperty("amount", carrito.getTotalSinIVA());
 			p.addRequestProperty("quantity", "1");
-			
 			p.connect();
-			
 			int code = p.getResponseCode();
-			
 			is = p.getInputStream();
 			int k = 0 ;
 			byte[] buffer = new byte[256];
@@ -141,7 +136,6 @@ public class RealizarCompra extends MyTilesAction{
 			// bos.write(buffer, 0 , k);
 			} System.out.println(bos);
 			System.out.println(code);
-			
 			p.disconnect();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
