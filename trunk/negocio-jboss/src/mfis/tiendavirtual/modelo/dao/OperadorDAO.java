@@ -44,13 +44,11 @@ public class OperadorDAO {
 	 * @return el operador con el login correspondiente
 	 */
 	public Operador obtenerOperador(String login) {
-
 		Operador dto = new Operador();
 		dto.setLogin(login);
 
 		Criteria criteria = bmGenerico.realizarBusqueda(dto);
 		return (Operador) criteria.uniqueResult();
-
 	}
 
 	/**
@@ -139,13 +137,11 @@ public class OperadorDAO {
 	 */
 	@SuppressWarnings("unchecked")
 	public List<Pedido> obtenerPedidosOperador(String login) {
-
 		Operador operador = obtenerOperador(login);
 
 		Criteria criteria = bmGenerico.crearCriteriaVacio(Pedido.class);
 		bmGenerico.agregarAnd(criteria, "operador.id", operador.getId());
 
 		return criteria.list();
-
 	}
 }

@@ -11,8 +11,7 @@ public class DeleteUpdateTest {
 
 	
 	@Test
-	public void deleteOperador(){
-		
+	public void deleteOperador(){	
 		Operador operador = 
 			CreateObjetosNegocio.getInstance().createOperador();
 		
@@ -30,7 +29,7 @@ public class DeleteUpdateTest {
 		Operador operador = 
 			CreateObjetosNegocio.getInstance().createOperador();
 		
-		//guardamos el objeto en la base de datos
+		// Guardamos el objeto en la base de datos.
 		Session sesion = HibernateSessionFactory.crearSesion();
 		Transaction tx = sesion.beginTransaction();
 		Long id= (Long)sesion.save(operador);
@@ -38,16 +37,16 @@ public class DeleteUpdateTest {
 		sesion.close();
 		
 		
-		//CASO DE USO: recuperacion de objeto para su posterior borrado
+		// CASO DE USO: recuperacion de objeto para su posterior borrado.
 		
-		//recuperamos el objeto por el id
+		// Recuperamos el objeto por el id.
 		Session sesion1 = HibernateSessionFactory.crearSesion();
 		Transaction tx1 = sesion1.beginTransaction();
 		Operador operador1= (Operador)sesion1.load(Operador.class, id);
 		tx1.commit();
 		sesion1.close();
 		
-		//borramos el operador de la base de datos
+		// Borramos el operador de la base de datos.
 		Session sesion2= HibernateSessionFactory.crearSesion();
 		Transaction tx2= sesion2.beginTransaction();
 		sesion2.delete(operador1);

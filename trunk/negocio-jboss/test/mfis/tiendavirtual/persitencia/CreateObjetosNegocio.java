@@ -119,12 +119,11 @@ public class CreateObjetosNegocio {
 	}
 	
 	// Crea un operador con valores por defecto.
-	public Operador createOperador(){
-		
+	public Operador createOperador() {
 		Operador operador = new Operador();
 		operador.setLogin(this.STRING_PRUEBA);		
 		
-		return operador;
+		return (operador);
 	}
 	
 	// Crea un pedido con valores por defecto.
