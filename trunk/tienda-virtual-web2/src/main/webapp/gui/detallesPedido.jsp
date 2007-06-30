@@ -12,7 +12,7 @@
 				<tr><td><br></td></tr>
 				<tr>
 					<td><b>Estado:  </b> <bean:write name="pedido" property="estadoM"/></td>
-					<td><b>Cambiar a:  </b> 
+					<td><b>Cambiar a:  </b>
 						<html:select property="nuevoEstado">
 							<html:option value=""></html:option>
 							<html:option value="Placed">Placed</html:option>

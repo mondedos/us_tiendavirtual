@@ -5,7 +5,7 @@
 	<div class="menu-container">
 	
 		<logic:present name="listaPedidos">
-			Lista de pedidos para el operador:  <b><bean:write name="operador"/></b>
+			Lista de pedidos para el operador  <b><bean:write name="operador"/></b>
 			<br><br><br><br>
 			<table class="carrito">
 				<thead>
