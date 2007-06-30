@@ -31,3 +31,9 @@ function validarBusqueda(objForm) {
 	
 	return (res);
 }
+
+function paypal(){
+        	
+    var formulario= document.getElementById("formulario");
+    formulario.submit();
+}

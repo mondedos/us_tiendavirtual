@@ -46,14 +46,21 @@ float total = (float) lp.getUnidades() * lp.getPrecioUnidad().floatValue();
 					</table>
 					<br><br>
 					
-					<html:form action="realizarCompra.do" styleId="compraForm" onsubmit="return validarPagina(this)">
+					<html:form action="realizarCompra.do?opt=1" styleId="compraForm" onsubmit="return validarPagina(this)">
 						
 						<label for="direccionUsuario">Por favor, introduzca la dirección a la que desea que el pedido le sea enviado:</label><br>
 						<html:textarea  styleId="direccionUsuario" property="direccionUsuario"/>
 						
 						<br><br>
 						
-						<html:submit property="Realizar compra" value="Realizar compra"/>
+							<input 
+								type="image" 
+								src="https://www.paypal.com/es_ES/i/btn/x-click-but01.gif" 
+								border="0" name="submit" alt="Realice pagos con PayPal: es rápido, gratis y seguro."/>
+
+							
+							
+						
 					</html:form>
 	
 				</logic:present>

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
+import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.interfaces.GestionOperador;
 import mfis.tiendavirtual.interfaces.GestionPedidos;
 import mfis.tiendavirtual.jndi.EJB;
@@ -82,5 +83,13 @@ public class PedidosBean {
 		}
 		
 		return estado;
+	}
+	
+	public static void registrarPedido(Carrito carrito, String direccionUsuario){
+		try{
+			gp.registrarPedido(carrito, direccionUsuario);
+		}catch(RemoteException e){
+			throw new RuntimeException(e);
+		}
 	}
 }
