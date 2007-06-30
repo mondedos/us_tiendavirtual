@@ -15,8 +15,8 @@ function validarBusqueda(objForm) {
 	var res = true;
 	
 	if (objForm.chk_avanzada.checked) {
-		if ((((objForm.min.value.match("^[0-9]+$")) || (objForm.min.value.match("^[1-9](\.[0-9]{3})+$"))) &&
-			((objForm.max.value.match("^[0-9]+$")) || (objForm.max.value.match("^[1-9](\.[0-9]{3})+$"))))) {
+		if ((((objForm.min.value.match("^[0-9]+$")) || (objForm.min.value.match("^[1-9](\.[0-9]{3})+$")) || objForm.min.value == '') &&
+			((objForm.max.value.match("^[0-9]+$")) || (objForm.max.value.match("^[1-9](\.[0-9]{3})+$"))) || objForm.max.value == '')) {
 				res = true;
 		} else {
 				window.alert("Por favor, introduzca un precio minimo y un precio maximo correctos para la busqueda.");
