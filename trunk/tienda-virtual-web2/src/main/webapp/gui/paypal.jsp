@@ -1,39 +1,51 @@
-<%@ taglib uri="http://jakarta.apache.org/struts/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://jakarta.apache.org/struts/tags-bean" prefix="bean"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="es">
-    <head>
-        <</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link href="gui/styles/default-style/css/reset.css" rel="stylesheet" type="text/css" />
-		<link href="gui/styles/default-style/css/layout.css" rel="stylesheet" type="text/css" />
-		<link href="gui/styles/default-style/css/design.css" rel="stylesheet" type="text/css" />
-        <script src="gui/styles/default-style/js/bdi.js"></script>
-    </head>
-    <body>
-    	<div id="container">
-<tiles:insert attribute="header" />
-<tiles:insert attribute="breadcrumbs" />
-		<div id="left">
-<tiles:insert attribute="leftTop" />
-		</div>
-<tiles:insert attribute="right" />
-<tiles:insert attribute="foot" />
-        </div>
-    </body>
-</html>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-html" prefix="html"%>
+<%@ taglib uri="http://jakarta.apache.org/struts/tags-logic" prefix="logic"%>
+
+	<div class="menu-container">
+		<form action="https://www.paypal.com/cgi-bin/websrc" method="post" id="formulario">
+			<input type="hidden" name="cmd" value="_cart"/>
+			<input type="hidden" name="cancel_return" value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=3"/>
+			<input type="hidden" name="charset" value="utf-8"/>
+			<input type="hidden" name="currency_code" value="EUR"/>
+			<input type="hidden" name="upload" value="1"/>
+			<input type="hidden" name="business" value="cuvere@hotmail.com"/>
+			<input type="hidden" name="return" value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=2"/>
+			<input type="hidden" name="undefined_quantity" value="0"/>
+			
+			<input type="hidden" name="address1" value="<bean:write name="direccionUsuario"/>"/>
+			
+			<logic:iterate name="listaPedido" id="pedido">
+				<input type="hidden" 
+					name="<bean:write name="pedido" property="item"/>"
+					value="<bean:write name="pedido" property="nombreArticulo"/>"
+					/>
+				<input type="hidden"
+					name="<bean:write name="pedido" property="amount"/>"
+					value="<bean:write name="pedido" property="precioArticulo"/>"
+				/>
+				<input type="hidden"
+					name="<bean:write name="pedido" property="number"/>"
+					value="<bean:write name="pedido" property="numeroUnidades"/>"
+				/>
+			</logic:iterate>
+			
+			Redirigiendo a la página de Paypal. Espere por favor
+			<br><br><br>
+			
+			En caso de no actualizarse la página pulsar el siguiente botón
+			<br><br>
+
+			<div align="center">
+				<input type="image" 
+					src="https://www.paypal.com/es_ES/i/btn/x-click-but5.gif" 
+					border="0" name="submit" alt="Realice pagos con PayPal: es rápido, gratis y seguro."/>
+			</div>
+			
+		</form>
+	</div>
+	
 
 
-	<html:hidden name="cmd" value="_cart"/>
-						<html:hidden name="business" value="mfisg16@gmail.com"/>
-						<html:hidden name="rm" value="2"/>
-						<html:hidden name="undefined_quantity" value="1"/>
-						<html:hidden name="charset" value="utf-8"/>
-						<html:hidden name="no_shipping" value="1"/>
-						<html:hidden name="cancel_return" value="http://localhost:8080/tiendavirtual__"/>
-						<html:hidden name="no_note" value="0"/>
-						
-						<html:hidden name="item_name" value="Compra MFIS"/>
-						<html:hidden name="amount" value="<bean:write name="carrito" property="totalSinIVA"/>"/>
-						<html:hidden name="quantity" value="1"/>
+
+	

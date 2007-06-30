@@ -87,4 +87,22 @@
 		<put name="workarea" value="/gui/common/operacionRealizada.jsp"/>
 	</definition>
 	
+	<definition name=".paypalLayout" path="/gui/layouts/paypalLayout.jsp">
+		<put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="menu" value="/gui/common/menu.jsp"/>
+        <put name="workarea" value="/gui/listado.jsp"/>
+        <put name="carrito" value="/gui/carrito.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+    </definition>
+	
+	<definition name=".paypal" extends=".paypalLayout">
+		<put name="header" value="/gui/common/header.jsp"/>
+        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="menu" value="/gui/common/menu.jsp"/>
+        <put name="carrito" value="/gui/carrito.jsp"/>
+        <put name="foot" value="/gui/common/foot.jsp"/>
+		<put name="workarea" value="/gui/paypal.jsp"/>
+	</definition>
+	
 </tiles-definitions>
