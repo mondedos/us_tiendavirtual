@@ -16,7 +16,7 @@ public interface GestionPedidos
    /**
     * Business method
     */
-   public void registrarPedido( mfis.tiendavirtual.ejb.Carrito c,java.lang.String direccion )
+   public Long registrarPedido( mfis.tiendavirtual.ejb.Carrito c,java.lang.String direccion )
       throws java.rmi.RemoteException;
 
    /**

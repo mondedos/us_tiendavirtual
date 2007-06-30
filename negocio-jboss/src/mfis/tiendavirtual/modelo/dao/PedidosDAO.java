@@ -47,9 +47,10 @@ public class PedidosDAO {
 	 * @param direccion
 	 *            direccion de envio del pedido
 	 */
-	public void registrarPedido(Carrito c, String direccion) {
+	public Long registrarPedido(Carrito c, String direccion) {
 		/* Hay que generar el pedido a mano */
 		
+		Long idPedido;
 		List<LineaPedido> lineasPedido = null;
 		Iterator li = null;
 		LineaPedido lP = null;
@@ -67,7 +68,7 @@ public class PedidosDAO {
 		List <Producto> productos = new LinkedList<Producto>();
 		
 		// Persistimos el carro de la compra como un pedido.
-		daoGenerico.persistirObjeto(p);	
+		idPedido= daoGenerico.persistirObjeto(p);	
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
 		while (li.hasNext()) {
@@ -83,6 +84,8 @@ public class PedidosDAO {
 		//Actualizamos el pedido con el precio total. 
 		daoGenerico.modificarObjeto(p);
 		beneficioDao.actualizarBeneficioPedido(productos);
+		
+		return idPedido;
 	}
 
 	/**

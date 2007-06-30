@@ -63,9 +63,9 @@ public class GestionPedidosBean implements SessionBean {
 	 * 
 	 * @ejb.interface-method view-type = "remote"
 	 */
-	public void registrarPedido(Carrito c, String direccion) {
-		p.registrarPedido(c, direccion);
+	public Long registrarPedido(Carrito c, String direccion) {
 		registrarVentaProvisional(c, direccion);
+		return p.registrarPedido(c, direccion);
 	}
 
 	private void registrarVentaProvisional(Carrito c, String direccion) {
