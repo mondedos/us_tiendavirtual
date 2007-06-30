@@ -109,7 +109,6 @@ public class RealizarCompra extends MyTilesAction{
 	
 	
 	private String redirectCompraPayPal(Carrito carrito){
-		
 		String url = "https://www.paypal.com/cgi-bin/webscr?";
 		url += "businesss=mfisg16@gmail.com";
 		url += "&rm=2";
@@ -118,7 +117,7 @@ public class RealizarCompra extends MyTilesAction{
 		url += "&no_shipping=1";
 		
 		//TODO hacer la pagina de cancelar
-//		url +="cancel_return=pagina error";
+		//url +="cancel_return=pagina error";
 		
 		url += "&no_note=0";
 		url += "&item_name=Compra MFIS";
