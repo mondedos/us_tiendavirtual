@@ -21,7 +21,7 @@ public class CarritoBean {
 		}
 	}
 
-	public void crearLineaPedido(Item i, String categoria, int unidades) {
+	public void crearLineaPedido(Item i, int unidades) {
 		
 		
 		Long id= i.getId();

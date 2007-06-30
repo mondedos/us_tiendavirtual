@@ -10,7 +10,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.actions.CategoriaAction;
 import mfis.tiendavirtual.struts.beans.CarritoBean;
 import mfis.tiendavirtual.struts.beans.OperadoresBean;
-
+import mfis.tiendavirtual.util.Utilidades;
 import struts.MyTilesAction;
 import struts.WebContext;
 
@@ -35,11 +35,11 @@ public class ListadoAction extends MyTilesAction {
     	String layout = MENUPAGE;
     	CarritoBean carritobean = null;
     	int opt = -1;
-    	int idcat = Integer.parseInt(c.getParameter("idcat"));
+    	
     	int idpro = Integer.parseInt(c.getParameter("idpr"));
     	// Se usa para borrar linea de pedido
     	String lid = c.getParameter("lid");
-    	String nombrecat = bundle.getString(CategoriaAction.cats[idcat]);
+    	
     	
     	try {
     		opt = Integer.parseInt(c.getParameter("opt"));
@@ -48,8 +48,11 @@ public class ListadoAction extends MyTilesAction {
     			if(bundle.getString(opciones[i]).startsWith(c.getParameter("opt").substring(0,6)))
     				opt = i;
     		}
-		} List listadoCategorias = null;
-		Producto p = null;
+		}
+
+    	List listadoCategorias = null;
+    	Producto p = null;
+    	
 		switch (opt) {
     		// Ver detalle.
 			case 0:
@@ -62,14 +65,14 @@ public class ListadoAction extends MyTilesAction {
 		    	int unidades = Integer.parseInt(c.getParameter("unidades"));
 				carritobean = new CarritoBean(c);
 				Item i = OperadoresBean.getProducto(idpro);
-				listadoCategorias= OperadoresBean.listarProductosCategoria(idcat);
-				carritobean.crearLineaPedido(i, nombrecat, unidades);
+				listadoCategorias= listaProductos(c);
+				carritobean.crearLineaPedido(i, unidades);
 				break;
 			// Borra del carrito (1).
 			case 2:
 				carritobean = new CarritoBean(c);
 				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
-				listadoCategorias= OperadoresBean.listarProductosCategoria(idcat);
+				listadoCategorias= listaProductos(c);
 				if( c.getParameter("l") != null && COMPRA.startsWith(c.getParameter("l"))) {
 					layout = COMPRA;
 				} break;
@@ -79,28 +82,100 @@ public class ListadoAction extends MyTilesAction {
 				break;
 			default:
 				break;
-		} if(carritobean != null) {
+		} 
+		
+		if(carritobean != null) {
     		c.setSession("carrito", carritobean.getCarrito());
-    	} c.setRequest("idcat", idcat + "");
+    	}
+    	
+
+    	establecerRequest(c);
 		c.setRequest("lista", listadoCategorias);
-		c.setRequest("titulo", nombrecat);
 		c.setRequest("urlImg", "gui/images");
-		construyeMigas(c, idcat, opt, p);
-        
-		return layout;
+
+		construyeMigas(c, opt, p);
+
+        return layout;
+
     }
 
-    public void construyeMigas(WebContext c, int cat, int opt, Producto p) {
-    	List l = new ArrayList();
-    	l.add(new LabelValueBean("Inicio",c.getRequest().getContextPath()+"/"));
+    public void construyeMigas(WebContext c, int opt, Producto p) {
+    	
+    	String auxiliar= (String)c.getParameter("idcat");
+    	if(!Utilidades.cadenaVacia(auxiliar)){
+    		
+    		int cat= Integer.parseInt(auxiliar);
+    		List l = new ArrayList();
+        	l.add(new LabelValueBean("Inicio",c.getRequest().getContextPath()+"/"));
 
-    	if(opt == 0) {
-    		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), c.getRequest().getContextPath() + "/categoria.do?idcat=" + cat));
-    		l.add(new LabelValueBean(p.getMarca() + " " +p.getModelo(),""));
-    	} else {
-    		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), ""));
+        	if(opt == 0) {
+        		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), c.getRequest().getContextPath() + "/categoria.do?idcat=" + cat));
+        		l.add(new LabelValueBean(p.getMarca() + " " +p.getModelo(),""));
+        	} else {
+        		l.add(new LabelValueBean(bundle.getString("app.categoria") + ": " + bundle.getString(CategoriaAction.cats[cat]), ""));
+        	}
+        	
+        	c.setRequest("migas",l);
+
     	}
 
-    	c.setRequest("migas",l);
+    }
+
+    
+    private List listaProductos(WebContext c){
+    	
+    	String idcat= (String)c.getParameter("idcat");
+    	
+    	List listaProductos= null;
+    	
+    	if(Utilidades.cadenaVacia(idcat)){
+    		String minimo= (String)c.getParameter("pmin");
+    		String maximo= (String)c.getParameter("pmax");
+    		String marca= (String)c.getParameter("marca");
+    		String cadCategoria= (String)c.getParameter("categoria");
+    		
+    		Float pmin;
+    		Float pmax;
+    		if(Utilidades.cadenaVacia(minimo)) pmin= null;
+    		else pmin= new Float(Float.parseFloat(minimo));
+    		if(Utilidades.cadenaVacia(maximo)) pmax= null;
+    		else pmax= new Float(Float.parseFloat(maximo));
+    		
+    		listaProductos= BusquedaAction.realizarBusqueda(pmin, pmax, cadCategoria, marca);
+    		
+    	}else{
+    		listaProductos= OperadoresBean.listarProductosCategoria(Integer.parseInt(idcat));
+    	}
+    	
+    	
+    	return listaProductos;
+    }
+    
+    private void establecerRequest(WebContext c){
+    	
+    	String idcat= (String)c.getParameter("idcat");
+    	if(Utilidades.cadenaVacia(idcat)){
+    		
+    		c.setRequest("pmin", c.getParameter("pmin"));
+    		c.setRequest("pmax", c.getParameter("pmax"));
+    		c.setRequest("marca", c.getParameter("marca"));
+    		c.setRequest("categoria", c.getParameter("categoria"));
+    		c.setRequest("titulo", "Resultado de la busqueda");
+    		
+    	}else{
+    		
+    		c.setRequest("idcat", idcat);
+    		c.setRequest("titulo", bundle.getString(CategoriaAction.cats[Integer.parseInt(idcat)]));
+    		
+    	}
+    	
     }
 }
+
+
+
+
+
+
+
+
