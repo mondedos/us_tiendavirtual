@@ -17,32 +17,26 @@ import struts.MyTilesAction;
 import struts.WebContext;
 
 public class RealizarCompra extends MyTilesAction{
-
 	public String execute(WebContext c) throws Exception {
-		
-		
 		int opt= Integer.parseInt((String)c.getParameter("opt"));
 		String layout= null;
 		
 		switch(opt){
-		case 1: layout= paypal(c); break;
-		case 2: layout= persistirCompra(c); break;
-		case 3: layout= cancelarCompra(c); break;
+			case 1: layout= paypal(c); break;
+			case 2: layout= persistirCompra(c); break;
+			case 3: layout= cancelarCompra(c); break;
 		}
 		
-		return layout;
-		
+		return (layout);
 	}
 	
 	private String cancelarCompra(WebContext c){
 		c.removeSession("carrito");
 		StartAction.obtenerOfertas(c);
-		return MAINPAGE;
+		return (MAINPAGE);
 	}
 	
-	
 	private String persistirCompra(WebContext c){
-		
 		Carrito carrito= (Carrito)c.getSession("carrito");
 		String direccionUsuario = (String)c.getSession("direccionUsuario");
 			
@@ -54,48 +48,34 @@ public class RealizarCompra extends MyTilesAction{
 		c.setRequest("idPedido", idPedido);
 		
 			
-		return COMPRA_REALIZADA;
-		
-		
-		
+		return (COMPRA_REALIZADA);	
 	}
 	
-	private String paypal(WebContext c){
-		
+	private String paypal (WebContext c){
 		PedidoForm formulario= (PedidoForm) c.getForm();
 		String direccionUsuario = formulario.getDireccionUsuario();
 		String layout = null;
 
 		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals("")))) {
-			
-			Carrito carrito= (Carrito)c.getSession("carrito");
-			List lineasPedido= carrito.getLineasPedido();
+			Carrito carrito = (Carrito) c.getSession("carrito");
+			List lineasPedido = carrito.getLineasPedido();
 			List lista= new ArrayList(lineasPedido.size());
-			
-			for(int indice=1; indice<=lineasPedido.size(); indice++){
-				LineaPedido lineaPedido= (LineaPedido)lineasPedido.get(indice-1);
+			for(int indice=1; indice <= lineasPedido.size(); indice++){
+				LineaPedido lineaPedido = (LineaPedido)lineasPedido.get(indice-1);
 				Producto producto= (Producto)lineaPedido.getCompra();
-				
-				String item= "item_name_"+indice;
-				String amount= "amount_"+indice;
-				String number= "quantity_"+indice;
-				
-				String nombreArticulo= producto.getMarca()+" "+producto.getModelo();
-				String precioArticulo= lineaPedido.getPrecioUnidad().toString();
-				String numeroUnidades= ""+lineaPedido.getUnidades();
-				
-				
+				String item = "item_name_" + indice;
+				String amount = "amount_" + indice;
+				String number = "quantity_" + indice;
+				String nombreArticulo = producto.getModelo();
+				String precioArticulo = lineaPedido.getPrecioUnidad().toString();
+				String numeroUnidades = "" + lineaPedido.getUnidades();
 				lista.add(new PayPal(nombreArticulo, precioArticulo, numeroUnidades, item, amount, number));
-			}
-			
-			
-			c.setRequest("listaPedido", lista);
+			} c.setRequest("listaPedido", lista);
 			c.setSession("direccionUsuario", direccionUsuario);
 			c.setRequest("idcat", "");
-			
-			layout= ".paypal";
-		}else{
-			//En caso de que el usuario no haya introducido ninguna direccion o haya introducido una direccion
+			layout = ".paypal";
+		} else {
+			// En caso de que el usuario no haya introducido ninguna direccion o haya introducido una direccion
 			// incorrecta...
 			String mensajeError = "Debe introducir una dirección a la cual le podamos enviar su pedido.";
 			c.setRequest("mensajeError", mensajeError);
