@@ -17,9 +17,6 @@ public class Carrito implements Serializable {
 	private String totalConIVA = "0";
 	private List<LineaPedido> lineasPedido = null;
 	
-	
-	
-	
 	public void addLineaPedido(LineaPedido lp, Float precio) {
 		if(lineasPedido == null) {
 			lineasPedido = new ArrayList<LineaPedido>();
@@ -50,9 +47,6 @@ public class Carrito implements Serializable {
 		return total;
 	}
 	
-	
-	
-	
 	public String getTotalSinIvaFormateado(){
 		return Utilidades.obtenerPrecio(totalSinIVA);
 	}
@@ -61,11 +55,6 @@ public class Carrito implements Serializable {
 		return Utilidades.obtenerPrecio(totalConIVA);
 	}
 	
-	
-	
-	
-	
-
 	public List<LineaPedido> getLineasPedido() {
 		return lineasPedido;
 	}
@@ -102,5 +91,4 @@ public class Carrito implements Serializable {
 		
 		return (res);
 	}
-
 }
