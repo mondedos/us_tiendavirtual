@@ -67,60 +67,28 @@ public class GestionProductoBean implements SessionBean {
 	public List listarProductosBusqueda(Float precioMinimo, Float precioMaximo,
 			Categoria categoria, List<String> palabrasClave) {
 
-		List productos = new ArrayList();
+		List productos= null;
 
-		if (categoria == null || categoria.equals(Categoria.DVD)) {
-			List<Dvd> dvd = this.obtenerProductosPorCategoria(palabrasClave,
+		if(categoria==null){
+			productos= obtenerProductosPorCategoria(palabrasClave, precioMinimo, precioMaximo, Producto.class);
+		}else if (categoria.equals(Categoria.DVD)) {
+			productos= this.obtenerProductosPorCategoria(palabrasClave,
 					precioMinimo, precioMaximo, Dvd.class);
-
-			if (categoria == null)
-				productos.addAll(dvd);
-			else
-				productos = dvd;
-		}
-
-		if (categoria == null
-				|| categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO)) {
-			List<PequenoElectrodomestico> pE = this
-					.obtenerProductosPorCategoria(palabrasClave, precioMinimo,
+		}else if (categoria.equals(Categoria.PEQUENIO_ELECTRODOMESTICO)) {
+			productos= this.obtenerProductosPorCategoria(palabrasClave, precioMinimo,
 							precioMaximo, PequenoElectrodomestico.class);
-
-			if (categoria == null)
-				productos.addAll(pE);
-			else
-				productos = pE;
-		}
-
-		if (categoria == null || categoria.equals(Categoria.TELEVISOR)) {
-			List<Televisor> televisor = this.obtenerProductosPorCategoria(
+		}else if (categoria.equals(Categoria.TELEVISOR)) {
+			productos= this.obtenerProductosPorCategoria(
 					palabrasClave, precioMinimo, precioMaximo, Televisor.class);
-
-			if (categoria == null)
-				productos.addAll(televisor);
-			else
-				productos = televisor;
-		}
-
-		if (categoria == null || categoria.equals(Categoria.FRIGORIFICO)) {
-			List<Frigorifico> frigorifico = this.obtenerProductosPorCategoria(
+		}else if (categoria.equals(Categoria.FRIGORIFICO)) {
+			productos= this.obtenerProductosPorCategoria(
 					palabrasClave, precioMinimo, precioMaximo,
 					Frigorifico.class);
-
-			if (categoria == null)
-				productos.addAll(frigorifico);
-			else
-				productos = frigorifico;
-		}
-
-		if (categoria == null || categoria.equals(Categoria.LAVADORA)) {
-			List<Lavadora> lavadora = this.obtenerProductosPorCategoria(
+		}else if (categoria.equals(Categoria.LAVADORA)) {
+			productos= this.obtenerProductosPorCategoria(
 					palabrasClave, precioMinimo, precioMaximo, Lavadora.class);
-
-			if (categoria == null)
-				productos.addAll(lavadora);
-			else
-				productos = lavadora;
 		}
+
 
 		return productos;
 	}
