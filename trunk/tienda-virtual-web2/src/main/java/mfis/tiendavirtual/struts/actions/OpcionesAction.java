@@ -88,6 +88,7 @@ public class OpcionesAction extends MyTilesAction {
     	return (".operacionRealizada");
     }
     
+    @SuppressWarnings("unchecked")
     private String verListaPedidos(WebContext c){
     	
     	String login= (String)c.getSession("operador");
@@ -135,10 +136,11 @@ public class OpcionesAction extends MyTilesAction {
 		return (layout);
     }
     
+    @SuppressWarnings("unchecked")
     private String crearOferta(WebContext c){
     	// Obtener los productos que han generado mas beneficios.
-			List listaMas = OperadoresBean.obtenerProductosMasBeneficiosos();
-		//c.setRequest("listaMas", listaMas);
+		List listaMas = OperadoresBean.obtenerProductosMasBeneficiosos();
+		// c.setRequest("listaMas", listaMas);
 		// obtener productos menos beneficiosos
 		List listaMenos = OperadoresBean.obtenerProductosMenosBeneficiosos();
 		//c.setRequest("listaMenos", listaMenos);

@@ -56,7 +56,7 @@ public class RealizarCompra extends MyTilesAction{
 		
 	}
 	
-	
+	@SuppressWarnings("unchecked")
 	private String paypal(WebContext c){
 		
 		PedidoForm formulario= (PedidoForm) c.getForm();
@@ -101,13 +101,11 @@ public class RealizarCompra extends MyTilesAction{
 			
 		}
 		
-		return layout;
-		
+		return (layout);
 	}
 	
-	
-	
-	
+	@Deprecated
+	@SuppressWarnings("unchecked")
 	private String redirectCompraPayPal(Carrito carrito){
 		String url = "https://www.paypal.com/cgi-bin/webscr?";
 		url += "businesss=mfisg16@gmail.com";
@@ -116,7 +114,7 @@ public class RealizarCompra extends MyTilesAction{
 		url += "&charset=utf-8";
 		url += "&no_shipping=1";
 		
-		//TODO hacer la pagina de cancelar
+		//TODO Hacer la pagina de cancelar
 		//url +="cancel_return=pagina error";
 		
 		url += "&no_note=0";
@@ -124,10 +122,11 @@ public class RealizarCompra extends MyTilesAction{
 		url += "&amount=" +carrito.getTotalSinIVA();
 		url += "&quantity=1";
 		
-		return url;
-		
+		return (url);	
 	}
 	
+	@Deprecated
+	@SuppressWarnings("unchecked")
 	private void realizarCompraPayPal(Carrito carrito){
 		HttpURLConnection p = null;
 		BufferedOutputStream bos = null;
@@ -136,7 +135,6 @@ public class RealizarCompra extends MyTilesAction{
 		
 		try {
 			url = new URL("https://www.paypal.com/cgi-bin/webscr");
-			
 			p = (HttpURLConnection) url.openConnection();
 			p.setRequestMethod("POST");
 			p.addRequestProperty("businesss", "mfisg16@gmail.com");
@@ -146,7 +144,7 @@ public class RealizarCompra extends MyTilesAction{
 			p.addRequestProperty("no_shipping", "1");
 			
 			//TODO hacer la pagina de cancelar
-//			p.addRequestProperty("cancel_return", "pagina error");
+			//p.addRequestProperty("cancel_return", "pagina error");
 			
 			p.addRequestProperty("no_note", "0");
 			p.addRequestProperty("item_name", "Compra MFIS");
@@ -160,11 +158,9 @@ public class RealizarCompra extends MyTilesAction{
 			is = p.getInputStream();
 			int k = 0 ;
 			byte[] buffer = new byte[256];
-			while( (k = is.read(buffer, 0, buffer.length)) != -1 ) {
-//				bos.write(buffer, 0 , k);
-			}
-			
-			System.out.println(bos);
+			while((k = is.read(buffer, 0, buffer.length)) != -1 ) {
+			// bos.write(buffer, 0 , k);
+			} System.out.println(bos);
 			System.out.println(code);
 			
 			p.disconnect();

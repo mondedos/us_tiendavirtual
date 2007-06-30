@@ -111,6 +111,7 @@ public class ListadoAction extends MyTilesAction {
 
     }
 
+    @SuppressWarnings("unchecked")
     public void construyeMigas(WebContext c, int cat, int opt, Producto p) {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio",c.getRequest().getContextPath()+"/"));
