@@ -33,7 +33,7 @@
 
     <definition name=".adminLayout" path="/gui/layouts/adminLayout.jsp">
         <put name="header" value="/gui/common/header.jsp"/>
-        <put name="breadcrumbs" value="/gui/common/breadcrumbs.jsp"/>
+        <put name="breadcrumbsoperador" value="/gui/common/breadcrumbsoperador.jsp"/>
         <put name="admin" value="/gui/common/admin.jsp"/>
         <put name="workarea" value="/gui/common/adminarea.jsp"/>
         <put name="foot" value="/gui/common/foot.jsp"/>

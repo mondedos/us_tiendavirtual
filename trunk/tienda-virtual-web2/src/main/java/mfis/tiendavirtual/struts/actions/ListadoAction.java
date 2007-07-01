@@ -38,9 +38,8 @@ public class ListadoAction extends MyTilesAction {
     	int idpro = Integer.parseInt(c.getParameter("idpr"));
     	// Se usa para borrar una linea de pedido.
     	String lid = c.getParameter("lid");
-    	if (c.getParameter("operador") != null) {
-    		return (OPERADOR);
-    	} try {
+    	
+    	try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
     		for(int i = 0; i < opciones.length ; i++) {
