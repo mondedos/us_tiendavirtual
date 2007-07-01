@@ -28,9 +28,7 @@ public class BusquedaAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-    	if (c.getParameter("operador") != null) {
-    		return (OPERADOR);
-    	} this.c = c;
+    	this.c = c;
     	BusquedaForm formulario = (BusquedaForm)c.getForm();
     	String cadPmin = formulario.getMin();
     	String cadPmax = formulario.getMax();

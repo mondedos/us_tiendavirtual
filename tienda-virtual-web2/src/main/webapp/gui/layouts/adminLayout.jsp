@@ -14,7 +14,7 @@
     <body>
     	<div id="container">
 <tiles:insert attribute="header" />
-<tiles:insert attribute="breadcrumbs" />
+<tiles:insert attribute="breadcrumbsoperador" />
 			<div id="menu">
 <tiles:insert attribute="admin" />
 			</div>

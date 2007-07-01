@@ -31,9 +31,7 @@ public class OpcionesAction extends MyTilesAction {
     	String layout = OPERADOR;
     	int opt = -1;
     	
-    	if (c.getParameter("operador") != null) {
-    		return (OPERADOR);
-    	} try {
+    	try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
 			e.printStackTrace();

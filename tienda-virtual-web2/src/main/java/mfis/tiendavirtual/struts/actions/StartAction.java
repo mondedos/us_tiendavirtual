@@ -31,7 +31,7 @@ public class StartAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-    	// Eliminamos el operador si existe
+    	// Eliminamos el operador si existe.
     	c.removeSession("operador");
     	obtenerOfertas(c);
     	construyeMigas(c);
@@ -41,7 +41,7 @@ public class StartAction extends MyTilesAction {
 
     public static void construyeMigas(WebContext c) {
     	List l = new ArrayList();
-    	l.add(new LabelValueBean("Inicio",""));
+    	l.add(new LabelValueBean("Inicio", ""));
 
     	c.setRequest("migas", l);
     }

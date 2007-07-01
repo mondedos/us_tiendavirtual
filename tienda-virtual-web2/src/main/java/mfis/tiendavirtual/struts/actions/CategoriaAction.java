@@ -62,9 +62,7 @@ public class CategoriaAction extends MyTilesAction {
     	List listadoCategorias = null;
     	GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
 
-    	if (c.getParameter("operador") != null) {
-    		return (OPERADOR);
-    	} try {
+    	try {
     		listadoCategorias = gp.listarProductosCategoria( obtenerCategoria(idcategoria) );
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
