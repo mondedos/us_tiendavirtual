@@ -30,9 +30,9 @@ public class BusquedaAction extends MyTilesAction {
     public String execute(WebContext c) {
     	this.c = c;
     	BusquedaForm formulario = (BusquedaForm)c.getForm();
-    	String cadPmin = formulario.getMin();
-    	String cadPmax = formulario.getMax();
-    	String marca= formulario.getMarca();
+    	String cadPmin = Utilidades.HTMLEncode(formulario.getMin());
+    	String cadPmax = Utilidades.HTMLEncode(formulario.getMax());
+    	String marca= Utilidades.HTMLEncode(formulario.getMarca());
     	String cadCategoria = formulario.getCategoria();
     	boolean avanzada;
     	if(formulario.getChk_avanzada() != null) avanzada= formulario.getChk_avanzada().booleanValue();
