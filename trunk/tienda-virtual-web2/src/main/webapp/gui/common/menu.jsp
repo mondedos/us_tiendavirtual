@@ -21,7 +21,7 @@
 							<label for="categoria">Categoria</label><br/>
 							<html:select property="categoria">
 								<html:option value=""></html:option>
-								<html:option value="5">Todas las categorias</html:option>
+								<html:option value="5">Todas las categorías</html:option>
 								<html:option value="0">Televisores</html:option>
 								<html:option value="1">Lavadoras</html:option>
 								<html:option value="2">Videos/DVD</html:option>

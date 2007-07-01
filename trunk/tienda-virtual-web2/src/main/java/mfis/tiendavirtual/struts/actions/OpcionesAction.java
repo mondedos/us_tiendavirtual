@@ -28,11 +28,12 @@ public class OpcionesAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-
     	String layout = OPERADOR;
-
     	int opt = -1;
-    	try {
+    	
+    	if (c.getParameter("operador") != null) {
+    		return (OPERADOR);
+    	} try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
 			e.printStackTrace();
@@ -40,15 +41,15 @@ public class OpcionesAction extends MyTilesAction {
 			case 0:
 				break;
 			case 1:
-				// Crear oferta
+				// Crear oferta.
 				layout= crearOferta(c);
 				break;
 			case 2:
-				// Guardar oferta
+				// Guardar oferta.
 				layout= guardarOferta(c); 
 				break;
 			case 3:
-				//ver lista de pedidos
+				// Ver lista de pedidos.
 				layout= verListaPedidos(c);
 				break;
 			case 4:
@@ -58,8 +59,8 @@ public class OpcionesAction extends MyTilesAction {
 				layout = MAINPAGE;
 				break;
 			case 5:
-				//realizar asignacion de pedido
-				layout= realizarAsignacionPedido(c);
+				// Realizar asignacion de pedido.
+				layout = realizarAsignacionPedido(c);
 				break;
 			default:
 				break;
@@ -70,7 +71,7 @@ public class OpcionesAction extends MyTilesAction {
     
     private String realizarAsignacionPedido(WebContext c){
     	String login= (String)c.getSession("operador");
-    	Operador operador= OperadoresBean.obtenerOperador(login);
+    	Operador operador = OperadoresBean.obtenerOperador(login);
     	String paginaRetorno = null;
     	
     	Pedido pedido= PedidosBean.asignarPedido(operador.getId().intValue());
@@ -104,9 +105,7 @@ public class OpcionesAction extends MyTilesAction {
     		c.setRequest("listaPedidos", listaPedidos);
     	}
     	
-    	return ".listaPedidos";
-    	
-    	
+    	return (".listaPedidos");
     }
 
     private void logout(WebContext c){

@@ -28,32 +28,24 @@ public class BusquedaAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-    	
-    	this.c= c;
-    	
-    	BusquedaForm formulario= (BusquedaForm)c.getForm();
+    	if (c.getParameter("operador") != null) {
+    		return (OPERADOR);
+    	} this.c = c;
+    	BusquedaForm formulario = (BusquedaForm)c.getForm();
     	String cadPmin = formulario.getMin();
     	String cadPmax = formulario.getMax();
     	String marca= formulario.getMarca();
-    	String cadCategoria= formulario.getCategoria();
-    	
-   
+    	String cadCategoria = formulario.getCategoria();
     	boolean avanzada;
-    	if(formulario.getChk_avanzada()!=null) avanzada= formulario.getChk_avanzada().booleanValue();
+    	if(formulario.getChk_avanzada() != null) avanzada= formulario.getChk_avanzada().booleanValue();
     	else avanzada= false;
-    	
-    	//comprobamos que se selecciona al menos una categoria de busqueda
+    	// Comprobamos que se selecciona al menos una categoria de busqueda.
     	if(Utilidades.cadenaVacia(cadCategoria) && Utilidades.cadenaVacia(marca) && !avanzada){
     		return imprimirError("Debe seleccionar al menos una opcion de busqueda");
     		
-    	}
-    	
-    	if(Utilidades.cadenaVacia(cadCategoria) && Utilidades.cadenaVacia(marca) && avanzada && Utilidades.cadenaVacia(cadPmin) && Utilidades.cadenaVacia(cadPmax)){
+    	} if (Utilidades.cadenaVacia(cadCategoria) && Utilidades.cadenaVacia(marca) && avanzada && Utilidades.cadenaVacia(cadPmin) && Utilidades.cadenaVacia(cadPmax)){
     		return imprimirError("Debe seleccionar al menos una opcion de busqueda");
-    	}
-    	
-    	//comprobamos el rango de valores numericos
-    	
+    	} // Comprobamos el rango de valores numericos.
     	Float pmin= null;
     	Float pmax= null;
     	

@@ -76,30 +76,26 @@ public class OperadoresBean {
 	
 	public static Operador obtenerOperador(String login){
 		GestionOperador go= (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
-		
 		Operador operador=null;
 		
-		try{
+		try {
 			operador= go.getOperador(login);
-		}catch(RemoteException e){
+		} catch(RemoteException e){
 			e.printStackTrace();
 		}
 		
-		return operador;
+		return (operador);
 	}
 	
-	public static List listarProductosCategoria(int idCat){
-		
+	public static List listarProductosCategoria(int idCat) {
 		Categoria categoria= CategoriaAction.obtenerCategoria(idCat);
-		
 		GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
 		
-		try{
+		try {
 			return gp.listarProductosCategoria(categoria);
-		}catch(RemoteException e){
+		} catch (RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
 	}
 	
 	public static Producto getProducto(int idProducto){

@@ -31,10 +31,8 @@ public class StartAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-    	
-    	//eliminamos el operador si existe
+    	// Eliminamos el operador si existe
     	c.removeSession("operador");
-
     	obtenerOfertas(c);
     	construyeMigas(c);
 
@@ -45,14 +43,15 @@ public class StartAction extends MyTilesAction {
     	List l = new ArrayList();
     	l.add(new LabelValueBean("Inicio",""));
 
-    	c.setRequest("migas",l);
+    	c.setRequest("migas", l);
     }
 
     public static void obtenerOfertas(WebContext c){
     	GestionOferta go = (GestionOferta) new OfertaEJB().getEJB(EJB.OFERTAS_JNDI);
     	Producto prA = null;
     	Producto prB = null;
-    	String auxiliar= null;
+    	String auxiliar = null;
+    	
     	try {
 			Oferta o = go.getOferta();
 			prA = o.getPrincipal();
@@ -60,11 +59,7 @@ public class StartAction extends MyTilesAction {
 			auxiliar= o.obtenerPrecio().toString();
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
-		}
-
-		
-		String precioFinal= Utilidades.obtenerPrecio(auxiliar);
-
+		} String precioFinal= Utilidades.obtenerPrecio(auxiliar);
 		c.setRequest("prA", prA);
 		c.setRequest("prB", prB);
 		c.setRequest("precioFinal", precioFinal);
