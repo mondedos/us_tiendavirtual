@@ -21,16 +21,11 @@ public class LoginAction extends MyTilesAction {
     }
 
     public String execute(WebContext c) {
-    	
-    	//borramos el operador
+    	// Borramos el operador
     	c.removeSession("operador");
-    	
-    	//borramos el carrito
+    	// Borramos el carrito
     	c.removeSession("carrito");
-    	
-
     	String layout = LOGIN;
-
     	LoginForm loginForm = (LoginForm) c.getForm();
     	String login= loginForm.getUsuario();
 
@@ -42,15 +37,14 @@ public class LoginAction extends MyTilesAction {
     			c.setSession("operador", login);
     			layout = OPERADOR;
     		} catch (AuthenticationException e) {
-    			//Error en autentificacion
+    			// Error en autentificacion
     			
-    			String mensajeError= "No se ha podido autentificar contra Google, por favor intentelo más tarde";
+    			String mensajeError = "No se ha podido autentificar contra Google, por favor inténtelo más tarde";
     			c.setRequest("mensajeError", mensajeError);
-    			layout= ".error";
+    			layout = ".error";
     		}
     	} 
     	
-        return layout;
+        return (layout);
     }
-
 }

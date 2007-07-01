@@ -35,13 +35,12 @@ public class ListadoAction extends MyTilesAction {
     	String layout = MENUPAGE;
     	CarritoBean carritobean = null;
     	int opt = -1;
-    	
     	int idpro = Integer.parseInt(c.getParameter("idpr"));
-    	// Se usa para borrar linea de pedido
+    	// Se usa para borrar una linea de pedido.
     	String lid = c.getParameter("lid");
-    	
-    	
-    	try {
+    	if (c.getParameter("operador") != null) {
+    		return (OPERADOR);
+    	} try {
     		opt = Integer.parseInt(c.getParameter("opt"));
     	} catch (Exception e) {
     		for(int i = 0; i < opciones.length ; i++) {
