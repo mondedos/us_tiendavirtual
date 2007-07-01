@@ -50,6 +50,5 @@ html, body {
 
 #foot{
 	width: 100%;
-	float: left;
-	clear:left;
+	clear: both;
 }
