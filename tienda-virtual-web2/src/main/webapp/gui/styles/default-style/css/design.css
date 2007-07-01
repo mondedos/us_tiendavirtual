@@ -18,6 +18,16 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #eee; }
 	border-bottom: 1px solid #c00;
 	background-color: #eee;
 }
+
+#breadcrumbsoperador {
+	font-size: 0.9em;
+	padding: 3px 15px;
+	border-right: 1px solid #c00;
+	border-left: 1px solid #c00;
+	border-bottom: 1px solid #c00;
+	background-color: #eee;
+}
+
 #header {
 	border-top: 1px solid #c00;
 	border-left: 1px solid #c00;

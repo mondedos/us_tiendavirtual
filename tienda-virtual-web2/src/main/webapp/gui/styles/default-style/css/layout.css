@@ -10,9 +10,15 @@ html, body {
 #header{
 	width: auto;
 }
+
 #breadcrumbs{
 	width: auto;
 }
+
+#breadcrumbsoperador {
+	width: auto;
+}
+
 #left{
 	width: 62%;
 	height: auto;
