@@ -8,7 +8,7 @@
 					<form id="form<bean:write name="producto" property="id"/>" action="listado.do">
 						<input type="hidden" name="idpr" value="<bean:write name="producto" property="id"/>"/>
 						<input type="hidden" name="refpr" value="<bean:write name="producto" property="referencia"/>"/>
-						
+
 						<logic:present name="idcat">
 								<input type="hidden" name="idcat" value="<bean:write name="idcat"/>"/>
 						</logic:present>
@@ -18,8 +18,8 @@
 								<input type="hidden" name="marca" value="<bean:write name="marca"/>"/>
 								<input type="hidden" name="categoria" value="<bean:write name="categoria"/>"/>
 						</logic:notPresent>
-						
-						
+
+
 						<table  border="0" align="center">
 							<tr>
 								<td>
@@ -41,10 +41,10 @@
 									</p>
 									<br/>
 									<p style="text-align: center">
-										<img class="minienlace" src="gui/styles/default-style/img/cart.gif"/> <input class="minienlace" type="submit" name="opt" value="<bean:message key="app.listado.1"/>"></input> <input type="text" name="unidades" size="1" maxlength="3" value="1"/> ud/s
+										<input class="minienlace minicarrito" type="submit" name="opt" value="<bean:message key="app.listado.1"/>"></input> <input type="text" name="unidades" size="1" maxlength="3" value="1"/> ud/s
 									</p>
 									</td>
-								<td><img src="<bean:write name="urlImg"/>/<bean:write name="producto" property="foto"/>" /></td>
+								<td><img style="width: auto; height: auto" src="<bean:write name="urlImg"/>/<bean:write name="producto" property="foto"/>" /></td>
 							</tr>
 						</table>
 					</form>
