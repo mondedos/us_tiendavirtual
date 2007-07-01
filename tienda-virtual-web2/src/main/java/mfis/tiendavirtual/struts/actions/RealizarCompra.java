@@ -13,18 +13,19 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.beans.PedidosBean;
 import mfis.tiendavirtual.struts.forms.PedidoForm;
 import mfis.tiendavirtual.struts.vista.PayPal;
+import mfis.tiendavirtual.util.Utilidades;
 import struts.MyTilesAction;
 import struts.WebContext;
 
 public class RealizarCompra extends MyTilesAction{
 	public String execute(WebContext c) throws Exception {
-		int opt= Integer.parseInt((String)c.getParameter("opt"));
-		String layout= null;
+		int opt = Integer.parseInt((String)c.getParameter("opt"));
+		String layout = null;
 		
-		switch(opt){
-			case 1: layout= paypal(c); break;
-			case 2: layout= persistirCompra(c); break;
-			case 3: layout= cancelarCompra(c); break;
+		switch (opt){
+			case 1: layout = paypal(c); break;
+			case 2: layout = persistirCompra(c); break;
+			case 3: layout = cancelarCompra(c); break;
 		}
 		
 		return (layout);
@@ -36,17 +37,15 @@ public class RealizarCompra extends MyTilesAction{
 		return (MAINPAGE);
 	}
 	
-	private String persistirCompra(WebContext c){
-		Carrito carrito= (Carrito)c.getSession("carrito");
+	private String persistirCompra (WebContext c){
+		Carrito carrito = (Carrito) c.getSession("carrito");
 		String direccionUsuario = (String)c.getSession("direccionUsuario");
-			
-		Long idPedido= PedidosBean.registrarPedido(carrito, direccionUsuario);
+	
+		Long idPedido = PedidosBean.registrarPedido(carrito, Utilidades.HTMLEncode(direccionUsuario));
 		StartAction.obtenerOfertas(c);
-		
 		c.removeSession("direccionUsuario");
 		c.removeSession("carrito");
 		c.setRequest("idPedido", idPedido);
-		
 			
 		return (COMPRA_REALIZADA);	
 	}
