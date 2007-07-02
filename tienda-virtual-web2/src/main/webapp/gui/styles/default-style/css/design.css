@@ -29,12 +29,15 @@ h3{ padding: 2px 10px; 	background-color: #c00; color: #eee; }
 }
 
 #header {
+	background-image: url('../../../images/fondo.jpg');
+	background-repeat: repeat;
+	background-color: #c00;
 	border-top: 1px solid #c00;
 	border-left: 1px solid #c00;
-	background-color: #c00;
 	color: #eee;
 	height: 151px;
 }
+
 #container {
 	background-color: #fff;
 }
