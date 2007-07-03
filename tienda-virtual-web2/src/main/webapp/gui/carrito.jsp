@@ -31,7 +31,10 @@
 					<p>Precio: <bean:write name="carrito" property="totalSinIvaFormateado" format="#,##0.00"/> &euro;</p>
 					<hr/><br/>
 					<div>
+						<table>
+							<tr>
 						<logic:present name="idcat">
+							<td align="left">
 								<a href="listado.do?opt=3&amp;
 									lid=<bean:write name="i"/>&amp;
 									idcat=<bean:write name="idcat"/>&amp;
@@ -39,19 +42,44 @@
 									
 									<bean:message key="app.listado.3"/>
 								</a>
+							</td>
+							<td align="right">
+								<a href="listado.do?opt=3&amp;
+									lid=<bean:write name="i"/>&amp;
+									idcat=<bean:write name="idcat"/>&amp;
+									idpr=<bean:write name="linea" property="compra.id"/>">
+										<img class="carroDeLaCompra" src="gui/styles/default-style/img/carrito.gif"/>
+									</a>
+							</td>
 						</logic:present>
 						<logic:notPresent name="idcat">
-							<a href="listado.do?opt=3&amp;
-								lid=<bean:write name="i"/>&amp;
-								pmin=<bean:write name="pmin"/>&amp;
-								pmax=<bean:write name="pmax"/>&amp;
-								marca=<bean:write name="marca"/>&amp;
-								categoria=<bean:write name="categoria"/>&amp;
-								idpr=<bean:write name="linea" property="compra.id"/>">
+							<td align="left">
+								<a href="listado.do?opt=3&amp;
+									lid=<bean:write name="i"/>&amp;
+									pmin=<bean:write name="pmin"/>&amp;
+									pmax=<bean:write name="pmax"/>&amp;
+									marca=<bean:write name="marca"/>&amp;
+									categoria=<bean:write name="categoria"/>&amp;
+									idpr=<bean:write name="linea" property="compra.id"/>">
 								
-								<bean:message key="app.listado.3"/>
-							</a>
+									<bean:message key="app.listado.3"/>
+								</a>
+							</td>
+							<td align="right">
+								<a href="listado.do?opt=3&amp;
+									lid=<bean:write name="i"/>&amp;
+									pmin=<bean:write name="pmin"/>&amp;
+									pmax=<bean:write name="pmax"/>&amp;
+									marca=<bean:write name="marca"/>&amp;
+									categoria=<bean:write name="categoria"/>&amp;
+									idpr=<bean:write name="linea" property="compra.id"/>">
+								
+									<img class="carroDeLaCompra" src="gui/styles/default-style/img/carrito.gif"/>
+								</a>
+							</td>
 						</logic:notPresent>
+							</tr>
+						</table>
 					</div>
 		</div>
 	</div>

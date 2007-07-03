@@ -76,6 +76,7 @@ public class ListadoAction extends MyTilesAction {
 				} break;
 			// Borra del carrito (2).
 			case 3:
+				saveToken(c.getRequest());
 				layout = COMPRA;
 				break;
 			default:
