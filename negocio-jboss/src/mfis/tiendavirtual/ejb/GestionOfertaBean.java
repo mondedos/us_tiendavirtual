@@ -8,6 +8,7 @@ import javax.ejb.SessionContext;
 
 import javax.ejb.CreateException;
 
+import mfis.tiendavirtual.modelo.dao.DaoGenerico;
 import mfis.tiendavirtual.modelo.dao.OfertasDAO;
 import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
@@ -59,6 +60,12 @@ public class GestionOfertaBean implements SessionBean {
 	 */
 	public void nuevaOferta(Producto productoA, Producto productoB) {
 		OfertasDAO o = new OfertasDAO();
+		
+		//desactivamos la oferta actual
+		Oferta oferta = o.obtenerOferta();
+		oferta.setOfertaActual(false);
+		DaoGenerico dao = new DaoGenerico();
+		dao.modificarObjeto(oferta);
 		
 		o.nuevaOferta(productoA, productoB);
 	}

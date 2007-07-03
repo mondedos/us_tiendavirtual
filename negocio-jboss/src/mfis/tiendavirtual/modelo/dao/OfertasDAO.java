@@ -29,8 +29,7 @@ public class OfertasDAO {
 	 */
 	public Long nuevaOferta(Producto productoA, Producto productoB){
 		
-		//obtenemos la oferta actual
-		Oferta ofertaActual= obtenerOferta();
+
 		
 		//creamos la nueva oferta
 		Oferta ofertaNueva= new Oferta();
@@ -41,10 +40,13 @@ public class OfertasDAO {
 		//hacemos persistente la nueva oferta
 		Long id= daoGenerico.persistirObjeto(ofertaNueva);
 		
-		//modificamos la oferta actual pues ya no lo es
-		Oferta dto= new Oferta();
-		dto.setOfertaActual(false);
-		bmGenerico.modificarObjeto(dto, ofertaActual.getId());
+		
+//		//obtenemos la oferta actual
+//		Oferta ofertaActual= obtenerOferta();
+//		//modificamos la oferta actual pues ya no lo es
+//		Oferta dto= new Oferta();
+//		dto.setOfertaActual(false);
+//		bmGenerico.modificarObjeto(dto, ofertaActual.getId());
 		
 		return id;
 	}
