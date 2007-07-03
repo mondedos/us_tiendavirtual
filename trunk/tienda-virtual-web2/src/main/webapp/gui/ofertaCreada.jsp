@@ -44,6 +44,6 @@
 		</table>
 		
 		<br><br>
-		<a href=".adminLayout">Volver </a>
+		<a href="opciones.do?opt=0">Volver </a>
 		
 	</div>
