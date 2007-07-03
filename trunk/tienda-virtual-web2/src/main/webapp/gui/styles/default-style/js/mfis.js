@@ -1,3 +1,5 @@
+var defaultEmptyOK = false
+
 function validarPagina(objForm) {
 	 var cadena = objForm.direccionUsuario;
 
@@ -29,17 +31,31 @@ function validarBusqueda(objForm) {
 		// Comprobamos que el rango de valores es numerico.
 		var valorMinimo = minimo.value;
 		var valorMaximo = maximo.value;
-		if (((objForm.min.value.match("^[0-9]+$")) || (objForm.min.value.match("^[1-9](\.[0-9]{3})+$")) || (!(objForm.min.value != ''))) &&
-			((objForm.max.value.match("^[0-9]+$")) || (objForm.max.value.match("^[1-9](\.[0-9]{3})+$")) || (!(objForm.max.value == '')))) {
+		if (isNumber(valorMinimo)) {
+			if (isNumber(valorMaximo)) {
 				res = true;
+			} else {
+				window.alert("Por favor, introduzca un precio maximo correcto para la busqueda.");
+				res = false;
+			}
+		} else if (valorMinimo == '') {
+			if (isNumber(valorMaximo)) {
+				res = true;
+			} else {
+				window.alert("Por favor, introduzca un precio maximo correcto para la busqueda.");
+				res = false;
+			}
+		} else if (valorMaximo == '') {
+			if (isNumber(valorMinimo)) {
+				res = true;
+			} else {
+				window.alert("Por favor, introduzca un precio minimo correcto para la busqueda.");
+				res = false;
+			}
 		} else {
 				window.alert("Por favor, introduzca un precio minimo y un precio maximo correctos para la busqueda.");
 				res = false;
-		} // Comprobamos que el rango de valores es correcto.
-		if (res && minimo.value != "" && maximo.value != "" && minimo.value > maximo.value) {
-			res = false;
-			window.alert("El rango es incorrecto.");
-		}
+		} 
 	} else {
 	 	res = true;
 	}
@@ -51,4 +67,46 @@ function paypal() {
     var formulario = document.getElementById("formulario");
     
     formulario.submit();
+}
+
+function isNumber (s)
+{   var i;
+    var dotAppeared;
+    dotAppeared = false;
+    if (isEmpty(s)) 
+       if (isNumber.arguments.length == 1) return defaultEmptyOK;
+       else return (isNumber.arguments[1] == true);
+    
+    for (i = 0; i < s.length; i++)
+    {   
+        var c = s.charAt(i);
+        if( i != 0 ) {
+            if ( c == "." ) {
+                if( !dotAppeared )
+                    dotAppeared = true;
+                else
+                    return false;
+            } else     
+                if (!isDigit(c)) return false;
+        } else { 
+            if ( c == "." ) {
+                if( !dotAppeared )
+                    dotAppeared = true;
+                else
+                    return false;
+            } else     
+                if (!isDigit(c) && (c != "-") || (c == "+")) return false;
+        }
+    }
+    return true;
+}
+
+// s es vacio
+function isEmpty(s)
+{   return ((s == null) || (s.length == 0))
+}
+
+// c es un digito
+function isDigit (c)
+{   return ((c >= "0") && (c <= "9"))
 }
