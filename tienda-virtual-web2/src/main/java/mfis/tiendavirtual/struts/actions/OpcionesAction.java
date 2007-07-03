@@ -40,15 +40,15 @@ public class OpcionesAction extends MyTilesAction {
 				break;
 			case 1:
 				// Crear oferta.
-				layout= crearOferta(c);
+				layout = crearOferta(c);
 				break;
 			case 2:
 				// Guardar oferta.
-				layout= guardarOferta(c); 
+				layout = guardarOferta(c); 
 				break;
 			case 3:
 				// Ver lista de pedidos.
-				layout= verListaPedidos(c);
+				layout = verListaPedidos(c);
 				break;
 			case 4:
 				logout(c);
@@ -121,7 +121,7 @@ public class OpcionesAction extends MyTilesAction {
 			OperadoresBean.crearOferta(Integer.parseInt(prodA) , Integer.parseInt(prodB));
 			// Mostramos la nueva oferta creada.
 			StartAction.obtenerOfertas(c);
-			layout = ".ofertaCreada";
+			layout = OFERTA_CREADA;
 		} else {
 			// En caso de que no se han seleccionado las ofertas...	
 			String mensajeError = "Debe seleccionar un producto de cada columna para poder crear la nueva oferta.";
