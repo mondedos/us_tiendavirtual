@@ -71,7 +71,7 @@
     	<put name="workarea" value="/gui/compraRealizada.jsp" />
    	</definition>
    	
-   	<definition name=".ofertaCreadaLayour" extends=".adminLayout">
+   	<definition name=".ofertaCreadaLayout" extends=".adminLayout">
    		<put name="workarea" value="/gui/ofertaCreada.jsp" />
 	</definition>
 	
