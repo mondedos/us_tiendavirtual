@@ -31,36 +31,36 @@
  (30,'ref30');
 
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES
- (1,'Sony','KV14CT1','Alto: 80 cm. - Ancho: 70 cm.',215.00,15,'Televisor pequeño y compacto.','Televisor/Sony_KV_14_CT1.jpg'),
- (2,'Fagor','F 2810','Alto: 85 cm. - Ancho: 59 cm.',439.00,24,'Lavadora con carga frontal y cuba de acero inoxidable con una capacidad 8 de kg.','Lavadora/Fagor_F_2810.jpg'),
- (3,'Fagor','3FC 67 NFXD','Alto: 185 cm. - Ancho: 60 cm.',699.00,13,'Frigorífico de gran capacidad, con controles de frigorífico y congelador separados.','Frigorifico/Fagor_3FC_67_NFXD.jpg'),
- (4,'Zanussi','ZNB 34 NDX','Alto: 185 cm. - Ancho: 60 cm.',456.00,10,'Frigorífico con ventilador interno para distribuir el frío, puerta de acero inoxidable y bandejas de cristal.','Frigorifico/Zanussi_ZNB_34_NDX.jpg'),
- (5,'Bosch','KGU 34175 EU','Alto: 186 cm. - Ancho: 60 cm.',465.00,6,'Frigorífico con dos motores, de acero inoxidable y bandejas de cristal.','Frigorifico/Bosch_KGU_34175_EU.jpg'),
- (6,'Bosch','KGU 44170 eu','Alto: 201cm. - Ancho: 70cm.',1081.58,25,'Frigorífico de acero inoxidable con dos motores y controles frigorifico y congelador separados.','Frigorifico/Bosch_KGU_44170_EU.jpg');
+ (1,'Sony','KV14CT1','Alto: 80 cm. - Ancho: 70 cm.',215.00,15,'Televisor pequeño y compacto.','Televisor/Sony_KV_14_CT1.gif'),
+ (2,'Fagor','F 2810','Alto: 85 cm. - Ancho: 59 cm.',439.00,24,'Lavadora con carga frontal y cuba de acero inoxidable con una capacidad 8 de kg.','Lavadora/Fagor_F_2810.gif'),
+ (3,'Fagor','3FC 67 NFXD','Alto: 185 cm. - Ancho: 60 cm.',699.00,13,'Frigorífico de gran capacidad, con controles de frigorífico y congelador separados.','Frigorifico/Fagor_3FC_67_NFXD.gif'),
+ (4,'Zanussi','ZNB 34 NDX','Alto: 185 cm. - Ancho: 60 cm.',456.00,10,'Frigorífico con ventilador interno para distribuir el frío, puerta de acero inoxidable y bandejas de cristal.','Frigorifico/Zanussi_ZNB_34_NDX.gif'),
+ (5,'Bosch','KGU 34175 EU','Alto: 186 cm. - Ancho: 60 cm.',465.00,6,'Frigorífico con dos motores, de acero inoxidable y bandejas de cristal.','Frigorifico/Bosch_KGU_34175_EU.gif'),
+ (6,'Bosch','KGU 44170 eu','Alto: 201cm. - Ancho: 70cm.',1081.58,25,'Frigorífico de acero inoxidable con dos motores y controles frigorifico y congelador separados.','Frigorifico/Bosch_KGU_44170_EU.gif');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES
- (7,'Philips','21 PT 5402','Alto: 30 cm. - Ancho: 40 cm.',179.52,12,'Televisor con gran calidad de imagen, compacto, estereo y con teletexto.','Televisor/Philips_21_PT_5402.jpg'),
- (8,'Philips','29 PT 5458','Alto: 50 cm. - Ancho: 60 cm.',499.00,5,'Televisor con gran calidad de imagen y sonido, estereo y con teletexto.','Televisor/Philips_29_PT_5458.jpg'),
- (9,'Panasonic','TX-26 LXD 65 F','Alto: 90 cm. - Ancho: 110 cm.',824.53,7,'Televisor con sonido envolvente, programable y pantalla LCD.','Televisor/Panasonic_TX_26_LXD_65_F.jpg'),
- (10,'Panasonic','TX-26LX60F','Alto: 95 cm. - Ancho: 110 cm.',895.00,12,'Televisor con pantalla LCD con gran calidad de imagen y sonido envolvente.','Televisor/Panasonic_TX_26LX60F.jpg'),
- (11,'Zanussi','ZWG-3125','Alto: 85 cm. - Ancho: 60 cm.',349.00,23,'Lavadora con sistema antidesbordamiento, carga frontal y cuba de plastico de 6 kg. de capacidad.','Lavadora/Zanussi_ZWG_3125.jpg'),
- (12,'Fagor','F2812','Alto: 85 cm. - Ancho: 59 cm.',499.00,10,'Lavadora con cuba de acero inoxidable y con 8 kg. de capacidad de carga.','Lavadora/Fagor_F_2812.jpg');
+ (7,'Philips','21 PT 5402','Alto: 30 cm. - Ancho: 40 cm.',179.52,12,'Televisor con gran calidad de imagen, compacto, estereo y con teletexto.','Televisor/Philips_21_PT_5402.gif'),
+ (8,'Philips','29 PT 5458','Alto: 50 cm. - Ancho: 60 cm.',499.00,5,'Televisor con gran calidad de imagen y sonido, estereo y con teletexto.','Televisor/Philips_29_PT_5458.gif'),
+ (9,'Panasonic','TX-26 LXD 65 F','Alto: 90 cm. - Ancho: 110 cm.',824.53,7,'Televisor con sonido envolvente, programable y pantalla LCD.','Televisor/Panasonic_TX_26_LXD_65_F.gif'),
+ (10,'Panasonic','TX-26LX60F','Alto: 95 cm. - Ancho: 110 cm.',895.00,12,'Televisor con pantalla LCD con gran calidad de imagen y sonido envolvente.','Televisor/Panasonic_TX_26LX60F.gif'),
+ (11,'Zanussi','ZWG-3125','Alto: 85 cm. - Ancho: 60 cm.',349.00,23,'Lavadora con sistema antidesbordamiento, carga frontal y cuba de plastico de 6 kg. de capacidad.','Lavadora/Zanussi_ZWG_3125.gif'),
+ (12,'Fagor','F2812','Alto: 85 cm. - Ancho: 59 cm.',499.00,10,'Lavadora con cuba de acero inoxidable y con 8 kg. de capacidad de carga.','Lavadora/Fagor_F_2812.gif');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (13,'Whirlpool','FL-5085','Alto: 85 cm. - Ancho: 60 cm.',380.50,7,'Lavadora de carga frontal con una capacidad de 5 kg.','Lavadora/Whirlpool_FL_5085.jpg'),
- (14,'Whirlpool','AWM-7106','Alto: 85 cm. - Ancho: 60 cm.',320.75,20,'Lavadora con cuba de plástico de 5 kg. de capacidad y carga frontal.','Lavadora/Whirlpool_AWM_7106.jpg'),
- (15,'Panasonic','DVD-LS91','Alto 2.03 in. - Ancho: 9.28 in. - Profundidad 7.28 in.',194.99,12,'Esta impresionante pantalla de 9\" en este reproductor de DVD portátil es ideal para películas en el asiento trasero de su vehículo durante un viaje largo. La entrada dual para auriculares permite que dos personas oigan simultáneamente.','Dvd/Panasonic DVD-LS91.jpg'),
- (16,'Philips','HR-2094','Alto: 20 cm.',86.20,30,'Pequeña batidora.','PequenosElectrodomesticos/Philips_HR_2094__550219.jpg'),
- (21,'Taurus','BAPI 600 IX','Tamaño 18 cm. ',28.59,21,'Pequeña batidora.','PequenosElectrodomesticos/Taurus_BAPI_600_IX.jpg'),
- (22,'Solac','T-222 O2 07798.1','Alto: 9 cm. - Ancho: 34 cm.',23.43,10,'Tostadora','PequenosElectrodomesticos/Solac_T_222_O2_077981.jpg');
+ (13,'Whirlpool','FL-5085','Alto: 85 cm. - Ancho: 60 cm.',380.50,7,'Lavadora de carga frontal con una capacidad de 5 kg.','Lavadora/Whirlpool_FL_5085.gif'),
+ (14,'Whirlpool','AWM-7106','Alto: 85 cm. - Ancho: 60 cm.',320.75,20,'Lavadora con cuba de plástico de 5 kg. de capacidad y carga frontal.','Lavadora/Whirlpool_AWM_7106.gif'),
+ (15,'Panasonic','DVD-LS91','Alto 2.03 in. - Ancho: 9.28 in. - Profundidad 7.28 in.',194.99,12,'Esta impresionante pantalla de 9\" en este reproductor de DVD portátil es ideal para películas en el asiento trasero de su vehículo durante un viaje largo. La entrada dual para auriculares permite que dos personas oigan simultáneamente.','Dvd/Panasonic DVD-LS91.gif'),
+ (16,'Philips','HR-2094','Alto: 20 cm.',86.20,30,'Pequeña batidora.','PequenosElectrodomesticos/Philips_HR_2094__550219.gif'),
+ (21,'Taurus','BAPI 600 IX','Tamaño 18 cm. ',28.59,21,'Pequeña batidora.','PequenosElectrodomesticos/Taurus_BAPI_600_IX.gif'),
+ (22,'Solac','T-222 O2 07798.1','Alto: 9 cm. - Ancho: 34 cm.',23.43,10,'Tostadora','PequenosElectrodomesticos/Solac_T_222_O2_077981.gif');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (23,'Serverin','AT-2201','Alto: 10 cm. - Ancho: 37 cm.',40.12,13,'Tostadora.','PequenosElectrodomesticos/Severin_AT_2201.jpg'),
- (24,'Fagor','TP-1110','Alto: 4 cm. - Ancho: 20 cm.',35.60,7,'Tostadora.','PequenosElectrodomesticos/Fagor_TP_1110.jpg'),
- (25,'Kenwood','JE 700','Alto: 24 cm.',228.00,10,'Licuadora.','PequenosElectrodomesticos/Kenwood_JE_700.jpg'),
- (26,'Samsung','DVD-VR357','Alto: 3 cm. - Ancho 32 cm.',174.54,4,'Esta versátil unidad reproduce tanto discos DVD con VHS, entregando imágenes claras y con una calidad de sonido alta. El Samsung DVD-VR357 incluye un VHS de 4 cabezas Hi-Fi con la claridad visual de una salida Progressive Scan.','Dvd/DVDVR375.jpg'),
- (27,'Samsung','DVD-HD870','Alto: 3 cm.- Ancho 28 cm.',185.90,6,'El reproductor de DVD de Samsung mejora la señal (1080i/720p) con una salida HDMI, DAC de 14 bits y reproducción de MP3 y WMA.','Dvd/DVD-HD870.jpg'),
- (28,'Coby','DVD-224','Alto: 3 cm. - Ancho 31 cm.',45.60,9,'Supera tu sistema home theater con el reproductor de Coby DVD-224. Con un diseño delgado, contiene la tecnología Progressive Scan para conseguir la mejor imagen posible. Reproduce tus formatos de discos favoritos incluyendo el formato de audio MP3 para una versatilidad óptima. El acabado plateado hace que complemente cualquier decoración facilmente.','Dvd/DVD224.jpg');
+ (23,'Serverin','AT-2201','Alto: 10 cm. - Ancho: 37 cm.',40.12,13,'Tostadora.','PequenosElectrodomesticos/Severin_AT_2201.gif'),
+ (24,'Fagor','TP-1110','Alto: 4 cm. - Ancho: 20 cm.',35.60,7,'Tostadora.','PequenosElectrodomesticos/Fagor_TP_1110.gif'),
+ (25,'Kenwood','JE 700','Alto: 24 cm.',228.00,10,'Licuadora.','PequenosElectrodomesticos/Kenwood_JE_700.gif'),
+ (26,'Samsung','DVD-VR357','Alto: 3 cm. - Ancho 32 cm.',174.54,4,'Esta versátil unidad reproduce tanto discos DVD con VHS, entregando imágenes claras y con una calidad de sonido alta. El Samsung DVD-VR357 incluye un VHS de 4 cabezas Hi-Fi con la claridad visual de una salida Progressive Scan.','Dvd/DVDVR375.gif'),
+ (27,'Samsung','DVD-HD870','Alto: 3 cm.- Ancho 28 cm.',185.90,6,'El reproductor de DVD de Samsung mejora la señal (1080i/720p) con una salida HDMI, DAC de 14 bits y reproducción de MP3 y WMA.','Dvd/DVD-HD870.gif'),
+ (28,'Coby','DVD-224','Alto: 3 cm. - Ancho 31 cm.',45.60,9,'Supera tu sistema home theater con el reproductor de Coby DVD-224. Con un diseño delgado, contiene la tecnología Progressive Scan para conseguir la mejor imagen posible. Reproduce tus formatos de discos favoritos incluyendo el formato de audio MP3 para una versatilidad óptima. El acabado plateado hace que complemente cualquier decoración facilmente.','Dvd/DVD224.gif');
 INSERT INTO `producto` (`ID_ITEM_3`,`VC_MARCA`,`VC_MODELO`,`VC_DIMENSIONES`,`MO_PRECIO`,`IN_GANANCIA`,`VC_DESCRIPCION`,`VC_FOTO`) VALUES 
- (29,'Denon','DVD-3930CI','Alto: 4 cm. - Ancho: 33 cm.',156.87,7,'El Denon DVD-3930CI reproduce imágenes vivas impresionantes en cada detalle. Incorpora un procesado de audio y video extremadamente avanzado incluyendo el chip de tipo profesional Realta HQV de Silicon Optix. Este potente chip reduce el ruido de cada pixel y genera imágenes 1080p a partir de señales estándar de DVD para conseguir una experiencia inolvidable a la hora de ver sus películas en televisores compatibles con HDTV. Sin importar cual es el origen de la señal conseguirá un realismo y una claridad sin igual libres de toda distorsión.','Dvd/DVD3930ci.jpg'),
- (30,'Lynx','4FE-23','Alto: 155 cm. - Ancho: 55 cm.',319.00,5,'Frigorífico con un solo motor y bandejas de cristal.','Frigorifico/Lynx_4FE_23.jpg');
+ (29,'Denon','DVD-3930CI','Alto: 4 cm. - Ancho: 33 cm.',156.87,7,'El Denon DVD-3930CI reproduce imágenes vivas impresionantes en cada detalle. Incorpora un procesado de audio y video extremadamente avanzado incluyendo el chip de tipo profesional Realta HQV de Silicon Optix. Este potente chip reduce el ruido de cada pixel y genera imágenes 1080p a partir de señales estándar de DVD para conseguir una experiencia inolvidable a la hora de ver sus películas en televisores compatibles con HDTV. Sin importar cual es el origen de la señal conseguirá un realismo y una claridad sin igual libres de toda distorsión.','Dvd/DVD3930ci.gif'),
+ (30,'Lynx','4FE-23','Alto: 155 cm. - Ancho: 55 cm.',319.00,5,'Frigorífico con un solo motor y bandejas de cristal.','Frigorifico/Lynx_4FE_23.gif');
 
 
 
