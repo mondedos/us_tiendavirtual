@@ -13,66 +13,66 @@ import mfis.tiendavirtual.jndi.PedidosEJB;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 
 public class PedidosBean {
-	
+
 	private static GestionPedidos gp;
 	private static GestionOperador go;
-	
+
 	static {
 		gp = (GestionPedidos) new PedidosEJB().getEJB(EJB.PEDIDOS_JNDI);
 		go = (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 	}
-	
+
 	public static Pedido obtenerPedido(String id){
-		
+
 		Pedido pedido= null;
-		
+
 		try{
 			int identificador= Integer.parseInt(id);
 			pedido= gp.getPedido(identificador);
 		}catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
+
 		return pedido;
-		
-		
+
+
 	}
-	
+
 	public static List obtenerLineasPedido (Pedido pedido) {
 
 		List lineasPedido= null;
 		try {
-			gp.obtenerLineasPedido(pedido);
+			lineasPedido = gp.obtenerLineasPedido(pedido);
 		} catch (RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
+
 		return lineasPedido;
 	}
-	
+
 	public static void cambiarEstado(Pedido pedido, String nuevoEstado){
-		
+
 		Date fechaActual= new Date(System.currentTimeMillis());
-		
+
 		try{ gp.actualizarEstado(pedido, nuevoEstado, fechaActual);
 		} catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
+
 	}
-	
+
 	public static Pedido asignarPedido(int idOperador){
-		
+
 		Pedido pedido= null;
 		try{
 			pedido = go.siguientePedido(idOperador);
 		}catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
-		return (pedido);	
+
+		return (pedido);
 	}
-	
+
 	public static String obtenerEstado(Pedido pedido){
 		String estado= null;
 		try{
@@ -80,10 +80,10 @@ public class PedidosBean {
 		}catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
+
 		return estado;
 	}
-	
+
 	public static Long registrarPedido(Carrito carrito, String direccionUsuario){
 		try {
 			return gp.registrarPedido(carrito, direccionUsuario);
