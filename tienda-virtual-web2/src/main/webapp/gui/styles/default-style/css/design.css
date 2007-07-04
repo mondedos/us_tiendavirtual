@@ -255,18 +255,18 @@ table.oferta tr td.radio-button {
 	border: 1px solid #f00;
 }
 table.oferton {
-	width: 90%;
+	width: 100%;
 }
 table.oferton tr td.drcha {
 	text-align: right;
 }
 table.oferton tr td.izda {
-	text-align: left;
+	text-align: right;
 }
 img.oferton {
 	text-align: right;
-	width: 110px;
-	height: 85px;
+	width: 138px;
+	height: 108px;
 }
 p.letra-grande{
 	font-size: 1.8em;
