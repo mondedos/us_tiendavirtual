@@ -51,9 +51,10 @@ public class StartAction extends MyTilesAction {
     	Producto prA = null;
     	Producto prB = null;
     	String auxiliar = null;
-    	
+    	Oferta o = null;
+
     	try {
-			Oferta o = go.getOferta();
+			o = go.getOferta();
 			prA = o.getPrincipal();
 			prB = o.getSecundario();
 			auxiliar= o.obtenerPrecio().toString();
@@ -62,6 +63,7 @@ public class StartAction extends MyTilesAction {
 		} String precioFinal= Utilidades.obtenerPrecio(auxiliar);
 		c.setRequest("prA", prA);
 		c.setRequest("prB", prB);
+		c.setRequest("oferta", o);
 		c.setRequest("precioFinal", precioFinal);
 		c.setRequest("precioPrA", Utilidades.obtenerPrecio(prA.getPrecio().toString()));
 		c.setRequest("precioPrB", Utilidades.obtenerPrecio(prB.getPrecio().toString()));
