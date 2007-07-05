@@ -31,6 +31,7 @@ public class PedidosDAO {
 	private static final String estadoTransient = "Transient";
 	private static final String estadoServed   = "Served";
 	private static final String estadoPlaced = "Placed";
+	private static final String estadoPrePaypal= "PrePaypal";
 
 	public PedidosDAO() {
 		daoGenerico = new DaoGenerico();
@@ -52,7 +53,7 @@ public class PedidosDAO {
 		
 		Long idPedido;
 		List<LineaPedido> lineasPedido = null;
-		Iterator li = null;
+		Iterator<LineaPedido> li = null;
 		LineaPedido lP = null;
 		float precioTotal = 0.0f;
 
@@ -60,20 +61,20 @@ public class PedidosDAO {
 		p.setDireccion(direccion);
 		p.setFechaCancelacion(null);
 		p.setFechaDeServicio(null);
-		p.setFechaPedido(new Date(System.currentTimeMillis()));
+		p.setFechaPedido(null);
 		p.setFechaTransient(null);
 		p.setOperador(null);
 		p.setPrecioTotal(new Float(0.0));
 		
-		List <Producto> productos = new LinkedList<Producto>();
+		List <Item> productos = new LinkedList<Item>();
 		
 		// Persistimos el carro de la compra como un pedido.
 		idPedido= daoGenerico.persistirObjeto(p);	
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
 		while (li.hasNext()) {
-			lP = (LineaPedido) li.next();
-			productos.add((Producto)lP.getCompra());
+			lP = li.next();
+			productos.add(lP.getCompra());
 			lP.setPedido(p);
 			// Persistimos una linea de pedido del carro de la compra.
 			daoGenerico.persistirObjeto(lP);
@@ -126,7 +127,7 @@ public class PedidosDAO {
 				pedido.setFechaDeServicio(fecha);
 				
 //				 Lista de productos del pedido.
-				List<Producto> productosPedido = this.obtenerProductosPedido(pedido);
+				List<Item> productosPedido = this.obtenerProductosPedido(pedido);
 				/* 		
 				 * 	Una vez que el pedido ha sido servido podemos actualizar con seguridad
 				 * el beneficio pues el usuario no puede cancelar el pedido.
@@ -152,7 +153,9 @@ public class PedidosDAO {
 	public String obtenerEstado(Pedido p) {
 		String res = null;
 		
-		if ((p.getFechaTransient() == null) && (p.getFechaDeServicio() == null) && (p.getFechaCancelacion() == null)) {
+		if(p.getFechaCancelacion()==null && p.getFechaDeServicio()==null && p.getFechaPedido()==null && p.getFechaTransient()==null)
+			res=estadoPrePaypal;
+		else if ((p.getFechaTransient() == null) && (p.getFechaDeServicio() == null) && (p.getFechaCancelacion() == null)) {
 			res = "Placed";
 		} else if ((p.getFechaTransient() != null) && (p.getFechaDeServicio() == null) && (p.getFechaCancelacion() == null)) {
 			res = "Transient";
@@ -193,12 +196,12 @@ public class PedidosDAO {
 	 * @return Lista con los productos del pedido.
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Producto> obtenerProductosPedido(Pedido pedido){
+	public List<Item> obtenerProductosPedido(Pedido pedido){
 		
 		// Obtenemos las líneas del pedido.
 		List<LineaPedido> lineasPedido = this.obtenerLineasPedido(pedido);
 		
-		List<Producto> productosPedido = new ArrayList();
+		List<Item> productosPedido = new ArrayList();
 		Item item;
 		Producto producto;
 		

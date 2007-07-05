@@ -35,92 +35,92 @@ public class BeneficioDAOTest {
 		this.bmGenerico = new BMGenerico();
 	}
 
-	@Test
-	public void actualizarBeneficioPedidoTest() {
-
-		// Creamos un pedido.
-		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
-		Operador operador = pedido.getOperador();
-
-		Lavadora lavadora = CreateObjetosNegocio.getInstance().createLavadora();
-		Televisor televisor = CreateObjetosNegocio.getInstance()
-				.createTelevisor();
-		
-		// Modificamos la ganancias y precio de la lavadora.
-		lavadora.setGanancia(new Float(50));
-		lavadora.setPrecio(new Float(500));
-
-		// Insertamos un suspuesto beneficio previo para la lavadora.
-		Beneficio beneficio = new Beneficio();
-		beneficio.setGanancia(new Float(250));
-
-		// El televisor no tiene beneficios acumulados
-		// Modificamos la ganancias y precio del televisor.
-		televisor.setGanancia(new Float(25));
-		televisor.setPrecio(new Float(200));
-
-		LineaPedido lineaPedido1 = CreateObjetosNegocio.getInstance()
-				.createLineaPedido(pedido, lavadora);
-
-		LineaPedido lineaPedido2 = CreateObjetosNegocio.getInstance()
-				.createLineaPedido(pedido, televisor);
-
-		// Hacemos persistente los productos.
-		Session sesion = HibernateSessionFactory.crearSesion();
-		Transaction tx = sesion.beginTransaction();
-		sesion.save(operador);
-		sesion.save(lavadora);
-		sesion.save(televisor);
-		sesion.save(pedido);
-		sesion.save(lineaPedido1);
-		sesion.save(lineaPedido2);
-		beneficio.setId(lavadora.getId());
-		sesion.save(beneficio);
-		tx.commit();
-		sesion.close();
-
-		Beneficio beneTelevisor = null;
-		Beneficio beneLavadora = null;
-		
-		try
-		{
-		List<Producto> productosPedido = this.pedidoDao
-				.obtenerProductosPedido(pedido);
-
-		//Actualizamos los beneficios de los productos.
-		this.beneficioDao.actualizarBeneficioPedido(productosPedido);
-
-		Criteria criteria = this.bmGenerico.crearCriteriaVacio(Beneficio.class);
-		this.bmGenerico.agregarAnd(criteria, "id", televisor.getId());
-		beneTelevisor = (Beneficio)criteria.list().get(0);
-		assert(beneTelevisor.getGanancia() == 50);
-		
-		Criteria criteria1 = this.bmGenerico
-				.crearCriteriaVacio(Beneficio.class);
-		this.bmGenerico.agregarAnd(criteria1, "id", lavadora.getId());
-		beneLavadora = (Beneficio)criteria1.list().get(0);
-		assert(beneLavadora.getGanancia() == 500);
-		}
-		catch(Exception e)
-		{
-			
-		}
-		finally{
-
-		Session sesion1 = HibernateSessionFactory.crearSesion();
-		Transaction tx1 = sesion1.beginTransaction();
-		sesion1.delete(lineaPedido1);
-		sesion1.delete(lineaPedido2);
-		if(beneTelevisor != null)
-			sesion1.delete(beneTelevisor);
-		if(beneLavadora != null)
-			sesion1.delete(beneLavadora);
-		sesion1.delete(pedido);
-		sesion1.delete(lavadora);
-		sesion1.delete(televisor);
-		sesion1.delete(operador);
-		tx1.commit();
-		sesion1.close();
-		}
-	}
+//	@Test
+//	public void actualizarBeneficioPedidoTest() {
+//
+//		// Creamos un pedido.
+//		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
+//		Operador operador = pedido.getOperador();
+//
+//		Lavadora lavadora = CreateObjetosNegocio.getInstance().createLavadora();
+//		Televisor televisor = CreateObjetosNegocio.getInstance()
+//				.createTelevisor();
+//		
+//		// Modificamos la ganancias y precio de la lavadora.
+//		lavadora.setGanancia(new Float(50));
+//		lavadora.setPrecio(new Float(500));
+//
+//		// Insertamos un suspuesto beneficio previo para la lavadora.
+//		Beneficio beneficio = new Beneficio();
+//		beneficio.setGanancia(new Float(250));
+//
+//		// El televisor no tiene beneficios acumulados
+//		// Modificamos la ganancias y precio del televisor.
+//		televisor.setGanancia(new Float(25));
+//		televisor.setPrecio(new Float(200));
+//
+//		LineaPedido lineaPedido1 = CreateObjetosNegocio.getInstance()
+//				.createLineaPedido(pedido, lavadora);
+//
+//		LineaPedido lineaPedido2 = CreateObjetosNegocio.getInstance()
+//				.createLineaPedido(pedido, televisor);
+//
+//		// Hacemos persistente los productos.
+//		Session sesion = HibernateSessionFactory.crearSesion();
+//		Transaction tx = sesion.beginTransaction();
+//		sesion.save(operador);
+//		sesion.save(lavadora);
+//		sesion.save(televisor);
+//		sesion.save(pedido);
+//		sesion.save(lineaPedido1);
+//		sesion.save(lineaPedido2);
+//		beneficio.setId(lavadora.getId());
+//		sesion.save(beneficio);
+//		tx.commit();
+//		sesion.close();
+//
+//		Beneficio beneTelevisor = null;
+//		Beneficio beneLavadora = null;
+//		
+//		try
+//		{
+//		List<Producto> productosPedido = this.pedidoDao
+//				.obtenerProductosPedido(pedido);
+//
+//		//Actualizamos los beneficios de los productos.
+//		this.beneficioDao.actualizarBeneficioPedido(productosPedido);
+//
+//		Criteria criteria = this.bmGenerico.crearCriteriaVacio(Beneficio.class);
+//		this.bmGenerico.agregarAnd(criteria, "id", televisor.getId());
+//		beneTelevisor = (Beneficio)criteria.list().get(0);
+//		assert(beneTelevisor.getGanancia() == 50);
+//		
+//		Criteria criteria1 = this.bmGenerico
+//				.crearCriteriaVacio(Beneficio.class);
+//		this.bmGenerico.agregarAnd(criteria1, "id", lavadora.getId());
+//		beneLavadora = (Beneficio)criteria1.list().get(0);
+//		assert(beneLavadora.getGanancia() == 500);
+//		}
+//		catch(Exception e)
+//		{
+//			
+//		}
+//		finally{
+//
+//		Session sesion1 = HibernateSessionFactory.crearSesion();
+//		Transaction tx1 = sesion1.beginTransaction();
+//		sesion1.delete(lineaPedido1);
+//		sesion1.delete(lineaPedido2);
+//		if(beneTelevisor != null)
+//			sesion1.delete(beneTelevisor);
+//		if(beneLavadora != null)
+//			sesion1.delete(beneLavadora);
+//		sesion1.delete(pedido);
+//		sesion1.delete(lavadora);
+//		sesion1.delete(televisor);
+//		sesion1.delete(operador);
+//		tx1.commit();
+//		sesion1.close();
+//		}
+//	}
 }

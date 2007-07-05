@@ -37,6 +37,13 @@ public abstract class Item implements Serializable{
 	 * Obtiene la categoria del item
 	 */
 	public abstract String getTipoItem();
+	
+	/**
+	 * Obtiene el nombre del articulo
+	 */
+	public abstract String getNombreArticulo();
+	
+	public abstract Float getGananciaArticulo();
 
 
 	public Long getId() {

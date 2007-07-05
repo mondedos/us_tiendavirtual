@@ -41,6 +41,16 @@ public class Oferta extends Item{
 		return precio;
 	}
 	
+	@Override
+	public String getNombreArticulo(){
+		return "Oferta: "+principal.getNombreArticulo()+" + "+secundario.getNombreArticulo();
+	}
+	
+	@Override
+	public Float getGananciaArticulo(){
+		return principal.getGananciaArticulo()+secundario.getGananciaArticulo();
+	}
+	
 	
 	
 	public Producto getPrincipal() {

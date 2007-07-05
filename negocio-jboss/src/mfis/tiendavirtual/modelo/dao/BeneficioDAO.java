@@ -2,7 +2,7 @@ package mfis.tiendavirtual.modelo.dao;
 
 import java.util.List;
 import mfis.tiendavirtual.modelo.objetoNegocio.Beneficio;
-import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 
 public class BeneficioDAO {
 
@@ -16,22 +16,22 @@ public class BeneficioDAO {
 	 * 
 	 * @param pedido Pedido que ha sido servido (no puede cancelarse).
 	 */
-	public void actualizarBeneficioPedido(List<Producto> listaProducto){
+	public void actualizarBeneficioPedido(List<Item> listaProducto){
 		Beneficio beneficioActual, nuevoBeneficio;
 		float gananciaActual;
 		float nuevaGanancia;
 		
 		// Para cada producto insertar o actualizar el beneficio.
-		for(Producto producto: listaProducto){
+		for(Item item: listaProducto){
 			
 			// Obtenemos la ganacia actual en porcentajes.
-			gananciaActual = producto.getGanancia();
+			gananciaActual = item.getGananciaArticulo();
 			
-			nuevaGanancia = (gananciaActual*producto.getPrecio())/100;
+			nuevaGanancia = (gananciaActual*item.obtenerPrecio())/100;
 			
 			// Obtenemos el beneficio actual.
 			beneficioActual = daoGenerico.buscarPorId(Beneficio.class, 
-					producto.getId());
+					item.getId());
 			
 			// Ya existe el objeto beneficio.
 			if(beneficioActual != null){
@@ -46,7 +46,7 @@ public class BeneficioDAO {
 			else{
 				// Nuevo beneficio.
 				nuevoBeneficio = new Beneficio();
-				nuevoBeneficio.setId(producto.getId());
+				nuevoBeneficio.setId(item.getId());
 				nuevoBeneficio.setGanancia(nuevaGanancia);
 				daoGenerico.persistirObjeto(nuevoBeneficio);
 			}
