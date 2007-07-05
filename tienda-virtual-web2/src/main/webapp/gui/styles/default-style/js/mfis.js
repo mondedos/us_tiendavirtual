@@ -34,6 +34,8 @@ function validarBusqueda(objForm) {
 		if (isNumber(valorMinimo)) {
 			if (isNumber(valorMaximo)) {
 				res = true;
+			} else if (valorMaximo == '') {
+				res = true; 
 			} else {
 				window.alert("Por favor, introduzca un precio maximo correcto para la busqueda.");
 				res = false;
