@@ -90,7 +90,7 @@ public class RealizarCompra extends MyTilesAction{
 				if(isTokenValid(c.getRequest(), true)) {
 					//System.out.println("Primer click, token valido");
 //					hacemos persistente el carrito
-					Long idPedido = PedidosBean.registrarPedido(carrito, Utilidades.HTMLEncode(direccionUsuario));
+					Long idPedido = PedidosBean.registrarPedido(carrito, direccionUsuario);
 					//eliminamos la sesion
 					c.removeSession("carrito");
 					// es necesario guardar este valor en sesion para que posteriores clicks
