@@ -124,7 +124,7 @@ create table PEDIDO
    ID_OPERADOR          int,
    MO_PRECIO_TOTAL      float(8,2) not null,
    VC_DIRECCION         varchar(1024) not null,
-   FECHA_PLACED         date not null,
+   FECHA_PLACED         date,
    FECHA_CANCELLED      date,
    FECHA_TRANSIENT      date,
    FECHA_SERVED         date,

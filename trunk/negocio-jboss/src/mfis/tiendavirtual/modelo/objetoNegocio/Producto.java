@@ -31,6 +31,16 @@ public class Producto extends Item {
 		return "Producto";
 	}
 	
+	@Override
+	public String getNombreArticulo() {
+		return this.getModelo();
+	}
+	
+	@Override
+	public Float getGananciaArticulo(){
+		return ganancia;
+	}
+	
 	
 	public Float obtenerPrecio(){
 		return this.getPrecio();
@@ -98,4 +108,6 @@ public class Producto extends Item {
 		
 		return (res);
 	}
+
+	
 }
