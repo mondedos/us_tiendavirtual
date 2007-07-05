@@ -10,7 +10,7 @@ import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import struts.WebContext;
 
 public class CarritoBean {
-	
+
 	Carrito carrito = null;
 
 	public CarritoBean(WebContext c) {
@@ -22,12 +22,12 @@ public class CarritoBean {
 	}
 
 	public void crearLineaPedido(Item i, int unidades) {
-		
-		
+
+
 		Long id= i.getId();
 		List lineasPedido= carrito.getLineasPedido();
 		boolean encontrado= false;
-		
+
 		if(lineasPedido!=null && !lineasPedido.isEmpty()){
 
 			int indice=0;
@@ -42,20 +42,20 @@ public class CarritoBean {
 					break;
 				}
 				indice++;
-				
+
 			}
 		}
-		
+
 		if(!encontrado){
 			LineaPedido linea = new LineaPedido();
-			Float precio = ((Producto)i).obtenerPrecio();
+			Float precio = i.obtenerPrecio();
 			linea.setCompra(i);
 			linea.setUnidades(unidades);
 			linea.setPrecioUnidad( precio );
 
 			carrito.addLineaPedido(linea, precio);
 		}
-				
+
 	}
 
 	public void borrarLineaPedido(int linea) {
