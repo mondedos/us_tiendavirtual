@@ -19,51 +19,52 @@ import struts.MyTilesAction;
 import struts.WebContext;
 
 public class RealizarCompra extends MyTilesAction{
+
 	public String execute(WebContext c) throws Exception {
 		int opt = Integer.parseInt((String)c.getParameter("opt"));
 		String layout = null;
-		
+
 		switch (opt){
 			case 1: layout = paypal(c); break;
 			case 2: layout = persistirCompra(c); break;
 			case 3: layout = cancelarCompra(c); break;
 		}
-		
+
 		return (layout);
 	}
-	
+
 	private String cancelarCompra(WebContext c){
-		
+
 		c.removeSession("carrito");
 		c.getSession().invalidate();
-		
+
 		c.setRequest("mensajeError", "El pedido ha sido cancelado");
-		
+
 		StartAction.obtenerOfertas(c);
 		c.setRequest("direccionRetorno", "start.do");
-		
+
 		return ERROR_USUARIO;
 	}
-	
+
 	private String persistirCompra (WebContext c){
-		
+
 		//cambiamos el estado del pedido
 		String idPedido= (String)c.getParameter("idPedido");
 		Pedido pedido= PedidosBean.obtenerPedido(idPedido);
 		PedidosBean.cambiarEstado(pedido, "Placed");
 		c.setRequest("idPedido", idPedido);
-		
-			
-		return (COMPRA_REALIZADA);	
+
+
+		return (COMPRA_REALIZADA);
 	}
-	
+
 	private String paypal (WebContext c){
 		PedidoForm formulario= (PedidoForm) c.getForm();
 		String direccionUsuario = formulario.getDireccionUsuario();
 		String layout = null;
 
-		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals("")))) {
-			
+		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals(""))) && c.getSession("carrito") != null) {
+
 			//creamos formulario para paypal
 			Carrito carrito = (Carrito) c.getSession("carrito");
 			List lineasPedido = carrito.getLineasPedido();
@@ -78,21 +79,33 @@ public class RealizarCompra extends MyTilesAction{
 				String precioArticulo = lineaPedido.getPrecioUnidad().toString();
 				String numeroUnidades = "" + lineaPedido.getUnidades();
 				lista.add(new PayPal(nombreArticulo, precioArticulo, numeroUnidades, item, amount, number));
-			} c.setRequest("listaPedido", lista);
-			
+			}
+
+			c.setRequest("listaPedido", lista);
 			c.setRequest("idcat", "");
 			layout = ".paypal";
-			
-			
-			//hacemos persistente el carrito
-			Long idPedido = PedidosBean.registrarPedido(carrito, Utilidades.HTMLEncode(direccionUsuario));
-			c.setRequest("idPedido", idPedido);
-			
-			//eliminamos la sesion
-			c.removeSession("carrito");
-			c.getSession().invalidate();
-			
-			
+
+
+			synchronized (carrito) {
+				if(isTokenValid(c.getRequest(), true)) {
+					//System.out.println("Primer click, token valido");
+//					hacemos persistente el carrito
+					Long idPedido = PedidosBean.registrarPedido(carrito, Utilidades.HTMLEncode(direccionUsuario));
+					//eliminamos la sesion
+					c.removeSession("carrito");
+					// es necesario guardar este valor en sesion para que posteriores clicks
+					// conozcan el valor del idPedido y lo puedan enviar en el .jsp
+					c.setSession("_id_Pedido_", idPedido);
+				} else {
+					// El resto de clicks, no hacen nada
+					//System.out.println("Siguientes clicks!, token no valido");
+				}
+			}
+
+			// se pasa por request el idPedido para que lo lea el .jsp
+			c.setRequest("idPedido", c.getSession("_id_Pedido_"));
+
+
 		} else {
 			// En caso de que el usuario no haya introducido ninguna direccion o haya introducido una direccion
 			// incorrecta...
@@ -100,12 +113,12 @@ public class RealizarCompra extends MyTilesAction{
 			c.setRequest("mensajeError", mensajeError);
 			c.setRequest("direccionRetorno", "listado.do?opt=3&lid=0&idcat=0&idpr=0");
 			layout = ERROR_USUARIO;
-			
+
 		}
-		
+
 		return (layout);
 	}
-	
+
 	private String redirectCompraPayPal(Carrito carrito){
 		String url = "https://www.paypal.com/cgi-bin/webscr?";
 		url += "businesss=mfisg16@gmail.com";
@@ -113,24 +126,24 @@ public class RealizarCompra extends MyTilesAction{
 		url += "&undefined_quantity=1";
 		url += "&charset=utf-8";
 		url += "&no_shipping=1";
-		
+
 		//TODO Hacer la pagina de cancelar
 		//url +="cancel_return=pagina error";
-		
+
 		url += "&no_note=0";
 		url += "&item_name=Compra MFIS";
 		url += "&amount=" +carrito.getTotalSinIVA();
 		url += "&quantity=1";
-		
-		return (url);	
+
+		return (url);
 	}
-	
+
 	private void realizarCompraPayPal(Carrito carrito){
 		HttpURLConnection p = null;
 		BufferedOutputStream bos = null;
 		URL url = null;
 		InputStream is = null;
-		
+
 		try {
 			url = new URL("https://www.paypal.com/cgi-bin/webscr");
 			p = (HttpURLConnection) url.openConnection();
@@ -139,7 +152,7 @@ public class RealizarCompra extends MyTilesAction{
 			p.addRequestProperty("rm", "2");
 			p.addRequestProperty("undefined_quantity", "1");
 			p.addRequestProperty("charset", "utf-8");
-			p.addRequestProperty("no_shipping", "1");	
+			p.addRequestProperty("no_shipping", "1");
 			//XXX hacer la pagina de cancelar
 			//p.addRequestProperty("cancel_return", "pagina error");
 			p.addRequestProperty("no_note", "0");
