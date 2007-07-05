@@ -23,8 +23,20 @@
 			indexId="i">
 			<tbody>
 				<tr>
+			<logic:present name="linea" property="compra.marca">
 					<td><bean:write name="linea" property="compra.marca" /></td>
 					<td><bean:write name="linea" property="compra.modelo" /></td>
+			</logic:present>
+			<logic:present name="linea" property="compra.principal.marca">
+					<td>
+						<bean:write name="linea" property="compra.principal.marca" /> <br/>
+						<bean:write name="linea" property="compra.secundario.marca" />
+					</td>
+					<td>
+						<bean:write name="linea" property="compra.principal.modelo" /> <br/>
+						<bean:write name="linea" property="compra.secundario.modelo" />
+					</td>
+			</logic:present>
 					<td><bean:write name="linea" property="unidades" /></td> <%
  			mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido lp = (mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido) pageContext
  			.getAttribute("linea");
@@ -40,11 +52,15 @@
  			precioUnidad = mfis.tiendavirtual.util.Utilidades
  			.obtenerPrecio(Float.toString(unidadFloat));
  %>
-					
+
 					<td><%=precioUnidad%> &euro;</td>
 					<td><%=precioTotal%> &euro;</td>
-					<td><a
-						href="listado.do?opt=2&amp;lid=<bean:write name="i"/>&amp;idcat=<bean:write name="idcat"/>&amp;idpr=<bean:write name="linea" property="compra.id"/>&amp;l=.compra">
+					<td>
+						<a href="listado.do?opt=2&amp;
+							lid=<bean:write name="i"/>&amp;
+							idcat=<logic:present name="idcat"><bean:write name="idcat"/></logic:present><logic:notPresent name="idcat">0</logic:notPresent>&amp;
+							idpr=<bean:write name="linea" property="compra.id"/>&amp;
+							l=.compra">
 					<bean:message key="app.listado.2" /> </a></td>
 				</tr>
 			</tbody>
