@@ -18,10 +18,12 @@
 											<input type="hidden" name="idcat" value="<bean:write name="idcat"/>"/>
 										</logic:present>
 										<logic:notPresent name="idcat">
+											<logic:present name="pmin">
 											<input type="hidden" name="pmin" value="<bean:write name="pmin"/>"/>
 											<input type="hidden" name="pmax" value="<bean:write name="pmax"/>"/>
 											<input type="hidden" name="marca" value="<bean:write name="marca"/>"/>
 											<input type="hidden" name="categoria" value="<bean:write name="categoria"/>"/>
+											</logic:present>
 										</logic:notPresent>
 
 
