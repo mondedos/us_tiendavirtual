@@ -11,6 +11,7 @@ import mfis.tiendavirtual.jndi.OfertaEJB;
 import mfis.tiendavirtual.jndi.OperadorEJB;
 import mfis.tiendavirtual.jndi.ProductoEJB;
 import mfis.tiendavirtual.modelo.dao.Categoria;
+import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.actions.CategoriaAction;
@@ -22,7 +23,7 @@ public class OperadoresBean {
 	public OperadoresBean() {
 
 	}
-	
+
 	public static List obtenerListaPedidosOperador(String login){
 		GestionOperador go = (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 		List resultado= null;
@@ -31,7 +32,7 @@ public class OperadoresBean {
 		} catch(RemoteException e){
 			throw new RuntimeException(e);
 		}
-		
+
 		return (resultado);
 	}
 
@@ -73,39 +74,50 @@ public class OperadoresBean {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static Operador obtenerOperador(String login){
 		GestionOperador go= (GestionOperador) new OperadorEJB().getEJB(EJB.OPERADOR_JNDI);
 		Operador operador=null;
-		
+
 		try {
 			operador= go.getOperador(login);
 		} catch(RemoteException e){
 			e.printStackTrace();
 		}
-		
+
 		return (operador);
 	}
-	
+
 	public static List listarProductosCategoria(int idCat) {
 		Categoria categoria= CategoriaAction.obtenerCategoria(idCat);
 		GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
-		
+
 		try {
 			return gp.listarProductosCategoria(categoria);
 		} catch (RemoteException e){
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public static Producto getProducto(int idProducto){
 		GestionProducto gp = (GestionProducto) new ProductoEJB().getEJB(EJB.PRODUCTOS_JNDI);
-		
+
 		try{
 			return (Producto)gp.getProducto(idProducto);
 		}catch(RemoteException e){
 			throw new RuntimeException(e);
-			
+
+		}
+	}
+
+	public static Oferta getOferta(){
+		GestionOferta go = (GestionOferta) new OfertaEJB().getEJB(EJB.OFERTAS_JNDI);
+
+		try{
+			return (Oferta)go.getOferta();
+		}catch(RemoteException e){
+			throw new RuntimeException(e);
+
 		}
 	}
 }
