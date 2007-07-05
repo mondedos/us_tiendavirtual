@@ -12,10 +12,13 @@
 			<input type="hidden" name="charset" value="utf-8"/>
 			<input type="hidden" name="currency_code" value="EUR"/>
 			<input type="hidden" name="upload" value="1"/>
-			<input type="hidden" name="return" value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=2"/>
+			<input 
+				type="hidden" 
+				name="return" 
+				value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=2&idPedido=<bean:write name="idPedido"/>"/>
 			<input type="hidden" name="undefined_quantity" value="0"/>
+			<input type="hidden" name="invoice" value="<bean:write name="idPedido"/>"/>
 			
-			<input type="hidden" name="address1" value="<bean:write name="direccionUsuario"/>"/>
 			
 			<logic:iterate name="listaPedido" id="pedido">
 				<input type="hidden" 
