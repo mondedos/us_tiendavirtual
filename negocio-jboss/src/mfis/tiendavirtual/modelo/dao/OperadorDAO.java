@@ -86,7 +86,7 @@ public class OperadorDAO {
 			
 			// Si el operador lo ha cogido para o no se ha cancelado.
 			if (p.getFechaTransient() == null
-					&& p.getFechaCancelacion() == null) {
+					&& p.getFechaCancelacion() == null && (p.getFechaPedido() != null)) {
 				enc = true;
 				res = p;
 				// Guardamos el id de pedido para poder recuperarlo despues de
@@ -101,13 +101,15 @@ public class OperadorDAO {
 		// no haya sido cancelado.
 		while (it.hasNext()) {
 			p = (Pedido) it.next();
-			if (p.getFechaPedido().before(res.getFechaPedido())
-					&& p.getFechaTransient() == null
-					&& p.getFechaCancelacion() == null) {
-				res = p;
-				// Guardamos el id de pedido para poder recuperarlo despues de
-				// la base de datos.
-				idPedido = res.getId();
+			if (p.getFechaPedido() != null) {
+				if (p.getFechaPedido().before(res.getFechaPedido())
+						&& p.getFechaTransient() == null
+						&& p.getFechaCancelacion() == null) {
+					res = p;
+					// Guardamos el id de pedido para poder recuperarlo despues de
+					// la base de datos.
+					idPedido = res.getId();
+				}
 			}
 		} // Asignamos el id del operador solicitante al pedido si es que
 			// existe:
