@@ -74,7 +74,7 @@ public class ListadoAction extends MyTilesAction {
 				listadoCategorias= listaProductos(c);
 				carritobean.crearLineaPedido(i, unidades);
 				break;
-			// Borra del carrito (1).
+			// Borra del carrito.
 			case 2:
 				carritobean = new CarritoBean(c);
 				carritobean.borrarLineaPedido( Integer.parseInt(lid) );
@@ -88,7 +88,7 @@ public class ListadoAction extends MyTilesAction {
 					layout = COMPRA;
 				}
 				break;
-			// Borra del carrito (2).
+			// Comprar el carrito.
 			case 3:
 				saveToken(c.getRequest());
 				layout = COMPRA;
@@ -97,7 +97,7 @@ public class ListadoAction extends MyTilesAction {
 				break;
 		}
 
-		if(carritobean != null) {
+		if (carritobean != null) {
     		c.setSession("carrito", carritobean.getCarrito());
     	}
 
