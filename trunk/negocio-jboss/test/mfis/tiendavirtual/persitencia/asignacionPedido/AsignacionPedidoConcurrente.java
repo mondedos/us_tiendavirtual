@@ -22,11 +22,9 @@ public class AsignacionPedidoConcurrente implements Runnable {
 	
 	
 	public void run() {
-		// TODO Auto-generated method stub
 		try {
 			Thread.sleep(this.retardo);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
