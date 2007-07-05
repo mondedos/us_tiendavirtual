@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mfis.tiendavirtual.ejb.Carrito;
+import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
-import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
+import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.struts.beans.PedidosBean;
 import mfis.tiendavirtual.struts.forms.PedidoForm;
 import mfis.tiendavirtual.struts.vista.PayPal;
@@ -32,20 +33,26 @@ public class RealizarCompra extends MyTilesAction{
 	}
 	
 	private String cancelarCompra(WebContext c){
+		
 		c.removeSession("carrito");
+		c.getSession().invalidate();
+		
+		c.setRequest("mensajeError", "El pedido ha sido cancelado");
+		
 		StartAction.obtenerOfertas(c);
-		return (MAINPAGE);
+		c.setRequest("direccionRetorno", "start.do");
+		
+		return ERROR_USUARIO;
 	}
 	
 	private String persistirCompra (WebContext c){
-		Carrito carrito = (Carrito) c.getSession("carrito");
-		String direccionUsuario = (String)c.getSession("direccionUsuario");
-	
-		Long idPedido = PedidosBean.registrarPedido(carrito, Utilidades.HTMLEncode(direccionUsuario));
-		StartAction.obtenerOfertas(c);
-		c.removeSession("direccionUsuario");
-		c.removeSession("carrito");
+		
+		//cambiamos el estado del pedido
+		String idPedido= (String)c.getParameter("idPedido");
+		Pedido pedido= PedidosBean.obtenerPedido(idPedido);
+		PedidosBean.cambiarEstado(pedido, "Placed");
 		c.setRequest("idPedido", idPedido);
+		
 			
 		return (COMPRA_REALIZADA);	
 	}
@@ -56,23 +63,36 @@ public class RealizarCompra extends MyTilesAction{
 		String layout = null;
 
 		if ((direccionUsuario != null) && (!(direccionUsuario.trim().equals("")))) {
+			
+			//creamos formulario para paypal
 			Carrito carrito = (Carrito) c.getSession("carrito");
 			List lineasPedido = carrito.getLineasPedido();
 			List lista= new ArrayList(lineasPedido.size());
 			for(int indice=1; indice <= lineasPedido.size(); indice++){
 				LineaPedido lineaPedido = (LineaPedido)lineasPedido.get(indice-1);
-				Producto producto= (Producto)lineaPedido.getCompra();
+				Item producto= (Item)lineaPedido.getCompra();
 				String item = "item_name_" + indice;
 				String amount = "amount_" + indice;
 				String number = "quantity_" + indice;
-				String nombreArticulo = producto.getModelo();
+				String nombreArticulo = producto.getNombreArticulo();
 				String precioArticulo = lineaPedido.getPrecioUnidad().toString();
 				String numeroUnidades = "" + lineaPedido.getUnidades();
 				lista.add(new PayPal(nombreArticulo, precioArticulo, numeroUnidades, item, amount, number));
 			} c.setRequest("listaPedido", lista);
-			c.setSession("direccionUsuario", direccionUsuario);
+			
 			c.setRequest("idcat", "");
 			layout = ".paypal";
+			
+			
+			//hacemos persistente el carrito
+			Long idPedido = PedidosBean.registrarPedido(carrito, Utilidades.HTMLEncode(direccionUsuario));
+			c.setRequest("idPedido", idPedido);
+			
+			//eliminamos la sesion
+			c.removeSession("carrito");
+			c.getSession().invalidate();
+			
+			
 		} else {
 			// En caso de que el usuario no haya introducido ninguna direccion o haya introducido una direccion
 			// incorrecta...
