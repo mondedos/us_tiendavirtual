@@ -221,6 +221,7 @@ table.carrito tr th {
 }
 table.carrito tr td {
 	width: 20%;
+	vertical-align: middle;
 }
 table.carrito tbody tr td {
 	border-top: 1px solid #c00;
