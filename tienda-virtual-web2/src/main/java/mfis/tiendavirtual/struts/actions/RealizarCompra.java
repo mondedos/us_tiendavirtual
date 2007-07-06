@@ -10,7 +10,9 @@ import java.util.List;
 import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
+import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
+import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
 import mfis.tiendavirtual.struts.beans.PedidosBean;
 import mfis.tiendavirtual.struts.forms.PedidoForm;
 import mfis.tiendavirtual.struts.vista.PayPal;
@@ -72,12 +74,44 @@ public class RealizarCompra extends MyTilesAction{
 			for(int indice=1; indice <= lineasPedido.size(); indice++){
 				LineaPedido lineaPedido = (LineaPedido)lineasPedido.get(indice-1);
 				Item producto= (Item)lineaPedido.getCompra();
-				String item = "item_name_" + indice;
-				String amount = "amount_" + indice;
-				String number = "quantity_" + indice;
-				String nombreArticulo = producto.getNombreArticulo();
-				String precioArticulo = lineaPedido.getPrecioUnidad().toString();
-				String numeroUnidades = "" + lineaPedido.getUnidades();
+				String item;
+				String amount ;
+				String number;
+				String nombreArticulo  ;
+				String precioArticulo  ;
+				String numeroUnidades;
+				
+				if(producto instanceof Oferta){
+					 item = "item_name_" + indice;
+					amount = "amount_" + indice;
+					 number = "quantity_" + indice;
+					 nombreArticulo = "Oferton";
+
+					 Producto a = ((Oferta)producto).getPrincipal();
+					 Producto b =  ((Oferta)producto).getSecundario();
+					 
+					Float precio = 
+						new Float(lineaPedido.getUnidades()*(a.getPrecio().floatValue() +b.getPrecio().floatValue()));
+					
+					Float descuento = new Float(Utilidades.obtenerPrecio2(
+							new Float(precio.floatValue()*0.9).toString()));
+					
+			
+					
+					precioArticulo = descuento.toString();
+					numeroUnidades = "" + lineaPedido.getUnidades();
+				}
+				else{
+				
+				 item = "item_name_" + indice;
+				 amount = "amount_" + indice;
+				 number = "quantity_" + indice;
+				 nombreArticulo = producto.getNombreArticulo();
+				 precioArticulo = lineaPedido.getPrecioUnidad().toString();
+				 numeroUnidades = "" + lineaPedido.getUnidades();
+				}
+				
+				
 				lista.add(new PayPal(nombreArticulo, precioArticulo, numeroUnidades, item, amount, number));
 			}
 
