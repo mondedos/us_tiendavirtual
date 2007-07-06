@@ -37,7 +37,7 @@ public class DetallesPedido extends MyTilesAction{
 			mensajeInformativo= "El estado del pedido ha sido modificado correctamente.";
 		}catch(RuntimeException e){
 			// No se puede cambiar el estado.
-			mensajeInformativo= "No se puede modificar el estado a el pedido. El pedido está servido.";
+			mensajeInformativo= "Cambio de estado incorrecto.";
 		}
 		
 		mensajeAceptar= "Volver a la página de detalles";
