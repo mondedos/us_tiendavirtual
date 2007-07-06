@@ -17,7 +17,7 @@
 				name="return" 
 				value="http://localhost:8081/tiendavirtual/realizarCompra.do?opt=2&idPedido=<bean:write name="idPedido"/>"/>
 			<input type="hidden" name="undefined_quantity" value="0"/>
-			<input type="hidden" name="invoice" value="<bean:write name="idPedido"/>"/>
+			<!--  <input type="hidden" name="invoice" value="<bean:write name="idPedido"/>"/> -->
 			
 			
 			<logic:iterate name="listaPedido" id="pedido">
