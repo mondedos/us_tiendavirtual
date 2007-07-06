@@ -10,7 +10,7 @@
 						<logic:present name="lista">
 							<logic:iterate name="lista" id="producto">
 								<li>
-									<form id="form<bean:write name="producto" property="id"/>" action="listado.do">
+									<form id="form<bean:write name="producto" property="id"/>" action="listado.do" onsubmit="return validarUnidades(this)">
 										<input type="hidden" name="idpr" value="<bean:write name="producto" property="id"/>"/>
 										<input type="hidden" name="refpr" value="<bean:write name="producto" property="referencia"/>"/>
 

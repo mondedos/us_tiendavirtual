@@ -112,3 +112,14 @@ function isEmpty(s)
 function isDigit (c)
 {   return ((c >= "0") && (c <= "9"))
 }
+
+// c es un formulario
+function validarUnidades (c)
+{  
+	if(c.unidades.value <= 0){
+		window.alert("Por favor introduzca una cantidad mayor que cero.");
+		return false;
+	}
+	else
+		return true;
+}

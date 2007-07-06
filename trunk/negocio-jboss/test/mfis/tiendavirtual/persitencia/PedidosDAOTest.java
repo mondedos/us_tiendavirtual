@@ -1,11 +1,14 @@
 package mfis.tiendavirtual.persitencia;
 
 import java.util.List;
+
+import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.modelo.dao.HibernateSessionFactory;
 import mfis.tiendavirtual.modelo.dao.PedidosDAO;
 import mfis.tiendavirtual.modelo.objetoNegocio.Dvd;
 import mfis.tiendavirtual.modelo.objetoNegocio.Lavadora;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
+import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Operador;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
@@ -24,6 +27,17 @@ public class PedidosDAOTest {
 	public void inicializar() {
 
 		this.pedidoDao = new PedidosDAO();
+	}
+	
+	@Test
+	public void registrarPedido() {
+		Oferta oferta = CreateObjetosNegocio.getInstance().createOferta();
+		Pedido pedido = CreateObjetosNegocio.getInstance().createPedido();
+		LineaPedido lp = 
+			CreateObjetosNegocio.getInstance().createLineaPedidoOferta(pedido, oferta);
+		Carrito c = new Carrito();
+		c.addLineaPedido(lp, new Float(1000));
+		this.pedidoDao.registrarPedido(c, "Daniel recio dominguez");
 	}
 
 //	@Test

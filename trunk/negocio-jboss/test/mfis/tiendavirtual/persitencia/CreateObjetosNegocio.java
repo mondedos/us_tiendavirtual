@@ -169,16 +169,31 @@ public class CreateObjetosNegocio {
 		return deprecated;
 	}
 	
+//	 Crea una línea de pedido asociada a un pedido y a un item.
+	public  LineaPedido createLineaPedidoOferta(Pedido pedido, Item oferta){
+		
+		LineaPedido lineaPedido = new LineaPedido();
+		lineaPedido.setPedido(pedido);
+		lineaPedido.setCompra(oferta);
+		lineaPedido.setPrecioUnidad(this.FLOAT_PRUEBA);
+		lineaPedido.setUnidades(this.INT_PRUEBA);
+		
+		return lineaPedido;
+	}
+	
 // 	Crea un objeto de tipo oferta.
 	public Oferta createOferta(){
-		
 		Lavadora lavadora = this.createLavadora();
+		lavadora.setPrecio(new Float(1000));
+		
 		Dvd dvd = this.createDvd();
+		dvd.setPrecio(new Float(100));
 		
 		Oferta oferta = new Oferta();
 		oferta.setReferencia(this.STRING_PRUEBA);
 		oferta.setPrincipal(lavadora);
 		oferta.setSecundario(dvd);
+		oferta.setOfertaActual(true);
 		
 		return oferta;
 	}
