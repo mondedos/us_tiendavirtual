@@ -20,7 +20,7 @@
 					</table>
 					<br>
 					<p class="letra-grande">por tan solo <big><bean:write name="precioFinal"/> &euro;</big></p>
-					<form id="form<bean:write name="oferta" property="id"/>" action="listado.do">
+					<form id="form<bean:write name="oferta" property="id"/>" action="listado.do" onsubmit="return validarUnidades(this)">
 						<input type="hidden" name="oferton" value="1"/>
 						<input type="hidden" name="idpr" value="<bean:write name="oferta" property="id"/>"/>
 						<input type="hidden" name="refpr" value="<bean:write name="oferta" property="referencia"/>"/>
