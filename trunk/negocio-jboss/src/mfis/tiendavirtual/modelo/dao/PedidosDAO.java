@@ -4,7 +4,6 @@ import java.util.Date;
 
 import mfis.tiendavirtual.ejb.Carrito;
 import mfis.tiendavirtual.modelo.objetoNegocio.Item;
-import mfis.tiendavirtual.modelo.objetoNegocio.Oferta;
 import mfis.tiendavirtual.modelo.objetoNegocio.Pedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.LineaPedido;
 import mfis.tiendavirtual.modelo.objetoNegocio.Producto;
@@ -73,45 +72,15 @@ public class PedidosDAO {
 		idPedido= daoGenerico.persistirObjeto(p);	
 		lineasPedido = c.getLineasPedido();
 		li = lineasPedido.listIterator();
-		
 		while (li.hasNext()) {
 			lP = li.next();
-			// Vamos a comprobar si la línea del pedido es una oferta.
-			System.out.println(lP.getCompra());
-			Item item = lP.getCompra();
-			if(item instanceof Oferta){
-				Producto a = ((Oferta)item).getPrincipal();
-				Producto b =  ((Oferta)item).getSecundario();
-				LineaPedido l1 = new LineaPedido();
-				l1.setCompra(a);
-				l1.setId(a.getId());
-				l1.setPedido(p);
-				l1.setPrecioUnidad(a.getPrecio());
-				l1.setUnidades(lP.getUnidades());
-				this.daoGenerico.persistirObjeto(l1);
-				
-				LineaPedido l2 = new LineaPedido();
-				l2.setCompra(b);
-				l2.setId(b.getId());
-				l2.setPedido(p);
-				l2.setPrecioUnidad(b.getPrecio());
-				l2.setUnidades(lP.getUnidades());
-				this.daoGenerico.persistirObjeto(l2);
-				
-				precioTotal += l1.getPrecioUnidad().floatValue() * lP.getUnidades() +
-				l2.getPrecioUnidad().floatValue() * lP.getUnidades();
-			}
-			else{
-			
-				productos.add(lP.getCompra());
-				lP.setPedido(p);
-				// Persistimos una linea de pedido del carro de la compra.
-				daoGenerico.persistirObjeto(lP);
-				// Vamos calculando el precio total del carro de la compra...
-				precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
-			}
+			productos.add(lP.getCompra());
+			lP.setPedido(p);
+			// Persistimos una linea de pedido del carro de la compra.
+			daoGenerico.persistirObjeto(lP);
+			// Vamos calculando el precio total del carro de la compra...
+			precioTotal += lP.getPrecioUnidad().floatValue() * lP.getUnidades();
 		} // ...y lo asignamos al pedido en cuestion.
-		
 		p.setPrecioTotal(new Float(precioTotal));
 		//Actualizamos el pedido con el precio total. 
 		daoGenerico.modificarObjeto(p);
